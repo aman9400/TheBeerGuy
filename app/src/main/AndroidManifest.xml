@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.thebeerguy">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/logo2"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TheBeerGuy"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name="com.example.Profile.PaymentMethod"
+            android:exported="false" />
+        <activity
+            android:name="com.example.Profile.AddAddress"
+            android:exported="false" />
+        <activity
+            android:name="com.example.Profile.ManageAddress"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoard.ReviewCart"
+            android:exported="false" />
+        <activity
+            android:name="com.example.Profile.EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoard.NavigationDrawerItems.NavFranchiseSponsorship"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoard.NavigationDrawerItems.NavOrderAlcohol"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoard.NavigationDrawerItems.NavPartyDrinkCalculator"
+            android:exported="false"
+            android:label="@string/title_activity_nav_party_drink_calculator"
+            android:theme="@style/Theme.TheBeerGuy.NoActionBar" />
+        <activity
+            android:name=".DashBoard.NavigationDrawerItems.NavTestimonials"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoard.NavigationDrawerItems.NavSocialResponsibility"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoard.NavigationDrawerItems.NavDeliveryRate"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoard.NavigationDrawerItems.NavContactUs"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoard.NavigationDrawerItems.NavHelp"
+            android:exported="false" />
+        <activity
+            android:name=".DashBoard.Home.SubCategory.SubCategory"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Product_Details.ProductDetails"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat1" />
+        <activity
+            android:name=".DashBoard.DashBoard"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar1" />
+        <activity
+            android:name="com.example.Forget.ResetPassword"
+            android:exported="false" />
+        <activity
+            android:name="com.example.Forget.PasswordRecovery"
+            android:exported="false" />
+        <activity
+            android:name="com.example.Forget.ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name="com.example.Signup.SignUp"
+            android:exported="false" />
+        <activity
+            android:name="com.example.login.Login"
+            android:exported="false" />
+        <activity
+            android:name=".Intro.IntroScreen"
+            android:exported="false"
+            android:label="@string/title_activity_intro_screen"
+            android:theme="@style/Theme.TheBeerGuy.NoActionBar" />
+        <activity
+            android:name="com.example.SplashScreen.SplashScreen"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

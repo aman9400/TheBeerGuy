@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/theBeerGuy_home"
+        android:title="Home"
+        android:icon="@drawable/home"
+        app:showAsAction="always"
+        >
+    </item>
+
+    <item
+        android:id="@+id/theBeerGuy_fav"
+        android:title="Favourites"
+        android:icon="@drawable/fav"
+        app:showAsAction="always">
+
+    </item>
+
+    <item
+        android:id="@+id/theBeerGuy_recent"
+        android:title="Recent"
+        android:icon="@drawable/recent"
+        app:showAsAction="always">
+
+    </item>
+
+    <item
+        android:id="@+id/theBeerGuy_order"
+        android:title="Order"
+       android:icon="@drawable/order"
+        app:showAsAction="always">
+
+    </item>
+
+
+    <item
+        android:id="@+id/theBeerGuy_account"
+        android:title="Account"
+        android:icon="@drawable/account"
+        app:showAsAction="always">
+
+    </item>
+
+</menu>

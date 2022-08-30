@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">TheBeerGuy</string>
+    <string name="title_activity_intro_screen">IntroScreen</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
+    <string name="aboutus1"><strong>Lorem ipsum dolor sit </strong>amet, consectetur adipiscing elit. Diam amet, interdum scelerisque varius vitae fames. Ipsum, enim, et, nunc mauris consectetur in eu, fringilla. Et facilisi massa eget praesent pulvinar arcu, suspendisse habitant. Tempus sit id consequat, maecenas rhoncus quam.</string>
+    <string name="link">support@thebeerguy.ca</string>
+    <string name="j326_daksh">123 test St, Toronto, ON, M4A1K5, Unit 301</string>
+
+
+    <!-- login text -->
+    <string name="empty_email_message">Please enter your email address</string>
+    <string name="login_message">Log in to your account</string>
+    <string name="google_signin_btn">SIGN IN WITH GOOGLE</string>
+    <string name="fb_signin_btn">SIGN IN WITH FACEBOOK</string>
+    <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login_btn_text">LOGIN</string>
+    <string name="forgot_password_text">Forgot Password ?</string>
+    <string name="email_login">Email</string>
+    <string name="password_login">Password</string>
+
+    <!-- Product Detail Text -->
+    <string name="Brewer"><b>Brewer:</b>Labatt\nBreweries Ontario</string>
+    <string name="store"><b>Stores:</b> The Beer Store </string>
+    <string name="alcohol"><b>Alcohol:</b> 5.00% </string>
+    <string name="availability"><b>Availability:</b> In Stock </string>
+    <string name="budweiser">Budweiser</string>
+    <string name="productDetails"><![CDATA[Light golden colour; light malt & hops; light body, touch of citrus to finish]]></string>
+    <string name="todo">TODO</string>
+    <string name="title_activity_nav_party_drink_calculator">NavPartyDrinkCalculator</string>
+
+
+    <!--Social Responsibility -->
+    <string name="SocialResponsibility">What is Social Responsibility?</string>
+    <string name="SocialResponsibility1">Remember that you and others have the right to abstain from alcohol.
+    If you do choose to drink, please do so responsibly.</string>
+
+    <string name="DrinkAndDrive">Do Not Drink and Drive</string>
+    <string name="DrinkAndDrive2">Do not allow an intoxicated person to drive. If the event you are attending does not provide sober a driver, appoint someone from your group of friends as the sober driver.
+        Some bars will provide free soft drinks to designated driver.
+        Remember to take turns being the designated driver.</string>
+
+    <string name="KnowYourLimit">Know Your Limit and Stay Within It</string>
+    <string name="KnowYourLimit2">Alcohol affects each person differently.
+        Factors include gender, body weight, mood, amount of food eaten, and alcohol tolerance.
+        The rate at which you drink is also a big factor. Generally, our bodies can metabolize one drink per hour.
+        Avoid gulping and guzzling! Party games which encourage excessive consumption are never a good idea.</string>
+
+    <string name="DoNotCombine">Do Not Combine Alcohol with Other Drugs or Medications</string>
+    <string name="DoNotCombine2">Alcohol is a depressant. When combined with other depressant medications or drugs, a cumulative effect can occur.
+        Dangerous side effects can include cessation of breathing.
+        Even over-the-counter medications such as cold remedies can be dangerous when taken with alcohol.</string>
+
+    <string name="text_with_bullet">\u2022 every 12 bottles of beer over 36 bottles of beer \n
+        \u2022 every 1 bottle of liquor over 3 bottles of liquor \n
+        \u2022 every 1 bottle of wine over 3 bottles of wine \n
+        \u2022 a required stop at BOTH the LCBO and The Beer Store
+    </string>
+
+
+    <string name="Bullet_text_help">\u2022 Residential Rates and coverage - please see our Delivery Rates page. \n
+        \u2022 Gift Deliveries are $24.95 anywhere in Ontario.
+    </string>
+
+
+</resources>

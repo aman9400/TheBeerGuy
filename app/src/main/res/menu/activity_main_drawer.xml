@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <group>
+        <item
+            android:id="@+id/nav_item_home"
+            android:icon="@drawable/nav_home"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_item_beer"
+            android:icon="@drawable/nav_beer"
+            android:title="Beer" />
+
+        <item
+            android:id="@+id/nav_item_liquor"
+            android:icon="@drawable/nav_liquor"
+            android:title="Liquor" />
+
+        <item
+            android:id="@+id/nav_item_wine"
+            android:icon="@drawable/nav_wine"
+            android:title="Wine" />
+
+        <item
+            android:id="@+id/nav_item_recent"
+            android:icon="@drawable/nav_recent"
+            android:title="Recent Viewed" />
+    </group>
+
+
+    <group>
+        <item android:title="Profile">
+            <menu>
+                <item
+                    android:id="@+id/nav_create_account"
+                    android:icon="@drawable/nav_create_account"
+                    android:title="Create Account" />
+                <item
+                    android:id="@+id/nav_signin"
+                    android:icon="@drawable/nav_signin"
+                    android:title="Sign In" />
+            </menu>
+        </item>
+    </group>
+
+    <group>
+        <item android:title="Quick Links">
+            <menu>
+                <item
+                    android:id="@+id/nav_help"
+                    android:icon="@drawable/nav_help"
+                    android:title="Help and FAQ" />
+                <item
+                    android:id="@+id/nav_contactus"
+                    android:icon="@drawable/nav_contactus"
+                    android:title="Contact Us" />
+
+                <item
+                    android:id="@+id/nav_delivery_rate"
+                    android:icon="@drawable/nav_delivery_rate"
+                    android:title="Delivery Rate" />
+
+                <item
+                    android:id="@+id/nav_social_resposibility"
+                    android:icon="@drawable/nav_social"
+                    android:title="Social Responsibility" />
+
+                <item
+                    android:id="@+id/nav_testimonials"
+                    android:icon="@drawable/nav_testimonials"
+                    android:title="Testimonials" />
+
+                <item
+                    android:id="@+id/nav_party_drink_calculator"
+                    android:icon="@drawable/nav_party_drink"
+                    android:title="Party Drink Calculator" />
+
+                <item
+                    android:id="@+id/order_alcohol"
+                    android:icon="@drawable/nav_order_alcohol"
+                    android:title="How to Order Alcohol" />
+
+                <item
+                    android:id="@+id/franchise_sponsorship"
+                    android:icon="@drawable/nav_franchise_sponsorship"
+                    android:title="Franchise and Sponsorship" />
+
+            </menu>
+        </item>
+
+    </group>
+
+
+</menu>

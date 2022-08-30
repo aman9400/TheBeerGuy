@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "140236991468",
+    "project_id": "thebeerguy-25158",
+    "storage_bucket": "thebeerguy-25158.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140236991468:android:e358878739e880ac0e6ec9",
+        "android_client_info": {
+          "package_name": "com.thebeerguy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "140236991468-a6bbpdbfc6o722m8dvgegbr8euh7vn79.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.thebeerguy",
+            "certificate_hash": "ee5763129cd378dac24618c9c8659b885251351a"
+          }
+        },
+        {
+          "client_id": "140236991468-1rb9puad5fre49n1mtlplve063rns171.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9VZxmz4CY7fszaIHW5N7wkK-nuvtwdbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "140236991468-1rb9puad5fre49n1mtlplve063rns171.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
