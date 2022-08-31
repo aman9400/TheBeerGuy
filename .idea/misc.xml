@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_intro_screen.xml" value="0.15053763440860216" />
+        <entry key="app/src/main/res/layout/activity_landing_screen.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_manage_address.xml" value="0.25" />
@@ -44,13 +45,14 @@
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_review_cart.xml" value="0.16" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.19076923076923077" />
         <entry key="app/src/main/res/layout/activity_sub_category.xml" value="0.22" />
         <entry key="app/src/main/res/layout/address.xml" value="0.1" />
         <entry key="app/src/main/res/layout/address_recycler.xml" value="0.25" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/category_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/content_nav_party_drink_calculator.xml" value="0.14" />
         <entry key="app/src/main/res/layout/custom_item_nav_menu.xml" value="0.14074074074074075" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_favourites.xml" value="0.19076923076923077" />

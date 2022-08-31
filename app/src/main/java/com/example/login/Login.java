@@ -12,6 +12,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.login.responseLogin.LoginResponse;
 import com.example.thebeerguy.DashBoard.DashBoard;
+import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.R;
 
 
@@ -39,6 +41,7 @@ public class Login extends AppCompatActivity   {
     private TextView login_Tv_signup;
     private TextView login_Tv_forgetPassword;
     private EditText login_email, login_password;
+    private ImageButton logon_imgBtn_back;
     private CardView login_cardview_facebook_login, login_cardview_gmail_login;
     APIInterface apiInterface;
 
@@ -59,14 +62,20 @@ public class Login extends AppCompatActivity   {
 
         findIds();
 
+
         apiInterface = APIClient.getClient().create(APIInterface.class);
 //        APIClient.
 
 
+        logon_imgBtn_back.setOnClickListener(v->{
+            Intent intentBack = new Intent(Login.this, LandingScreen.class);
+            startActivity(intentBack);
+        });
+
         login_btn_login.setOnClickListener(v->{
-//            loginApi();
-            Intent intent= new Intent(this,DashBoard.class);
-            startActivity(intent);
+            loginApi();
+//            Intent intent= new Intent(this,DashBoard.class);
+//            startActivity(intent);
         });
 
 
@@ -153,6 +162,7 @@ public class Login extends AppCompatActivity   {
         login_email = findViewById(R.id.login_email);
         login_password = findViewById(R.id.login_password);
         login_btn_login = findViewById(R.id.login_btn_login);
+        logon_imgBtn_back = findViewById(R.id.logon_imgBtn_back);
         login_cardview_gmail_login = findViewById(R.id.login_cardview_gmail_login);
         login_cardview_facebook_login = findViewById(R.id.login_cardview_facebook_login);
 

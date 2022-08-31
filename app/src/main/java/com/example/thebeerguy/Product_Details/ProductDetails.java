@@ -26,6 +26,7 @@ import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.thebeerguy.DashBoard.Home.Adapters.GridAdapter;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
+import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.Intro.Splash4;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.Package;
@@ -46,7 +47,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
     GridView productDetail_grid;
     APIInterface apiInterface;
-    String Address = Splash4.Address;
+    String Address = LandingScreen.Address;
     private final List<ResponseHome> list = new ArrayList<>();
     private TextView product_arrow_down, product_TV_price, product_TV_name,
             product_TV_ratting, product_TV_time, product_TV_rating2,

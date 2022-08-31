@@ -29,6 +29,7 @@ import com.example.thebeerguy.DashBoard.Home.Adapters.WineAdapter;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.SubCategory;
 import com.example.thebeerguy.DashBoard.Home.categoryResponse.ResponseCategory;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
+import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.Intro.Splash4;
 import com.example.thebeerguy.R;
 
@@ -64,7 +65,7 @@ public class Home extends Fragment {
         find(view);
 
         tv_address_home = view.findViewById(R.id.tv_address_home);
-        tv_address_home.setText(Splash4.Address);
+        tv_address_home.setText(LandingScreen.Address);
 
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading...");

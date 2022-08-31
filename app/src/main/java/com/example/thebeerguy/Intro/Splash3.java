@@ -27,7 +27,11 @@ public class Splash3 extends Fragment {
         viewPager = getActivity().findViewById(R.id.viewPager1);
 
         sp3_btn_skip.setOnClickListener(v -> {
-            viewPager.setCurrentItem(4);
+//            viewPager.setCurrentItem(3);
+            getActivity().finish();
+
+            startActivity(new Intent(getContext(),LandingScreen.class));
+
 
         });
 
