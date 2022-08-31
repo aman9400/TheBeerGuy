@@ -74,15 +74,15 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         setSupportActionBar(toolbar);
 
         Button cart_icon = toolbar.findViewById(R.id.cart_icon);
-        cart_icon.setOnClickListener(v->{
+        cart_icon.setOnClickListener(v -> {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
             boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
 
-            if (Islogin){
+            if (Islogin) {
                 startActivity(new Intent(DashBoard.this, ReviewCart.class));
 
 
-            }else {
+            } else {
                 Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, Login.class));
             }
@@ -138,10 +138,10 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
                     boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
 
-                    if (Islogin){
+                    if (Islogin) {
                         setFragment(new Favourites());
 
-                    }else {
+                    } else {
                         Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(this, Login.class));
                     }
@@ -153,10 +153,10 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
                     boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
 
-                    if (Islogin){
+                    if (Islogin) {
                         setFragment(new Recent());
 
-                    }else {
+                    } else {
                         Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(this, Login.class));
                     }
@@ -168,10 +168,10 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                     SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
                     boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
 
-                    if (Islogin){
+                    if (Islogin) {
                         setFragment(new Orders());
 
-                    }else {
+                    } else {
                         Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(this, Login.class));
                     }
@@ -181,8 +181,21 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 }
 
                 case R.id.theBeerGuy_account: {
-                    setFragment(new Account());
-                    Toast.makeText(this, "Account", Toast.LENGTH_SHORT).show();
+
+
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+                    boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
+
+                    if (Islogin) {
+
+                        setFragment(new Account());
+                        Toast.makeText(this, "Account", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(this, Login.class));
+                    }
+
                     break;
                 }
 
@@ -201,9 +214,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     }
 
 
-
-
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
@@ -211,7 +221,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         // Set action bar title
 
         setTitle(menuItem.getTitle());
-
 
 
         int id = menuItem.getItemId();
@@ -313,7 +322,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             startActivity(new Intent(getApplicationContext(), NavFranchiseSponsorship.class));
             Toast.makeText(getApplicationContext(), "Franchise and Sponsorship", Toast.LENGTH_SHORT).show();
 
-        }else {
+        } else {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
 
         }

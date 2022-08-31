@@ -29,7 +29,6 @@
                 android:id="@+id/recycler_text_image"
                 android:layout_width="100dp"
                 android:layout_height="125dp"
-                android:background="@drawable/beer"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.49"

@@ -3,12 +3,16 @@ package com.example.Signup;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +38,8 @@ public class SignUp extends AppCompatActivity {
     private ImageButton signup_btn_back;
     EditText sign_mobile, sign_email, sign_name,sign_password, sign_address,sign_apt,sign_buzzer, sign_extraInfo;
     APIInterface apiInterface;
+    RadioButton radioBtn_delivery_yes, radioBtn_delivery_no, radioBtn_business_yes, radioBtn_business_no,
+                radioBtn_motel_yes, radioBtn_motel_no,
 
 
 
@@ -43,7 +49,22 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         getSupportActionBar().hide();
 
+        ColorStateList colorStateList = new ColorStateList(
+                new int[][]
+                        {
+                                new int[]{-android.R.attr.state_enabled}, // Disabled
+                                new int[]{android.R.attr.state_enabled}   // Enabled
+                        },
+                new int[]
+                        {
+                                Color.WHITE, // disabled
+                                Color.BLUE   // enabled
+                        }
+        );
+
         findIds();
+
+        radio.setButtonTintList(colorStateList);
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 

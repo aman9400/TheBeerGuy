@@ -32,7 +32,7 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto_bold"
             android:padding="3dp"
             android:text="Create your account"
@@ -45,7 +45,7 @@
             android:id="@+id/sign_name"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:autofillHints=""
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
@@ -62,7 +62,7 @@
             android:id="@+id/sign_mobile"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
@@ -79,7 +79,7 @@
             android:id="@+id/sign_email"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
@@ -96,7 +96,7 @@
             android:id="@+id/sign_address"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
@@ -113,7 +113,7 @@
             android:id="@+id/sign_password"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
@@ -127,11 +127,11 @@
             tools:ignore="TouchTargetSizeCheck" />
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkBoxBtn_TC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:shadowColor="@color/white"
+            android:buttonTint="@color/radiobutton"
             app:layout_constraintStart_toStartOf="@+id/radioGroup3"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup3"
             tools:ignore="TouchTargetSizeCheck" />
@@ -146,9 +146,9 @@
             android:text="I agree to the "
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/checkBox"
-            app:layout_constraintStart_toEndOf="@+id/checkBox"
-            app:layout_constraintTop_toTopOf="@+id/checkBox" />
+            app:layout_constraintBottom_toBottomOf="@+id/checkBoxBtn_TC"
+            app:layout_constraintStart_toEndOf="@+id/checkBoxBtn_TC"
+            app:layout_constraintTop_toTopOf="@+id/checkBoxBtn_TC" />
 
         <TextView
             android:id="@+id/textView18"
@@ -186,11 +186,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="32dp"
             android:fontFamily="@font/roboto"
             android:padding="3dp"
             android:text="Already have a Account?"
             android:textColor="@color/white"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/signup_button_signup"
             app:layout_constraintTop_toBottomOf="@+id/signup_button_signup" />
 
@@ -212,7 +214,7 @@
             android:id="@+id/sign_apt"
             android:layout_width="155dp"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
@@ -246,7 +248,7 @@
             android:id="@+id/sign_extrainfo"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
@@ -263,7 +265,7 @@
             android:id="@+id/textView10"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
@@ -279,6 +281,7 @@
             android:id="@+id/textView24"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
             android:text="Password"
@@ -292,7 +295,7 @@
             android:id="@+id/textView26"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
             android:text="Name"
@@ -306,7 +309,7 @@
             android:id="@+id/textView27"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
             android:text="Phone"
@@ -320,7 +323,7 @@
             android:id="@+id/textView28"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
             android:text="Are you sending a gift delivery?"
@@ -342,20 +345,20 @@
             app:layout_constraintTop_toBottomOf="@+id/textView28">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/radioBtn_delivery_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/radiobutton"
                 android:text="Yes"
-                android:textColor="#ffffff"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/radioBtn_delivery_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:text="No"
-                android:textColor="#ffffff"
+                android:buttonTint="@color/radiobutton"
                 tools:ignore="TouchTargetSizeCheck" />
         </RadioGroup>
 
@@ -363,7 +366,7 @@
             android:id="@+id/textView22"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
             android:text="Address"
@@ -377,7 +380,7 @@
             android:id="@+id/textView29"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
             android:text="Apt"
@@ -404,7 +407,7 @@
             android:id="@+id/textView31"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
             android:text="Extra Info"
@@ -419,7 +422,7 @@
             android:id="@+id/textView32"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
             android:text="Is this a business?"
@@ -440,22 +443,23 @@
             app:layout_constraintTop_toBottomOf="@+id/textView32">
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/radioBtn_business_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes"
                 android:textColor="@color/white"
-
+                android:buttonTint="@color/radiobutton"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/radioBtn_business_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:text="No"
                 android:textColor="@color/white"
+                android:buttonTint="@color/radiobutton"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
         </RadioGroup>
@@ -464,7 +468,7 @@
             android:id="@+id/textView33"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
             android:text="Is this a Hotel or Motel? "
@@ -485,20 +489,25 @@
             app:layout_constraintTop_toBottomOf="@+id/textView33">
 
             <RadioButton
+                android:id="@+id/radioBtn_motel_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/radiobutton"
                 android:text="Yes"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <RadioButton
+                android:id="@+id/radioBtn_motel_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                android:buttonTint="@color/radiobutton"
                 android:text="No"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
 
         </RadioGroup>

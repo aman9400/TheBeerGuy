@@ -18,11 +18,11 @@
             android:text="@string/login_message"
             android:textColor="@color/white"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintStart_toStartOf="@+id/logon_imgBtn_back"
+            app:layout_constraintTop_toBottomOf="@+id/logon_imgBtn_back" />
 
         <ImageButton
-            android:id="@+id/textView8"
+            android:id="@+id/logon_imgBtn_back"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
@@ -33,24 +33,25 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <EditText
-            android:id="@+id/login_email"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/login_border"
-            android:ems="25"
-            android:fontFamily="@font/roboto"
-            android:hint="@string/email_login"
-            android:inputType="textEmailAddress"
-            android:paddingStart="50dp"
-            android:paddingEnd="3dp"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+    <EditText
+        android:id="@+id/login_email"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/login_border"
+        android:ems="25"
+        android:fontFamily="@font/roboto"
+        android:hint="@string/email_login"
+        android:inputType="textEmailAddress"
+        android:paddingStart="50dp"
+        android:paddingEnd="3dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <View
             android:id="@+id/view"
@@ -84,22 +85,23 @@
         app:layout_constraintTop_toTopOf="@+id/login_email"
         app:srcCompat="@drawable/ic_mail_2" />
 
-        <EditText
-            android:id="@+id/login_password"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/edit_password_login"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/login_border"
-            android:ems="12"
-            android:hint="@string/password_login"
-            android:inputType="textPassword"
-            android:paddingStart="50dp"
-            android:paddingEnd="2dp"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/login_email"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/login_email"
-            app:layout_constraintTop_toBottomOf="@+id/login_email" />
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/edit_password_login"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/login_border"
+        android:ems="12"
+        android:hint="@string/password_login"
+        android:inputType="textPassword"
+        android:paddingStart="50dp"
+        android:paddingEnd="2dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/login_email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/login_email"
+        app:layout_constraintTop_toBottomOf="@+id/login_email" />
 
         <ImageView
             android:id="@+id/imageView10"
@@ -150,24 +152,23 @@
         android:text="@string/don_t_have_an_account"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/login_cardview_facebook_login"
         app:layout_constraintTop_toBottomOf="@+id/login_cardview_facebook_login" />
 
-        <TextView
-            android:id="@+id/login_Tv_signup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_bold"
-            android:padding="3dp"
-            android:text="@string/sign_up"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView14"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.826"
-            app:layout_constraintStart_toEndOf="@+id/textView14"
-            app:layout_constraintTop_toTopOf="@+id/textView14"
-            app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/login_Tv_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/roboto_bold"
+        android:padding="3dp"
+        android:text="@string/sign_up"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView14"
+        app:layout_constraintEnd_toEndOf="@+id/login_cardview_facebook_login"
+        app:layout_constraintTop_toTopOf="@+id/textView14"
+        app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/imageView18"
@@ -238,9 +239,9 @@
         android:id="@+id/login_cardview_gmail_login"
         android:layout_width="0dp"
         android:layout_height="58dp"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="14dp"
+        android:layout_marginEnd="12dp"
         android:elevation="5dp"
         app:cardBackgroundColor="#FEC55A"
         app:cardCornerRadius="10dp"
@@ -281,7 +282,7 @@
     </androidx.cardview.widget.CardView>
 
 
-        <!--    <de.hdodenhof.circleimageview.CircleImageView-->
+    <!--    <de.hdodenhof.circleimageview.CircleImageView-->
         <!--        android:layout_width="60dp"-->
         <!--        android:layout_height="60dp"-->
         <!--        android:layout_marginStart="100dp"-->
