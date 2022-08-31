@@ -1,6 +1,7 @@
 package com.example.thebeerguy.DashBoard.Home;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -25,6 +26,7 @@ import com.example.thebeerguy.DashBoard.Home.Adapters.LiquorAdapter;
 import com.example.thebeerguy.DashBoard.Home.Adapters.OnSaleAdapter;
 import com.example.thebeerguy.DashBoard.Home.Adapters.WhatsHotAdapter;
 import com.example.thebeerguy.DashBoard.Home.Adapters.WineAdapter;
+import com.example.thebeerguy.DashBoard.Home.SubCategory.SubCategory;
 import com.example.thebeerguy.DashBoard.Home.categoryResponse.ResponseCategory;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
 import com.example.thebeerguy.Intro.Splash4;
@@ -68,6 +70,30 @@ public class Home extends Fragment {
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.show();
+
+        search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+//                Intent intent = new Intent(getContext(), SubCategory.class);
+//                intent.putExtra("subCatId", "1");
+//                intent.putExtra("typeID", s);
+//                intent.putExtra("name", "search");
+//                startActivity(intent);
+
+                Intent intent = new Intent(getContext(), SubCategory.class);
+                intent.putExtra("subCatId", "3968");
+                intent.putExtra("typeID", "1");
+                intent.putExtra("name", s);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                return false;
+            }
+        });
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 

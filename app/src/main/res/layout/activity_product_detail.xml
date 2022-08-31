@@ -16,7 +16,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="250dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -66,7 +66,7 @@
                 android:layout_width="0dp"
                 android:layout_height="28dp"
                 android:layout_marginEnd="16dp"
-                android:background="@drawable/start"
+
                 app:layout_constraintEnd_toEndOf="@+id/product_TV_name"
                 app:layout_constraintStart_toStartOf="@+id/product_TV_name"
                 app:layout_constraintTop_toBottomOf="@+id/product_TV_name" />
@@ -173,7 +173,7 @@
 
         <TextView
             android:id="@+id/product_TV_price"
-            android:layout_width="55dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="6dp"
@@ -198,13 +198,11 @@
 
         <TextView
             android:id="@+id/product_TV_rating2"
-            android:layout_width="70dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/group4"
-            app:layout_constraintBottom_toBottomOf="@+id/product_TV_time"
-            app:layout_constraintEnd_toEndOf="@+id/textView44"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintEnd_toEndOf="@+id/textView89"
+            app:layout_constraintStart_toStartOf="@+id/textView89"
             app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
         <TextView
@@ -269,9 +267,11 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_190sdp"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="5dp"
+            android:layout_marginBottom="8dp"
             android:numColumns="3"
+            app:layout_constraintBottom_toTopOf="@+id/productDetail_btn_addToCard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView52">
@@ -310,6 +310,18 @@
             app:layout_constraintEnd_toEndOf="@+id/product_TV_price"
             app:layout_constraintStart_toStartOf="@+id/product_TV_price"
             app:layout_constraintTop_toBottomOf="@+id/product_TV_price" />
+
+        <TextView
+            android:id="@+id/textView89"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/roboto"
+            android:text="Rating"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/product_TV_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/product_TV_rating2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

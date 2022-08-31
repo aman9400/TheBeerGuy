@@ -1,42 +1,36 @@
 package com.example.thebeerguy.Product_Details;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
-import com.example.Signup.SignUp;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
-import com.example.login.Login;
-import com.example.login.responseLogin.LoginResponse;
 import com.example.thebeerguy.DashBoard.Home.Adapters.GridAdapter;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
-import com.example.thebeerguy.DashBoard.ReviewCart;
 import com.example.thebeerguy.Intro.Splash4;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.Package;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.ResponseProductDetail;
 import com.example.thebeerguy.R;
-import com.example.thebeerguy.databinding.ProductDetailDialogRecyclerBinding;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -48,32 +42,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductDetails extends AppCompatActivity {
+public class ProductDetails extends AppCompatActivity implements GetProductPackageId {
 
     GridView productDetail_grid;
-    private List<ResponseHome> list = new ArrayList<>();
+    APIInterface apiInterface;
+    String Address = Splash4.Address;
+    private final List<ResponseHome> list = new ArrayList<>();
     private TextView product_arrow_down, product_TV_price, product_TV_name,
             product_TV_ratting, product_TV_time, product_TV_rating2,
             product_TV_discription, product_brewer, product_alcohol;
-
     private Button productDetail_btn_addToCard;
-
     private List<ResponseHome> productDetailsList = new ArrayList<>();
-
     private List<Package> pakageList = new ArrayList<>();
-
-
-
     private ImageView product_IV_image;
     private String productID;
     private String type_id;
     private String cat_id;
-
-    APIInterface apiInterface;
     private ProgressDialog progressDialog;
-
-    String Address = Splash4.Address;
-
+    private int productPackageId;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -84,9 +70,7 @@ public class ProductDetails extends AppCompatActivity {
         findIds();
 
 
-
         apiInterface = APIClient.getClient().create(APIInterface.class);
-
 
 
         productID = getIntent().getStringExtra("productID");
@@ -94,10 +78,10 @@ public class ProductDetails extends AppCompatActivity {
         type_id = getIntent().getStringExtra("type");
         cat_id = getIntent().getStringExtra("cat");
 
-        Log.e("test", productID + ", "+ name + ", "+ type_id+ ", "+ cat_id);
+        Log.e("test", productID + ", " + name + ", " + type_id + ", " + cat_id);
 
 
-        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#ffffff\">" + name+ "</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#ffffff\">" + name + "</font>"));
 
 
 //        getSupportActionBar().show();
@@ -110,44 +94,38 @@ public class ProductDetails extends AppCompatActivity {
         productApi();
 
 
-        product_arrow_down.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        product_arrow_down.setOnClickListener(v -> {
 
-                Dialog dialog = new Dialog(ProductDetails.this);
-                dialog.setContentView(R.layout.product_dialog);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-                dialog.getWindow().setWindowAnimations(R.style.AnimationForDialog);
+            Dialog dialog = new Dialog(ProductDetails.this);
+            dialog.setContentView(R.layout.product_dialog);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            dialog.getWindow().setWindowAnimations(R.style.AnimationForDialog);
 
-                TextView productDialog_TV_cancle = dialog.findViewById(R.id.productDialog_TV_cancle);
-                TextView productDialog_TV_ok = dialog.findViewById(R.id.productDialog_TV_ok);
-                RecyclerView productDialog_recyclerView = dialog.findViewById(R.id.productDialog_recyclerView);
+            TextView productDialog_TV_cancle = dialog.findViewById(R.id.productDialog_TV_cancle);
+            TextView productDialog_TV_ok = dialog.findViewById(R.id.productDialog_TV_ok);
+            RecyclerView productDialog_recyclerView = dialog.findViewById(R.id.productDialog_recyclerView);
 
-                ProductDetailsDialogAdapter productDetailsDialogAdapter = new ProductDetailsDialogAdapter(ProductDetails.this, pakageList);
-                productDialog_recyclerView.setLayoutManager(new LinearLayoutManager(ProductDetails.this, LinearLayoutManager.HORIZONTAL, false));
-                productDialog_recyclerView.setAdapter(productDetailsDialogAdapter);
+            ProductDetailsDialogAdapter productDetailsDialogAdapter = new ProductDetailsDialogAdapter(ProductDetails.this, pakageList, this);
+            productDialog_recyclerView.setLayoutManager(new LinearLayoutManager(ProductDetails.this, LinearLayoutManager.VERTICAL, false));
+            productDialog_recyclerView.setAdapter(productDetailsDialogAdapter);
 
 
+            productDialog_TV_cancle.setOnClickListener(v1 -> dialog.cancel());
 
-                productDialog_TV_cancle.setOnClickListener(v1 -> dialog.cancel());
+            productDialog_TV_ok.setOnClickListener(v12 ->{
+                productApi();
+                dialog.cancel();
+            });
 
-                productDialog_TV_ok.setOnClickListener(v12 -> dialog.cancel());
+            dialog.show();
 
-                dialog.show();
-
-            }
         });
 
 
         ProductDetailsGridAPI("is_popular", "1");
 
 
-        productDetail_btn_addToCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addToCartApi();
-            }
-        });
+        productDetail_btn_addToCard.setOnClickListener(v -> addToCartApi());
 
     }
 
@@ -169,15 +147,6 @@ public class ProductDetails extends AppCompatActivity {
 
     }
 
-    private void modelListSimilar() {
-
-//        list.add(new SampleModel(R.drawable.beer, "Budweiser", "$2.90 - $104.95", "1"));
-//        list.add(new SampleModel(R.drawable.vodka, "Budweiser", "$2.90 - $104.95", "2"));
-//        list.add(new SampleModel(R.drawable.beer, "Budweiser", "$2.90 - $104.95", "3"));
-//        list.add(new SampleModel(R.drawable.vodka, "Budweiser", "$2.90 - $104.95", "4"));
-    }
-
-
     private void productApi() {
 
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
@@ -187,37 +156,32 @@ public class ProductDetails extends AppCompatActivity {
             Map<String, String> map = new
                     HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
-            map.put("product_id", "60519");
-            map.put("category_id", "1");
-            map.put("type_id", "Beer");
+            map.put("product_id", productID);
+            map.put("category_id", cat_id);
+            map.put("type_id", type_id);
 
 
+            Call<List<ResponseProductDetail>> call1 = apiInterface.productDetail(map);
 
-            Call<ResponseProductDetail> call1 = apiInterface.productDetail(map);
-
-            call1.enqueue(new Callback<ResponseProductDetail>() {
+            call1.enqueue(new Callback<List<ResponseProductDetail>>() {
                 @Override
-                public void onResponse(Call<ResponseProductDetail> call, Response<ResponseProductDetail> response) {
+                public void onResponse(Call<List<ResponseProductDetail>> call, Response<List<ResponseProductDetail>> response) {
                     if (response.isSuccessful()) {
-                        ResponseProductDetail responseProductDetail = response.body();
+                        List<ResponseProductDetail> responseProductDetail = response.body();
 
-                        pakageList = responseProductDetail.getPackages();
-
-//                            Common.jwt = responseSignup.getJwt();
-//                            Log.e("response : " , String.valueOf(response));
-//                            Toast.makeText(SignUp.this, "Signup Successful", Toast.LENGTH_SHORT).show();
-
-//                            startActivity(new Intent(SignUp.this, Login.class));
+                        pakageList = responseProductDetail.get(0).getPackages();
 
 
-                        Picasso.get().load(responseProductDetail.getImage()).into(product_IV_image);
-                        product_TV_name.setText(responseProductDetail.getLabel());
-                        product_TV_ratting.setText(responseProductDetail.getRating());
-                        product_brewer.setText(responseProductDetail.getBrewer());
-                        product_alcohol.setText(responseProductDetail.getAlcoholContent());
+                        Log.e("test",""+ pakageList.size());
 
-//                        
-
+                        Picasso.get().load(responseProductDetail.get(0).getImage()).into(product_IV_image);
+                        product_TV_name.setText(responseProductDetail.get(0).getLabel());
+                        product_TV_ratting.setText( "Rating : " + responseProductDetail.get(0).getRating());
+                        product_brewer.setText(responseProductDetail.get(0).getBrewer());
+                        product_alcohol.setText(responseProductDetail.get(0).getAlcoholContent());
+                        product_TV_price.setText("$"+responseProductDetail.get(0).getMinPrice() + "-$" + responseProductDetail.get(0).getMaxPrice());
+                        product_TV_rating2.setText(responseProductDetail.get(0).getRating());
+                        product_TV_discription.setText(responseProductDetail.get(0).getDescription());
 
                     } else {
                         Toast.makeText(ProductDetails.this, "Data not found", Toast.LENGTH_SHORT).show();
@@ -226,8 +190,9 @@ public class ProductDetails extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<ResponseProductDetail> call, Throwable t) {
-                    Toast.makeText(ProductDetails.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                public void onFailure(Call<List<ResponseProductDetail>> call, Throwable t) {
+                    Toast.makeText(ProductDetails.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.e("test",  t.getMessage());
                 }
             });
         }
@@ -294,19 +259,16 @@ public class ProductDetails extends AppCompatActivity {
             map.put("address", Address);
 
 
-
-
-
             Call<ResponseAddToCart> call1 = apiInterface.addToCart(map);
 
             call1.enqueue(new Callback<ResponseAddToCart>() {
                 @Override
                 public void onResponse(Call<ResponseAddToCart> call, Response<ResponseAddToCart> response) {
-                    if(response.isSuccessful()){
+                    if (response.isSuccessful()) {
                         ResponseAddToCart responseSignup = response.body();
 //                        Common.jwt = responseSignup.getJwt();
-                        Log.e("response : " , String.valueOf(response));
-                        Toast.makeText(ProductDetails.this, "Signup Successful", Toast.LENGTH_SHORT).show();
+                        Log.e("response : ", String.valueOf(response));
+                        Toast.makeText(ProductDetails.this, "Added", Toast.LENGTH_SHORT).show();
 
 //                        startActivity(new Intent(ProductDetails.this, ReviewCart.class));
                     }
@@ -326,4 +288,18 @@ public class ProductDetails extends AppCompatActivity {
     }
 
 
+    @Override
+    public void getId(int id) {
+        productPackageId = id;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -48,8 +49,12 @@ public class OnSaleAdapter extends RecyclerView.Adapter<OnSaleAdapter.MyViewhold
         holder.recycler_cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(context, ""+responseHome.getProductId(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, ProductDetails.class);
-                intent.putExtra("category_id", responseHome.getProductId());
+                intent.putExtra("productID", ""+responseHome.getProductId());
+                intent.putExtra("name", responseHome.getLabel());
+                intent.putExtra("type", responseHome.getType());
+                intent.putExtra("cat", responseHome.getCategory());
                 context.startActivity(intent);
 
             }

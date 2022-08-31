@@ -7,7 +7,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,7 +21,6 @@ import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
-import com.example.thebeerguy.DashBoard.Home.categoryResponse.ResponseCategory;
 import com.example.thebeerguy.Product_Details.productListResponse.ResponseProductList;
 import com.example.thebeerguy.R;
 
@@ -41,9 +40,7 @@ public class SubCategory extends AppCompatActivity {
 
 
     private androidx.appcompat.widget.Toolbar sub_category_toolbaar;
-
-
-
+    boolean isCLicked = false;
     private List<ResponseProductList> subCategoryList = new ArrayList<>();
 
     APIInterface apiInterface;
@@ -58,9 +55,14 @@ public class SubCategory extends AppCompatActivity {
         setContentView(R.layout.activity_sub_category);
 
 
-        subCatID = getIntent().getStringExtra("subCatId");
-        typeID = getIntent().getStringExtra("typeID");
-        name = getIntent().getStringExtra("name");
+        if(getIntent().getStringExtra("name").equalsIgnoreCase("search")){
+            searchApi(getIntent().getStringExtra("typeID"));
+        }else {
+            subCatID = getIntent().getStringExtra("subCatId");
+            typeID = getIntent().getStringExtra("typeID");
+            name = getIntent().getStringExtra("name");
+        }
+
 
 
 //        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#ffffff\">" + name + "</font>"));
@@ -104,7 +106,7 @@ public class SubCategory extends AppCompatActivity {
 
             Button subCategoryFilter_Btn_apply, subCategoryFilter_Btn_reset;
 
-            final boolean isCLicked = false;
+
 
             type_recyclerview = dialog.findViewById(R.id.type_recyclerview);
             category_recyclerview = dialog.findViewById(R.id.category_recyclerview);
@@ -117,6 +119,9 @@ public class SubCategory extends AppCompatActivity {
             lcboVintage_recyclerview = dialog.findViewById(R.id.lcboVintage_recyclerview);
             hashPhoto_recycler = dialog.findViewById(R.id.hashPhoto_recycler);
             bonusPoint_recycler = dialog.findViewById(R.id.bonusPoint_recycler);
+
+            subCategoryFilter_Btn_apply = dialog.findViewById(R.id.subCategoryFilter_Btn_apply);
+            subCategoryFilter_Btn_reset = dialog.findViewById(R.id.subCategoryFilter_Btn_reset);
 
             subCategoryFilter_TV_type = dialog.findViewById(R.id.subCategoryFilter_TV_type);
             subCategoryFilter_TV_category = dialog.findViewById(R.id.subCategoryFilter_TV_category);
@@ -131,7 +136,7 @@ public class SubCategory extends AppCompatActivity {
             subCategoryFilter_TV_bonusPoint = dialog.findViewById(R.id.subCategoryFilter_TV_bonusPoint);
 
             subCategoryFilter_TV_type.setOnClickListener(v1 -> {
-                if (isCLicked != false) {
+                if (isCLicked) {
                     type_recyclerview.setVisibility(View.VISIBLE);
 
                 } else {
@@ -141,7 +146,7 @@ public class SubCategory extends AppCompatActivity {
 
             subCategoryFilter_TV_category.setOnClickListener(v13 -> {
 
-                if (isCLicked != false) {
+                if (isCLicked) {
                     category_recyclerview.setVisibility(View.VISIBLE);
 
                 } else {
@@ -151,7 +156,7 @@ public class SubCategory extends AppCompatActivity {
 
             subCategoryFilter_TV_subCategory.setOnClickListener(v12 -> {
 
-                if (isCLicked != false) {
+                if (isCLicked) {
                     subCategory_recyclerview.setVisibility(View.VISIBLE);
 
                 } else {
@@ -161,7 +166,7 @@ public class SubCategory extends AppCompatActivity {
 
             subCategoryFilter_TV_origin.setOnClickListener(v14 -> {
 
-                if (isCLicked != false) {
+                if (isCLicked) {
                     origin_recyclerview.setVisibility(View.VISIBLE);
 
                 } else {
@@ -171,7 +176,7 @@ public class SubCategory extends AppCompatActivity {
             });
 
             subCategoryFilter_TV_priceRange.setOnClickListener(v15 -> {
-                if (isCLicked != false) {
+                if (isCLicked ) {
                     priceRange_recyclerview.setVisibility(View.VISIBLE);
 
                 } else {
@@ -181,7 +186,7 @@ public class SubCategory extends AppCompatActivity {
 
             subCategoryFilter_TV_liquorContainer.setOnClickListener(v16 -> {
 
-                if (isCLicked != false) {
+                if (isCLicked) {
                     liquorContainer_recyclerview.setVisibility(View.VISIBLE);
 
                 } else {
@@ -190,7 +195,7 @@ public class SubCategory extends AppCompatActivity {
             });
 
             subCategoryFilter_TV_VAQ.setOnClickListener(v17 -> {
-                if (isCLicked != false) {
+                if (isCLicked) {
                     VAQ_recyclerview.setVisibility(View.VISIBLE);
 
                 } else {
@@ -199,7 +204,7 @@ public class SubCategory extends AppCompatActivity {
             });
 
             subCategoryFilter_TV_kosher.setOnClickListener(v18 -> {
-                if (isCLicked != false) {
+                if (isCLicked) {
                     kosher_recyclerview.setVisibility(View.VISIBLE);
 
                 } else {
@@ -209,7 +214,7 @@ public class SubCategory extends AppCompatActivity {
 
             subCategoryFilter_TV_lcboVintage.setOnClickListener(v19 -> {
 
-                if (isCLicked != false) {
+                if (isCLicked) {
                     lcboVintage_recyclerview.setVisibility(View.VISIBLE);
 
                 } else {
@@ -219,7 +224,7 @@ public class SubCategory extends AppCompatActivity {
 
             subCategoryFilter_TV_hashPhoto.setOnClickListener(v110 -> {
 
-                if (isCLicked != false) {
+                if (isCLicked) {
                     hashPhoto_recycler.setVisibility(View.VISIBLE);
 
                 } else {
@@ -228,7 +233,7 @@ public class SubCategory extends AppCompatActivity {
             });
 
             subCategoryFilter_TV_bonusPoint.setOnClickListener(v111 -> {
-                if (isCLicked != false) {
+                if (isCLicked) {
 
                     bonusPoint_recycler.setVisibility(View.VISIBLE);
 
@@ -237,24 +242,21 @@ public class SubCategory extends AppCompatActivity {
                     bonusPoint_recycler.setVisibility(View.GONE);
                 }
             });
-            
+
+            subCategoryFilter_Btn_apply.setOnClickListener(view ->{
+                dialog.cancel();
+            });
+
+            subCategoryFilter_Btn_reset.setOnClickListener(view -> {
+                dialog.cancel();
+            });
 
             dialog.show();
-
-
-
-
 
         });
 
 
     }
-
-
-
-
-
-
 
     private void subCategoryAPi(String typeKey, String typeID, String categoryID) {
 
@@ -286,6 +288,48 @@ public class SubCategory extends AppCompatActivity {
 //                            Toast.makeText(getContext(), "Beer list", Toast.LENGTH_SHORT).show();
 
 //                            startActivity(new Intent(getContext(), DashBoard.class));
+                    } else {
+                        Toast.makeText(SubCategory.this, "No Data found", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<List<ResponseProductList>> call, Throwable t) {
+                    Toast.makeText(SubCategory.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } else {
+            Toast.makeText(SubCategory.this, "Please Check your internet.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    private void searchApi(String value) {
+
+        boolean networkCheck = CommonMethod.isNetworkAvailable(this);
+        if (networkCheck) {
+
+            Map<String, String> map = new HashMap<>();
+            map.put(Common.Apikey_text, Common.Apikey_value);
+            map.put("keywords", value);
+            map.put("is_topten", "1");
+
+            Call<List<ResponseProductList>> call12 = apiInterface.searchApiList(map);
+//            Log.e("test", ""+call1 );
+
+            call12.enqueue(new Callback<List<ResponseProductList>>() {
+                @Override
+                public void onResponse(Call<List<ResponseProductList>> call, Response<List<ResponseProductList>> response) {
+                    if (response.isSuccessful()) {
+                        List<ResponseProductList> loginResponse = response.body();
+
+                        subCategoryList = response.body();
+                        SubCategoryAdapter subCategoryAdapter = new SubCategoryAdapter(subCategoryList, SubCategory.this,
+                                subCategoryList.get(0).getType(), subCategoryList.get(0).getCategory());
+                        sub_category_gridView.setAdapter(subCategoryAdapter);
+
                     } else {
                         Toast.makeText(SubCategory.this, "No Data found", Toast.LENGTH_SHORT).show();
                     }

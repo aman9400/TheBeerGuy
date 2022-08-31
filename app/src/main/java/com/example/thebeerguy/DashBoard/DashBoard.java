@@ -1,5 +1,6 @@
 package com.example.thebeerguy.DashBoard;
 
+import com.example.Profile.EditProfile;
 import com.example.Signup.SignUp;
 import com.example.login.Login;
 import com.example.thebeerguy.DashBoard.Home.Home;
@@ -23,7 +24,9 @@ import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,7 +75,17 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
         Button cart_icon = toolbar.findViewById(R.id.cart_icon);
         cart_icon.setOnClickListener(v->{
-            startActivity(new Intent(DashBoard.this, ReviewCart.class));
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
+
+            if (Islogin){
+                startActivity(new Intent(DashBoard.this, ReviewCart.class));
+
+
+            }else {
+                Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, Login.class));
+            }
         });
 
         drawer = findViewById(R.id.drawer_layout);
@@ -97,7 +110,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#ffffff\">" + "name" + "</font>"));
 
         getSupportActionBar().setElevation(10f);
-        getSupportActionBar().setIcon(R.drawable.logo);
+        getSupportActionBar().setIcon(R.drawable.logo2);
+//        getSupportActionBar().set
 
 //        nav_list = (ListView) findViewById(R.id.lv_main_nav);
 
@@ -121,20 +135,48 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                 }
 
                 case R.id.theBeerGuy_fav: {
-                    setFragment(new Favourites());
-                    Toast.makeText(this, "Favourites", Toast.LENGTH_SHORT).show();
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+                    boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
+
+                    if (Islogin){
+                        setFragment(new Favourites());
+
+                    }else {
+                        Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(this, Login.class));
+                    }
+//                    Toast.makeText(this, "Favourites", Toast.LENGTH_SHORT).show();
                     break;
                 }
 
                 case R.id.theBeerGuy_recent: {
-                    setFragment(new Recent());
-                    Toast.makeText(this, "Recent", Toast.LENGTH_SHORT).show();
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+                    boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
+
+                    if (Islogin){
+                        setFragment(new Recent());
+
+                    }else {
+                        Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(this, Login.class));
+                    }
+//                    Toast.makeText(this, "Recent", Toast.LENGTH_SHORT).show();
                     break;
                 }
 
                 case R.id.theBeerGuy_order: {
-                    setFragment(new Orders());
-                    Toast.makeText(this, "Order", Toast.LENGTH_SHORT).show();
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+                    boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
+
+                    if (Islogin){
+                        setFragment(new Orders());
+
+                    }else {
+                        Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(this, Login.class));
+                    }
+
+//                    Toast.makeText(this, "Order", Toast.LENGTH_SHORT).show();
                     break;
                 }
 

@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.Package;
@@ -19,10 +21,12 @@ public class ProductDetailsDialogAdapter extends RecyclerView.Adapter<ProductDet
 
     Context context;
     List<Package> pakageList;
+    GetProductPackageId getProductPackageId;
 
-    public ProductDetailsDialogAdapter(Context context, List<Package> pakageList) {
+    public ProductDetailsDialogAdapter(Context context, List<Package> pakageList, GetProductPackageId getProductPackageId) {
         this.context = context;
         this.pakageList = pakageList;
+        this.getProductPackageId = getProductPackageId;
     }
 
     @NonNull
@@ -38,7 +42,11 @@ public class ProductDetailsDialogAdapter extends RecyclerView.Adapter<ProductDet
 
         Package aPackage = pakageList.get(position);
         holder.Product_dialog_recycler_textView.setText
-                (aPackage.getQuantity() + "*" + aPackage.getSize() +" "+ aPackage.getContainer() + "for" + aPackage.getPrice());
+                (aPackage.getQuantity() + "x" + aPackage.getSize() +" "+ aPackage.getContainer() + " for " + aPackage.getPrice());
+
+        holder.cl_package_dialog.setOnClickListener(v->{
+            getProductPackageId.getId(aPackage.getPackageId());
+        });
 
     }
 
@@ -51,13 +59,14 @@ public class ProductDetailsDialogAdapter extends RecyclerView.Adapter<ProductDet
 
         RadioButton Product_dialog_recycler_radiobtn;
         TextView Product_dialog_recycler_textView;
+        ConstraintLayout cl_package_dialog;
 
         public MyviewoHolder(@NonNull View itemView) {
             super(itemView);
 
             Product_dialog_recycler_radiobtn = itemView.findViewById(R.id.Product_dialog_recycler_radiobtn);
             Product_dialog_recycler_textView = itemView.findViewById(R.id.Product_dialog_recycler_textView);
-
+            cl_package_dialog = itemView.findViewById(R.id.cl_package_dialog);
 
         }
 

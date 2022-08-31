@@ -84,6 +84,7 @@ public class Splash4 extends Fragment {
                 sp4_loginIntent.putExtra("country", country);
                 sp4_loginIntent.putExtra("address", Address);
                 getContext().startActivity(sp4_loginIntent);
+                getActivity().finish();
             }
         });
 
@@ -92,10 +93,6 @@ public class Splash4 extends Fragment {
             startActivity(sp4_signupIntent);
 
         });
-
-
-
-
 
         return view;
     }
@@ -117,7 +114,8 @@ public class Splash4 extends Fragment {
 //                                    lattitude.setText("Lattitude: "+addresses.get(0).getLatitude());
 //                                    longitude.setText("Longitude: "+addresses.get(0).getLongitude());
 //                                    address.setText("Address: " + addresses.get(0).getAddressLine(0));
-                                splas4_searchView_location.setQueryHint(addresses.get(0).getAddressLine(0));
+                                splas4_searchView_location.setQuery(addresses.get(0).getAddressLine(0), true);
+                                splas4_searchView_location.setIconifiedByDefault(false);
                                 Toast.makeText(getContext(), ""+addresses.get(0).getAddressLine(0), Toast.LENGTH_SHORT).show();
                                 Log.e("d",addresses.get(0).getAddressLine(0));
                                 String[] x  = addresses.get(0).getAddressLine(0).split(",");

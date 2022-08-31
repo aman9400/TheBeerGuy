@@ -42,7 +42,11 @@ public interface APIInterface {
 
     @FormUrlEncoded
     @POST("product/list")
-    Call<ResponseProductDetail> productDetail(@FieldMap Map<String, String> productDetail);
+    Call<List<ResponseProductList>> searchApiList(@FieldMap Map<String, String> search);
+
+    @FormUrlEncoded
+    @POST("product/list")
+    Call<List<ResponseProductDetail>> productDetail(@FieldMap Map<String, String> productDetail);
 
     @FormUrlEncoded
     @POST("shopping_cart/update/")

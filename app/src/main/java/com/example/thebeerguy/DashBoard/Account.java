@@ -1,20 +1,25 @@
 package com.example.thebeerguy.DashBoard;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.Profile.EditProfile;
 import com.example.Profile.ManageAddress;
 import com.example.Profile.PaymentMethod;
+import com.example.login.Login;
 import com.example.thebeerguy.R;
 
 public class Account extends Fragment {
@@ -35,8 +40,18 @@ public class Account extends Fragment {
         initView(view);
 
         edit_text_account.setOnClickListener(v->{
-            Intent intent = new Intent(getContext(), EditProfile.class);
-            startActivity(intent);
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+            boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
+
+            if (Islogin){
+                Intent intent = new Intent(getContext(), EditProfile.class);
+                startActivity(intent);
+
+            }else {
+                Toast.makeText(getContext(), "Please Login First", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), Login.class));
+            }
+
         });
 
         backbtn_account.setOnClickListener(v -> {

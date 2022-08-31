@@ -59,19 +59,19 @@
         </androidx.cardview.widget.CardView>
 
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView3">
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -101,6 +101,7 @@
                     android:layout_height="@dimen/_40sdp"
                     android:gravity="center_vertical"
                     android:paddingStart="20dp"
+                    android:textColor="@color/black"
                     android:paddingEnd="5dp"
                     android:text="Type"
                     android:textSize="20sp"
@@ -113,6 +114,7 @@
                     android:id="@+id/type_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/subCategoryFilter_TV_type" />
@@ -135,6 +137,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="5dp"
                     android:text="Category"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView13"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -168,6 +171,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="5dp"
                     android:text="Sub Category"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView14"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -200,6 +204,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="5dp"
                     android:text="Origin"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView15"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -232,6 +237,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="5dp"
                     android:text="Price Range"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView16"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -262,6 +268,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
+                    android:textColor="@color/black"
                     android:paddingStart="20dp"
                     android:paddingEnd="5dp"
                     android:text="Liquor Container"
@@ -295,6 +302,7 @@
                     android:layout_height="40dp"
                     android:paddingStart="20dp"
                     android:paddingEnd="5dp"
+                    android:textColor="@color/black"
                     android:text="VAQ"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView21"
@@ -306,9 +314,9 @@
                     android:id="@+id/VAQ_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imageView21"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imageView21" />
 
                 <ImageView
                     android:id="@+id/imageView23"
@@ -327,6 +335,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="5dp"
                     android:text="Kosher"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView23"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -337,9 +346,9 @@
                     android:id="@+id/kosher_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/imageView23"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/imageView23" />
 
                 <ImageView
                     android:id="@+id/imageView24"
@@ -358,6 +367,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="5dp"
                     android:text="LCBO Vinatge"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView24"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -368,9 +378,9 @@
                     android:id="@+id/lcboVintage_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/imageView24"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/imageView24" />
 
                 <ImageView
                     android:id="@+id/imageView25"
@@ -389,6 +399,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="5dp"
                     android:text="Hash Photo"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView25"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -399,9 +410,9 @@
                     android:id="@+id/hashPhoto_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/imageView25"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/imageView25" />
 
                 <ImageView
                     android:id="@+id/imageView26"
@@ -420,6 +431,7 @@
                     android:paddingStart="20dp"
                     android:paddingEnd="5dp"
                     android:text="Hash Bonus Point"
+                    android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView26"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -430,19 +442,19 @@
                     android:id="@+id/bonusPoint_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/imageView26"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/imageView26" />
 
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
                     android:layout_marginTop="60dp"
-                    app:layout_constraintTop_toBottomOf="@id/bonusPoint_recycler"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/bonusPoint_recycler">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -483,9 +495,9 @@
                 </androidx.cardview.widget.CardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-            </ScrollView>
+        </ScrollView>
 
-        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
 

@@ -52,15 +52,15 @@ public class Favourites extends Fragment {
 //        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
 //        boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
 //
-//        if (Islogin){
-//
-            homeApi("is_fave", "1");
-//            Toast.makeText(getContext(), "Favourites", Toast.LENGTH_SHORT).show();
-//
-//        }else {
+//        if (Islogin){   }else {
 //            Toast.makeText(getContext(), "Please Login First", Toast.LENGTH_SHORT).show();
 //            startActivity(new Intent(getContext(), Login.class));
 //        }
+
+            homeApi("is_fave", "1");
+            Toast.makeText(getContext(), "Favourites", Toast.LENGTH_SHORT).show();
+
+
 
 
 
