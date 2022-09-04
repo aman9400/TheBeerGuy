@@ -1,12 +1,16 @@
 package com.example.Apis;
 
 import com.example.Forget.forgetPasswordResponse.Responseforget;
+import com.example.Profile.AddAddressResponse.ResponseAddAddress;
 import com.example.Signup.responseSignup.ResponseSignup;
 import com.example.login.responseLogin.LoginResponse;
+import com.example.thebeerguy.DashBoard.Home.PaymentResponse.ResponsePayment;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.subCategoryResponse.ResponseSubCategory;
 import com.example.thebeerguy.DashBoard.Home.categoryResponse.ResponseCategory;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
+import com.example.thebeerguy.Intro.ResponseStore.ResponseStore;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
+import com.example.thebeerguy.Product_Details.FavResponse.ResponseFav;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.ResponseProductDetail;
 import com.example.thebeerguy.Product_Details.productListResponse.ResponseProductList;
 
@@ -52,6 +56,17 @@ public interface APIInterface {
     @POST("shopping_cart/update/")
     Call<ResponseAddToCart> addToCart(@FieldMap Map<String, String> AddToCart);
 
+    @FormUrlEncoded
+    @POST("customer/fave_product")
+    Call<ResponseFav> fav (@FieldMap Map<String, String> fav);
+
+    @FormUrlEncoded
+    @POST("purchase/create/")
+    Call<ResponsePayment> payment (@FieldMap Map<String, String> payment);
+
+    @FormUrlEncoded
+    @POST("customer_location/create/")
+    Call<ResponseAddAddress> addAddress (@FieldMap Map<String, String> addAddress);
 
     @FormUrlEncoded
     @POST("product/category_list")
@@ -61,6 +76,8 @@ public interface APIInterface {
     @POST("product/sub_category_list")
     Call<List<ResponseSubCategory>> subCategoryList (@FieldMap Map<String, String> subCategory);
 
-
+    @FormUrlEncoded
+    @POST("store_location/list")
+    Call<List<ResponseStore>> storeApi(@FieldMap Map<String, String> login);
 
 }

@@ -43,13 +43,14 @@
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/roboto"
-                    android:text="First Name"
+                    android:text="Name"
                     android:textSize="14dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
 
+                    android:id="@+id/addAddress_ET_firstname"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginEnd="4dp"
@@ -61,8 +62,8 @@
                     android:paddingEnd="4dp"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
 
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView74"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -88,27 +89,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Last Name"
+                    android:text="Phone Number"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />14dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
+                    android:id="@+id/addAddress_ET_phonenumber"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
                     android:background="@drawable/profile_border"
                     android:ems="30"
-                    android:hint="Enter last name"
+                    android:hint="Enter phone number"
                     android:inputType="textPersonName"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
 
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView75"
                     tools:ignore="TouchTargetSizeCheck" />
@@ -138,6 +140,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
+                    android:id="@+id/addAddress_ET_deliveryAdd"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginTop="4dp"
@@ -178,6 +181,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
+                    android:id="@+id/addAddress_ET_apt"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginEnd="4dp"
@@ -217,6 +221,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
+                    android:id="@+id/addAddress_ET_buzzer"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:background="@drawable/profile_border"
@@ -253,6 +258,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
+                    android:id="@+id/addAddress_ET_city"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/profile_border"
@@ -262,7 +268,8 @@
                     android:paddingEnd="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView81"
-                    app:layout_constraintTop_toBottomOf="@+id/textView81" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView81"
+                    tools:ignore="TouchTargetSizeCheck" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -278,7 +285,7 @@
 
 
                 <CheckBox
-                    android:id="@+id/checkBox2"
+                    android:id="@+id/addAddress_CheckBox_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
@@ -291,27 +298,27 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <CheckBox
-                    android:id="@+id/checkBox3"
+                    android:id="@+id/addAddress_CheckBox_work"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="Work"
                     android:textColor="@color/text"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/checkBox2"
-                    app:layout_constraintTop_toTopOf="@+id/checkBox2"
+                    app:layout_constraintStart_toEndOf="@+id/addAddress_CheckBox_home"
+                    app:layout_constraintTop_toTopOf="@+id/addAddress_CheckBox_home"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <CheckBox
-                    android:id="@+id/checkBox4"
+                    android:id="@+id/addAddress_CheckBox_other"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="Other"
                     android:textColor="@color/text"
-                    app:layout_constraintBottom_toBottomOf="@+id/checkBox3"
-                    app:layout_constraintStart_toEndOf="@+id/checkBox3"
-                    app:layout_constraintTop_toTopOf="@+id/checkBox3"
+                    app:layout_constraintBottom_toBottomOf="@+id/addAddress_CheckBox_work"
+                    app:layout_constraintStart_toEndOf="@+id/addAddress_CheckBox_work"
+                    app:layout_constraintTop_toTopOf="@+id/addAddress_CheckBox_work"
                     tools:ignore="TouchTargetSizeCheck" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -340,6 +347,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
+                    android:id="@+id/addAddress_ET_note"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_marginTop="4dp"
@@ -360,7 +368,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/addAddress_Button_save"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"

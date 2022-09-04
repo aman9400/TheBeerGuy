@@ -126,12 +126,11 @@
             app:layout_constraintTop_toBottomOf="@+id/textView24"
             tools:ignore="TouchTargetSizeCheck" />
 
-        <CheckBox
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkBoxBtn_TC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:buttonTint="@color/radiobutton"
             app:layout_constraintStart_toStartOf="@+id/radioGroup3"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup3"
             tools:ignore="TouchTargetSizeCheck" />
@@ -185,6 +184,7 @@
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="32dp"
             android:fontFamily="@font/roboto"
@@ -201,11 +201,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/roboto_bold"
             android:padding="3dp"
             android:text="Log In"
-            android:textColor="@color/white"
 
+            android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/signup_button_signup"
             app:layout_constraintTop_toBottomOf="@+id/signup_button_signup" />
@@ -252,7 +253,7 @@
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint=" Exta Info"
+            android:hint="Exta Info"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:paddingEnd="2dp"
@@ -344,21 +345,19 @@
             app:layout_constraintStart_toStartOf="@+id/textView28"
             app:layout_constraintTop_toBottomOf="@+id/textView28">
 
-            <RadioButton
+            <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioBtn_delivery_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/radiobutton"
                 android:text="Yes"
                 tools:ignore="TouchTargetSizeCheck" />
 
-            <RadioButton
+            <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioBtn_delivery_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:text="No"
-                android:buttonTint="@color/radiobutton"
                 tools:ignore="TouchTargetSizeCheck" />
         </RadioGroup>
 
@@ -442,24 +441,22 @@
             app:layout_constraintStart_toStartOf="@+id/textView32"
             app:layout_constraintTop_toBottomOf="@+id/textView32">
 
-            <RadioButton
+            <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioBtn_business_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes"
                 android:textColor="@color/white"
-                android:buttonTint="@color/radiobutton"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
 
-            <RadioButton
+            <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioBtn_business_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:text="No"
                 android:textColor="@color/white"
-                android:buttonTint="@color/radiobutton"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
         </RadioGroup>
@@ -488,22 +485,20 @@
             app:layout_constraintStart_toStartOf="@id/textView33"
             app:layout_constraintTop_toBottomOf="@+id/textView33">
 
-            <RadioButton
+            <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioBtn_motel_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/radiobutton"
                 android:text="Yes"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
 
-            <RadioButton
+            <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioBtn_motel_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:buttonTint="@color/radiobutton"
                 android:text="No"
                 android:textColor="@color/white"
                 android:textSize="16sp"

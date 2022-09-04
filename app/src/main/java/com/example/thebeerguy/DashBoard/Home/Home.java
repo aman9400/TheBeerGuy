@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +56,7 @@ public class Home extends Fragment {
     private String country;
     private ProgressDialog progressDialog;
     private TextView tv_address_home;
+    private ImageView downArrow;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +66,8 @@ public class Home extends Fragment {
 
         find(view);
 
+        downArrow = view.findViewById(R.id.downArrow);
+
         tv_address_home = view.findViewById(R.id.tv_address_home);
         tv_address_home.setText(LandingScreen.Address);
 
@@ -71,6 +75,11 @@ public class Home extends Fragment {
         progressDialog.setMessage("Loading...");
         progressDialog.setCancelable(false);
         progressDialog.show();
+
+        downArrow.setOnClickListener(v->{
+            Intent intent = new Intent(getContext(), LandingScreen.class);
+            startActivity(intent);
+        });
 
         search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

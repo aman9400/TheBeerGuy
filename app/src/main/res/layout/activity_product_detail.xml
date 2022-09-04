@@ -107,13 +107,13 @@
                 app:layout_constraintStart_toStartOf="@+id/product_alcohol"
                 app:layout_constraintTop_toBottomOf="@+id/product_alcohol" />
 
-            <TextView
-                android:id="@+id/textView42"
+            <ImageView
+                android:id="@+id/product_ImV_fav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
+                android:src="@drawable/ic_unfavorite_24"
                 android:layout_marginBottom="24dp"
-                android:background="@drawable/ic_favorite_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -262,7 +262,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView51"
             tools:ignore="TextContrastCheck" />
 
-        <GridView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productDetail_grid"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_190sdp"
@@ -270,13 +270,13 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="8dp"
-            android:numColumns="3"
+         android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/productDetail_btn_addToCard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView52">
 
-        </GridView>
+        </androidx.recyclerview.widget.RecyclerView>
 
         <Button
             android:id="@+id/productDetail_btn_addToCard"

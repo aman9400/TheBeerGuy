@@ -27,6 +27,8 @@ public class ManageAddress extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_address);
 
+        getSupportActionBar().hide();
+
 
         manageAddress_button_newAddress = findViewById(R.id.manageAddress_button_newAddress);
         manageAddress_recyclerView = findViewById(R.id.manageAddress_recyclerView);

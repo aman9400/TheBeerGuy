@@ -4,9 +4,11 @@ import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Patterns;
 import android.widget.Button;
@@ -26,6 +28,7 @@ import com.example.thebeerguy.R;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.jar.Attributes;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +42,7 @@ public class SignUp extends AppCompatActivity {
     EditText sign_mobile, sign_email, sign_name,sign_password, sign_address,sign_apt,sign_buzzer, sign_extraInfo;
     APIInterface apiInterface;
     RadioButton radioBtn_delivery_yes, radioBtn_delivery_no, radioBtn_business_yes, radioBtn_business_no,
-                radioBtn_motel_yes, radioBtn_motel_no,
+                radioBtn_motel_yes, radioBtn_motel_no;
 
 
 
@@ -49,22 +52,10 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         getSupportActionBar().hide();
 
-        ColorStateList colorStateList = new ColorStateList(
-                new int[][]
-                        {
-                                new int[]{-android.R.attr.state_enabled}, // Disabled
-                                new int[]{android.R.attr.state_enabled}   // Enabled
-                        },
-                new int[]
-                        {
-                                Color.WHITE, // disabled
-                                Color.BLUE   // enabled
-                        }
-        );
 
         findIds();
 
-        radio.setButtonTintList(colorStateList);
+
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
@@ -140,6 +131,7 @@ public class SignUp extends AppCompatActivity {
                                 Toast.makeText(SignUp.this, "Signup Successful", Toast.LENGTH_SHORT).show();
 
                                 startActivity(new Intent(SignUp.this, Login.class));
+
                             }
 
                         }

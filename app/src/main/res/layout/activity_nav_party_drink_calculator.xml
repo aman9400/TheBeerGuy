@@ -25,13 +25,15 @@
             app:layout_constraintStart_toStartOf="@+id/textView35"
             app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/party_calculator_ImV_backBtn"
             android:layout_width="40dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:scaleType="fitXY"
+            android:background="@color/transparent"
             android:src="@drawable/ic_left_arrow24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

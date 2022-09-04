@@ -42,6 +42,21 @@
                     android:id="@+id/nav_signin"
                     android:icon="@drawable/nav_signin"
                     android:title="Sign In" />
+
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/profileicon"
+                    android:title="Profile"/>
+
+                <item
+                    android:id="@+id/nav_recentOrder"
+                    android:icon="@drawable/recent"
+                    android:title="Recent Order"/>
+                <item
+                    android:id="@+id/nav_SignOut"
+                    android:icon="@drawable/nav_signout"
+                    android:title="Sign Out"/>
+
             </menu>
         </item>
     </group>

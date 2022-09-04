@@ -47,10 +47,6 @@ public class Login extends AppCompatActivity   {
 
     private Boolean Islogin = false ;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +54,9 @@ public class Login extends AppCompatActivity   {
 
         getSupportActionBar().hide();
 
-
-
         findIds();
 
-
-        apiInterface = APIClient.getClient().create(APIInterface.class);
-//        APIClient.
+        apiInterface = APIClient.getClient().create(APIInterface.class); //        APIClient.
 
 
         logon_imgBtn_back.setOnClickListener(v->{
@@ -79,21 +71,15 @@ public class Login extends AppCompatActivity   {
         });
 
 
-        login_Tv_signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        login_Tv_signup.setOnClickListener(v -> {
 
-                Intent login_signupIntent = new Intent(Login.this, SignUp.class);
-                startActivity(login_signupIntent);
-            }
+            Intent login_signupIntent = new Intent(Login.this, SignUp.class);
+            startActivity(login_signupIntent);
         });
 
-        login_Tv_forgetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent login_forgetPassIntent = new Intent(Login.this, ForgotPassword.class);
-                startActivity(login_forgetPassIntent);
-            }
+        login_Tv_forgetPassword.setOnClickListener(v -> {
+            Intent login_forgetPassIntent = new Intent(Login.this, ForgotPassword.class);
+            startActivity(login_forgetPassIntent);
         });
 
         login_cardview_gmail_login.setOnClickListener(v->{
@@ -136,9 +122,11 @@ public class Login extends AppCompatActivity   {
                                Log.e("email", loginResponse.getJwt());
                                 Islogin = true;
                                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(Login.this);
-                               prefs.edit().putBoolean("Islogin", Islogin).commit(); // islogin is a boolean value of your login status
+                               prefs.edit().putBoolean("Islogin", true).commit();
+                               prefs.edit().putString("LoginName", loginResponse.getData().getCustomer().getName()).commit();// islogin is a boolean value of your login status
 
                                startActivity(new Intent(Login.this, DashBoard.class));
+                              finish();
                            }
                            }
                    }

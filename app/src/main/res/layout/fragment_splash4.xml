@@ -7,7 +7,7 @@
     android:background="#4FB6E7"
     tools:context=".Intro.Splash4">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+   <!-- <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -144,5 +144,5 @@
         </androidx.cardview.widget.CardView>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>-->
 </FrameLayout>

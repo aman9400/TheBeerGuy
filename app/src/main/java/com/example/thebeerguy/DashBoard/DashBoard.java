@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +29,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -36,6 +39,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,6 +59,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     private ImageView imageViewnav;
     private TextView nav_version;
     private TextView navUsername;
+    RelativeLayout badgeLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,20 +79,20 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
-        Button cart_icon = toolbar.findViewById(R.id.cart_icon);
-        cart_icon.setOnClickListener(v -> {
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-            boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
-
-            if (Islogin) {
-                startActivity(new Intent(DashBoard.this, ReviewCart.class));
-
-
-            } else {
-                Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, Login.class));
-            }
-        });
+//        Button cart_icon = toolbar.findViewById(R.id.cart_icon);
+//        cart_icon.setOnClickListener(v -> {
+//            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+//            boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
+//
+//            if (Islogin) {
+//                startActivity(new Intent(DashBoard.this, ReviewCart.class));
+//
+//
+//            } else {
+//                Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(this, Login.class));
+//            }
+//        });
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -110,7 +116,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#ffffff\">" + "name" + "</font>"));
 
         getSupportActionBar().setElevation(10f);
-        getSupportActionBar().setIcon(R.drawable.logo2);
+//        getSupportActionBar().setIcon(R.drawable.logo2);
 //        getSupportActionBar().set
 
 //        nav_list = (ListView) findViewById(R.id.lv_main_nav);
@@ -119,6 +125,12 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         navUsername = (TextView) headerView.findViewById(R.id.nav_header_name);
         imageViewnav = headerView.findViewById(R.id.nav_header_imageView);
         nav_version = headerView.findViewById(R.id.nav_version);
+
+        SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(this);
+        String nameLoggedIn = prefs1.getString("LoginName", "Welcome Guest");
+
+        navUsername.setText(nameLoggedIn);
+
 
 //        mapGridData();
 
@@ -234,6 +246,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             Intent intent = new Intent(this, SubCategory.class);
             intent.putExtra("subCatId", "3968");
             intent.putExtra("typeID", "1");
+            intent.putExtra("name", "Beer");
             startActivity(intent);
 
             Toast.makeText(this, "Beer", Toast.LENGTH_SHORT).show();
@@ -243,6 +256,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             Intent intent = new Intent(this, SubCategory.class);
             intent.putExtra("subCatId", "1432");
             intent.putExtra("typeID", "3");
+            intent.putExtra("name", "Liquor");
             startActivity(intent);
             Toast.makeText(this, "Liquor", Toast.LENGTH_SHORT).show();
 
@@ -252,6 +266,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             Intent intent = new Intent(this, SubCategory.class);
             intent.putExtra("subCatId", "24235");
             intent.putExtra("typeID", "2");
+            intent.putExtra("name", "Wine");
             startActivity(intent);
             Toast.makeText(this, "Wine", Toast.LENGTH_SHORT).show();
 
@@ -275,7 +290,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.nav_help) {
+        } else if (id == R.id.nav_help || id == R.id.nav_profile) {
+
+
 
             startActivity(new Intent(getApplicationContext(), NavHelp.class));
             Toast.makeText(getApplicationContext(), "Help and FAQ", Toast.LENGTH_SHORT).show();
@@ -334,152 +351,35 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         return false;
     }
 
-   /* private void mapGridData() {
-        NavBarAdapter navBarAdapter = new NavBarAdapter(DashBoard.this, Constant.nav_menu_txt, Constant.nav_menu_icon);
-        nav_list.setAdapter(navBarAdapter);
-        nav_list.setOnItemClickListener((adapterView, view, i, l) -> {
-            switch (i) {
 
-                case 0: {
+    @Override
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+        getMenuInflater().inflate(R.menu.option_menu, menu);
 
-//                    Intent intent = new Intent(this, Login.class);
-//                    startActivity(intent);
-//                    finish();
-//                    finishAffinity();
-//                    startActivity(new Intent(this, Login.class));
-//                        Toast.makeText(getApplicationContext(), R.string.dash_home, Toast.LENGTH_SHORT).show();
-                    break;
-                }
-
-                case 1: {
-//                    Fragment selectedFrag = new HomeFragment();
-//
-//                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_dash, selectedFrag).commit();
-//                        Toast.makeText(getApplicationContext(), R.string.dash_home, Toast.LENGTH_SHORT).show();
-                    break;
-                }
-
-                case 2: {
-//                    SharedPreferences sharedPreferences11 = PreferenceManager.getDefaultSharedPreferences(this);
-//                    String userid1 = sharedPreferences11.getString("id","");
-//
-//                    if (userid1.equalsIgnoreCase("")){
-//                        startActivity(new Intent(this, Login.class));
-//                    }else {
-//                        startActivity(new Intent(getApplicationContext(), OrderHistory.class));
-//                    }
-                    //  Toast.makeText(this, "Change Password", Toast.LENGTH_SHORT).show();
-                    break;
-                }
-
-                case 3: {
-//                    startActivity(new Intent(getApplicationContext(), Feedback.class));
-                    //  Toast.makeText(this, "Change Password", Toast.LENGTH_SHORT).show();
-                    break;
-                }
-
-                case 4: {
-//                    startActivity(new Intent(getApplicationContext(), TermsConditions.class));
-                    //  Toast.makeText(this, "Change Password", Toast.LENGTH_SHORT).show();
-                    break;
-                }
-                case 5: {
-//                    SharedPreferences sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE);
-//                    SharedPreferences.Editor editor1 = sharedPreferences.edit();
-//                    editor1.putString("accessLogin","");
-//                    editor1.putString("userdid","");
-//                    editor1.putString("login", "");
-//                    editor1.apply();
-//                    String accessToken = sharedPreferences.setS("accessLogin",baseAccessToken);
-//                    String userid = sharedPreferences.getString("userdid","");
+        MenuItem item = menu.findItem(R.id.badge);
+        MenuItemCompat.setActionView(item, R.layout.actionbar_badge_layout);
+//        FrameLayout notifCount = (FrameLayout) MenuItemCompat.getActionView(item);
 
 
-
-
-
-                    break;
-                }*//*
-                case 2: {
-                    startActivity(new Intent(getApplicationContext(), ChangePassword.class));
-                    //  Toast.makeText(this, "Change Password", Toast.LENGTH_SHORT).show();
-                    break;
-                }
-                case 3 : {
-                    startActivity(new Intent(Dashboard.this,Transaction.class));
-//                        Toast.makeText(Dashboard.this, "transections", Toast.LENGTH_SHORT).show();
-                    break;
-                }
-                case 4: {
-                    startActivity(new Intent(getApplicationContext(), AboutUs.class));
-                    //  Toast.makeText(this, "About Us", Toast.LENGTH_SHORT).show();
-                    break;
-                }
-                case 5:{
-                    startActivity(new Intent(Dashboard.this,HelpAndSupport.class));
-                    break;
-                } case 6: {
-                    startActivity(new Intent(Dashboard.this,Feedback.class));
-                    break;
-                }
-                case 7: {
-                    startActivity(new Intent(getApplicationContext(), ContactUs.class));
-                    break;
-                }
-
-                *//**//*case 8 : {
-                    startActivity(new Intent(Dashboard.this,ReferAndEarn.class));
-                    break;
-                }*//**//*
-
-
-                case 8: {
-                    startActivity(new Intent(Dashboard.this,TermsAndConditions.class));
-                    Toast.makeText(Dashboard.this, "Terms and conditions", Toast.LENGTH_SHORT).show();
-                    break;
-                }*//*
-     *//* case 9: {
-
-                    final Dialog dialog = new Dialog(Dashboard.this);
-                    dialog.setContentView(R.layout.dialoglogout);
-                    dialog.setTitle("Logout");
-                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                    dialog.setCancelable(false);
-//
-                    Button yes = (Button) dialog.findViewById(R.id.YES);
-//
-
-                    Button no = (Button) dialog.findViewById(R.id.NO);
-//
-                    yes.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                            apilogout();
-                            progressDialog.show();
-
-                            dialog.dismiss();
-
-                        }
-                    });
-                    no.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                        }
-                    });
-
-                    dialog.show();
-                    break;
-                }*//*
-
-                default:
-                    break;
-            }
-            drawer.closeDrawers();
+         badgeLayout = (RelativeLayout)    MenuItemCompat.getActionView(item);
+        badgeLayout.setOnClickListener(v->{
+//            Intent intent = new
+            Toast.makeText(this, "assssssssss", Toast.LENGTH_SHORT).show();
         });
+        TextView tv = (TextView) badgeLayout.findViewById(R.id.actionbar_notifcation_textview);
+        tv.setText("12");
+        return super.onCreateOptionsMenu(menu);
+    }
 
-
-    }*/
-
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Log.e("lo", ""+item.getItemId());
+        if(item.getItemId() == R.id.badge){
+            Toast.makeText(this, "bbbbbbbbbbb", Toast.LENGTH_SHORT).show();
+//            Intent intent = new Intent(DashBoard.this, ReviewCart.class);
+//            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

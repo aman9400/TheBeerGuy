@@ -11,6 +11,7 @@
             android:id="@+id/toolbar_constrant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -25,32 +26,34 @@
             app:layout_constraintStart_toStartOf="@+id/textView35"
             app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
-        <TextView
-            android:id="@+id/textView35"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/colorPrimary2"
-            android:fontFamily="@font/roboto_bold"
-            android:gravity="center"
-            android:text="Help and FAQ"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:text="Help and FAQ"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/ic_left_arrow24"
-            app:layout_constraintBottom_toTopOf="@+id/view17"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView35" />
+            <ImageButton
+                android:id="@+id/help_ImV_backBtn"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/transparent"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_left_arrow24"
+                app:layout_constraintBottom_toTopOf="@+id/view17"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView35" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,8 +3,10 @@ package com.example.thebeerguy.Product_Details;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
@@ -24,11 +26,14 @@ import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
+import com.example.login.Login;
 import com.example.thebeerguy.DashBoard.Home.Adapters.GridAdapter;
+import com.example.thebeerguy.DashBoard.Home.Adapters.WhatsHotAdapter;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
 import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.Intro.Splash4;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
+import com.example.thebeerguy.Product_Details.FavResponse.ResponseFav;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.Package;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.ResponseProductDetail;
 import com.example.thebeerguy.R;
@@ -45,7 +50,7 @@ import retrofit2.Response;
 
 public class ProductDetails extends AppCompatActivity implements GetProductPackageId {
 
-    GridView productDetail_grid;
+    RecyclerView productDetail_recycler;
     APIInterface apiInterface;
     String Address = LandingScreen.Address;
     private final List<ResponseHome> list = new ArrayList<>();
@@ -53,6 +58,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
             product_TV_ratting, product_TV_time, product_TV_rating2,
             product_TV_discription, product_brewer, product_alcohol;
     private Button productDetail_btn_addToCard;
+    private ImageView product_ImV_fav;
     private List<ResponseHome> productDetailsList = new ArrayList<>();
     private List<Package> pakageList = new ArrayList<>();
     private ImageView product_IV_image;
@@ -61,6 +67,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
     private String cat_id;
     private ProgressDialog progressDialog;
     private int productPackageId;
+    private boolean isClicked = false;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -69,6 +76,23 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
         setContentView(R.layout.activity_product_detail);
 
         findIds();
+
+        product_ImV_fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (!isClicked) {
+
+                    product_ImV_fav.setImageResource(R.drawable.ic_favorite_24);
+                    favApi();
+                    Toast.makeText(ProductDetails.this, "Added to fav ", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    product_ImV_fav.setImageResource(R.drawable.ic_unfavorite_24);
+                }
+            }
+        });
 
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
@@ -113,7 +137,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
             productDialog_TV_cancle.setOnClickListener(v1 -> dialog.cancel());
 
-            productDialog_TV_ok.setOnClickListener(v12 ->{
+            productDialog_TV_ok.setOnClickListener(v12 -> {
                 productApi();
                 dialog.cancel();
             });
@@ -123,7 +147,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
         });
 
 
-        ProductDetailsGridAPI("is_popular", "1");
+        ProductDetailsRecyclerdAPI("is_popular", "1");
 
 
         productDetail_btn_addToCard.setOnClickListener(v -> addToCartApi());
@@ -142,7 +166,9 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
         product_alcohol = findViewById(R.id.product_alcohol);
         product_brewer = findViewById(R.id.product_brewer);
         product_TV_discription = findViewById(R.id.product_TV_discription);
-        productDetail_grid = findViewById(R.id.productDetail_grid);
+        productDetail_recycler = findViewById(R.id.productDetail_grid);
+
+        product_ImV_fav = findViewById(R.id.product_ImV_fav);
 
         productDetail_btn_addToCard = findViewById(R.id.productDetail_btn_addToCard);
 
@@ -173,14 +199,14 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
                         pakageList = responseProductDetail.get(0).getPackages();
 
 
-                        Log.e("test",""+ pakageList.size());
+                        Log.e("test", "" + pakageList.size());
 
                         Picasso.get().load(responseProductDetail.get(0).getImage()).into(product_IV_image);
                         product_TV_name.setText(responseProductDetail.get(0).getLabel());
-                        product_TV_ratting.setText( "Rating : " + responseProductDetail.get(0).getRating());
+                        product_TV_ratting.setText("Rating : " + responseProductDetail.get(0).getRating());
                         product_brewer.setText(responseProductDetail.get(0).getBrewer());
                         product_alcohol.setText(responseProductDetail.get(0).getAlcoholContent());
-                        product_TV_price.setText("$"+responseProductDetail.get(0).getMinPrice() + "-$" + responseProductDetail.get(0).getMaxPrice());
+                        product_TV_price.setText("$" + responseProductDetail.get(0).getMinPrice() + "-$" + responseProductDetail.get(0).getMaxPrice());
                         product_TV_rating2.setText(responseProductDetail.get(0).getRating());
                         product_TV_discription.setText(responseProductDetail.get(0).getDescription());
 
@@ -193,13 +219,13 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
                 @Override
                 public void onFailure(Call<List<ResponseProductDetail>> call, Throwable t) {
                     Toast.makeText(ProductDetails.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.e("test",  t.getMessage());
+                    Log.e("test", t.getMessage());
                 }
             });
         }
     }
 
-    private void ProductDetailsGridAPI(String typeKey, String typeID) {
+    private void ProductDetailsRecyclerdAPI(String typeKey, String typeID) {
 
         boolean networkCheck = CommonMethod.isNetworkAvailable(getApplication());
         if (networkCheck) {
@@ -221,8 +247,10 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
                         productDetailsList = response.body();
 
-                        GridAdapter gridAdapter = new GridAdapter(ProductDetails.this, productDetailsList);
-                        productDetail_grid.setAdapter(gridAdapter);
+                        WhatsHotAdapter whatsHotAdapter = new WhatsHotAdapter(ProductDetails.this, productDetailsList);
+                        productDetail_recycler.setHasFixedSize(true);
+                        productDetail_recycler.setLayoutManager(new LinearLayoutManager(ProductDetails.this, LinearLayoutManager.HORIZONTAL, false));
+                        productDetail_recycler.setAdapter(whatsHotAdapter);
 //                            whatsHotApi("is_popular", "1");
 
 
@@ -258,6 +286,9 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
             map.put("ext_customer_id", "12345678");
             map.put("ext_location_id", "2315");
             map.put("address", Address);
+            map.put("name", "Aman");
+            map.put("phone", "416-555-1234");
+            map.put("products", productID);
 
 
             Call<ResponseAddToCart> call1 = apiInterface.addToCart(map);
@@ -302,5 +333,48 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void favApi() {
+
+        boolean networkCheck = CommonMethod.isNetworkAvailable(this);
+        if (networkCheck) {
+
+            Map<String, String> map = new HashMap<>();
+            map.put(Common.Apikey_text, Common.Apikey_value);
+            map.put("products", productID);
+
+
+            Call<ResponseFav> call1 = apiInterface.fav(map);
+
+            call1.enqueue(new Callback<ResponseFav>() {
+                @Override
+                public void onResponse(Call<ResponseFav> call, Response<ResponseFav> response) {
+                    if (response.isSuccessful()) {
+                        ResponseFav responseFav = response.body();
+//                        Common.jwt = responseFav.getJwt();
+                        Log.e("response : ", String.valueOf(response));
+
+
+//                        Toast.makeText(ProductDetails.this, "Added to fav ", Toast.LENGTH_SHORT).show();
+
+//
+
+//                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ProductDetails.this);
+//                        prefs.edit().putBoolean("products", productID).commit();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseFav> call, Throwable t) {
+                    Toast.makeText(ProductDetails.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } else {
+            Toast.makeText(ProductDetails.this, "Please Check your internet.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
