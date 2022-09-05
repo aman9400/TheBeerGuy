@@ -1,37 +1,36 @@
 package com.example.thebeerguy.Intro;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.login.Login;
-import com.example.login.responseLogin.LoginResponse;
 import com.example.thebeerguy.DashBoard.DashBoard;
 import com.example.thebeerguy.Intro.ResponseStore.ResponseStore;
 import com.example.thebeerguy.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.libraries.places.api.model.Place;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.IOException;
@@ -44,20 +43,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LandingScreen extends AppCompatActivity {
+public class LandingScreen extends AppCompatActivity implements PlacesAutoCompleteAdapter.ClickListener {
 
-    private FusedLocationProviderClient fusedLocationProviderClient;
+    private final static int REQUEST_CODE = 100;
+    //    private FusedLocationProviderClient client;
+    public static String Address;
     Button sp4_btn_login, sp4_btn_signup;
     TabLayout tabLayout;
     SearchView splas4_searchView_location;
-    private String country;
-    private final static int REQUEST_CODE = 100;
     APIInterface apiInterface;
-
-//    private FusedLocationProviderClient client;
-    public  static  String Address;
-
-    private Boolean IsVisited = false ;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private String country;
+    private final Boolean IsVisited = false;
+    private PlacesAutoCompleteAdapter mAutoCompleteAdapter;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +67,36 @@ public class LandingScreen extends AppCompatActivity {
         findViewIds();  // calling find id
 
         apiInterface = APIClient.getClient().create(APIInterface.class); //        APIClient.
+
+
+        recyclerView = findViewById(R.id.places_recycler_view);
+        mAutoCompleteAdapter = new PlacesAutoCompleteAdapter(this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mAutoCompleteAdapter.setClickListener(this);
+        recyclerView.setAdapter(mAutoCompleteAdapter);
+        mAutoCompleteAdapter.notifyDataSetChanged();
+
+        splas4_searchView_location.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                if (!s.equals("")) {
+                    mAutoCompleteAdapter.getFilter().filter(s);
+//                    if (recyclerView.getVisibility() == View.GONE) {
+//                        recyclerView.setVisibility(View.VISIBLE);
+//                    }
+                } else {
+//                    if (recyclerView.getVisibility() == View.VISIBLE) {
+//                        recyclerView.setVisibility(View.GONE);
+//                    }
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
 
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(LandingScreen.this);
@@ -120,7 +149,7 @@ public class LandingScreen extends AppCompatActivity {
                                 splas4_searchView_location.setIconifiedByDefault(false);
 //                                Toast.makeText(LandingScreen.this, ""+addresses.get(0).getAddressLine(0), Toast.LENGTH_SHORT).show();
 //                                Log.e("d",addresses.get(0).getAddressLine(0));
-                                String[] x  = addresses.get(0).getAddressLine(0).split(",");
+                                String[] x = addresses.get(0).getAddressLine(0).split(",");
                                 country = x[4];
                                 Address = addresses.get(0).getAddressLine(0);
 //                                Log.e("test",country);
@@ -129,7 +158,7 @@ public class LandingScreen extends AppCompatActivity {
 
 //                                Log.e("test", ""+addresses.get(0).getLatitude() + ","+ addresses.get(0).getLongitude());
 
-                                splas4_searchView_location.setQuery( addresses.get(0).getAddressLine(0), false);
+                                splas4_searchView_location.setQuery(addresses.get(0).getAddressLine(0), false);
 //                                    country.setText("Country: " + addresses.get(0).getCountryName());
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -159,7 +188,7 @@ public class LandingScreen extends AppCompatActivity {
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,  String[] permissions,
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
                                            int[] grantResults) {
 
         if (requestCode == REQUEST_CODE) {
@@ -194,44 +223,49 @@ public class LandingScreen extends AppCompatActivity {
         progressDialog.show();
 
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
-        if(networkCheck){
+        if (networkCheck) {
 
-                Map<String, String> map = new HashMap<>();
-                map.put(Common.Apikey_text, Common.Apikey_value);
-                map.put("latitude", ""+latitude);
-                map.put("longitude", ""+longitude);
+            Map<String, String> map = new HashMap<>();
+            map.put(Common.Apikey_text, Common.Apikey_value);
+            map.put("latitude", "" + latitude);
+            map.put("longitude", "" + longitude);
 
-                Call<List<ResponseStore>> call1 = apiInterface.storeApi(map);
+            Call<List<ResponseStore>> call1 = apiInterface.storeApi(map);
 
-                call1.enqueue(new Callback<List<ResponseStore>>() {
-                    @Override
-                    public void onResponse(Call<List<ResponseStore>> call, Response<List<ResponseStore>> response) {
-                        progressDialog.dismiss();
+            call1.enqueue(new Callback<List<ResponseStore>>() {
+                @Override
+                public void onResponse(Call<List<ResponseStore>> call, Response<List<ResponseStore>> response) {
+                    progressDialog.dismiss();
 
-                        if(response.isSuccessful()){
-                            List<ResponseStore> loginResponse = response.body();
-                            if(!loginResponse.isEmpty()){
-                                Log.e("test", "0000"+loginResponse.get(0).getLatitude());
+                    if (response.isSuccessful()) {
+                        List<ResponseStore> loginResponse = response.body();
+                        if (!loginResponse.isEmpty()) {
+                            Log.e("test", "0000" + loginResponse.get(0).getLatitude());
 
-                            }else{
-                                Toast.makeText(LandingScreen.this, "Not available on this address", Toast.LENGTH_SHORT).show();
-                            }
-
-
+                        } else {
+                            Toast.makeText(LandingScreen.this, "Not available on this address", Toast.LENGTH_SHORT).show();
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<List<ResponseStore>> call, Throwable t) {
-                        progressDialog.dismiss();
-                        Toast.makeText(LandingScreen.this, ""+ t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
 
-        }
-        else {
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<ResponseStore>> call, Throwable t) {
+                    progressDialog.dismiss();
+                    Toast.makeText(LandingScreen.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } else {
             Toast.makeText(this, "Please Check your internet.", Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+    @Override
+    public void click(Place place) {
+        Toast.makeText(this, place.getAddress() + ", " + place.getLatLng().latitude + place.getLatLng().longitude, Toast.LENGTH_SHORT).show();
 
     }
 }

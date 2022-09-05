@@ -20,6 +20,7 @@
         <item name="colorPrimary">#0288D1</item>
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/teal_200</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_baseline_arrow_back_24</item>
         <!-- Customize your theme here. -->
     </style>
 

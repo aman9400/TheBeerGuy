@@ -9,16 +9,21 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Html;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +42,7 @@ import com.example.thebeerguy.Product_Details.FavResponse.ResponseFav;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.Package;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.ResponseProductDetail;
 import com.example.thebeerguy.R;
+import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -74,6 +80,9 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
+
+        Window window = getWindow();
+        window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
 
         findIds();
 
@@ -152,6 +161,32 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
         productDetail_btn_addToCard.setOnClickListener(v -> addToCartApi());
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
+
+        MenuItem item = menu.findItem(R.id.badge);
+        MenuItemCompat.setActionView(item, R.layout.actionbar_badge_layout);
+//        FrameLayout notifCount = (FrameLayout) MenuItemCompat.getActionView(item);
+
+
+       RelativeLayout badgeLayout = (RelativeLayout)    MenuItemCompat.getActionView(item);
+        badgeLayout.setOnClickListener(v->{
+//            Intent intent = new
+            Toast.makeText(this, "assssssssss", Toast.LENGTH_SHORT).show();
+        });
+        TextView tv = (TextView) badgeLayout.findViewById(R.id.actionbar_notifcation_textview);
+        tv.setText("12");
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void findIds() {
@@ -328,9 +363,10 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
+            case R.id.badge: {
+                Log.e("aaa", "" + item.getItemId());
                 return true;
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -375,6 +411,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
         } else {
             Toast.makeText(ProductDetails.this, "Please Check your internet.", Toast.LENGTH_SHORT).show();
         }
-
     }
+
+
 }

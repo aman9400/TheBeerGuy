@@ -35,7 +35,8 @@ public class WhatsHotAdapter extends RecyclerView.Adapter<WhatsHotAdapter.MyView
     @Override
     public MyViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new WhatsHotAdapter.MyViewholder(LayoutInflater.from(context).inflate(R.layout.sample_recycler1, parent,false));
+        return new WhatsHotAdapter.MyViewholder(LayoutInflater.from(context)
+                .inflate(R.layout.sample_recycler1, parent,false));
 
     }
 

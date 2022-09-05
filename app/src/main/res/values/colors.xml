@@ -2,6 +2,9 @@
 <resources>
 <!--    <color name="colorAccent">@color/blue</color>-->
     <color name="colorPrimary">#FF9E02</color>
+    <color name="colorPrimaryDark">#2CA7E2</color>
+    <color name="colorAccent">#2CA7E2</color>
+
     <color name="transparent">#00000000</color>
     <color name="colorPrimary2">#2CA7E2</color>
     <color name="purple_200">#FFBB86FC</color>
@@ -12,7 +15,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="iv_login_back">#F9E79C</color>
-    <color name="colorAccent">#2CA7E2</color>
+
     <color name="border">#ABABAB</color>
     <color name="radiobutton">#545556</color>
     <color name="radiocolor">#1C77BA</color>

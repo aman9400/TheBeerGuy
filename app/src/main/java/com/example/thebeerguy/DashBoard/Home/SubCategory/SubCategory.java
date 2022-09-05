@@ -1,6 +1,7 @@
 package com.example.thebeerguy.DashBoard.Home.SubCategory;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.GridView;
@@ -54,6 +56,11 @@ public class SubCategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_category);
 
+
+        Window window = getWindow();
+
+// finally change the color
+        window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
 
         if(getIntent().getStringExtra("name").equalsIgnoreCase("search")){
             searchApi(getIntent().getStringExtra("typeID"));
