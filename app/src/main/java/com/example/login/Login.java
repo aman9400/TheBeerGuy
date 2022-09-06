@@ -148,6 +148,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
                             } else {
                                 Common.jwt = loginResponse.getJwt();
+                                Common.Customer_ID = loginResponse.getData().getCustomer().getId();
+
                                 Toast.makeText(Login.this, "Login successful", Toast.LENGTH_SHORT).show();
                                 Log.e("email", loginResponse.getJwt());
                                 Islogin = true;

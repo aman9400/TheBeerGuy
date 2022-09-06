@@ -1,7 +1,9 @@
 package com.example.thebeerguy.DashBoard;
 
+import com.example.Databse.MyDatabase;
 import com.example.Profile.EditProfile;
 import com.example.Signup.SignUp;
+import com.example.common.Common;
 import com.example.login.Login;
 import com.example.thebeerguy.DashBoard.Home.Home;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.SubCategory;
@@ -13,6 +15,7 @@ import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavOrderAlcohol;
 import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavPartyDrinkCalculator;
 import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavSocialResponsibility;
 import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavTestimonials;
+import com.example.thebeerguy.Product_Details.ProductDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -60,6 +63,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     private TextView nav_version;
     private TextView navUsername;
     RelativeLayout badgeLayout;
+    TextView tv;
+    private int newCartNumber1;
 
 
     @Override
@@ -79,20 +84,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
-//        Button cart_icon = toolbar.findViewById(R.id.cart_icon);
-//        cart_icon.setOnClickListener(v -> {
-//            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-//            boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
-//
-//            if (Islogin) {
-//                startActivity(new Intent(DashBoard.this, ReviewCart.class));
-//
-//
-//            } else {
-//                Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(this, Login.class));
-//            }
-//        });
+
 
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -116,10 +108,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#ffffff\">" + "name" + "</font>"));
 
         getSupportActionBar().setElevation(10f);
-//        getSupportActionBar().setIcon(R.drawable.logo2);
-//        getSupportActionBar().set
-
-//        nav_list = (ListView) findViewById(R.id.lv_main_nav);
 
         View headerView = navigationView.getHeaderView(0);
         navUsername = (TextView) headerView.findViewById(R.id.nav_header_name);
@@ -130,7 +118,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         String nameLoggedIn = prefs1.getString("LoginName", "Welcome Guest");
 
         navUsername.setText(nameLoggedIn);
-
 
 //        mapGridData();
 
@@ -229,8 +216,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-
-        // Set action bar title
 
         setTitle(menuItem.getTitle());
 
@@ -358,28 +343,26 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
         MenuItem item = menu.findItem(R.id.badge);
         MenuItemCompat.setActionView(item, R.layout.actionbar_badge_layout);
-//        FrameLayout notifCount = (FrameLayout) MenuItemCompat.getActionView(item);
-
 
          badgeLayout = (RelativeLayout)    MenuItemCompat.getActionView(item);
-        badgeLayout.setOnClickListener(v->{
-//            Intent intent = new
-            Toast.makeText(this, "assssssssss", Toast.LENGTH_SHORT).show();
+
+        newCartNumber1 = MyDatabase.getDatabase(DashBoard.this).patientDAO().getCartNumber() ;
+        tv = (TextView) badgeLayout.findViewById(R.id.actionbar_notifcation_textview);
+        tv.setText(""+newCartNumber1);
+        
+        tv.setOnClickListener(v-> {
+//            Toast.makeText(this, ""+Common.cartNumber, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, ReviewCart.class);
+            startActivity(intent);
         });
-        TextView tv = (TextView) badgeLayout.findViewById(R.id.actionbar_notifcation_textview);
-        tv.setText("12");
-        return super.onCreateOptionsMenu(menu);
+
+        ImageView imageView = (ImageView) badgeLayout.findViewById(R.id.clickCartIconMenu);
+        imageView.setOnClickListener(v->{
+            Intent intent = new Intent(this, ReviewCart.class);
+            startActivity(intent);
+        });
+
+        return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Log.e("lo", ""+item.getItemId());
-        if(item.getItemId() == R.id.badge){
-            Toast.makeText(this, "bbbbbbbbbbb", Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(DashBoard.this, ReviewCart.class);
-//            startActivity(intent);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

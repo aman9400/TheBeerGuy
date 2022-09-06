@@ -3,9 +3,14 @@ package com.example.thebeerguy.Product_Details;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.text.Html;
 import android.util.Log;
@@ -21,7 +26,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,12 +36,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
+import com.example.Databse.MyDatabase;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.login.Login;
+import com.example.thebeerguy.DashBoard.DashBoard;
 import com.example.thebeerguy.DashBoard.Home.Adapters.GridAdapter;
 import com.example.thebeerguy.DashBoard.Home.Adapters.WhatsHotAdapter;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
+import com.example.thebeerguy.DashBoard.ReviewCart;
 import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.Intro.Splash4;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
@@ -74,6 +84,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
     private ProgressDialog progressDialog;
     private int productPackageId;
     private boolean isClicked = false;
+    TextView tv;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -84,6 +95,8 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
         Window window = getWindow();
         window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
 
+
+
         findIds();
 
         product_ImV_fav.setOnClickListener(new View.OnClickListener() {
@@ -91,13 +104,13 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
             public void onClick(View v) {
 
                 if (!isClicked) {
-
+                    isClicked = true;
                     product_ImV_fav.setImageResource(R.drawable.ic_favorite_24);
                     favApi();
                     Toast.makeText(ProductDetails.this, "Added to fav ", Toast.LENGTH_SHORT).show();
 
                 } else {
-
+                    isClicked = false;
                     product_ImV_fav.setImageResource(R.drawable.ic_unfavorite_24);
                 }
             }
@@ -123,6 +136,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
 
 
         productApi();
@@ -165,7 +179,9 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        Intent intent = new Intent(this, DashBoard.class);
+        startActivity(intent);
+//        super.onBackPressed();
     }
 
     @Override
@@ -176,16 +192,18 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
         MenuItem item = menu.findItem(R.id.badge);
         MenuItemCompat.setActionView(item, R.layout.actionbar_badge_layout);
-//        FrameLayout notifCount = (FrameLayout) MenuItemCompat.getActionView(item);
-
 
        RelativeLayout badgeLayout = (RelativeLayout)    MenuItemCompat.getActionView(item);
-        badgeLayout.setOnClickListener(v->{
-//            Intent intent = new
-            Toast.makeText(this, "assssssssss", Toast.LENGTH_SHORT).show();
+
+         tv = (TextView) badgeLayout.findViewById(R.id.actionbar_notifcation_textview);
+        int newCartNumber2 = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getCartNumber() ;
+        tv.setText(""+ newCartNumber2);
+
+        ImageView imageView = (ImageView) badgeLayout.findViewById(R.id.clickCartIconMenu);
+        imageView.setOnClickListener(v->{
+            Intent intent = new Intent(this, ReviewCart.class);
+            startActivity(intent);
         });
-        TextView tv = (TextView) badgeLayout.findViewById(R.id.actionbar_notifcation_textview);
-        tv.setText("12");
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -314,14 +332,18 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
         if (networkCheck) {
+            SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(this);
+            String nameLoggedIn = prefs1.getString("LoginName", "Guest");
+
+            Long shopping_id = System.currentTimeMillis();
 
             Map<String, String> map = new HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
-            map.put("ext_shopping_cart_id", "12345689");
-            map.put("ext_customer_id", "12345678");
+            map.put("ext_shopping_cart_id", ""+ shopping_id);
+            map.put("ext_customer_id", ""+Common.Customer_ID);
             map.put("ext_location_id", "2315");
             map.put("address", Address);
-            map.put("name", "Aman");
+            map.put("name", nameLoggedIn);
             map.put("phone", "416-555-1234");
             map.put("products", productID);
 
@@ -329,13 +351,45 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
             Call<ResponseAddToCart> call1 = apiInterface.addToCart(map);
 
             call1.enqueue(new Callback<ResponseAddToCart>() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onResponse(Call<ResponseAddToCart> call, Response<ResponseAddToCart> response) {
                     if (response.isSuccessful()) {
                         ResponseAddToCart responseSignup = response.body();
 //                        Common.jwt = responseSignup.getJwt();
                         Log.e("response : ", String.valueOf(response));
-                        Toast.makeText(ProductDetails.this, "Added", Toast.LENGTH_SHORT).show();
+
+                        Common.cartNumber = Common.cartNumber + 1;
+                        Log.e("test", "+"+ Common.cartNumber);
+                        tv.setText(""+ Common.cartNumber);
+
+                        int newCartNumber = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getCartNumber() + 1;
+                        tv.setText(""+ newCartNumber);
+
+                        MyDatabase.getDatabase(ProductDetails.this).patientDAO().setCartNumber(
+                          newCartNumber
+                        );
+
+                        final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                        final VibrationEffect vibrationEffect5;
+                        Toast.makeText(ProductDetails.this, "Product added to Cart", Toast.LENGTH_SHORT).show();
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+
+                            // create vibrator effect with the constant EFFECT_HEAVY_CLICK
+                            vibrationEffect5 = VibrationEffect.createPredefined(VibrationEffect.EFFECT_HEAVY_CLICK);
+
+                            // it is safe to cancel other vibrations currently taking place
+                            vibrator.cancel();
+
+                            vibrator.vibrate(vibrationEffect5);
+                        }else{
+                            long[] wave_time = {0, 100, 0, 100, 0, 100, 0, 100, 0, 100};
+                            int[] wave_ampl = {0, 50, 0, 100, 0, 150, 0, 200, 0, 255};
+
+                            VibrationEffect vibrationEffect = null;
+                            vibrationEffect = VibrationEffect.createWaveform(wave_time, wave_ampl, -1);
+                            vibrator.vibrate(vibrationEffect);
+                        }
 
 //                        startActivity(new Intent(ProductDetails.this, ReviewCart.class));
                     }
@@ -360,16 +414,6 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
         productPackageId = id;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.badge: {
-                Log.e("aaa", "" + item.getItemId());
-                return true;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     private void favApi() {
 
@@ -381,7 +425,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
             map.put("products", productID);
 
 
-            Call<ResponseFav> call1 = apiInterface.fav(map);
+            Call<ResponseFav> call1 = apiInterface.fav(map, "Bearer "+Common.jwt);
 
             call1.enqueue(new Callback<ResponseFav>() {
                 @Override

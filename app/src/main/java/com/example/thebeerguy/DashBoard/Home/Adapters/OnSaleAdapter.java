@@ -49,7 +49,7 @@ public class OnSaleAdapter extends RecyclerView.Adapter<OnSaleAdapter.MyViewhold
         holder.recycler_cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, ""+responseHome.getProductId(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, ""+responseHome.getProductId(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, ProductDetails.class);
                 intent.putExtra("productID", ""+responseHome.getProductId());
                 intent.putExtra("name", responseHome.getLabel());

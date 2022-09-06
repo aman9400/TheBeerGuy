@@ -50,7 +50,7 @@ public class WhatsHotAdapter extends RecyclerView.Adapter<WhatsHotAdapter.MyView
         holder.recycler_cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, ""+responseHome.getProductId(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, ""+responseHome.getProductId(), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(context, ProductDetails.class);
                 intent.putExtra("productID", ""+responseHome.getProductId());

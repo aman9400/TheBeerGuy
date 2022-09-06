@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="48dp"
     android:layout_height="fill_parent"
+    android:id="@+id/badge_rl"
     android:layout_gravity="right" >
 
     <!-- Menu Item Image -->
@@ -9,6 +10,7 @@
         android:layout_width="48dp"
         android:layout_height="fill_parent"
         android:clickable="true"
+        android:id="@+id/clickCartIconMenu"
         android:src="@drawable/cart" />
 
     <!-- Badge Count -->
@@ -17,6 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
+        android:gravity="center"
         android:background="@drawable/ic_baseline_circle_24"
         android:layout_alignParentEnd="true"
         android:padding="4dp"

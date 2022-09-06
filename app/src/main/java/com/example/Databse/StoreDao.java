@@ -15,12 +15,12 @@ public interface StoreDao {
     Store[] totalStoreData();
 
     /*get all data from database*/
-//    @Query("SELECT * FROM task" )
-//    Task[] totalTaskData();
+    @Query("SELECT COUNT(id) FROM cartnumber" )
+    int getCartNumber();
 
     /*get user data from database*/
-//    @Query("SELECT * FROM user WHERE email=:email AND password=:password" )
-//    Store checkUser(String email, String password);
+    @Query("INSERT INTO cartnumber ( cart_number) VALUES (:number)" )
+    long setCartNumber(int number);
 //
 //    /*insert data into database*/
 //    @Query("INSERT INTO user ( name, email, phone, password) VALUES (:name, :email, :phone,  :password)" )

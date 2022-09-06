@@ -22,11 +22,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
+import com.example.Databse.MyDatabase;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.login.Login;
 import com.example.thebeerguy.DashBoard.DashBoard;
 import com.example.thebeerguy.Intro.ResponseStore.ResponseStore;
+import com.example.thebeerguy.Product_Details.ProductDetails;
 import com.example.thebeerguy.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -107,6 +109,9 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this); // initiate fused location
 
         getLastLocation();
+//        MyDatabase.getDatabase(LandingScreen.this).patientDAO().setCartNumber(
+//                0
+//        );
 
         // button to move to Dashboard
         sp4_btn_login.setOnClickListener(v -> {
