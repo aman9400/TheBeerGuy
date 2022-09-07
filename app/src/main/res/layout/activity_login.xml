@@ -192,7 +192,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/login_cardview_facebook_login"
         android:layout_width="0dp"
-        android:layout_height="58dp"
+        android:layout_height="60dp"
         android:elevation="5dp"
         app:cardBackgroundColor="#FEC55A"
         app:cardCornerRadius="10dp"
@@ -237,7 +237,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/login_cardview_gmail_login"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="12dp"
@@ -258,12 +258,25 @@
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/appCompatImageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView"
+                android:layout_width="80dp"
+                android:layout_height="0dp"
+                android:background="@color/iv_login_back"
+                android:padding="7dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/gmail"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-          <!--  <TextView
+            <!--  <TextView
                 android:id="@+id/textView25"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rubik_medium"
                 android:padding="2dp"

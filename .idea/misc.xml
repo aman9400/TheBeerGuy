@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/drawable/profile_border.xml" value="0.1115" />
         <entry key="app/src/main/res/drawable/signup_border.xml" value="0.1415" />
         <entry key="app/src/main/res/layout/activity_add_address.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_checkout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_dash_board.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.33" />
@@ -42,6 +43,7 @@
         <entry key="app/src/main/res/layout/activity_nav_party_drink_calculator.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/activity_nav_social_responsibility.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_nav_testimonials.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_no_coverage.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_password_recovery.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_payment_method.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.33" />
@@ -57,9 +59,10 @@
         <entry key="app/src/main/res/layout/content_nav_party_drink_calculator.xml" value="0.14" />
         <entry key="app/src/main/res/layout/custom_item_nav_menu.xml" value="0.14074074074074075" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/fragment_favourites.xml" value="0.19076923076923077" />
+        <entry key="app/src/main/res/layout/fragment_favourites.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/fragment_recent.xml" value="0.1537037037037037" />
+        <entry key="app/src/main/res/layout/fragment_orders.xml" value="0.19076923076923077" />
+        <entry key="app/src/main/res/layout/fragment_recent.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_splash1.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_splash2.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_splash3.xml" value="0.19375" />
@@ -67,6 +70,7 @@
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/product_detail_dialog_recycler.xml" value="0.25" />
         <entry key="app/src/main/res/layout/product_dialog.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/purchase_history_recycler.xml" value="0.33" />
         <entry key="app/src/main/res/layout/sale_recycler.xml" value="0.4343891402714932" />
         <entry key="app/src/main/res/layout/sample_recycler1.xml" value="0.33" />
         <entry key="app/src/main/res/layout/sample_recycler2.xml" value="0.48344370860927155" />

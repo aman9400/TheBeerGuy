@@ -156,6 +156,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(Login.this);
                                 prefs.edit().putBoolean("Islogin", true).commit();
                                 prefs.edit().putString("LoginName", loginResponse.getData().getCustomer().getName()).commit();// islogin is a boolean value of your login status
+                                prefs.edit().putString("email",loginResponse.getData().getCustomer().getEmail()).commit();//
+
 
                                 startActivity(new Intent(Login.this, DashBoard.class));
                                 finish();

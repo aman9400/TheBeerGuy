@@ -73,9 +73,19 @@ public class Account extends Fragment {
         });
 
 
+        SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String emailname = prefs1.getString("email", "Guest@beerguy.com");
+
+        email_account.setText(emailname);
+
+
 
         return view;
     }
+
+
+
+
 
     private void initView(View view) {
 

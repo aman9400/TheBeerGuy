@@ -7,6 +7,7 @@ import com.example.login.responseLogin.LoginResponse;
 import com.example.thebeerguy.DashBoard.Home.PaymentResponse.ResponsePayment;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.subCategoryResponse.ResponseSubCategory;
 import com.example.thebeerguy.DashBoard.Home.categoryResponse.ResponseCategory;
+import com.example.thebeerguy.DashBoard.PurchaseHistoryResponse.ResponsePurchaseHistory;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
 import com.example.thebeerguy.Intro.ResponseStore.ResponseStore;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
@@ -81,5 +82,9 @@ public interface APIInterface {
     @FormUrlEncoded
     @POST("store_location/list")
     Call<List<ResponseStore>> storeApi(@FieldMap Map<String, String> login);
+
+    @FormUrlEncoded
+    @POST("store_location/list")
+    Call<List<ResponsePurchaseHistory>> purchaseHistory(@FieldMap Map<String, String> purchaseHistory);
 
 }

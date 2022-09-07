@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashBoard.Checkout">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout26"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="CheckOut"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_left_arrow24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#E7E7E7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:paddingStart="20dp"
+        android:paddingEnd="2dp"
+        android:text="Delivery Details"
+        android:textColor="@color/colorPrimary2"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout26"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout26" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:paddingStart="20dp"
+        android:paddingEnd="2dp"
+        android:text="Payment Details"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout26"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout26" />
+
+    <View
+        android:id="@+id/view8"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorPrimary2"
+        app:layout_constraintEnd_toEndOf="@+id/textView25"
+        app:layout_constraintStart_toStartOf="@+id/textView25"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+    <TextView
+        android:id="@+id/textView109"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/view8"
+        app:layout_constraintTop_toBottomOf="@+id/view8" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

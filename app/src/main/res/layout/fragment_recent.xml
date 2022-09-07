@@ -23,5 +23,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_corner"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Clear Recent"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/recent_gridView"
+            app:layout_constraintEnd_toEndOf="@+id/recent_gridView"
+            app:layout_constraintStart_toStartOf="@+id/recent_gridView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -258,7 +258,10 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
                             Log.e("test", "0000" + loginResponse.get(0).getLatitude());
 
                         } else {
-                            Toast.makeText(LandingScreen.this, "Not available on this address", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(LandingScreen.this, NoCoverage.class);
+                            startActivity(intent);
+//                            Toast.makeText(LandingScreen.this, "Not available on this address", Toast.LENGTH_SHORT).show();
                         }
 
 

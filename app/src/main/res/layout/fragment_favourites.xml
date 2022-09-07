@@ -22,6 +22,21 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" >
+
+        </GridView>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_corner"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Clear Favourite"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/fav_gridView"
+            app:layout_constraintEnd_toEndOf="@+id/fav_gridView"
+            app:layout_constraintStart_toStartOf="@+id/fav_gridView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
