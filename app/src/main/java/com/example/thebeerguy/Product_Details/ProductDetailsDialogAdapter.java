@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -64,9 +63,9 @@ public class ProductDetailsDialogAdapter extends RecyclerView.Adapter<ProductDet
         public MyviewoHolder(@NonNull View itemView) {
             super(itemView);
 
-            Product_dialog_recycler_radiobtn = itemView.findViewById(R.id.Product_dialog_recycler_radiobtn);
-            Product_dialog_recycler_textView = itemView.findViewById(R.id.Product_dialog_recycler_textView);
-            cl_package_dialog = itemView.findViewById(R.id.cl_package_dialog);
+            Product_dialog_recycler_radiobtn = itemView.findViewById(R.id.checkout_dialog_recycler_radiobtn);
+            Product_dialog_recycler_textView = itemView.findViewById(R.id.checkout_dialog_recycler_textView);
+            cl_package_dialog = itemView.findViewById(R.id.checkout_package_dialog);
 
         }
 

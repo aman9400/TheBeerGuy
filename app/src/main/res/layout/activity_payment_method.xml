@@ -30,6 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/payment_ImV_backBtn"
             android:layout_width="40dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
@@ -128,7 +129,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView80" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/payment_COD_radioBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -154,13 +155,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textView82" />
 
         <RadioButton
+            android:id="@+id/payment_card_radioBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minWidth="48dp"
             android:minHeight="48dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView83"
-            app:layout_constraintEnd_toEndOf="@+id/radioButton"
-            app:layout_constraintStart_toStartOf="@+id/radioButton"
+            app:layout_constraintEnd_toEndOf="@+id/payment_COD_radioBtn"
+            app:layout_constraintStart_toStartOf="@+id/payment_COD_radioBtn"
             app:layout_constraintTop_toTopOf="@+id/textView83" />
 
 
@@ -181,11 +183,12 @@
             android:fontFamily="@font/roboto"
             android:padding="10dp"
             android:text="Credit Card Details"
-            android:textColor="#7B1FA2"
+            android:textColor="@color/white"
             android:textSize="18dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
 
         <EditText
             android:id="@+id/editText"
@@ -244,7 +247,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/payment_button_complete"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

@@ -21,10 +21,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".OrderComplete"
+            android:exported="false" />
+        <activity
             android:name=".Intro.NoCoverage"
             android:exported="false" />
         <activity
-            android:name=".DashBoard.Checkout"
+            android:name=".DashBoard.Home.CheckOut.Checkout"
             android:exported="false" />
         <activity
             android:name=".Intro.LandingScreen"

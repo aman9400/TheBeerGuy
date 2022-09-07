@@ -4,12 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RadioButton;
 
 import com.example.thebeerguy.R;
 
 public class PaymentMethod extends AppCompatActivity {
 
-    ConstraintLayout payment_constraintLayout_card, payment_constraintLayout_netBanking, payment_constraintLayout_wallet;
+    ImageView payment_ImV_backBtn;
+    RadioButton payment_COD_radioBtn, payment_card_radioBtn;
+    Button payment_button_complete;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +29,12 @@ public class PaymentMethod extends AppCompatActivity {
 
     private void findId() {
 
-        payment_constraintLayout_card = findViewById(R.id.payment_constraintLayout_card);
-        payment_constraintLayout_netBanking = findViewById(R.id.payment_constraintLayout_netBanking);
-        payment_constraintLayout_wallet = findViewById(R.id.payment_constraintLayout_wallet);
+        payment_button_complete = findViewById(R.id.payment_button_complete);
+        payment_ImV_backBtn = findViewById(R.id.payment_ImV_backBtn);
+        payment_COD_radioBtn = findViewById(R.id.payment_COD_radioBtn);
+        payment_card_radioBtn = findViewById(R.id.payment_card_radioBtn);
+
+
 
 
     }

@@ -17,6 +17,8 @@ public class NoCoverage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_no_coverage);
 
+        getSupportActionBar().hide();
+
         noCoverage_Backbtn = findViewById(R.id.noCoverage_Backbtn);
 
         noCoverage_Backbtn.setOnClickListener(new View.OnClickListener() {

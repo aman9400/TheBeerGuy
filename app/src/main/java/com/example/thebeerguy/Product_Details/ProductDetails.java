@@ -20,13 +20,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,20 +37,16 @@ import com.example.Apis.APIInterface;
 import com.example.Databse.MyDatabase;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
-import com.example.login.Login;
 import com.example.thebeerguy.DashBoard.DashBoard;
-import com.example.thebeerguy.DashBoard.Home.Adapters.GridAdapter;
 import com.example.thebeerguy.DashBoard.Home.Adapters.WhatsHotAdapter;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
 import com.example.thebeerguy.DashBoard.ReviewCart;
 import com.example.thebeerguy.Intro.LandingScreen;
-import com.example.thebeerguy.Intro.Splash4;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
 import com.example.thebeerguy.Product_Details.FavResponse.ResponseFav;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.Package;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.ResponseProductDetail;
 import com.example.thebeerguy.R;
-import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -149,9 +143,9 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
             dialog.getWindow().setWindowAnimations(R.style.AnimationForDialog);
 
-            TextView productDialog_TV_cancle = dialog.findViewById(R.id.productDialog_TV_cancle);
-            TextView productDialog_TV_ok = dialog.findViewById(R.id.productDialog_TV_ok);
-            RecyclerView productDialog_recyclerView = dialog.findViewById(R.id.productDialog_recyclerView);
+            TextView productDialog_TV_cancle = dialog.findViewById(R.id.checkoutDialog_TV_cancle);
+            TextView productDialog_TV_ok = dialog.findViewById(R.id.checkoutDialog_TV_ok);
+            RecyclerView productDialog_recyclerView = dialog.findViewById(R.id.checkoutDialog_recyclerView);
 
             ProductDetailsDialogAdapter productDetailsDialogAdapter = new ProductDetailsDialogAdapter(ProductDetails.this, pakageList, this);
             productDialog_recyclerView.setLayoutManager(new LinearLayoutManager(ProductDetails.this, LinearLayoutManager.VERTICAL, false));
@@ -265,8 +259,8 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
                         product_image = responseProductDetail.get(0).getImage();
 
                         product_TV_ratting.setText("Rating : " + responseProductDetail.get(0).getRating());
-                        product_brewer.setText(responseProductDetail.get(0).getBrewer());
-                        product_alcohol.setText(responseProductDetail.get(0).getAlcoholContent());
+                        product_brewer.setText("Brewer : " + responseProductDetail.get(0).getBrewer());
+                        product_alcohol.setText("Alcohol : " + responseProductDetail.get(0).getAlcoholContent());
 
                         product_price = ""+responseProductDetail.get(0).getMinPrice();
 

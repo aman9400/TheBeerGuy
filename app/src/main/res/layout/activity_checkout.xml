@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashBoard.Checkout">
+    tools:context=".DashBoard.Home.CheckOut.Checkout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout26"
@@ -30,6 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/checkout_ImV_backBtn"
             android:layout_width="40dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
@@ -113,6 +114,7 @@
             tools:ignore="TextContrastCheck" />
 
         <TextView
+            android:id="@+id/checkOut_TV_address"
             android:layout_width="150dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
@@ -150,7 +152,7 @@
             tools:ignore="TextContrastCheck" />
 
         <TextView
-            android:id="@+id/textView116"
+            android:id="@+id/checkOut_TV_days"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_marginStart="16dp"
@@ -169,6 +171,7 @@
 
 
         <TextView
+            android:id="@+id/checkOut_TV_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -180,9 +183,9 @@
             android:text="Morning (11-1) "
             android:textColor="@color/text"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView116"
-            app:layout_constraintStart_toEndOf="@+id/textView116"
-            app:layout_constraintTop_toTopOf="@+id/textView116"
+            app:layout_constraintBottom_toBottomOf="@+id/checkOut_TV_days"
+            app:layout_constraintStart_toEndOf="@+id/checkOut_TV_days"
+            app:layout_constraintTop_toTopOf="@+id/checkOut_TV_days"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -211,7 +214,7 @@
             tools:ignore="TextContrastCheck" />
 
         <EditText
-            android:id="@+id/textView117"
+            android:id="@+id/checkOut_TV_extraInfo"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
@@ -227,7 +230,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/checkout_button_continue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
