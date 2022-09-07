@@ -358,8 +358,12 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
         ImageView imageView = (ImageView) badgeLayout.findViewById(R.id.clickCartIconMenu);
         imageView.setOnClickListener(v->{
-            Intent intent = new Intent(this, ReviewCart.class);
-            startActivity(intent);
+            if(newCartNumber1 == 0){
+                Toast.makeText(this, "No Product added", Toast.LENGTH_SHORT).show();
+            }else {
+                Intent intent = new Intent(this, ReviewCart.class);
+                startActivity(intent);
+            }
         });
 
         return true;

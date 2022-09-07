@@ -10,18 +10,20 @@ public class Store {
     @PrimaryKey()
     private int id;
 
-    @ColumnInfo(name = "name")
-    private String name;
+    @ColumnInfo(name = "productID")
+    private int productID;
 
-    @ColumnInfo(name = "email")
-    private String email;
+    @ColumnInfo(name = "quantity")
+    private int quantity;
 
-    @ColumnInfo(name = "phone")
-    private String phone;
+    @ColumnInfo(name = "productName")
+    private String productName;
 
-    @ColumnInfo(name = "password")
-    private String password;
+    @ColumnInfo(name = "image")
+    private String image;
 
+    @ColumnInfo(name = "productPrice")
+    private String productPrice;
 
     public int getId() {
         return id;
@@ -31,35 +33,43 @@ public class Store {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getProductID() {
+        return productID;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
 
-    public String getEmail() {
-        return email;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getImage() {
+        return image;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(String productPrice) {
+        this.productPrice = productPrice;
     }
 }

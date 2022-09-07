@@ -86,6 +86,8 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
     private boolean isClicked = false;
     TextView tv;
 
+    String product_name, product_price, product_image;
+
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +96,6 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
         Window window = getWindow();
         window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
-
-
 
         findIds();
 
@@ -201,8 +201,12 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
         ImageView imageView = (ImageView) badgeLayout.findViewById(R.id.clickCartIconMenu);
         imageView.setOnClickListener(v->{
-            Intent intent = new Intent(this, ReviewCart.class);
-            startActivity(intent);
+            if(newCartNumber2 == 0){
+                Toast.makeText(this, "No Product added", Toast.LENGTH_SHORT).show();
+            }else {
+                Intent intent = new Intent(this, ReviewCart.class);
+                startActivity(intent);
+            }
         });
         return super.onCreateOptionsMenu(menu);
     }
@@ -256,9 +260,16 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
                         Picasso.get().load(responseProductDetail.get(0).getImage()).into(product_IV_image);
                         product_TV_name.setText(responseProductDetail.get(0).getLabel());
+
+                        product_name = responseProductDetail.get(0).getLabel();
+                        product_image = responseProductDetail.get(0).getImage();
+
                         product_TV_ratting.setText("Rating : " + responseProductDetail.get(0).getRating());
                         product_brewer.setText(responseProductDetail.get(0).getBrewer());
                         product_alcohol.setText(responseProductDetail.get(0).getAlcoholContent());
+
+                        product_price = ""+responseProductDetail.get(0).getMinPrice();
+
                         product_TV_price.setText("$" + responseProductDetail.get(0).getMinPrice() + "-$" + responseProductDetail.get(0).getMaxPrice());
                         product_TV_rating2.setText(responseProductDetail.get(0).getRating());
                         product_TV_discription.setText(responseProductDetail.get(0).getDescription());
@@ -355,9 +366,12 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
                 @Override
                 public void onResponse(Call<ResponseAddToCart> call, Response<ResponseAddToCart> response) {
                     if (response.isSuccessful()) {
-                        ResponseAddToCart responseSignup = response.body();
+                        ResponseAddToCart responseAddToCart = response.body();
+
+                        Common.responseAddToCart = responseAddToCart;
+
 //                        Common.jwt = responseSignup.getJwt();
-                        Log.e("response : ", String.valueOf(response));
+                        Log.e("response : ", String.valueOf(response.body().getTotalAmount()));
 
                         Common.cartNumber = Common.cartNumber + 1;
                         Log.e("test", "+"+ Common.cartNumber);
@@ -369,6 +383,9 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
                         MyDatabase.getDatabase(ProductDetails.this).patientDAO().setCartNumber(
                           newCartNumber
                         );
+
+                        long getBack = MyDatabase.getDatabase(ProductDetails.this).patientDAO()
+                                .insertIntoTable(Integer.parseInt(productID), 1, product_name, product_image, product_price);
 
                         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                         final VibrationEffect vibrationEffect5;

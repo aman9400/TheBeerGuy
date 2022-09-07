@@ -1,5 +1,7 @@
 package com.example.common;
 
+import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
+
 public class Common {
 
     public static String Apikey_text = "api_key";
@@ -16,6 +18,8 @@ public class Common {
 
     public static int cartNumber = 0;
 
-    public static int Customer_ID ;
+    public static int Customer_ID = 1 ;
+
+    public static ResponseAddToCart responseAddToCart = null;
 
 }

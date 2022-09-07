@@ -154,6 +154,7 @@
             android:layout_height="wrap_content"
             android:background="#FFF"
             android:orientation="vertical"
+            android:elevation="5dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintEnd_toEndOf="@+id/cardView"
             app:layout_constraintStart_toStartOf="@+id/cardView"

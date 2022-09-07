@@ -55,7 +55,7 @@ class PlacesAutoCompleteAdapter extends RecyclerView.Adapter<PlacesAutoCompleteA
         mContext = context;
         STYLE_BOLD = new StyleSpan(Typeface.BOLD);
         STYLE_NORMAL = new StyleSpan(Typeface.NORMAL);
-        Places.initialize(context, "AIzaSyDjG5_jKMimtnEAniXgbavzib0qelh7pTg");
+        Places.initialize(context, "AIzaSyC0lbix81e26iQ41yLil1N-1hlQsE9b13U");
         placesClient = com.google.android.libraries.places.api.Places.createClient(context);
     }
 
@@ -164,6 +164,7 @@ class PlacesAutoCompleteAdapter extends RecyclerView.Adapter<PlacesAutoCompleteA
     public void onBindViewHolder(@NonNull PredictionHolder mPredictionHolder, final int i) {
         mPredictionHolder.address.setText(mResultList.get(i).address);
         mPredictionHolder.area.setText(mResultList.get(i).area);
+
     }
 
     @Override

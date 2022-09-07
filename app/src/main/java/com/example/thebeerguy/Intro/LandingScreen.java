@@ -40,6 +40,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,11 +60,14 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
     private final Boolean IsVisited = false;
     private PlacesAutoCompleteAdapter mAutoCompleteAdapter;
     private RecyclerView recyclerView;
+    private Place getDataPlace;
+    double latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_screen);
+
         getSupportActionBar().hide();
 
         findViewIds();  // calling find id
@@ -81,21 +85,22 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
         splas4_searchView_location.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                if (!s.equals("")) {
-                    mAutoCompleteAdapter.getFilter().filter(s);
-//                    if (recyclerView.getVisibility() == View.GONE) {
-//                        recyclerView.setVisibility(View.VISIBLE);
-//                    }
-                } else {
-//                    if (recyclerView.getVisibility() == View.VISIBLE) {
-//                        recyclerView.setVisibility(View.GONE);
-//                    }
-                }
+
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
+                if (!s.equals("")) {
+                    mAutoCompleteAdapter.getFilter().filter(s);
+                    if (recyclerView.getVisibility() == View.GONE) {
+                        recyclerView.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    if (recyclerView.getVisibility() == View.VISIBLE) {
+                        recyclerView.setVisibility(View.GONE);
+                    }
+                }
                 return false;
             }
         });
@@ -106,9 +111,12 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 
 //        ((LinearLayout) tabLayout.getTabAt(0).view).setVisibility(View.GONE);
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this); // initiate fused location
 
-        getLastLocation();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this); // initiate fused location
+
+            getLastLocation();
+        }
 //        MyDatabase.getDatabase(LandingScreen.this).patientDAO().setCartNumber(
 //                0
 //        );
@@ -159,7 +167,9 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
                                 Address = addresses.get(0).getAddressLine(0);
 //                                Log.e("test",country);
 
-                                storeApi(addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
+                                latitude = addresses.get(0).getLatitude();
+                                longitude = addresses.get(0).getLongitude();
+                                storeApi();
 
 //                                Log.e("test", ""+addresses.get(0).getLatitude() + ","+ addresses.get(0).getLongitude());
 
@@ -220,7 +230,7 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
     }
 
     // Store location [ send lat and long ] respond
-    private void storeApi(double latitude, double longitude) {
+    private void storeApi() {
 
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -270,7 +280,14 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 
     @Override
     public void click(Place place) {
-        Toast.makeText(this, place.getAddress() + ", " + place.getLatLng().latitude + place.getLatLng().longitude, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, place.getAddress() + ", " + place.getLatLng().latitude + place.getLatLng().longitude, Toast.LENGTH_SHORT).show();
+        getDataPlace = place;
+        splas4_searchView_location.setQuery(place.getAddress(), true);
+        recyclerView.setVisibility(View.GONE);
+        latitude = Objects.requireNonNull(place.getLatLng()).latitude;
+        longitude = place.getLatLng().longitude;
 
+        Address = place.getAddress();
+        storeApi();
     }
 }

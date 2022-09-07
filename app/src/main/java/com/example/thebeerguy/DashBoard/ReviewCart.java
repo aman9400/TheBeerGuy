@@ -1,24 +1,25 @@
 package com.example.thebeerguy.DashBoard;
 
-import static com.example.thebeerguy.Intro.LandingScreen.Address;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
+import com.example.Databse.MyDatabase;
+import com.example.Databse.Store;
 import com.example.Profile.PaymentMethod;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.thebeerguy.DashBoard.Home.PaymentResponse.ResponsePayment;
-import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
-import com.example.thebeerguy.Product_Details.ProductDetails;
+import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.R;
 
 import java.util.HashMap;
@@ -28,10 +29,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.thebeerguy.Intro.LandingScreen.Address;
+
 public class ReviewCart extends AppCompatActivity {
 
     Button place_order;
     APIInterface apiInterface;
+    Store[] stores;
+    TextView subTotal, deliveryCharge, taxAndCharges, discount_amount, GrandTotal;
+    TextView addr_addr;
+    private RecyclerView cart_products_recycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,23 +47,44 @@ public class ReviewCart extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
+        cart_products_recycler = findViewById(R.id.cart_products_recycler);
+
         findIds();
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 //        APIClient.
 
-        place_order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        stores = MyDatabase.getDatabase(ReviewCart.this).patientDAO().totalStoreData();
 
-                paymentApi();
-            }
-        });
+
+        if(Common.responseAddToCart != null) {
+            subTotal.setText("" + Common.responseAddToCart.getResult());
+            deliveryCharge.setText("$" + Common.responseAddToCart.getDeliveryFee());
+            discount_amount.setText("$" + Common.responseAddToCart.getHstAmount());
+            taxAndCharges.setText("$" + Common.responseAddToCart.getDrvTipAmount());
+            GrandTotal.setText("$" + Common.responseAddToCart.getTotalAmount());
+            addr_addr.setText(Address);
+        }
+
+        ReviewCartAdapter reviewCartAdapter = new ReviewCartAdapter(this, stores);
+        cart_products_recycler.setHasFixedSize(true);
+        cart_products_recycler.setLayoutManager(new LinearLayoutManager(this));
+        cart_products_recycler.setAdapter(reviewCartAdapter);
+
+        place_order.setOnClickListener(v -> paymentApi());
     }
 
     private void findIds() {
 
+        //subTotal, deliveryCharge, taxAndCharges, discount_amount, GrandTotal;
+
         place_order = findViewById(R.id.place_order);
+        subTotal = findViewById(R.id.subTotal);
+        deliveryCharge = findViewById(R.id.deliveryCharge);
+        taxAndCharges = findViewById(R.id.taxAndCharges);
+        discount_amount = findViewById(R.id.discount_amount);
+        GrandTotal = findViewById(R.id.GrandTotal);
+        addr_addr = findViewById(R.id.addr_addr);
     }
 
     private void paymentApi() {
@@ -66,7 +94,7 @@ public class ReviewCart extends AppCompatActivity {
 
             Map<String, String> map = new HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
-            map.put("ext_purchase_id","123456779" );
+            map.put("ext_purchase_id", "123456779");
             map.put("ext_shopping_cart_id", "12345689");
             map.put("ext_customer_id", "12345678");
             map.put("ext_location_id", "2315");
