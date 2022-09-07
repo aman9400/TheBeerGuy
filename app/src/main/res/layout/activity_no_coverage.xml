@@ -99,7 +99,7 @@
         android:id="@+id/textView111"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:fontFamily="@font/roboto_bold"
         android:text="We're Sorry,"
         android:textColor="@color/white"
@@ -126,12 +126,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="24dp"
+        android:fontFamily="@font/roboto"
         android:padding="5dp"
         android:text="Enter an email address to be notified when we are in your area"
         android:textColor="@color/white"
-        android:fontFamily="@font/roboto"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -141,9 +141,9 @@
         android:id="@+id/textView114"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Email Address"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/roboto"
+        android:text="Email Address"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="@+id/textView113"
         app:layout_constraintTop_toBottomOf="@+id/textView113" />
@@ -151,28 +151,54 @@
     <EditText
         android:id="@+id/editTextTextEmailAddress"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/login_border"
         android:ems="10"
+        android:hint="Email Address"
         android:inputType="textEmailAddress"
+        android:paddingStart="50dp"
+        android:paddingEnd="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView114"
         app:layout_constraintTop_toBottomOf="@+id/textView114" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_mail_2"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextEmailAddress" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_corner"
-        android:text="Submit"
         android:fontFamily="@font/roboto_bold"
-        android:textSize="18dp"
+        android:text="Submit"
         android:textColor="@color/white"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+
+    <View
+        android:id="@+id/view10"
+        android:layout_width="1.5dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/appCompatImageView2"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextEmailAddress" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

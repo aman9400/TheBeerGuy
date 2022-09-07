@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable/box_color.xml" value="0.124" />
         <entry key="app/src/main/res/drawable/ic_address_24.xml" value="0.1055" />
         <entry key="app/src/main/res/drawable/ic_arrow_down_24.xml" value="0.127" />
+        <entry key="app/src/main/res/drawable/ic_arrow_downward_24.xml" value="0.1215" />
         <entry key="app/src/main/res/drawable/ic_arrow_drop_down_24.xml" value="0.127" />
         <entry key="app/src/main/res/drawable/ic_favorite_24.xml" value="0.136" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1055" />
@@ -43,7 +44,7 @@
         <entry key="app/src/main/res/layout/activity_nav_party_drink_calculator.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/activity_nav_social_responsibility.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_nav_testimonials.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_no_coverage.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_no_coverage.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_password_recovery.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_payment_method.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.33" />

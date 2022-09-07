@@ -60,7 +60,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     private Fragment fragment = null;
     private ListView nav_list;
     private ImageView imageViewnav;
-    private TextView nav_version;
+    private TextView nav_header_email;
     private TextView navUsername;
     RelativeLayout badgeLayout;
     TextView tv;
@@ -112,12 +112,14 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         View headerView = navigationView.getHeaderView(0);
         navUsername = (TextView) headerView.findViewById(R.id.nav_header_name);
         imageViewnav = headerView.findViewById(R.id.nav_header_imageView);
-        nav_version = headerView.findViewById(R.id.nav_version);
+        nav_header_email = headerView.findViewById(R.id.nav_header_email);
 
         SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(this);
         String nameLoggedIn = prefs1.getString("LoginName", "Welcome Guest");
+        String email = prefs1.getString("email", "");
 
         navUsername.setText(nameLoggedIn);
+        nav_header_email.setText(email);
 
 //        mapGridData();
 

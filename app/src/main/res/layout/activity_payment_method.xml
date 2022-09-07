@@ -6,177 +6,258 @@
     android:layout_height="match_parent"
     tools:context="com.example.Profile.PaymentMethod">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/payment_constraintLayout_card"
-        android:layout_width="0dp"
+        android:id="@+id/constraintLayout29"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
+        android:background="@color/colorPrimary2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView29"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/card"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="CheckOut"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView80"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="40dp"
+            android:layout_height="0dp"
             android:layout_marginStart="16dp"
-            android:fontFamily="@font/roboto"
-            android:text="Credit/Debit Card "
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView29"
-            app:layout_constraintStart_toEndOf="@+id/imageView29"
-            app:layout_constraintTop_toTopOf="@+id/imageView29" />
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/next_account"
-            app:layout_constraintBottom_toBottomOf="@+id/textView80"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView80" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_left_arrow24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/view3"
+            android:id="@+id/view7"
             android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@android:color/darker_gray"
+            android:layout_height="2dp"
+            android:background="#E7E7E7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView29" />
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/payment_constraintLayout_netBanking"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/payment_constraintLayout_card"
-        app:layout_constraintStart_toStartOf="@+id/payment_constraintLayout_card"
-        app:layout_constraintTop_toBottomOf="@+id/payment_constraintLayout_card">
+        android:fontFamily="@font/roboto"
+        android:paddingStart="20dp"
+        android:paddingEnd="2dp"
+        android:text="Delivery Details"
 
-        <ImageView
-            android:id="@+id/imageView30"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/netbanking"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout29"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout29" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:paddingStart="20dp"
+        android:paddingEnd="2dp"
+        android:textColor="@color/colorPrimary2"
+        android:text="Payment Details"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout29"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout29" />
+
+    <View
+        android:id="@+id/view8"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorPrimary2"
+        app:layout_constraintEnd_toEndOf="@+id/textView42"
+        app:layout_constraintStart_toStartOf="@+id/textView42"
+        app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout30"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view8">
+
+        <TextView
+            android:id="@+id/textView80"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary2"
+            android:fontFamily="@font/roboto"
+            android:padding="10dp"
+            android:text="How will you be paying?"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/textView82"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto"
-            android:text="Net Banking"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView30"
-            app:layout_constraintStart_toEndOf="@+id/imageView30"
-            app:layout_constraintTop_toTopOf="@+id/imageView30" />
+            android:padding="5dp"
+            android:text="Cash at the door"
+            android:textColor="@color/text"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/textView80"
+            app:layout_constraintTop_toBottomOf="@+id/textView80" />
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:src="@drawable/next_account"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView82"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView82" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1.5dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView30" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/payment_constraintLayout_wallet"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/payment_constraintLayout_netBanking"
-        app:layout_constraintHorizontal_bias="0.41"
-        app:layout_constraintStart_toStartOf="@+id/payment_constraintLayout_netBanking"
-        app:layout_constraintTop_toBottomOf="@+id/payment_constraintLayout_netBanking">
-
-
-        <ImageView
-            android:id="@+id/imageView31"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/wallet"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView83"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/roboto"
-            android:text="Wallet"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView31"
-            app:layout_constraintStart_toEndOf="@+id/imageView31"
-            app:layout_constraintTop_toTopOf="@+id/imageView31" />
-
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/next_account"
-            app:layout_constraintBottom_toBottomOf="@+id/textView83"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView83" />
-
-        <View
-            android:id="@+id/view4"
-            android:layout_width="0dp"
-            android:layout_height="1.5dp"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@android:color/darker_gray"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/roboto"
+            android:padding="5dp"
+            android:text="Credit Card on-line (5.00%processing fee)"
+            android:textColor="@color/colorPrimary2"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView31" />
+            app:layout_constraintStart_toStartOf="@+id/textView82"
+            app:layout_constraintTop_toBottomOf="@+id/textView82" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView83"
+            app:layout_constraintEnd_toEndOf="@+id/radioButton"
+            app:layout_constraintStart_toStartOf="@+id/radioButton"
+            app:layout_constraintTop_toTopOf="@+id/textView83" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout30"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout30"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout30">
+
+        <TextView
+            android:id="@+id/textView119"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary2"
+            android:fontFamily="@font/roboto"
+            android:padding="10dp"
+            android:text="Credit Card Details"
+            android:textColor="#7B1FA2"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Card Number"
+            android:minHeight="48dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView119"
+            app:layout_constraintTop_toBottomOf="@+id/textView119" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Expiry Year"
+            android:minHeight="48dp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="2dp"
+            app:layout_constraintEnd_toEndOf="@+id/editText"
+            app:layout_constraintStart_toStartOf="@+id/editText"
+            app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Expiry Month"
+            android:minHeight="48dp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="2dp"
+            app:layout_constraintEnd_toEndOf="@+id/editText2"
+            app:layout_constraintStart_toStartOf="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="CVC"
+            android:minHeight="48dp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="2dp"
+            app:layout_constraintEnd_toEndOf="@+id/editText3"
+            app:layout_constraintStart_toStartOf="@+id/editText3"
+            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_corner"
+        android:fontFamily="@font/roboto"
+        android:text="COMPLETE ORDER"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
