@@ -1,5 +1,7 @@
 package com.example.common;
 
+import com.example.thebeerguy.Intro.LandingScreen;
+import com.example.thebeerguy.Intro.ResponseStore.ResponseStore;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
 
 public class Common {
@@ -19,6 +21,8 @@ public class Common {
     public static int cartNumber = 0;
 
     public static int Customer_ID = 1 ;
+
+    public static String Hour = LandingScreen.hour;
 
     public static ResponseAddToCart responseAddToCart = null;
 

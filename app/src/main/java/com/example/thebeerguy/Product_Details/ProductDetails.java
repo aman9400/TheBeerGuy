@@ -42,6 +42,7 @@ import com.example.thebeerguy.DashBoard.Home.Adapters.WhatsHotAdapter;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
 import com.example.thebeerguy.DashBoard.ReviewCart;
 import com.example.thebeerguy.Intro.LandingScreen;
+import com.example.thebeerguy.Intro.ResponseStore.ResponseStore;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
 import com.example.thebeerguy.Product_Details.FavResponse.ResponseFav;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.Package;
@@ -50,6 +51,8 @@ import com.example.thebeerguy.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,7 +61,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductDetails extends AppCompatActivity implements GetProductPackageId {
+public class ProductDetails<textHoure> extends AppCompatActivity implements GetProductPackageId {
 
     RecyclerView productDetail_recycler;
     APIInterface apiInterface;
@@ -82,6 +85,12 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
     String product_name, product_price, product_image;
 
+
+
+
+
+
+
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +101,16 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
         window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
 
         findIds();
+
+        if (Common.Hour != null){
+
+            product_TV_time.setText("Deliver as early as 1 hour");
+        }else {
+            product_TV_time.setText("We Open tomorrow at 9:30am ");
+        }
+
+
+
 
         product_ImV_fav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,7 +232,6 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
         product_TV_name = findViewById(R.id.product_TV_name);
         product_TV_ratting = findViewById(R.id.product_TV_ratting);
         product_TV_time = findViewById(R.id.product_TV_time);
-        product_TV_rating2 = findViewById(R.id.product_TV_rating2);
         product_alcohol = findViewById(R.id.product_alcohol);
         product_brewer = findViewById(R.id.product_brewer);
         product_TV_discription = findViewById(R.id.product_TV_discription);
@@ -258,14 +276,14 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
                         product_name = responseProductDetail.get(0).getLabel();
                         product_image = responseProductDetail.get(0).getImage();
 
-                        product_TV_ratting.setText("Rating : " + responseProductDetail.get(0).getRating());
-                        product_brewer.setText("Brewer : " + responseProductDetail.get(0).getBrewer());
-                        product_alcohol.setText("Alcohol : " + responseProductDetail.get(0).getAlcoholContent());
+                        product_TV_ratting.setText( responseProductDetail.get(0).getRating());
+                        product_brewer.setText( responseProductDetail.get(0).getBrewer());
+                        product_alcohol.setText(responseProductDetail.get(0).getAlcoholContent());
 
-                        product_price = ""+responseProductDetail.get(0).getMinPrice();
+                        product_price = "$"+responseProductDetail.get(0).getCommonPrice();
 
                         product_TV_price.setText("$" + responseProductDetail.get(0).getMinPrice() + "-$" + responseProductDetail.get(0).getMaxPrice());
-                        product_TV_rating2.setText(responseProductDetail.get(0).getRating());
+//                        product_TV_rating2.setText(responseProductDetail.get(0).getRating());
                         product_TV_discription.setText(responseProductDetail.get(0).getDescription());
 
                     } else {

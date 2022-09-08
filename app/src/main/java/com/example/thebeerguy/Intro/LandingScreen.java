@@ -63,6 +63,8 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
     private Place getDataPlace;
     double latitude, longitude;
 
+    public static String hour;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -242,8 +244,8 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 
             Map<String, String> map = new HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
-            map.put("latitude", "" + latitude);
-            map.put("longitude", "" + longitude);
+            map.put("latitude", "51.2537750");
+            map.put("longitude", "-85.3232140");
 
             Call<List<ResponseStore>> call1 = apiInterface.storeApi(map);
 
@@ -253,9 +255,13 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
                     progressDialog.dismiss();
 
                     if (response.isSuccessful()) {
-                        List<ResponseStore> loginResponse = response.body();
-                        if (!loginResponse.isEmpty()) {
-                            Log.e("test", "0000" + loginResponse.get(0).getLatitude());
+                        List<ResponseStore> responseStores = response.body();
+                        if (!responseStores.isEmpty()) {
+                            Log.e("test", "0000" + responseStores.get(0).getLatitude());
+
+                            hour = responseStores.get(0).getHours().toString();
+
+
 
                         } else {
 

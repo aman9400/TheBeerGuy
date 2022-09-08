@@ -58,7 +58,7 @@ public class GridAdapter extends BaseAdapter {
 
         Picasso.get().load(responseHome.getImage()).into(recycler_text_image);
         recycler_text_name.setText(responseHome.getLabel());
-        recycler_text_price.setText(responseHome.getMinPrice() + " - " + responseHome.getMaxPrice());
+        recycler_text_price.setText("$" + responseHome.getMinPrice() + " - " + "$" + responseHome.getMaxPrice());
 
 
 

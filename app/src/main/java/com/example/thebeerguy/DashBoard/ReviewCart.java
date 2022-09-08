@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,8 @@ import static com.example.thebeerguy.Intro.LandingScreen.Address;
 
 public class ReviewCart extends AppCompatActivity {
 
-    Button place_order;
+    Button review_button_checkout;
+    private CheckBox review_gift_checkBox;
     APIInterface apiInterface;
     Store[] stores;
     TextView subTotal, deliveryCharge, taxAndCharges, discount_amount, GrandTotal;
@@ -60,10 +62,11 @@ public class ReviewCart extends AppCompatActivity {
         if(Common.responseAddToCart != null) {
             subTotal.setText("" + Common.responseAddToCart.getResult());
             deliveryCharge.setText("$" + Common.responseAddToCart.getDeliveryFee());
-            discount_amount.setText("$" + Common.responseAddToCart.getHstAmount());
-            taxAndCharges.setText("$" + Common.responseAddToCart.getDrvTipAmount());
+            taxAndCharges.setText("$" + Common.responseAddToCart.getHstAmount());
             GrandTotal.setText("$" + Common.responseAddToCart.getTotalAmount());
-            addr_addr.setText(Address);
+
+
+
         }
 
         ReviewCartAdapter reviewCartAdapter = new ReviewCartAdapter(this, stores);
@@ -71,20 +74,20 @@ public class ReviewCart extends AppCompatActivity {
         cart_products_recycler.setLayoutManager(new LinearLayoutManager(this));
         cart_products_recycler.setAdapter(reviewCartAdapter);
 
-        place_order.setOnClickListener(v -> paymentApi());
+        review_button_checkout.setOnClickListener(v -> paymentApi());
     }
 
     private void findIds() {
 
         //subTotal, deliveryCharge, taxAndCharges, discount_amount, GrandTotal;
 
-        place_order = findViewById(R.id.place_order);
+        review_button_checkout = findViewById(R.id.review_button_checkout);
         subTotal = findViewById(R.id.subTotal);
         deliveryCharge = findViewById(R.id.deliveryCharge);
         taxAndCharges = findViewById(R.id.taxAndCharges);
-        discount_amount = findViewById(R.id.discount_amount);
         GrandTotal = findViewById(R.id.GrandTotal);
-        addr_addr = findViewById(R.id.addr_addr);
+        review_gift_checkBox = findViewById(R.id.review_gift_checkBox);
+
     }
 
     private void paymentApi() {

@@ -43,7 +43,7 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.MyViewholder> 
         ResponseHome responseHome = BeerList.get(position);
         Picasso.get().load(responseHome.getImage()).into(holder.recycler_text_image);
         holder.recycler_text_name.setText(responseHome.getLabel());
-        holder.recycler_text_price.setText(responseHome.getMinPrice()+ " - "+ responseHome.getMaxPrice());
+        holder.recycler_text_price.setText("$" + responseHome.getMinPrice()+ " - "+ "$" + responseHome.getMaxPrice());
         holder.recycler_cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

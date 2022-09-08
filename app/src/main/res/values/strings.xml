@@ -31,10 +31,10 @@
     <string name="password_login">Password</string>
 
     <!-- Product Detail Text -->
-    <string name="Brewer"><b>Brewer:</b>Labatt\nBreweries Ontario</string>
-    <string name="store"><b>Stores:</b> The Beer Store </string>
-    <string name="alcohol"><b>Alcohol:</b> 5.00% </string>
-    <string name="availability"><b>Availability:</b> In Stock </string>
+    <string name="Brewer"><b>Brewer:</b></string>
+    <string name="store"><b>Stores:</b></string>
+    <string name="alcohol"><b>Alcohol:</b></string>
+    <string name="availability"><b>Availability:</b></string>
     <string name="budweiser">Budweiser</string>
     <string name="productDetails"><![CDATA[Light golden colour; light malt & hops; light body, touch of citrus to finish]]></string>
     <string name="todo">TODO</string>
