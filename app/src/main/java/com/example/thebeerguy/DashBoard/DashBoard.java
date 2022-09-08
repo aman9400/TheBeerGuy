@@ -131,7 +131,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             switch (item.getItemId()) {
                 case R.id.theBeerGuy_home: {
                     setFragment(new Home());
-                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
                     break;
                 }
 
@@ -190,7 +190,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                     if (Islogin) {
 
                         setFragment(new Account());
-                        Toast.makeText(this, "Account", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(this, "Account", Toast.LENGTH_SHORT).show();
 
                     } else {
                         Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
@@ -226,7 +226,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
         if (id == R.id.nav_item_home) {
             startActivity(new Intent(getApplicationContext(), DashBoard.class));
-            Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_item_beer) {
 
@@ -236,7 +236,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             intent.putExtra("name", "Beer");
             startActivity(intent);
 
-            Toast.makeText(this, "Beer", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Beer", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_item_liquor) {
 
@@ -245,7 +245,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             intent.putExtra("typeID", "3");
             intent.putExtra("name", "Liquor");
             startActivity(intent);
-            Toast.makeText(this, "Liquor", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Liquor", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_item_wine) {
@@ -255,26 +255,26 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             intent.putExtra("typeID", "2");
             intent.putExtra("name", "Wine");
             startActivity(intent);
-            Toast.makeText(this, "Wine", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Wine", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_item_recent) {
 
             setFragment(new Recent());
-            Toast.makeText(getApplicationContext(), "Recent Viewed", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Recent Viewed", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_create_account) {
 
 
             startActivity(new Intent(this, SignUp.class));
-            Toast.makeText(this, "Create Account", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Create Account", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_signin) {
 
             startActivity(new Intent(this, Login.class));
-            Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_help || id == R.id.nav_profile) {
@@ -282,49 +282,49 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
 
             startActivity(new Intent(getApplicationContext(), NavHelp.class));
-            Toast.makeText(getApplicationContext(), "Help and FAQ", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Help and FAQ", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_contactus) {
 
             startActivity(new Intent(getApplicationContext(), NavContactUs.class));
-            Toast.makeText(getApplicationContext(), "Contact Us", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Contact Us", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_delivery_rate) {
 
             startActivity(new Intent(getApplicationContext(), NavDeliveryRate.class));
-            Toast.makeText(getApplicationContext(), "Delivery Rate", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Delivery Rate", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_social_resposibility) {
 
             startActivity(new Intent(getApplicationContext(), NavSocialResponsibility.class));
-            Toast.makeText(getApplicationContext(), "Social Responsibility", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Social Responsibility", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_testimonials) {
 
             startActivity(new Intent(getApplicationContext(), NavTestimonials.class));
-            Toast.makeText(getApplicationContext(), "Testimonials", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Testimonials", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_party_drink_calculator) {
 
             startActivity(new Intent(getApplicationContext(), NavPartyDrinkCalculator.class));
-            Toast.makeText(getApplicationContext(), "Party Drink Calculator", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Party Drink Calculator", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.order_alcohol) {
 
             startActivity(new Intent(getApplicationContext(), NavOrderAlcohol.class));
-            Toast.makeText(getApplicationContext(), "How to Order Alcohol", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "How to Order Alcohol", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.franchise_sponsorship) {
 
             startActivity(new Intent(getApplicationContext(), NavFranchiseSponsorship.class));
-            Toast.makeText(getApplicationContext(), "Franchise and Sponsorship", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Franchise and Sponsorship", Toast.LENGTH_SHORT).show();
 
         } else {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();

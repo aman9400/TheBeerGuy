@@ -117,13 +117,13 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
             public void onClick(View v) {
 
                 if (!isClicked) {
-                    isClicked = true;
+//                    isClicked = true;
                     product_ImV_fav.setImageResource(R.drawable.ic_favorite_24);
                     favApi();
-                    Toast.makeText(ProductDetails.this, "Added to fav ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProductDetails.this, "Added to favourite list ", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    isClicked = false;
+//                    isClicked = false;
                     product_ImV_fav.setImageResource(R.drawable.ic_unfavorite_24);
                 }
             }
@@ -461,7 +461,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                 public void onResponse(Call<ResponseFav> call, Response<ResponseFav> response) {
                     if (response.isSuccessful()) {
                         ResponseFav responseFav = response.body();
-//                        Common.jwt = responseFav.getJwt();
+                        Common.jwt = responseFav.getResult();
                         Log.e("response : ", String.valueOf(response));
 
 
