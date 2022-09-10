@@ -39,7 +39,7 @@ import retrofit2.Response;
 public class Recent extends Fragment {
 
     private GridView recent_gridView;
-    private List<ResponseHome> list = new ArrayList<>();
+    private List<ResponseHome> recentList = new ArrayList<>();
 
     APIInterface apiInterface;
 
@@ -59,7 +59,7 @@ public class Recent extends Fragment {
 //
 //        if (Islogin){
 //
-            homeApi("is_recent", "1");
+        recentApi("is_recent", "1");
 //        }else {
 //            Toast.makeText(getContext(), "Please Login First", Toast.LENGTH_SHORT).show();
 //            startActivity(new Intent (getContext(),Login.class));
@@ -87,7 +87,7 @@ public class Recent extends Fragment {
 //
 //    }
 
-    private void homeApi(String typeKey, String typeID) {
+    private void recentApi(String typeKey, String typeID) {
 
         boolean networkCheck = CommonMethod.isNetworkAvailable(getContext());
         if (networkCheck) {
@@ -104,17 +104,17 @@ public class Recent extends Fragment {
                 @Override
                 public void onResponse(Call<List<ResponseHome>> call, Response<List<ResponseHome>> response) {
                     if (response.isSuccessful()) {
-                        List<ResponseHome> loginResponse = response.body();
+                        List<ResponseHome> responseHomes = response.body();
 //                            Common.jwt = loginResponse.getJwt();
 
-                        list = response.body();
+                        recentList = response.body();
 
 //                        GridAdapter gridAdapter = new GridAdapter(getContext(), list);
-                        if (typeID.equalsIgnoreCase("is_recent")) {
-                            GridAdapter gridAdapter = new GridAdapter(getContext(), list);
+//                        if (typeID.equalsIgnoreCase("is_recent")) {
+                            GridAdapter gridAdapter = new GridAdapter(getContext(), recentList);
                             recent_gridView.setAdapter(gridAdapter);
 
-                        }
+
 
 //                            Toast.makeText(getContext(), "Beer list", Toast.LENGTH_SHORT).show();
 

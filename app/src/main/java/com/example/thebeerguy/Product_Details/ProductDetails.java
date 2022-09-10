@@ -69,6 +69,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     private final List<ResponseHome> list = new ArrayList<>();
     private TextView product_arrow_down, product_TV_price, product_TV_name,
             product_TV_ratting, product_TV_time, product_TV_rating2,
+            product_details_TV_store,
             product_TV_discription, product_brewer, product_alcohol;
     private Button productDetail_btn_addToCard;
     private ImageView product_ImV_fav;
@@ -91,7 +92,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
 
 
-    @SuppressLint("RestrictedApi")
+    @SuppressLint({"RestrictedApi", "ResourceAsColor"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +108,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
             product_TV_time.setText("Deliver as early as 1 hour");
         }else {
             product_TV_time.setText("We Open tomorrow at 9:30am ");
+            product_TV_time.setTextColor(R.color.red);
         }
 
 
@@ -117,13 +119,13 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
             public void onClick(View v) {
 
                 if (!isClicked) {
-//                    isClicked = true;
+                    isClicked = true;
                     product_ImV_fav.setImageResource(R.drawable.ic_favorite_24);
                     favApi();
                     Toast.makeText(ProductDetails.this, "Added to favourite list ", Toast.LENGTH_SHORT).show();
 
                 } else {
-//                    isClicked = false;
+                    isClicked = false;
                     product_ImV_fav.setImageResource(R.drawable.ic_unfavorite_24);
                 }
             }
@@ -194,7 +196,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     public void onBackPressed() {
         Intent intent = new Intent(this, DashBoard.class);
         startActivity(intent);
-//        super.onBackPressed();
+        super.onBackPressed();
     }
 
     @Override
@@ -236,6 +238,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
         product_brewer = findViewById(R.id.product_brewer);
         product_TV_discription = findViewById(R.id.product_TV_discription);
         productDetail_recycler = findViewById(R.id.productDetail_grid);
+        product_details_TV_store = findViewById(R.id.product_details_TV_store);
 
         product_ImV_fav = findViewById(R.id.product_ImV_fav);
 
@@ -279,10 +282,11 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                         product_TV_ratting.setText( responseProductDetail.get(0).getRating());
                         product_brewer.setText( responseProductDetail.get(0).getBrewer());
                         product_alcohol.setText(responseProductDetail.get(0).getAlcoholContent());
+                        product_details_TV_store.setText("The Beer Guy Store");
 
                         product_price = "$"+responseProductDetail.get(0).getCommonPrice();
 
-                        product_TV_price.setText("$" + responseProductDetail.get(0).getMinPrice() + "-$" + responseProductDetail.get(0).getMaxPrice());
+                        product_TV_price.setText("$" + responseProductDetail.get(0).getCommonPrice());
 //                        product_TV_rating2.setText(responseProductDetail.get(0).getRating());
                         product_TV_discription.setText(responseProductDetail.get(0).getDescription());
 

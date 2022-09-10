@@ -43,7 +43,7 @@ public class SignUp extends AppCompatActivity {
     APIInterface apiInterface;
     RadioButton radioBtn_delivery_yes, radioBtn_delivery_no, radioBtn_business_yes, radioBtn_business_no,
                 radioBtn_motel_yes, radioBtn_motel_no;
-
+    public static String phone;
 
 
     @Override
@@ -131,6 +131,9 @@ public class SignUp extends AppCompatActivity {
                                 Toast.makeText(SignUp.this, "Signup Successful", Toast.LENGTH_SHORT).show();
 
                                 startActivity(new Intent(SignUp.this, Login.class));
+
+
+
 
                             }
 

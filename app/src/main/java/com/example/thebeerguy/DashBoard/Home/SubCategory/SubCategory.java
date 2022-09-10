@@ -354,5 +354,60 @@ public class SubCategory extends AppCompatActivity {
         }
 
     }
+
+    private void filterApi(String value) {
+
+        boolean networkCheck = CommonMethod.isNetworkAvailable(this);
+        if (networkCheck) {
+
+            Map<String, String> map = new HashMap<>();
+            map.put(Common.Apikey_text, Common.Apikey_value);
+            map.put("keywords", value);
+            map.put("type", "1");
+            map.put("category", "Ale");
+            map.put("sub_category", "Pale");
+            map.put("origin", "Canada");
+            map.put("region", "Canada");
+            map.put("price_range", "");
+            map.put("beer_container", "");
+            map.put("wine_container", "");
+            map.put("beer_quantity", "");
+            map.put("alcohol_content", "5.00%");
+            map.put("is_kosher", "");
+            map.put("is_vqa", "0");
+            map.put("is_vintages", "0");
+            map.put("has_photos", "0");
+
+            Call<List<ResponseProductList>> call12 = apiInterface.searchApiList(map);
+//            Log.e("test", ""+call1 );
+
+            call12.enqueue(new Callback<List<ResponseProductList>>() {
+                @Override
+                public void onResponse(Call<List<ResponseProductList>> call, Response<List<ResponseProductList>> response) {
+                    if (response.isSuccessful()) {
+                        List<ResponseProductList> loginResponse = response.body();
+
+                        subCategoryList = response.body();
+                        SubCategoryAdapter subCategoryAdapter = new SubCategoryAdapter(subCategoryList, SubCategory.this,
+                                subCategoryList.get(0).getType(), subCategoryList.get(0).getCategory());
+                        sub_category_gridView.setAdapter(subCategoryAdapter);
+
+                    } else {
+                        Toast.makeText(SubCategory.this, "No Data found", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<List<ResponseProductList>> call, Throwable t) {
+                    Toast.makeText(SubCategory.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } else {
+            Toast.makeText(SubCategory.this, "Please Check your internet.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }
 

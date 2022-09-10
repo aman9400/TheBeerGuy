@@ -19,6 +19,7 @@ import com.example.Databse.Store;
 import com.example.Profile.PaymentMethod;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
+import com.example.thebeerguy.DashBoard.Home.CheckOut.Checkout;
 import com.example.thebeerguy.DashBoard.Home.PaymentResponse.ResponsePayment;
 import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.R;
@@ -118,7 +119,7 @@ public class ReviewCart extends AppCompatActivity {
                         Log.e("response : ", String.valueOf(response));
                         Toast.makeText(ReviewCart.this, "Added", Toast.LENGTH_SHORT).show();
 
-                        startActivity(new Intent(ReviewCart.this, PaymentMethod.class));
+                        startActivity(new Intent(ReviewCart.this, Checkout.class));
                     }
 
                 }

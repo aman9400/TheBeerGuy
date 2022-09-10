@@ -157,6 +157,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 prefs.edit().putBoolean("Islogin", true).commit();
                                 prefs.edit().putString("LoginName", loginResponse.getData().getCustomer().getName()).commit();// islogin is a boolean value of your login status
                                 prefs.edit().putString("email",loginResponse.getData().getCustomer().getEmail()).commit();//
+                                prefs.edit().putString("name",loginResponse.getData().getCustomer().getName()).commit();//
+
+
 
 
                                 startActivity(new Intent(Login.this, DashBoard.class));

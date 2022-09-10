@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.Profile.EditProfile;
 import com.example.Profile.ManageAddress;
 import com.example.Profile.PaymentMethod;
+import com.example.Signup.SignUp;
 import com.example.login.Login;
 import com.example.thebeerguy.R;
 
@@ -75,8 +76,11 @@ public class Account extends Fragment {
 
         SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(getContext());
         String emailname = prefs1.getString("email", "Guest@beerguy.com");
+        String name = prefs1.getString("name", "");
 
         email_account.setText(emailname);
+        phone_account.setText(SignUp.phone);
+        name_account.setText(name);
 
 
 

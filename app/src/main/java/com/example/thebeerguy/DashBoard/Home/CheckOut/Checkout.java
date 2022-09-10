@@ -49,7 +49,9 @@ public class Checkout extends AppCompatActivity {
         checkout_button_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Checkout.this, PaymentMethod.class));
+                Intent intent = new Intent(Checkout.this, PaymentMethod.class);
+                startActivity(intent);
+
             }
         });
 

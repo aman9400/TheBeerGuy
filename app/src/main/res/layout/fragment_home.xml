@@ -20,9 +20,12 @@
             android:id="@+id/tv_address_home"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="dfdd"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
             android:ellipsize="end"
             android:maxLines="1"
+            android:text="dfdd"
+            android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/downArrow"
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -48,9 +51,8 @@
                 android:iconifiedByDefault="false"
                 android:padding="3dp"
                 android:queryBackground="@color/white"
-                android:queryHint="Search Here">
+                android:queryHint="Search Here" />
 
-            </SearchView>
         </androidx.cardview.widget.CardView>
 
         <ViewFlipper
@@ -251,8 +253,10 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
             android:text="Deliver to : "
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -261,7 +265,8 @@
             android:id="@+id/downArrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
             android:background="@drawable/ic_baseline_arrow_drop_down_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

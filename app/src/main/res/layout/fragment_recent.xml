@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_corner"
             android:fontFamily="@font/roboto_bold"
-            android:text="Clear Recent"
+            android:text="Clear Recently Viewed"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/recent_gridView"

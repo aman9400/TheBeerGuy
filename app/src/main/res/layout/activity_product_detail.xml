@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,379 +7,395 @@
     android:layout_height="match_parent"
     tools:context=".Product_Details.ProductDetails">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/productDetail_btn_addToCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/product_IV_image"
-                android:layout_width="160dp"
-                android:layout_height="170dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/todo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/product_TV_name"
-                android:layout_width="178dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/open_sans"
-                android:text="@string/budweiser"
-                android:textColor="@color/black"
-                android:textFontWeight="700"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/product_IV_image"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView41"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:fontFamily="@font/roboto"
-                android:text="@string/store"
-                android:textColor="@color/text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView117"
-                app:layout_constraintEnd_toEndOf="@+id/product_brewer"
-                app:layout_constraintStart_toStartOf="@+id/product_brewer"
-                app:layout_constraintTop_toTopOf="@+id/textView117" />
-
-            <TextView
-                android:id="@+id/product_TV_ratting"
-                android:layout_width="0dp"
-                android:layout_height="28dp"
-                android:layout_marginEnd="16dp"
-
-                app:layout_constraintEnd_toEndOf="@+id/product_TV_name"
-                app:layout_constraintStart_toStartOf="@+id/product_TV_name"
-                app:layout_constraintTop_toBottomOf="@+id/product_TV_name" />
-
-            <TextView
-                android:id="@+id/product_alcohol"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto"
-                android:text="@string/alcohol"
-                android:textColor="@color/text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView120"
-                app:layout_constraintEnd_toEndOf="@+id/textView41"
-                app:layout_constraintStart_toStartOf="@+id/textView41"
-                app:layout_constraintTop_toTopOf="@+id/textView120" />
-
-            <TextView
-                android:id="@+id/product_brewer"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="4dp"
-                android:fontFamily="@font/roboto"
-                android:text="@string/Brewer"
-                android:textColor="@color/text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView89"
-                app:layout_constraintEnd_toEndOf="@+id/product_TV_ratting"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView89"
-                app:layout_constraintTop_toTopOf="@+id/textView89"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/textView40"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/availability"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/textView120"
-                app:layout_constraintTop_toBottomOf="@+id/textView120" />
-
-            <ImageView
-                android:id="@+id/product_ImV_fav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginBottom="24dp"
-                android:src="@drawable/ic_unfavorite_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/textView89"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/Brewer"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/product_TV_ratting"
-                app:layout_constraintTop_toBottomOf="@+id/product_TV_ratting" />
-
-            <TextView
-                android:id="@+id/textView117"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/store"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/textView89"
-                app:layout_constraintTop_toBottomOf="@+id/product_brewer" />
-
-            <TextView
-                android:id="@+id/textView120"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="@string/alcohol"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/textView117"
-                app:layout_constraintTop_toBottomOf="@+id/textView117" />
-
-            <TextView
-                android:id="@+id/textView121"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:fontFamily="@font/roboto"
-                android:text="In Stock"
-                android:textColor="@color/text"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView40"
-                app:layout_constraintEnd_toEndOf="@+id/product_alcohol"
-                app:layout_constraintStart_toEndOf="@+id/textView40"
-                app:layout_constraintTop_toTopOf="@+id/textView40" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_exp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-
-
-            <TextView
-                android:id="@+id/textView43"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/roboto"
-                android:gravity="clip_vertical"
-                android:paddingStart="@dimen/_5sdp"
-                android:paddingTop="@dimen/_5sdp"
-                android:paddingEnd="@dimen/_5sdp"
-                android:text="24 x 341 ml Bottles for $43.95"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/product_arrow_down"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/product_arrow_down"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/ic_arrow_down_24"
-                app:layout_constraintBottom_toBottomOf="@+id/textView43"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView43" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <TextView
-            android:id="@+id/textView44"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/line"
-            app:layout_constraintEnd_toEndOf="@+id/cl_exp"
-            app:layout_constraintStart_toStartOf="@+id/cl_exp"
-            app:layout_constraintTop_toBottomOf="@+id/cl_exp" />
-
-        <TextView
-            android:id="@+id/textView49"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/line"
-            app:layout_constraintEnd_toEndOf="@+id/textView44"
-            app:layout_constraintStart_toStartOf="@+id/textView44"
-            app:layout_constraintTop_toBottomOf="@+id/cardView17" />
-
-        <TextView
-            android:id="@+id/product_TV_discription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/productDetails"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView49"
-            app:layout_constraintStart_toStartOf="@+id/textView49"
-            app:layout_constraintTop_toBottomOf="@+id/textView49" />
-
-        <TextView
-            android:id="@+id/textView51"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/line"
-            app:layout_constraintEnd_toEndOf="@+id/textView49"
-            app:layout_constraintStart_toStartOf="@+id/textView49"
-            app:layout_constraintTop_toBottomOf="@+id/product_TV_discription" />
-
-        <TextView
-            android:id="@+id/textView52"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary2"
-            android:fontFamily="@font/open_sans"
-            android:paddingStart="20dp"
-            android:paddingTop="@dimen/_5sdp"
-            android:paddingEnd="5dp"
-            android:paddingBottom="@dimen/_5sdp"
-            android:text="PEOPLE ALSO BOUGHT"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView51"
-            tools:ignore="TextContrastCheck" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/productDetail_grid"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_190sdp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="8dp"
-         android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/productDetail_btn_addToCard"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView52">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <Button
-            android:id="@+id/productDetail_btn_addToCard"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16sp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/button_corner"
-            android:fontFamily="@font/roboto_bold"
-            android:text="Add to Cart"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productDetail_grid"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView17"
-            android:layout_width="379dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView44">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="250dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/product_TV_time"
-                    android:layout_width="0dp"
-                    android:layout_height="33dp"
+                <ImageView
+                    android:id="@+id/product_IV_image"
+                    android:layout_width="160dp"
+                    android:layout_height="170dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:gravity="center_vertical"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="2dp"
-                    android:text="Deliver as early as 1 hour"
-                    android:textColor="@color/text"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/textView85"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/todo"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView85"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_marginEnd="20dp"
-                    android:fontFamily="@font/roboto"
-                    android:paddingStart="2dp"
-                    android:paddingEnd="1dp"
-                    android:text="MRP"
-                    android:textColor="@color/text"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toTopOf="@+id/product_TV_price"
+                    android:id="@+id/product_TV_name"
+                    android:layout_width="178dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="@string/budweiser"
+                    android:textColor="@color/black"
+                    android:textFontWeight="700"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/product_IV_image"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/product_TV_price"
+                    android:id="@+id/product_details_TV_store"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/roboto"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="2dp"
+                    android:text="@string/store"
+                    android:textColor="@color/text"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView117"
+                    app:layout_constraintEnd_toEndOf="@+id/product_brewer"
+                    app:layout_constraintStart_toStartOf="@+id/product_brewer"
+                    app:layout_constraintTop_toTopOf="@+id/textView117"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/product_TV_ratting"
+                    android:layout_width="0dp"
+                    android:layout_height="28dp"
+                    android:layout_marginEnd="16dp"
+
+                    app:layout_constraintEnd_toEndOf="@+id/product_TV_name"
+                    app:layout_constraintStart_toStartOf="@+id/product_TV_name"
+                    app:layout_constraintTop_toBottomOf="@+id/product_TV_name" />
+
+                <TextView
+                    android:id="@+id/product_alcohol"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="2dp"
+                    android:text="@string/alcohol"
+                    android:textColor="@color/text"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView120"
+                    app:layout_constraintEnd_toEndOf="@+id/product_details_TV_store"
+                    app:layout_constraintStart_toStartOf="@+id/product_details_TV_store"
+                    app:layout_constraintTop_toTopOf="@+id/textView120" />
+
+                <TextView
+                    android:id="@+id/product_brewer"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/roboto"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="2dp"
+                    android:text="@string/Brewer"
+                    android:textColor="@color/text"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView89"
+                    app:layout_constraintEnd_toEndOf="@+id/product_TV_ratting"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/textView89"
+                    app:layout_constraintTop_toTopOf="@+id/textView89"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/textView40"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/availability"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView120"
+                    app:layout_constraintTop_toBottomOf="@+id/textView120" />
+
+                <ImageView
+                    android:id="@+id/product_ImV_fav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="$43.56"
-                    android:textColor="#55BC53"
-                    android:textSize="14sp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginBottom="24dp"
+                    android:src="@drawable/ic_unfavorite_24"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/textView85"
-                    app:layout_constraintTop_toBottomOf="@+id/textView85" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                    app:layout_constraintStart_toStartOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+                <TextView
+                    android:id="@+id/textView89"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/Brewer"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/product_TV_ratting"
+                    app:layout_constraintTop_toBottomOf="@+id/product_TV_ratting" />
+
+                <TextView
+                    android:id="@+id/textView117"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/store"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView89"
+                    app:layout_constraintTop_toBottomOf="@+id/product_brewer" />
+
+                <TextView
+                    android:id="@+id/textView120"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/alcohol"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView117"
+                    app:layout_constraintTop_toBottomOf="@+id/product_details_TV_store" />
+
+                <TextView
+                    android:id="@+id/textView121"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/roboto"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="2dp"
+                    android:text="In Stock"
+                    android:textColor="@color/text"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView40"
+                    app:layout_constraintEnd_toEndOf="@+id/product_alcohol"
+                    app:layout_constraintStart_toEndOf="@+id/textView40"
+                    app:layout_constraintTop_toTopOf="@+id/textView40" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_exp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+                app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/roboto"
+                    android:gravity="clip_vertical"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:text="24 x 341 ml Bottles for $43.95"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/product_arrow_down"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/product_arrow_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/ic_arrow_down_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView43"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView43" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/line"
+                app:layout_constraintEnd_toEndOf="@+id/cl_exp"
+                app:layout_constraintStart_toStartOf="@+id/cl_exp"
+                app:layout_constraintTop_toBottomOf="@+id/cl_exp" />
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/line"
+                app:layout_constraintEnd_toEndOf="@+id/textView44"
+                app:layout_constraintStart_toStartOf="@+id/textView44"
+                app:layout_constraintTop_toBottomOf="@+id/cardView17" />
+
+            <TextView
+                android:id="@+id/product_TV_discription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/productDetails"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView49"
+                app:layout_constraintStart_toStartOf="@+id/textView49"
+                app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/line"
+                app:layout_constraintEnd_toEndOf="@+id/textView49"
+                app:layout_constraintStart_toStartOf="@+id/textView49"
+                app:layout_constraintTop_toBottomOf="@+id/product_TV_discription" />
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary2"
+                android:fontFamily="@font/open_sans"
+                android:paddingStart="20dp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="@dimen/_5sdp"
+                android:text="PEOPLE ALSO BOUGHT"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView51"
+                tools:ignore="TextContrastCheck" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/productDetail_grid"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_190sdp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView52">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView17"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView44">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/product_TV_time"
+                        android:layout_width="0dp"
+                        android:layout_height="33dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center_vertical"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="2dp"
+                        android:textColor="@color/text"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView85"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView85"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_marginEnd="40dp"
+                        android:fontFamily="@font/roboto"
+                        android:paddingStart="2dp"
+                        android:paddingEnd="1dp"
+                        android:text="MRP"
+                        android:textColor="@color/text"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/product_TV_price"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/product_TV_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="$43.56"
+                        android:textColor="#55BC53"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView85"
+                        app:layout_constraintTop_toBottomOf="@+id/textView85" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/productDetail_btn_addToCard"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_corner"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Add to Cart"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 

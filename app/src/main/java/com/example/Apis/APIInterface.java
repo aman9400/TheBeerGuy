@@ -5,6 +5,7 @@ import com.example.Profile.AddAddressResponse.ResponseAddAddress;
 import com.example.Signup.responseSignup.ResponseSignup;
 import com.example.login.responseLogin.LoginResponse;
 import com.example.thebeerguy.DashBoard.Home.PaymentResponse.ResponsePayment;
+import com.example.thebeerguy.DashBoard.Home.SubCategory.FilterResponse.ResponseFilter;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.subCategoryResponse.ResponseSubCategory;
 import com.example.thebeerguy.DashBoard.Home.categoryResponse.ResponseCategory;
 import com.example.thebeerguy.DashBoard.PurchaseHistoryResponse.ResponsePurchaseHistory;
@@ -82,6 +83,10 @@ public interface APIInterface {
     @FormUrlEncoded
     @POST("store_location/list")
     Call<List<ResponseStore>> storeApi(@FieldMap Map<String, String> login);
+
+    @FormUrlEncoded
+    @POST("search_filter_menu")
+    Call<List<ResponseFilter>> filter(@FieldMap Map<String, String> filter);
 
     @FormUrlEncoded
     @POST("store_location/list")
