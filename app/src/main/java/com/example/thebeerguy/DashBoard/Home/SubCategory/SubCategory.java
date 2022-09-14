@@ -81,143 +81,143 @@ public class SubCategory extends AppCompatActivity {
         sub_category_toolbaar = findViewById(R.id.Sub_category_toolbaar);
         setSupportActionBar(sub_category_toolbaar);
 
-
-
-
-
         SubCategoryToolbar_filter.setOnClickListener(v -> {
 
 
-            Dialog dialog = new Dialog(SubCategory.this);
-            dialog.setContentView(R.layout.sub_category_filter);
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable());
-            dialog.getWindow().setGravity(Gravity.RIGHT);
-            dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-
-            RecyclerView type_recyclerview = null, category_recyclerview, subCategory_recyclerview, origin_recyclerview,
-                    priceRange_recyclerview, liquorContainer_recyclerview;
-
-            TextView subCategoryFilter_TV_type, subCategoryFilter_TV_category, subCategoryFilter_TV_subCategory,
-                    subCategoryFilter_TV_origin, subCategoryFilter_TV_priceRange, subCategoryFilter_TV_liquorContainer,
-                    subCategoryFilter_TV_VAQ, subCategoryFilter_TV_kosher, subCategoryFilter_TV_lcboVintage,
-                    subCategoryFilter_TV_hashPhoto, subCategoryFilter_TV_bonusPoint;
-
-            Button subCategoryFilter_Btn_apply, subCategoryFilter_Btn_reset;
-
-
-            category_recyclerview = dialog.findViewById(R.id.category_recyclerview);
-            subCategory_recyclerview = dialog.findViewById(R.id.subCategory_recyclerview);
-            origin_recyclerview = dialog.findViewById(R.id.origin_recyclerview);
-            priceRange_recyclerview = dialog.findViewById(R.id.priceRange_recyclerview);
-            liquorContainer_recyclerview = dialog.findViewById(R.id.liquorContainer_recyclerview);
-
-            subCategoryFilter_Btn_apply = dialog.findViewById(R.id.subCategoryFilter_Btn_apply);
-            subCategoryFilter_Btn_reset = dialog.findViewById(R.id.subCategoryFilter_Btn_reset);
-
-            subCategoryFilter_TV_type = dialog.findViewById(R.id.subCategoryFilter_TV_type);
-            subCategoryFilter_TV_category = dialog.findViewById(R.id.subCategoryFilter_TV_category);
-            subCategoryFilter_TV_subCategory = dialog.findViewById(R.id.subCategoryFilter_TV_subCategory);
-            subCategoryFilter_TV_origin = dialog.findViewById(R.id.subCategoryFilter_TV_origin);
-            subCategoryFilter_TV_priceRange = dialog.findViewById(R.id.subCategoryFilter_TV_priceRange);
-            subCategoryFilter_TV_liquorContainer = dialog.findViewById(R.id.subCategoryFilter_TV_liquorContainer);
-            subCategoryFilter_TV_VAQ = dialog.findViewById(R.id.subCategoryFilter_TV_VAQ);
-            subCategoryFilter_TV_kosher = dialog.findViewById(R.id.subCategoryFilter_TV_kosher);
-            subCategoryFilter_TV_lcboVintage = dialog.findViewById(R.id.subCategoryFilter_TV_lcboVintage);
-            subCategoryFilter_TV_hashPhoto = dialog.findViewById(R.id.subCategoryFilter_TV_hashPhoto);
-            subCategoryFilter_TV_bonusPoint = dialog.findViewById(R.id.subCategoryFilter_TV_bonusPoint);
-
-            subCategoryFilter_TV_type.setOnClickListener(v1 -> {
-                if (isCLicked) {
-                    type_recyclerview.setVisibility(View.VISIBLE);
-
-                } else {
-                    type_recyclerview.setVisibility(View.GONE);
-                }
-            });
-
-            subCategoryFilter_TV_category.setOnClickListener(v13 -> {
-
-                if (isCLicked) {
-                    category_recyclerview.setVisibility(View.VISIBLE);
-
-                } else {
-                    category_recyclerview.setVisibility(View.GONE);
-                }
-            });
-
-            subCategoryFilter_TV_subCategory.setOnClickListener(v12 -> {
-
-                if (isCLicked) {
-                    subCategory_recyclerview.setVisibility(View.VISIBLE);
-
-                } else {
-                    subCategory_recyclerview.setVisibility(View.GONE);
-                }
-            });
-
-            subCategoryFilter_TV_origin.setOnClickListener(v14 -> {
-
-                if (isCLicked) {
-                    origin_recyclerview.setVisibility(View.VISIBLE);
-
-                } else {
-                    origin_recyclerview.setVisibility(View.GONE);
-                }
-
-            });
-
-            subCategoryFilter_TV_priceRange.setOnClickListener(v15 -> {
-                if (isCLicked ) {
-                    priceRange_recyclerview.setVisibility(View.VISIBLE);
-
-                } else {
-                    priceRange_recyclerview.setVisibility(View.GONE);
-                }
-            });
-
-            subCategoryFilter_TV_liquorContainer.setOnClickListener(v16 -> {
-
-                if (isCLicked) {
-                    liquorContainer_recyclerview.setVisibility(View.VISIBLE);
-
-                } else {
-                    liquorContainer_recyclerview.setVisibility(View.GONE);
-                }
-            });
-
-            subCategoryFilter_TV_VAQ.setOnClickListener(v17 -> {
-
-            });
-
-            subCategoryFilter_TV_kosher.setOnClickListener(v18 -> {
-
-            });
-
-            subCategoryFilter_TV_lcboVintage.setOnClickListener(v19 -> {
-
-            });
-
-            subCategoryFilter_TV_hashPhoto.setOnClickListener(v110 -> {
-
-            });
-
-            subCategoryFilter_TV_bonusPoint.setOnClickListener(v111 -> {
-
-            });
-
-            subCategoryFilter_Btn_apply.setOnClickListener(view ->{
-                dialog.cancel();
-            });
-
-            subCategoryFilter_Btn_reset.setOnClickListener(view -> {
-                dialog.cancel();
-            });
-
-            dialog.show();
+            clckShowDialog();
 
         });
 
 
+    }
+
+    private void clckShowDialog() {
+        Dialog dialog = new Dialog(SubCategory.this);
+        dialog.setContentView(R.layout.sub_category_filter);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable());
+        dialog.getWindow().setGravity(Gravity.RIGHT);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+
+        RecyclerView type_recyclerview = null, category_recyclerview, subCategory_recyclerview, origin_recyclerview,
+                priceRange_recyclerview, liquorContainer_recyclerview;
+
+        TextView subCategoryFilter_TV_type, subCategoryFilter_TV_category, subCategoryFilter_TV_subCategory,
+                subCategoryFilter_TV_origin, subCategoryFilter_TV_priceRange, subCategoryFilter_TV_liquorContainer,
+                subCategoryFilter_TV_VAQ, subCategoryFilter_TV_kosher, subCategoryFilter_TV_lcboVintage,
+                subCategoryFilter_TV_hashPhoto, subCategoryFilter_TV_bonusPoint;
+
+        Button subCategoryFilter_Btn_apply, subCategoryFilter_Btn_reset;
+
+
+        category_recyclerview = dialog.findViewById(R.id.category_recyclerview);
+        subCategory_recyclerview = dialog.findViewById(R.id.subCategory_recyclerview);
+        origin_recyclerview = dialog.findViewById(R.id.origin_recyclerview);
+        priceRange_recyclerview = dialog.findViewById(R.id.priceRange_recyclerview);
+        liquorContainer_recyclerview = dialog.findViewById(R.id.liquorContainer_recyclerview);
+
+        subCategoryFilter_Btn_apply = dialog.findViewById(R.id.subCategoryFilter_Btn_apply);
+        subCategoryFilter_Btn_reset = dialog.findViewById(R.id.subCategoryFilter_Btn_reset);
+
+        subCategoryFilter_TV_type = dialog.findViewById(R.id.subCategoryFilter_TV_type);
+        subCategoryFilter_TV_category = dialog.findViewById(R.id.subCategoryFilter_TV_category);
+        subCategoryFilter_TV_subCategory = dialog.findViewById(R.id.subCategoryFilter_TV_subCategory);
+        subCategoryFilter_TV_origin = dialog.findViewById(R.id.subCategoryFilter_TV_origin);
+        subCategoryFilter_TV_priceRange = dialog.findViewById(R.id.subCategoryFilter_TV_priceRange);
+        subCategoryFilter_TV_liquorContainer = dialog.findViewById(R.id.subCategoryFilter_TV_liquorContainer);
+        subCategoryFilter_TV_VAQ = dialog.findViewById(R.id.subCategoryFilter_TV_VAQ);
+        subCategoryFilter_TV_kosher = dialog.findViewById(R.id.subCategoryFilter_TV_kosher);
+        subCategoryFilter_TV_lcboVintage = dialog.findViewById(R.id.subCategoryFilter_TV_lcboVintage);
+        subCategoryFilter_TV_hashPhoto = dialog.findViewById(R.id.subCategoryFilter_TV_hashPhoto);
+        subCategoryFilter_TV_bonusPoint = dialog.findViewById(R.id.subCategoryFilter_TV_bonusPoint);
+
+        subCategoryFilter_TV_type.setOnClickListener(v1 -> {
+            if (isCLicked) {
+                type_recyclerview.setVisibility(View.VISIBLE);
+
+            } else {
+                type_recyclerview.setVisibility(View.GONE);
+            }
+        });
+
+        subCategoryFilter_TV_category.setOnClickListener(v13 -> {
+
+            if (isCLicked) {
+                category_recyclerview.setVisibility(View.VISIBLE);
+
+            } else {
+                category_recyclerview.setVisibility(View.GONE);
+            }
+        });
+
+        subCategoryFilter_TV_subCategory.setOnClickListener(v12 -> {
+
+            if (isCLicked) {
+                subCategory_recyclerview.setVisibility(View.VISIBLE);
+
+            } else {
+                subCategory_recyclerview.setVisibility(View.GONE);
+            }
+        });
+
+        subCategoryFilter_TV_origin.setOnClickListener(v14 -> {
+
+            if (isCLicked) {
+                origin_recyclerview.setVisibility(View.VISIBLE);
+
+            } else {
+                origin_recyclerview.setVisibility(View.GONE);
+            }
+
+        });
+
+        subCategoryFilter_TV_priceRange.setOnClickListener(v15 -> {
+            if (isCLicked ) {
+                priceRange_recyclerview.setVisibility(View.VISIBLE);
+
+            } else {
+                priceRange_recyclerview.setVisibility(View.GONE);
+            }
+        });
+
+        subCategoryFilter_TV_liquorContainer.setOnClickListener(v16 -> {
+
+            if (isCLicked) {
+                liquorContainer_recyclerview.setVisibility(View.VISIBLE);
+
+            } else {
+                liquorContainer_recyclerview.setVisibility(View.GONE);
+            }
+        });
+
+        subCategoryFilter_TV_VAQ.setOnClickListener(v17 -> {
+
+        });
+
+        subCategoryFilter_TV_kosher.setOnClickListener(v18 -> {
+
+        });
+
+        subCategoryFilter_TV_lcboVintage.setOnClickListener(v19 -> {
+
+        });
+
+        subCategoryFilter_TV_hashPhoto.setOnClickListener(v110 -> {
+
+        });
+
+        subCategoryFilter_TV_bonusPoint.setOnClickListener(v111 -> {
+
+        });
+
+        subCategoryFilter_Btn_apply.setOnClickListener(view ->{
+            dialog.cancel();
+        });
+
+        subCategoryFilter_Btn_reset.setOnClickListener(view -> {
+            dialog.cancel();
+        });
+
+        dialog.show();
     }
 
     private void subCategoryAPi(String typeKey, String typeID, String categoryID) {
@@ -305,7 +305,7 @@ public class SubCategory extends AppCompatActivity {
 
     }
 
-/*    private void filterApi(String value) {
+ /*   private void filterApi(String value) {
 
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
         if (networkCheck) {

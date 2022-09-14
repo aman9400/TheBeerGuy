@@ -81,7 +81,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     private String type_id;
     private String cat_id;
     private ProgressDialog progressDialog;
-    private int productPackageId;
+    private int productPackageId = 0;
     private boolean isClicked = false;
     TextView tv;
 
@@ -256,6 +256,10 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
             map.put("product_id", productID);
             map.put("category_id", cat_id);
             map.put("type_id", type_id);
+
+            if(productPackageId != 0){
+                map.put("package_id", ""+productPackageId);
+            }
 
 
             Call<List<ResponseProductDetail>> call1 = apiInterface.productDetail(map);
@@ -451,6 +455,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     @Override
     public void getId(int id) {
         productPackageId = id;
+        productApi();
     }
 
 
