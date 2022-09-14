@@ -66,12 +66,17 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
 
 
         if(Common.responseAddToCart != null) {
-            subTotal.setText("" + Common.responseAddToCart.getResult());
-            deliveryCharge.setText("$" + Common.responseAddToCart.getDeliveryFee());
-            taxAndCharges.setText("$" + Common.responseAddToCart.getHstAmount());
-            GrandTotal.setText("$" + Common.responseAddToCart.getTotalAmount());
-
-
+           int x =  MyDatabase.getDatabase(ReviewCart.this).patientDAO().getW() ;
+            subTotal.setText("" + x);
+            if (Common.responseAddToCart.getTotalAmount() != null) {
+                deliveryCharge.setText("$" + Common.responseAddToCart.getDeliveryFee());
+                taxAndCharges.setText("$" + Common.responseAddToCart.getHstAmount());
+                GrandTotal.setText("$" + Common.responseAddToCart.getTotalAmount());
+            }else {
+                deliveryCharge.setText("$" + "0");
+                taxAndCharges.setText("$" + "0");
+                GrandTotal.setText("$" + "0");
+            }
 
         }
 
@@ -108,12 +113,12 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
 
             Map<String, String> map = new HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
-            map.put("ext_purchase_id", "123456779");
-            map.put("ext_shopping_cart_id", "12345689");
-            map.put("ext_customer_id", "12345678");
+            map.put("ext_purchase_id", "");
+            map.put("ext_shopping_cart_id", ""+Common.shoppingId);
+            map.put("ext_customer_id", ""+Common.Customer_ID);
             map.put("ext_location_id", "2315");
             map.put("address", Address);
-            map.put("name", "Aman");
+            map.put("name", "");
             map.put("phone", "416-555-1234");
             map.put("products", "productID");
 

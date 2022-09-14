@@ -31,7 +31,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.ContactsContract;
 import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
@@ -68,14 +67,10 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     private int newCartNumber1;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
-
-
 
         Window window = this.getWindow();
 // clear FLAG_TRANSLUCENT_STATUS flag:
@@ -271,9 +266,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
         } else if (id == R.id.nav_create_account) {
 
-                startActivity(new Intent(this, SignUp.class));
-//            Toast.makeText(this, "Create Account", Toast.LENGTH_SHORT).show();
 
+            startActivity(new Intent(this, SignUp.class));
+//            Toast.makeText(this, "Create Account", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_signin) {
@@ -282,28 +277,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 //            Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
 
 
-        }else if (id == R.id.nav_profile){
-
-            startActivity(new Intent(this, Account.class));
-//            Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
-
-        }else if (id == R.id.nav_recentOrder){
-
-            startActivity(new Intent(this, Recent.class));
-//            Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
-
-
-        }else if (id == R.id.nav_SignOut ){
-
-            startActivity(new Intent(this, Login.class));
-//            Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
-            finish();
-
-        }
-
-
-
-        else if (id == R.id.nav_help || id == R.id.nav_profile) {
+        } else if (id == R.id.nav_help ) {
 
 
 
@@ -353,7 +327,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 //            Toast.makeText(getApplicationContext(), "Franchise and Sponsorship", Toast.LENGTH_SHORT).show();
 
         } else {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Coming Soon...", Toast.LENGTH_SHORT).show();
 
         }
 

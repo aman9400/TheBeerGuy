@@ -127,7 +127,7 @@ public class Recent extends Fragment {
 
                 @Override
                 public void onFailure(Call<List<ResponseHome>> call, Throwable t) {
-                    Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Not logged in yet", Toast.LENGTH_SHORT).show();
                 }
             });
 

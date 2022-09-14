@@ -186,8 +186,8 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, DashBoard.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, DashBoard.class);
+//        startActivity(intent);
         super.onBackPressed();
     }
 
@@ -219,8 +219,9 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), DashBoard.class);
-        startActivityForResult(myIntent, 0);
+//        Intent myIntent = new Intent(getApplicationContext(), DashBoard.class);
+//        startActivityForResult(myIntent, 0);
+        onBackPressed();
         return true;
     }
 
@@ -369,6 +370,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
             Map<String, String> map = new HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
             map.put("ext_shopping_cart_id", ""+ shopping_id);
+            Common.shoppingId = shopping_id;
             map.put("ext_customer_id", ""+Common.Customer_ID);
             map.put("ext_location_id", "2315");   // must be from store api
             map.put("address", Address);

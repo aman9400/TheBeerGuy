@@ -22,9 +22,11 @@ public class Common {
 
     public static int cartNumber = 0;
 
-    public static int Customer_ID = 1 ;
+    public static int Customer_ID = 12345678 ;
 
     public static String Hour = LandingScreen.hour;
+
+    public static long shoppingId ;
 
     public static ResponseAddToCart responseAddToCart = null;
 
