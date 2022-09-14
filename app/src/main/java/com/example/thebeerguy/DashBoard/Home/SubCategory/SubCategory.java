@@ -1,6 +1,7 @@
 package com.example.thebeerguy.DashBoard.Home.SubCategory;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,7 +45,10 @@ public class SubCategory extends AppCompatActivity {
     ImageView SubCategoryToolbar_filter;
 
     private androidx.appcompat.widget.Toolbar sub_category_toolbaar;
-    boolean isCLicked = false;
+    boolean isCLicked_type, isCLicked_category, isCLicked_subCategory, isCLicked_origin,
+            isCLicked_priceRange, isCLicked_liquorContainer, isCLicked_VAQ, isCLicked_kosher,
+            isCLicked_lcboVintage, isCLicked_hashPhoto, isCLicked_bonusPoint = false;
+
     private List<ResponseProductList> subCategoryList = new ArrayList<>();
 
     APIInterface apiInterface;
@@ -81,143 +85,291 @@ public class SubCategory extends AppCompatActivity {
         sub_category_toolbaar = findViewById(R.id.Sub_category_toolbaar);
         setSupportActionBar(sub_category_toolbaar);
 
+
+
+
+
         SubCategoryToolbar_filter.setOnClickListener(v -> {
 
 
-            clckShowDialog();
+            Dialog dialog = new Dialog(SubCategory.this);
+            dialog.setContentView(R.layout.sub_category_filter);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable());
+            dialog.getWindow().setGravity(Gravity.RIGHT);
+            dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+
+            RecyclerView type_recyclerview = null, category_recyclerview, subCategory_recyclerview, origin_recyclerview,
+                    priceRange_recyclerview, liquorContainer_recyclerview;
+
+            ImageView subCategoryFilter_ImV_type, subCategoryFilter_ImV_category, subCategoryFilter_ImV_subCategory,
+                    subCategoryFilter_ImV_origin, subCategoryFilter_ImV_priceRange, subCategoryFilter_ImV_liquorContainer,
+                    subCategoryFilter_ImV_VAQ, subCategoryFilter_ImV_kosher, subCategoryFilter_ImV_lcboVintage,
+                    subCategoryFilter_ImV_hashPhoto, subCategoryFilter_ImV_bonusPoint;
+
+            ConstraintLayout subCategoryFilter_CL_type, subCategoryFilter_CL_category, subCategoryFilter_CL_subCategory,
+                    subCategoryFilter_CL_origin, subCategoryFilter_CL_priceRange, subCategoryFilter_CL_liquorContainer,
+                    subCategoryFilter_CL_VAQ, subCategoryFilter_CL_kosher, subCategoryFilter_CL_lcboVintage,
+                    subCategoryFilter_CL_hashPhoto, subCategoryFilter_CL_bonusPoint;
+
+            ConstraintLayout  subCategoryFilter_CL_type_option, subCat_filter_CL_beer, subCat_filter_CL_wine, subCat_filter_CL_liquor,
+                    subCategoryFilter_CL_VAQ_Option, subCategoryFilter_CL_kosherOption, subCategoryFilter_CL_lcboVintage_Option,
+                    subCategoryFilter_CL_hashPhoto_Option, subCategoryFilter_CL_bonusPoint_Option;
+
+            subCat_filter_CL_beer = dialog.findViewById(R.id.subCat_filter_CL_beer);
+            subCat_filter_CL_wine = dialog.findViewById(R.id.subCat_filter_CL_wine);
+            subCat_filter_CL_liquor = dialog.findViewById(R.id.subCat_filter_CL_liquor);
+            subCategoryFilter_CL_VAQ_Option = dialog.findViewById(R.id.subCategoryFilter_CL_VAQ_Option);
+            subCategoryFilter_CL_kosherOption = dialog.findViewById(R.id.subCategoryFilter_CL_kosherOption);
+            subCategoryFilter_CL_lcboVintage_Option = dialog.findViewById(R.id.subCategoryFilter_CL_lcboVintage_Option);
+            subCategoryFilter_CL_hashPhoto_Option = dialog.findViewById(R.id.subCategoryFilter_CL_hashPhoto_Option);
+            subCategoryFilter_CL_bonusPoint_Option = dialog.findViewById(R.id.subCategoryFilter_CL_bonusPoint_Option);
+            subCategoryFilter_CL_type_option = dialog.findViewById(R.id.subCategoryFilter_CL_type_option);
+
+            Button subCategoryFilter_Btn_apply, subCategoryFilter_Btn_reset;
+
+
+            category_recyclerview = dialog.findViewById(R.id.category_recyclerview);
+            subCategory_recyclerview = dialog.findViewById(R.id.subCategory_recyclerview);
+            origin_recyclerview = dialog.findViewById(R.id.origin_recyclerview);
+            priceRange_recyclerview = dialog.findViewById(R.id.priceRange_recyclerview);
+            liquorContainer_recyclerview = dialog.findViewById(R.id.liquorContainer_recyclerview);
+
+            subCategoryFilter_Btn_apply = dialog.findViewById(R.id.subCategoryFilter_Btn_apply);
+            subCategoryFilter_Btn_reset = dialog.findViewById(R.id.subCategoryFilter_Btn_reset);
+
+            subCategoryFilter_ImV_type = dialog.findViewById(R.id.subCategoryFilter_ImV_type);
+            subCategoryFilter_ImV_category = dialog.findViewById(R.id.subCategoryFilter_ImV_category);
+            subCategoryFilter_ImV_subCategory = dialog.findViewById(R.id.subCategoryFilter_ImV_subCategory);
+            subCategoryFilter_ImV_origin = dialog.findViewById(R.id.subCategoryFilter_ImV_origin);
+            subCategoryFilter_ImV_priceRange = dialog.findViewById(R.id.subCategoryFilter_ImV_priceRange);
+            subCategoryFilter_ImV_liquorContainer = dialog.findViewById(R.id.subCategoryFilter_ImV_liquorContainer);
+            subCategoryFilter_ImV_VAQ = dialog.findViewById(R.id.subCategoryFilter_ImV_VAQ);
+            subCategoryFilter_ImV_kosher = dialog.findViewById(R.id.subCategoryFilter_ImV_kosher);
+            subCategoryFilter_ImV_lcboVintage = dialog.findViewById(R.id.subCategoryFilter_ImV_lcboVintage);
+            subCategoryFilter_ImV_hashPhoto = dialog.findViewById(R.id.subCategoryFilter_ImV_hashPhoto);
+            subCategoryFilter_ImV_bonusPoint = dialog.findViewById(R.id.subCategoryFilter_ImV_bonusPoint);
+
+            subCategoryFilter_CL_type = dialog.findViewById(R.id.subCategoryFilter_CL_type);
+            subCategoryFilter_CL_category = dialog.findViewById(R.id.subCategoryFilter_CL_category);
+            subCategoryFilter_CL_subCategory = dialog.findViewById(R.id.subCategoryFilter_CL_subCategory);
+            subCategoryFilter_CL_origin = dialog.findViewById(R.id.subCategoryFilter_CL_origin);
+            subCategoryFilter_CL_priceRange = dialog.findViewById(R.id.subCategoryFilter_CL_priceRange);
+            subCategoryFilter_CL_liquorContainer = dialog.findViewById(R.id.subCategoryFilter_CL_liquorContainer);
+            subCategoryFilter_CL_VAQ = dialog.findViewById(R.id.subCategoryFilter_CL_VAQ);
+            subCategoryFilter_CL_kosher = dialog.findViewById(R.id.subCategoryFilter_CL_kosher);
+            subCategoryFilter_CL_lcboVintage = dialog.findViewById(R.id.subCategoryFilter_CL_lcboVintage);
+            subCategoryFilter_CL_hashPhoto = dialog.findViewById(R.id.subCategoryFilter_CL_hashPhoto);
+            subCategoryFilter_CL_bonusPoint = dialog.findViewById(R.id.subCategoryFilter_CL_bonusPoint);
+
+            subCategoryFilter_CL_type.setOnClickListener(v1 -> {
+                if (isCLicked_type) {
+
+                    isCLicked_type = true;
+
+                    subCategoryFilter_ImV_type.setImageResource(R.drawable.ic_arrow_downward_24);
+
+                    subCategoryFilter_CL_type_option.setVisibility(View.VISIBLE);
+
+
+
+                } else {
+
+                    isCLicked_type = false;
+
+                    subCategoryFilter_ImV_type.setImageResource(R.drawable.ic_arrow_forward_24);
+                    subCategoryFilter_CL_type_option.setVisibility(View.GONE);
+                }
+            });
+
+            subCategoryFilter_CL_category.setOnClickListener(v13 -> {
+
+                if (isCLicked_category) {
+
+                    isCLicked_category = true;
+
+                    category_recyclerview.setVisibility(View.VISIBLE);
+
+                    subCategoryFilter_ImV_category.setImageResource(R.drawable.ic_arrow_downward_24);
+
+                } else {
+
+                    isCLicked_category = false;
+
+                    category_recyclerview.setVisibility(View.GONE);
+
+                    subCategoryFilter_ImV_category.setImageResource(R.drawable.ic_arrow_forward_24);
+                }
+            });
+
+            subCategoryFilter_CL_subCategory.setOnClickListener(v12 -> {
+
+                if (isCLicked_subCategory) {
+
+                    isCLicked_subCategory = true;
+
+                    subCategory_recyclerview.setVisibility(View.VISIBLE);
+                    subCategoryFilter_ImV_subCategory.setImageResource(R.drawable.ic_arrow_downward_24);
+
+                } else {
+
+                    isCLicked_subCategory = false;
+
+                    subCategory_recyclerview.setVisibility(View.GONE);
+                    subCategoryFilter_ImV_subCategory.setImageResource(R.drawable.ic_arrow_forward_24);
+                }
+            });
+
+            subCategoryFilter_CL_origin.setOnClickListener(v14 -> {
+
+                if (isCLicked_origin) {
+
+                    isCLicked_origin = true;
+
+                    origin_recyclerview.setVisibility(View.VISIBLE);
+                    subCategoryFilter_ImV_origin.setImageResource(R.drawable.ic_arrow_downward_24);
+
+
+                } else {
+
+                    isCLicked_origin = false;
+
+                    origin_recyclerview.setVisibility(View.GONE);
+                    subCategoryFilter_ImV_origin.setImageResource(R.drawable.ic_arrow_forward_24);
+                }
+
+            });
+
+            subCategoryFilter_CL_priceRange.setOnClickListener(v15 -> {
+                if (isCLicked_priceRange ) {
+
+                    isCLicked_priceRange = true;
+
+                    priceRange_recyclerview.setVisibility(View.VISIBLE);
+                    subCategoryFilter_ImV_priceRange.setImageResource(R.drawable.ic_arrow_downward_24);
+
+                } else {
+
+                    isCLicked_priceRange = false;
+
+                    priceRange_recyclerview.setVisibility(View.GONE);
+                    subCategoryFilter_ImV_priceRange.setImageResource(R.drawable.ic_arrow_forward_24);
+                }
+            });
+
+            subCategoryFilter_CL_liquorContainer.setOnClickListener(v16 -> {
+
+                if (isCLicked_liquorContainer) {
+
+                    isCLicked_liquorContainer = true;
+
+                    liquorContainer_recyclerview.setVisibility(View.VISIBLE);
+                    subCategoryFilter_ImV_liquorContainer.setImageResource(R.drawable.ic_arrow_downward_24);
+
+                } else {
+
+                    isCLicked_liquorContainer = false;
+
+                    liquorContainer_recyclerview.setVisibility(View.GONE);
+                    subCategoryFilter_ImV_liquorContainer.setImageResource(R.drawable.ic_arrow_forward_24);
+                }
+            });
+
+            subCategoryFilter_CL_VAQ.setOnClickListener(v17 -> {
+
+                if (isCLicked_VAQ){
+                    isCLicked_VAQ = true;
+                    subCategoryFilter_CL_VAQ_Option.setVisibility(View.VISIBLE);
+                    subCategoryFilter_ImV_VAQ.setImageResource(R.drawable.ic_arrow_downward_24);
+
+                }else{
+
+                    isCLicked_VAQ = false;
+                    subCategoryFilter_CL_VAQ_Option.setVisibility(View.GONE);
+                    subCategoryFilter_ImV_VAQ.setImageResource(R.drawable.ic_arrow_forward_24);
+                }
+
+            });
+
+            subCategoryFilter_CL_kosher.setOnClickListener(v18 -> {
+
+                if (isCLicked_kosher){
+
+                    isCLicked_kosher = true;
+                    subCategoryFilter_CL_kosherOption.setVisibility(View.VISIBLE);
+                    subCategoryFilter_ImV_kosher.setImageResource(R.drawable.ic_arrow_downward_24);
+
+                }else {
+                    isCLicked_kosher = false;
+                    subCategoryFilter_CL_kosherOption.setVisibility(View.GONE);
+                    subCategoryFilter_ImV_kosher.setImageResource(R.drawable.ic_arrow_forward_24);
+
+                }
+
+            });
+
+            subCategoryFilter_CL_lcboVintage.setOnClickListener(v19 -> {
+
+                if (isCLicked_lcboVintage){
+
+                    isCLicked_lcboVintage = true;
+                    subCategoryFilter_CL_lcboVintage_Option.setVisibility(View.VISIBLE);
+                    subCategoryFilter_ImV_lcboVintage.setImageResource(R.drawable.ic_arrow_downward_24);
+
+
+                }else {
+
+                    isCLicked_lcboVintage = false;
+                    subCategoryFilter_CL_lcboVintage_Option.setVisibility(View.GONE);
+                    subCategoryFilter_ImV_lcboVintage.setImageResource(R.drawable.ic_arrow_forward_24);
+
+                }
+
+            });
+
+            subCategoryFilter_CL_hashPhoto.setOnClickListener(v110 -> {
+
+                if (isCLicked_hashPhoto){
+                    isCLicked_hashPhoto = true;
+                    subCategoryFilter_CL_hashPhoto_Option.setVisibility(View.VISIBLE);
+                    subCategoryFilter_ImV_hashPhoto.setImageResource(R.drawable.ic_arrow_downward_24);
+
+                }else
+                    isCLicked_hashPhoto = false;
+                subCategoryFilter_CL_hashPhoto_Option.setVisibility(View.GONE);
+                subCategoryFilter_ImV_hashPhoto.setImageResource(R.drawable.ic_arrow_forward_24);
+
+
+            });
+
+            subCategoryFilter_CL_bonusPoint.setOnClickListener(v111 -> {
+
+                if (isCLicked_bonusPoint){
+                    isCLicked_bonusPoint = true;
+                    subCategoryFilter_CL_bonusPoint_Option.setVisibility(View.VISIBLE);
+                    subCategoryFilter_ImV_bonusPoint.setImageResource(R.drawable.ic_arrow_downward_24);
+
+                }else{
+
+                    isCLicked_bonusPoint = false;
+                    subCategoryFilter_CL_bonusPoint_Option.setVisibility(View.GONE);
+                    subCategoryFilter_ImV_bonusPoint.setImageResource(R.drawable.ic_arrow_forward_24);
+                }
+
+            });
+
+            subCategoryFilter_Btn_apply.setOnClickListener(view ->{
+                dialog.cancel();
+            });
+
+            subCategoryFilter_Btn_reset.setOnClickListener(view -> {
+                dialog.cancel();
+            });
+
+            dialog.show();
 
         });
 
 
-    }
-
-    private void clckShowDialog() {
-        Dialog dialog = new Dialog(SubCategory.this);
-        dialog.setContentView(R.layout.sub_category_filter);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable());
-        dialog.getWindow().setGravity(Gravity.RIGHT);
-        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-
-        RecyclerView type_recyclerview = null, category_recyclerview, subCategory_recyclerview, origin_recyclerview,
-                priceRange_recyclerview, liquorContainer_recyclerview;
-
-        TextView subCategoryFilter_TV_type, subCategoryFilter_TV_category, subCategoryFilter_TV_subCategory,
-                subCategoryFilter_TV_origin, subCategoryFilter_TV_priceRange, subCategoryFilter_TV_liquorContainer,
-                subCategoryFilter_TV_VAQ, subCategoryFilter_TV_kosher, subCategoryFilter_TV_lcboVintage,
-                subCategoryFilter_TV_hashPhoto, subCategoryFilter_TV_bonusPoint;
-
-        Button subCategoryFilter_Btn_apply, subCategoryFilter_Btn_reset;
-
-
-        category_recyclerview = dialog.findViewById(R.id.category_recyclerview);
-        subCategory_recyclerview = dialog.findViewById(R.id.subCategory_recyclerview);
-        origin_recyclerview = dialog.findViewById(R.id.origin_recyclerview);
-        priceRange_recyclerview = dialog.findViewById(R.id.priceRange_recyclerview);
-        liquorContainer_recyclerview = dialog.findViewById(R.id.liquorContainer_recyclerview);
-
-        subCategoryFilter_Btn_apply = dialog.findViewById(R.id.subCategoryFilter_Btn_apply);
-        subCategoryFilter_Btn_reset = dialog.findViewById(R.id.subCategoryFilter_Btn_reset);
-
-        subCategoryFilter_TV_type = dialog.findViewById(R.id.subCategoryFilter_TV_type);
-        subCategoryFilter_TV_category = dialog.findViewById(R.id.subCategoryFilter_TV_category);
-        subCategoryFilter_TV_subCategory = dialog.findViewById(R.id.subCategoryFilter_TV_subCategory);
-        subCategoryFilter_TV_origin = dialog.findViewById(R.id.subCategoryFilter_TV_origin);
-        subCategoryFilter_TV_priceRange = dialog.findViewById(R.id.subCategoryFilter_TV_priceRange);
-        subCategoryFilter_TV_liquorContainer = dialog.findViewById(R.id.subCategoryFilter_TV_liquorContainer);
-        subCategoryFilter_TV_VAQ = dialog.findViewById(R.id.subCategoryFilter_TV_VAQ);
-        subCategoryFilter_TV_kosher = dialog.findViewById(R.id.subCategoryFilter_TV_kosher);
-        subCategoryFilter_TV_lcboVintage = dialog.findViewById(R.id.subCategoryFilter_TV_lcboVintage);
-        subCategoryFilter_TV_hashPhoto = dialog.findViewById(R.id.subCategoryFilter_TV_hashPhoto);
-        subCategoryFilter_TV_bonusPoint = dialog.findViewById(R.id.subCategoryFilter_TV_bonusPoint);
-
-        subCategoryFilter_TV_type.setOnClickListener(v1 -> {
-            if (isCLicked) {
-                type_recyclerview.setVisibility(View.VISIBLE);
-
-            } else {
-                type_recyclerview.setVisibility(View.GONE);
-            }
-        });
-
-        subCategoryFilter_TV_category.setOnClickListener(v13 -> {
-
-            if (isCLicked) {
-                category_recyclerview.setVisibility(View.VISIBLE);
-
-            } else {
-                category_recyclerview.setVisibility(View.GONE);
-            }
-        });
-
-        subCategoryFilter_TV_subCategory.setOnClickListener(v12 -> {
-
-            if (isCLicked) {
-                subCategory_recyclerview.setVisibility(View.VISIBLE);
-
-            } else {
-                subCategory_recyclerview.setVisibility(View.GONE);
-            }
-        });
-
-        subCategoryFilter_TV_origin.setOnClickListener(v14 -> {
-
-            if (isCLicked) {
-                origin_recyclerview.setVisibility(View.VISIBLE);
-
-            } else {
-                origin_recyclerview.setVisibility(View.GONE);
-            }
-
-        });
-
-        subCategoryFilter_TV_priceRange.setOnClickListener(v15 -> {
-            if (isCLicked ) {
-                priceRange_recyclerview.setVisibility(View.VISIBLE);
-
-            } else {
-                priceRange_recyclerview.setVisibility(View.GONE);
-            }
-        });
-
-        subCategoryFilter_TV_liquorContainer.setOnClickListener(v16 -> {
-
-            if (isCLicked) {
-                liquorContainer_recyclerview.setVisibility(View.VISIBLE);
-
-            } else {
-                liquorContainer_recyclerview.setVisibility(View.GONE);
-            }
-        });
-
-        subCategoryFilter_TV_VAQ.setOnClickListener(v17 -> {
-
-        });
-
-        subCategoryFilter_TV_kosher.setOnClickListener(v18 -> {
-
-        });
-
-        subCategoryFilter_TV_lcboVintage.setOnClickListener(v19 -> {
-
-        });
-
-        subCategoryFilter_TV_hashPhoto.setOnClickListener(v110 -> {
-
-        });
-
-        subCategoryFilter_TV_bonusPoint.setOnClickListener(v111 -> {
-
-        });
-
-        subCategoryFilter_Btn_apply.setOnClickListener(view ->{
-            dialog.cancel();
-        });
-
-        subCategoryFilter_Btn_reset.setOnClickListener(view -> {
-            dialog.cancel();
-        });
-
-        dialog.show();
     }
 
     private void subCategoryAPi(String typeKey, String typeID, String categoryID) {
@@ -305,7 +457,7 @@ public class SubCategory extends AppCompatActivity {
 
     }
 
- /*   private void filterApi(String value) {
+/*    private void filterApi(String value) {
 
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
         if (networkCheck) {
