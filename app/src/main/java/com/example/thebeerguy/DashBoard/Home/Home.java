@@ -93,7 +93,8 @@ public class Home extends Fragment {
                 Intent intent = new Intent(getContext(), SubCategory.class);
                 intent.putExtra("subCatId", "3968");
                 intent.putExtra("typeID", "1");
-                intent.putExtra("name", s);
+                intent.putExtra("name", "search");
+                intent.putExtra("keyword", s);
                 startActivity(intent);
                 return false;
             }

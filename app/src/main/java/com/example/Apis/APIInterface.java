@@ -5,6 +5,7 @@ import com.example.Profile.AddAddressResponse.ResponseAddAddress;
 import com.example.Signup.responseSignup.ResponseSignup;
 import com.example.login.responseLogin.LoginResponse;
 import com.example.thebeerguy.DashBoard.Home.PaymentResponse.ResponsePayment;
+import com.example.thebeerguy.DashBoard.Home.ResponseSearch.ResponseSearch;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.FilterResponse.ResponseFilter;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.subCategoryResponse.ResponseSubCategory;
 import com.example.thebeerguy.DashBoard.Home.categoryResponse.ResponseCategory;
@@ -50,7 +51,7 @@ public interface APIInterface {
 
     @FormUrlEncoded
     @POST("product/list")
-    Call<List<ResponseProductList>> searchApiList(@FieldMap Map<String, String> search);
+    Call<ResponseSearch> searchApiList(@FieldMap Map<String, String> search);
 
     @FormUrlEncoded
     @POST("product/list")

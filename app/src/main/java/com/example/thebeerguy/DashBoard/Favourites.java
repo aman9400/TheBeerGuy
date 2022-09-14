@@ -48,41 +48,11 @@ public class Favourites extends Fragment {
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
-
-//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
-//        boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
-//
-//        if (Islogin){   }else {
-//            Toast.makeText(getContext(), "Please Login First", Toast.LENGTH_SHORT).show();
-//            startActivity(new Intent(getContext(), Login.class));
-//        }
-
             homeApi("is_fave", "1");
-            Toast.makeText(getContext(), "Favourites", Toast.LENGTH_SHORT).show();
-
-
-
-
-
-
-//        GridAdapter gridAdapter = new GridAdapter(getContext(),BeerList);
-//        fav_gridView.setAdapter(gridAdapter);
-
-
-
+//            Toast.makeText(getContext(), "Favourites", Toast.LENGTH_SHORT).show();
 
         return view;
     }
-
-//    private void modelList() {
-//
-//        list.add(new SampleModel(R.drawable.beer, "Budweiser", "$2.90 - $104.95", "1"));
-//        list.add(new SampleModel(R.drawable.vodka, "Budweiser", "$2.90 - $104.95", "2"));
-//        list.add(new SampleModel(R.drawable.beer, "Budweiser", "$2.90 - $104.95", "3"));
-//        list.add(new SampleModel(R.drawable.vodka, "Budweiser", "$2.90 - $104.95", "4"));
-//        list.add(new SampleModel(R.drawable.beer, "Budweiser", "$2.90 - $104.95", "5"));
-//    }
-
 
     private void homeApi(String typeKey, String typeID) {
 

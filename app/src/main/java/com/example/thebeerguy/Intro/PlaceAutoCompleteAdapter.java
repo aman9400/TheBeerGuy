@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.common.Common;
 import com.example.thebeerguy.R;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -55,7 +56,7 @@ class PlacesAutoCompleteAdapter extends RecyclerView.Adapter<PlacesAutoCompleteA
         mContext = context;
         STYLE_BOLD = new StyleSpan(Typeface.BOLD);
         STYLE_NORMAL = new StyleSpan(Typeface.NORMAL);
-        Places.initialize(context, "AIzaSyC0lbix81e26iQ41yLil1N-1hlQsE9b13U");
+        Places.initialize(context, Common.newGoogleClientID);
         placesClient = com.google.android.libraries.places.api.Places.createClient(context);
     }
 
@@ -162,7 +163,7 @@ class PlacesAutoCompleteAdapter extends RecyclerView.Adapter<PlacesAutoCompleteA
 
     @Override
     public void onBindViewHolder(@NonNull PredictionHolder mPredictionHolder, final int i) {
-        mPredictionHolder.address.setText(mResultList.get(i).address);
+        mPredictionHolder.address.setText(mResultList.get(i).area + ", " + mResultList.get(i).address);
         mPredictionHolder.area.setText(mResultList.get(i).area);
 
     }

@@ -199,8 +199,6 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
     private void askPermission() {
 
         ActivityCompat.requestPermissions((LandingScreen.this), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
-
-
     }
 
 
@@ -244,8 +242,11 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 
             Map<String, String> map = new HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
-            map.put("latitude", "51.2537750");
-            map.put("longitude", "-85.3232140");
+//
+//            map.put("latitude", "51.2537750");
+//            map.put("longitude", "-85.3232140");
+            map.put("latitude", ""+latitude);
+            map.put("longitude", ""+longitude);
 
             Call<List<ResponseStore>> call1 = apiInterface.storeApi(map);
 
@@ -260,8 +261,6 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
                             Log.e("test", "0000" + responseStores.get(0).getLatitude());
 
                             hour = responseStores.get(0).getHours().toString();
-
-
 
                         } else {
 

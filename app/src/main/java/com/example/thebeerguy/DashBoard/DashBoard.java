@@ -348,7 +348,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
          badgeLayout = (RelativeLayout)    MenuItemCompat.getActionView(item);
 
-        newCartNumber1 = MyDatabase.getDatabase(DashBoard.this).patientDAO().getCartNumber() ;
+        newCartNumber1 = MyDatabase.getDatabase(DashBoard.this).patientDAO().getW() ;
         tv = (TextView) badgeLayout.findViewById(R.id.actionbar_notifcation_textview);
         tv.setText(""+newCartNumber1);
         

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.Databse.MyDatabase;
 import com.example.Databse.Store;
 import com.example.thebeerguy.R;
 import com.squareup.picasso.Picasso;
@@ -18,10 +19,18 @@ import com.squareup.picasso.Picasso;
 public class ReviewCartAdapter extends RecyclerView.Adapter<ReviewCartAdapter.Myholder> {
     Context context;
     Store[] stores;
+    ReviewCartClick reviewCartClick;
 
-    public ReviewCartAdapter(Context context, Store[] stores) {
+    public ReviewCartAdapter(Context context, Store[] stores, ReviewCartClick reviewCartClick) {
         this.context = context;
         this.stores = stores;
+        this.reviewCartClick = reviewCartClick;
+    }
+
+    public void setStores(Store[] stores){
+        this.stores = stores;
+        notifyDataSetChanged();
+//        notifyAll();
     }
 
     @NonNull
@@ -38,6 +47,16 @@ public class ReviewCartAdapter extends RecyclerView.Adapter<ReviewCartAdapter.My
         Picasso.get().load(stores[position].getImage()).into(holder.iv_cart_res);
         holder.amount_cart_res.setText(""+stores[position].getProductPrice());
         holder.tv_cart_res.setText(stores[position].getProductName());
+
+        holder.pos_cart_res.setOnClickListener(v->{
+            reviewCartClick.increase(position, holder.amount_cart_res, holder.tv_quantity_res);
+
+        });
+
+        holder.neg_cart_res.setOnClickListener(v->{
+           reviewCartClick.decrease(position, holder.amount_cart_res, holder.tv_quantity_res);
+
+        });
     }
 
     @Override

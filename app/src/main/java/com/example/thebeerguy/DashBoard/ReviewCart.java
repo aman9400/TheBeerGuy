@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
@@ -33,7 +34,7 @@ import retrofit2.Response;
 
 import static com.example.thebeerguy.Intro.LandingScreen.Address;
 
-public class ReviewCart extends AppCompatActivity {
+public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
 
     Button review_button_checkout;
     private CheckBox review_gift_checkBox;
@@ -42,6 +43,8 @@ public class ReviewCart extends AppCompatActivity {
     TextView subTotal, deliveryCharge, taxAndCharges, discount_amount, GrandTotal;
     TextView addr_addr;
     private RecyclerView cart_products_recycler;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    ReviewCartAdapter reviewCartAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,8 @@ public class ReviewCart extends AppCompatActivity {
         cart_products_recycler = findViewById(R.id.cart_products_recycler);
 
         findIds();
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 //        APIClient.
@@ -70,12 +75,17 @@ public class ReviewCart extends AppCompatActivity {
 
         }
 
-        ReviewCartAdapter reviewCartAdapter = new ReviewCartAdapter(this, stores);
+         reviewCartAdapter = new ReviewCartAdapter(this, stores, this);
         cart_products_recycler.setHasFixedSize(true);
         cart_products_recycler.setLayoutManager(new LinearLayoutManager(this));
         cart_products_recycler.setAdapter(reviewCartAdapter);
 
         review_button_checkout.setOnClickListener(v -> paymentApi());
+
+        swipeRefreshLayout.setOnRefreshListener(()->{
+            reviewCartAdapter.notifyDataSetChanged();
+            swipeRefreshLayout.setRefreshing(false);
+        });
     }
 
     private void findIds() {
@@ -117,7 +127,7 @@ public class ReviewCart extends AppCompatActivity {
                         ResponsePayment responseSignup = response.body();
 //                        Common.jwt = responseSignup.getJwt();
                         Log.e("response : ", String.valueOf(response));
-                        Toast.makeText(ReviewCart.this, "Added", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(ReviewCart.this, "Added", Toast.LENGTH_SHORT).show();
 
                         startActivity(new Intent(ReviewCart.this, Checkout.class));
                     }
@@ -134,5 +144,56 @@ public class ReviewCart extends AppCompatActivity {
             Toast.makeText(ReviewCart.this, "Please Check your internet.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    @Override
+    public void increase(int position, TextView amount, TextView quant) {
+
+        int quantity = MyDatabase.getDatabase(this).patientDAO().getQuatity(stores[position].getProductID());
+        MyDatabase.getDatabase(this).patientDAO().updateTable(quantity + 1, stores[position].getProductID());
+
+        quant.setText(""+ quantity +1);
+        int carNumber = MyDatabase.getDatabase(this).patientDAO().getCartNumber();
+        MyDatabase.getDatabase(this).patientDAO().setCartNumber(carNumber + 1);
+
+        Store[] stores1 = MyDatabase.getDatabase(ReviewCart.this).patientDAO().totalStoreData();
+        reviewCartAdapter.setStores(stores1);
+
+        reviewCartAdapter.notifyDataSetChanged();
+
+    }
+//        holder.tv_quantity_res.setText(""+ (quantity + 1));
+////            int carNumber = MyDatabase.getDatabase(context).patientDAO().getCartNumber();
+////            MyDatabase.getDatabase(context).patientDAO().setCartNumber(carNumber + 1);
+//    }
+
+    @Override
+    public void decrease(int position, TextView amount, TextView quanti) {
+        int quantity = MyDatabase.getDatabase(this).patientDAO().getQuatity(stores[position].getProductID());
+        if(quantity >= 2){
+            MyDatabase.getDatabase(this).patientDAO().updateTable(quantity - 1, stores[position].getProductID());
+           quanti.setText(""+ (quantity - 1));
+                int carNumber = MyDatabase.getDatabase(this).patientDAO().getCartNumber();
+                MyDatabase.getDatabase(this).patientDAO().setCartNumber(carNumber - 1);
+
+
+            Store[] stores1 = MyDatabase.getDatabase(ReviewCart.this).patientDAO().totalStoreData();
+            reviewCartAdapter.setStores(stores1);
+
+            reviewCartAdapter.notifyDataSetChanged();
+        }else {
+            if( quantity == 1){
+                MyDatabase.getDatabase(this).patientDAO().deleteData(stores[position].getProductID());
+               quanti.setText("0");
+
+
+                Store[] stores1 = MyDatabase.getDatabase(ReviewCart.this).patientDAO().totalStoreData();
+                reviewCartAdapter.setStores(stores1);
+
+                reviewCartAdapter.notifyDataSetChanged();
+//                    int carNumber = MyDatabase.getDatabase(context).patientDAO().getCartNumber();
+//                    MyDatabase.getDatabase(context).patientDAO().setCartNumber(0);
+            }
+        }
     }
 }

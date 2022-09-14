@@ -18,6 +18,8 @@ public class Common {
 
     public static String Web_Client_id = "698599814407-9qijovc6ct2a18polbdddiaig1adh9t7.apps.googleusercontent.com";
 
+    public static String newGoogleClientID = "AIzaSyC0lbix81e26iQ41yLil1N-1hlQsE9b13U";
+
     public static int cartNumber = 0;
 
     public static int Customer_ID = 1 ;

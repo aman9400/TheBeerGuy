@@ -57,6 +57,8 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="4dp"
                 android:gravity="center"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:text="Budweiser"
                 android:textColor="#2E2D2D"
                 android:textSize="12sp"

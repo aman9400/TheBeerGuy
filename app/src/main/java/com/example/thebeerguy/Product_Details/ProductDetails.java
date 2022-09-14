@@ -35,6 +35,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
 import com.example.Databse.MyDatabase;
+import com.example.Databse.Store;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.thebeerguy.DashBoard.DashBoard;
@@ -86,12 +87,6 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
     String product_name, product_price, product_image;
 
-
-
-
-
-
-
     @SuppressLint({"RestrictedApi", "ResourceAsColor"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,20 +109,17 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
 
 
-        product_ImV_fav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        product_ImV_fav.setOnClickListener(v -> {
 
-                if (!isClicked) {
-                    isClicked = true;
-                    product_ImV_fav.setImageResource(R.drawable.ic_favorite_24);
-                    favApi();
-                    Toast.makeText(ProductDetails.this, "Added to favourite list ", Toast.LENGTH_SHORT).show();
+            if (!isClicked) {
+                isClicked = true;
+                product_ImV_fav.setImageResource(R.drawable.ic_favorite_24);
+                favApi();
+                Toast.makeText(ProductDetails.this, "Added to favourite list ", Toast.LENGTH_SHORT).show();
 
-                } else {
-                    isClicked = false;
-                    product_ImV_fav.setImageResource(R.drawable.ic_unfavorite_24);
-                }
+            } else {
+                isClicked = false;
+                product_ImV_fav.setImageResource(R.drawable.ic_unfavorite_24);
             }
         });
 
@@ -211,7 +203,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
        RelativeLayout badgeLayout = (RelativeLayout)    MenuItemCompat.getActionView(item);
 
          tv = (TextView) badgeLayout.findViewById(R.id.actionbar_notifcation_textview);
-        int newCartNumber2 = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getCartNumber() ;
+        int newCartNumber2 = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
         tv.setText(""+ newCartNumber2);
 
         ImageView imageView = (ImageView) badgeLayout.findViewById(R.id.clickCartIconMenu);
@@ -224,6 +216,12 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
             }
         });
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent myIntent = new Intent(getApplicationContext(), DashBoard.class);
+        startActivityForResult(myIntent, 0);
+        return true;
     }
 
     private void findIds() {
@@ -279,7 +277,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                         product_name = responseProductDetail.get(0).getLabel();
                         product_image = responseProductDetail.get(0).getImage();
 
-                        product_TV_ratting.setText( responseProductDetail.get(0).getRating());
+                        product_TV_ratting.setText("Rating : " + responseProductDetail.get(0).getRating());
                         product_brewer.setText( responseProductDetail.get(0).getBrewer());
                         product_alcohol.setText(responseProductDetail.get(0).getAlcoholContent());
                         product_details_TV_store.setText("The Beer Guy Store");
@@ -368,7 +366,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
             map.put(Common.Apikey_text, Common.Apikey_value);
             map.put("ext_shopping_cart_id", ""+ shopping_id);
             map.put("ext_customer_id", ""+Common.Customer_ID);
-            map.put("ext_location_id", "2315");
+            map.put("ext_location_id", "2315");   // must be from store api
             map.put("address", Address);
             map.put("name", nameLoggedIn);
             map.put("phone", "416-555-1234");
@@ -393,15 +391,23 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                         Log.e("test", "+"+ Common.cartNumber);
                         tv.setText(""+ Common.cartNumber);
 
-                        int newCartNumber = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getCartNumber() + 1;
+                        int newCartNumber = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
                         tv.setText(""+ newCartNumber);
 
                         MyDatabase.getDatabase(ProductDetails.this).patientDAO().setCartNumber(
                           newCartNumber
                         );
 
-                        long getBack = MyDatabase.getDatabase(ProductDetails.this).patientDAO()
-                                .insertIntoTable(Integer.parseInt(productID), 1, product_name, product_image, product_price);
+                        Store[] countStore = MyDatabase.getDatabase(ProductDetails.this).patientDAO().productIdFetch(Integer.parseInt(productID));
+
+                        if(countStore.length >= 1){
+                           int num =  MyDatabase.getDatabase(ProductDetails.this).patientDAO().getQuatity(Integer.parseInt(productID));
+                            MyDatabase.getDatabase(ProductDetails.this).patientDAO().updateTable(num + 1, Integer.parseInt(productID));
+                        }else{
+                            long getBack = MyDatabase.getDatabase(ProductDetails.this).patientDAO()
+                                    .insertIntoTable(Integer.parseInt(productID), 1, product_name, product_image, product_price);
+                        }
+
 
                         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                         final VibrationEffect vibrationEffect5;
