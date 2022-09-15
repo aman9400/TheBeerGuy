@@ -120,7 +120,7 @@ class PlacesAutoCompleteAdapter extends RecyclerView.Adapter<PlacesAutoCompleteA
         FindAutocompletePredictionsRequest request = FindAutocompletePredictionsRequest.builder()
                 // Call either setLocationBias() OR setLocationRestriction().
                 //.setLocationBias(bounds)
-                //.setCountry("BD")
+                .setCountry("CA")
                 //.setTypeFilter(TypeFilter.ADDRESS)
                 .setSessionToken(token)
                 .setQuery(constraint.toString())

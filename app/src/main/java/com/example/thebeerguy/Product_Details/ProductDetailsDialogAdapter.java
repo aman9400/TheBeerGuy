@@ -21,6 +21,7 @@ public class ProductDetailsDialogAdapter extends RecyclerView.Adapter<ProductDet
     Context context;
     List<Package> pakageList;
     GetProductPackageId getProductPackageId;
+    boolean isCheck = false;
 
     public ProductDetailsDialogAdapter(Context context, List<Package> pakageList, GetProductPackageId getProductPackageId) {
         this.context = context;
@@ -45,6 +46,8 @@ public class ProductDetailsDialogAdapter extends RecyclerView.Adapter<ProductDet
 
         holder.cl_package_dialog.setOnClickListener(v->{
             getProductPackageId.getId(aPackage.getPackageId());
+            holder.Product_dialog_recycler_radiobtn.setChecked(true);
+
         });
 
     }

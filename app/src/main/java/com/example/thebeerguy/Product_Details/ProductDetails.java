@@ -84,6 +84,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     private int productPackageId = 0;
     private boolean isClicked = false;
     TextView tv;
+    Dialog dialog;
 
     String product_name, product_price, product_image;
 
@@ -151,7 +152,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
         product_arrow_down.setOnClickListener(v -> {
 
-            Dialog dialog = new Dialog(ProductDetails.this);
+             dialog = new Dialog(ProductDetails.this);
             dialog.setContentView(R.layout.product_dialog);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
             dialog.getWindow().setWindowAnimations(R.style.AnimationForDialog);
@@ -247,6 +248,10 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
     private void productApi() {
 
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading....");
+        progressDialog.show();
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
         if (!networkCheck) {
             Toast.makeText(this, "check network", Toast.LENGTH_SHORT).show();
@@ -269,6 +274,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                 @Override
                 public void onResponse(Call<List<ResponseProductDetail>> call, Response<List<ResponseProductDetail>> response) {
                     if (response.isSuccessful()) {
+                        progressDialog.dismiss();
                         List<ResponseProductDetail> responseProductDetail = response.body();
 
                         pakageList = responseProductDetail.get(0).getPackages();
