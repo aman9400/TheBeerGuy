@@ -152,6 +152,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="16dp"
                                 android:text="Beer"
+                                android:textColor="@color/text"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -182,6 +183,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="16dp"
                                 android:text="Wine"
+                                android:textColor="@color/text"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -223,6 +225,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="16dp"
                                 android:text="Liquor"
+                                android:textColor="@color/text"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -579,6 +582,7 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginBottom="16dp"
                             android:text="Yes"
+                            android:textColor="@color/text"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -611,10 +615,9 @@
                         android:id="@+id/subCategoryFilter_CL_kosher"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/greyLight"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
                             android:id="@+id/subCategoryFilter_ImV_kosher"
@@ -626,19 +629,19 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/ic_arrow_forward_24" />
 
-                    <TextView
-                        android:id="@+id/subCategoryFilter_TV_kosher"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="5dp"
-                        android:text="Kosher"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/subCategoryFilter_ImV_kosher"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/subCategoryFilter_ImV_kosher"
-                        app:layout_constraintTop_toTopOf="@+id/subCategoryFilter_ImV_kosher" />
+                        <TextView
+                            android:id="@+id/subCategoryFilter_TV_kosher"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="5dp"
+                            android:text="Kosher"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/subCategoryFilter_ImV_kosher"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/subCategoryFilter_ImV_kosher"
+                            app:layout_constraintTop_toTopOf="@+id/subCategoryFilter_ImV_kosher" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -658,6 +661,7 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginBottom="16dp"
                             android:text="Yes"
+                            android:textColor="@color/text"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -740,6 +744,7 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginBottom="16dp"
                             android:text="Yes"
+                            android:textColor="@color/text"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -819,6 +824,7 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginBottom="16dp"
                             android:text="Yes"
+                            android:textColor="@color/text"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -899,6 +905,7 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginBottom="16dp"
                             android:text="Yes"
+                            android:textColor="@color/text"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"

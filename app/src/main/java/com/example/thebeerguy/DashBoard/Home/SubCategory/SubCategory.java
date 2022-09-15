@@ -164,7 +164,7 @@ public class SubCategory extends AppCompatActivity {
             subCategoryFilter_CL_type.setOnClickListener(v1 -> {
                 if (isCLicked_type) {
 
-                    isCLicked_type = true;
+                    isCLicked_type = false;
 
                     subCategoryFilter_ImV_type.setImageResource(R.drawable.ic_arrow_downward_24);
 
@@ -174,10 +174,10 @@ public class SubCategory extends AppCompatActivity {
 
                 } else {
 
-                    isCLicked_type = false;
+                    isCLicked_type = true;
 
                     subCategoryFilter_ImV_type.setImageResource(R.drawable.ic_arrow_forward_24);
-                    subCategoryFilter_CL_type_option.setVisibility(View.GONE);
+                    subCategoryFilter_CL_type_option.setVisibility(View.INVISIBLE);
                 }
             });
 
@@ -185,7 +185,7 @@ public class SubCategory extends AppCompatActivity {
 
                 if (isCLicked_category) {
 
-                    isCLicked_category = true;
+                    isCLicked_category = false;
 
                     category_recyclerview.setVisibility(View.VISIBLE);
 
@@ -193,7 +193,7 @@ public class SubCategory extends AppCompatActivity {
 
                 } else {
 
-                    isCLicked_category = false;
+                    isCLicked_category = true;
 
                     category_recyclerview.setVisibility(View.GONE);
 
@@ -205,14 +205,14 @@ public class SubCategory extends AppCompatActivity {
 
                 if (isCLicked_subCategory) {
 
-                    isCLicked_subCategory = true;
+                    isCLicked_subCategory = false;
 
                     subCategory_recyclerview.setVisibility(View.VISIBLE);
                     subCategoryFilter_ImV_subCategory.setImageResource(R.drawable.ic_arrow_downward_24);
 
                 } else {
 
-                    isCLicked_subCategory = false;
+                    isCLicked_subCategory = true;
 
                     subCategory_recyclerview.setVisibility(View.GONE);
                     subCategoryFilter_ImV_subCategory.setImageResource(R.drawable.ic_arrow_forward_24);
@@ -223,7 +223,7 @@ public class SubCategory extends AppCompatActivity {
 
                 if (isCLicked_origin) {
 
-                    isCLicked_origin = true;
+                    isCLicked_origin = false;
 
                     origin_recyclerview.setVisibility(View.VISIBLE);
                     subCategoryFilter_ImV_origin.setImageResource(R.drawable.ic_arrow_downward_24);
@@ -231,7 +231,7 @@ public class SubCategory extends AppCompatActivity {
 
                 } else {
 
-                    isCLicked_origin = false;
+                    isCLicked_origin = true;
 
                     origin_recyclerview.setVisibility(View.GONE);
                     subCategoryFilter_ImV_origin.setImageResource(R.drawable.ic_arrow_forward_24);
@@ -242,14 +242,14 @@ public class SubCategory extends AppCompatActivity {
             subCategoryFilter_CL_priceRange.setOnClickListener(v15 -> {
                 if (isCLicked_priceRange ) {
 
-                    isCLicked_priceRange = true;
+                    isCLicked_priceRange = false;
 
                     priceRange_recyclerview.setVisibility(View.VISIBLE);
                     subCategoryFilter_ImV_priceRange.setImageResource(R.drawable.ic_arrow_downward_24);
 
                 } else {
 
-                    isCLicked_priceRange = false;
+                    isCLicked_priceRange = true;
 
                     priceRange_recyclerview.setVisibility(View.GONE);
                     subCategoryFilter_ImV_priceRange.setImageResource(R.drawable.ic_arrow_forward_24);
@@ -260,14 +260,14 @@ public class SubCategory extends AppCompatActivity {
 
                 if (isCLicked_liquorContainer) {
 
-                    isCLicked_liquorContainer = true;
+                    isCLicked_liquorContainer = false;
 
                     liquorContainer_recyclerview.setVisibility(View.VISIBLE);
                     subCategoryFilter_ImV_liquorContainer.setImageResource(R.drawable.ic_arrow_downward_24);
 
                 } else {
 
-                    isCLicked_liquorContainer = false;
+                    isCLicked_liquorContainer = true;
 
                     liquorContainer_recyclerview.setVisibility(View.GONE);
                     subCategoryFilter_ImV_liquorContainer.setImageResource(R.drawable.ic_arrow_forward_24);
@@ -277,13 +277,13 @@ public class SubCategory extends AppCompatActivity {
             subCategoryFilter_CL_VAQ.setOnClickListener(v17 -> {
 
                 if (isCLicked_VAQ){
-                    isCLicked_VAQ = true;
+                    isCLicked_VAQ = false;
                     subCategoryFilter_CL_VAQ_Option.setVisibility(View.VISIBLE);
                     subCategoryFilter_ImV_VAQ.setImageResource(R.drawable.ic_arrow_downward_24);
 
                 }else{
 
-                    isCLicked_VAQ = false;
+                    isCLicked_VAQ = true;
                     subCategoryFilter_CL_VAQ_Option.setVisibility(View.GONE);
                     subCategoryFilter_ImV_VAQ.setImageResource(R.drawable.ic_arrow_forward_24);
                 }
@@ -294,12 +294,12 @@ public class SubCategory extends AppCompatActivity {
 
                 if (isCLicked_kosher){
 
-                    isCLicked_kosher = true;
+                    isCLicked_kosher = false;
                     subCategoryFilter_CL_kosherOption.setVisibility(View.VISIBLE);
                     subCategoryFilter_ImV_kosher.setImageResource(R.drawable.ic_arrow_downward_24);
 
                 }else {
-                    isCLicked_kosher = false;
+                    isCLicked_kosher = true;
                     subCategoryFilter_CL_kosherOption.setVisibility(View.GONE);
                     subCategoryFilter_ImV_kosher.setImageResource(R.drawable.ic_arrow_forward_24);
 
@@ -311,14 +311,14 @@ public class SubCategory extends AppCompatActivity {
 
                 if (isCLicked_lcboVintage){
 
-                    isCLicked_lcboVintage = true;
+                    isCLicked_lcboVintage = false;
                     subCategoryFilter_CL_lcboVintage_Option.setVisibility(View.VISIBLE);
                     subCategoryFilter_ImV_lcboVintage.setImageResource(R.drawable.ic_arrow_downward_24);
 
 
                 }else {
 
-                    isCLicked_lcboVintage = false;
+                    isCLicked_lcboVintage = true;
                     subCategoryFilter_CL_lcboVintage_Option.setVisibility(View.GONE);
                     subCategoryFilter_ImV_lcboVintage.setImageResource(R.drawable.ic_arrow_forward_24);
 
@@ -329,12 +329,12 @@ public class SubCategory extends AppCompatActivity {
             subCategoryFilter_CL_hashPhoto.setOnClickListener(v110 -> {
 
                 if (isCLicked_hashPhoto){
-                    isCLicked_hashPhoto = true;
+                    isCLicked_hashPhoto = false;
                     subCategoryFilter_CL_hashPhoto_Option.setVisibility(View.VISIBLE);
                     subCategoryFilter_ImV_hashPhoto.setImageResource(R.drawable.ic_arrow_downward_24);
 
                 }else
-                    isCLicked_hashPhoto = false;
+                    isCLicked_hashPhoto = true;
                 subCategoryFilter_CL_hashPhoto_Option.setVisibility(View.GONE);
                 subCategoryFilter_ImV_hashPhoto.setImageResource(R.drawable.ic_arrow_forward_24);
 
@@ -344,13 +344,13 @@ public class SubCategory extends AppCompatActivity {
             subCategoryFilter_CL_bonusPoint.setOnClickListener(v111 -> {
 
                 if (isCLicked_bonusPoint){
-                    isCLicked_bonusPoint = true;
+                    isCLicked_bonusPoint = false;
                     subCategoryFilter_CL_bonusPoint_Option.setVisibility(View.VISIBLE);
                     subCategoryFilter_ImV_bonusPoint.setImageResource(R.drawable.ic_arrow_downward_24);
 
                 }else{
 
-                    isCLicked_bonusPoint = false;
+                    isCLicked_bonusPoint = true;
                     subCategoryFilter_CL_bonusPoint_Option.setVisibility(View.GONE);
                     subCategoryFilter_ImV_bonusPoint.setImageResource(R.drawable.ic_arrow_forward_24);
                 }
