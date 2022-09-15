@@ -22,9 +22,13 @@ public class Common {
 
     public static int cartNumber = 0;
 
+    public static int locationID = 1000;
+
     public static int Customer_ID = 12345678 ;
 
     public static String Hour = LandingScreen.hour;
+
+    public static String phone;
 
     public static long shoppingId ;
 

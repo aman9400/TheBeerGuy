@@ -22,13 +22,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
-import com.example.Databse.MyDatabase;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.login.Login;
 import com.example.thebeerguy.DashBoard.DashBoard;
 import com.example.thebeerguy.Intro.ResponseStore.ResponseStore;
-import com.example.thebeerguy.Product_Details.ProductDetails;
 import com.example.thebeerguy.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -51,19 +49,18 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
     private final static int REQUEST_CODE = 100;
     //    private FusedLocationProviderClient client;
     public static String Address;
+    public static String hour;
+    private final Boolean IsVisited = false;
     Button sp4_btn_login, sp4_btn_signup;
     TabLayout tabLayout;
     SearchView splas4_searchView_location;
     APIInterface apiInterface;
+    double latitude, longitude;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private String country;
-    private final Boolean IsVisited = false;
     private PlacesAutoCompleteAdapter mAutoCompleteAdapter;
     private RecyclerView recyclerView;
     private Place getDataPlace;
-    double latitude, longitude;
-
-    public static String hour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,11 +122,9 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 
         // button to move to Dashboard
         sp4_btn_login.setOnClickListener(v -> {
-            Intent sp4_loginIntent = new Intent(LandingScreen.this, DashBoard.class);
-            sp4_loginIntent.putExtra("country", country);
-            sp4_loginIntent.putExtra("address", Address);
-            startActivity(sp4_loginIntent);
-            finish();
+
+            storeApi();
+
 
         });
 
@@ -160,7 +155,7 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 //                                    longitude.setText("Longitude: "+addresses.get(0).getLongitude());
 //                                    address.setText("Address: " + addresses.get(0).getAddressLine(0));
 
-                                splas4_searchView_location.setQuery(addresses.get(0).getAddressLine(0), true);
+                                splas4_searchView_location.setQuery(addresses.get(0).getAddressLine(0), false);
                                 splas4_searchView_location.setIconifiedByDefault(false);
 //                                Toast.makeText(LandingScreen.this, ""+addresses.get(0).getAddressLine(0), Toast.LENGTH_SHORT).show();
 //                                Log.e("d",addresses.get(0).getAddressLine(0));
@@ -171,7 +166,7 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 
                                 latitude = addresses.get(0).getLatitude();
                                 longitude = addresses.get(0).getLongitude();
-                                storeApi();
+//                                storeApi();
 
 //                                Log.e("test", ""+addresses.get(0).getLatitude() + ","+ addresses.get(0).getLongitude());
 
@@ -245,8 +240,8 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 //
 //            map.put("latitude", "51.2537750");
 //            map.put("longitude", "-85.3232140");
-            map.put("latitude", ""+latitude);
-            map.put("longitude", ""+longitude);
+            map.put("latitude", "" + latitude);
+            map.put("longitude", "" + longitude);
 
             Call<List<ResponseStore>> call1 = apiInterface.storeApi(map);
 
@@ -257,10 +252,17 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 
                     if (response.isSuccessful()) {
                         List<ResponseStore> responseStores = response.body();
+
+
                         if (!responseStores.isEmpty()) {
                             Log.e("test", "0000" + responseStores.get(0).getLatitude());
-
+                            Intent sp4_loginIntent = new Intent(LandingScreen.this, DashBoard.class);
+                            sp4_loginIntent.putExtra("country", country);
+                            sp4_loginIntent.putExtra("address", Address);
+                            startActivity(sp4_loginIntent);
+                            finish();
                             hour = responseStores.get(0).getHours().toString();
+                            Common.phone = responseStores.get(0).getPhone().toString();
 
                         } else {
 
@@ -296,6 +298,6 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
         longitude = place.getLatLng().longitude;
 
         Address = place.getAddress();
-        storeApi();
+
     }
 }

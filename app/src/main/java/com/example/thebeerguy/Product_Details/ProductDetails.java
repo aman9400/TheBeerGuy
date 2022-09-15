@@ -85,6 +85,9 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     private boolean isClicked = false;
     TextView tv;
     Dialog dialog;
+    private TextView textView43;
+    int newCartNumber2;
+    int newNumber = 0;
 
     String product_name, product_price, product_image;
 
@@ -98,6 +101,9 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
         window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
 
         findIds();
+        textView43 = findViewById(R.id.textView43);
+//        int newCartNumber = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
+//        tv.setText(""+ newCartNumber);
 
         if (Common.Hour != null){
 
@@ -116,7 +122,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                 isClicked = true;
                 product_ImV_fav.setImageResource(R.drawable.ic_favorite_24);
                 favApi();
-                Toast.makeText(ProductDetails.this, "Added to favourite list ", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ProductDetails.this, "Added to favourite list ", Toast.LENGTH_SHORT).show();
 
             } else {
                 isClicked = false;
@@ -137,6 +143,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
 
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#ffffff\">" + name + "</font>"));
+
 
 
 //        getSupportActionBar().show();
@@ -181,14 +188,21 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
         ProductDetailsRecyclerdAPI("is_popular", "1");
 
 
-        productDetail_btn_addToCard.setOnClickListener(v -> addToCartApi());
+        productDetail_btn_addToCard.setOnClickListener(v -> {
+            addToCartApi();
+//            int newCartNumber1 = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
+//            tv.setText(""+ newCartNumber1);
+        });
+
+//        int newCar = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
+//        tv.setText(""+ newCar);
 
     }
 
     @Override
     public void onBackPressed() {
-//        Intent intent = new Intent(this, DashBoard.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, DashBoard.class);
+        startActivity(intent);
         super.onBackPressed();
     }
 
@@ -204,12 +218,12 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
        RelativeLayout badgeLayout = (RelativeLayout)    MenuItemCompat.getActionView(item);
 
          tv = (TextView) badgeLayout.findViewById(R.id.actionbar_notifcation_textview);
-        int newCartNumber2 = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
+         newCartNumber2 = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
         tv.setText(""+ newCartNumber2);
 
         ImageView imageView = (ImageView) badgeLayout.findViewById(R.id.clickCartIconMenu);
         imageView.setOnClickListener(v->{
-            if(newCartNumber2 == 0){
+            if(newNumber == 0){
                 Toast.makeText(this, "No Product added", Toast.LENGTH_SHORT).show();
             }else {
                 Intent intent = new Intent(this, ReviewCart.class);
@@ -220,8 +234,8 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-//        Intent myIntent = new Intent(getApplicationContext(), DashBoard.class);
-//        startActivityForResult(myIntent, 0);
+        Intent myIntent = new Intent(getApplicationContext(), DashBoard.class);
+        startActivityForResult(myIntent, 0);
         onBackPressed();
         return true;
     }
@@ -249,7 +263,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     private void productApi() {
 
         ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setCancelable(false);
+//        progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading....");
         progressDialog.show();
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
@@ -280,20 +294,24 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                         pakageList = responseProductDetail.get(0).getPackages();
 
 
-                        Log.e("test", "" + pakageList.size());
+                        Log.e("test  size ", "" + pakageList.size());
+                        Log.e("test price common ", "" + responseProductDetail.get(0).getCommonPrice());
+
 
                         Picasso.get().load(responseProductDetail.get(0).getImage()).into(product_IV_image);
                         product_TV_name.setText(responseProductDetail.get(0).getLabel());
 
                         product_name = responseProductDetail.get(0).getLabel();
                         product_image = responseProductDetail.get(0).getImage();
+                        productPackageId = pakageList.get(0).getPackageId();
+//                        product_
 
                         product_TV_ratting.setText("Rating : " + responseProductDetail.get(0).getRating());
                         product_brewer.setText( responseProductDetail.get(0).getBrewer());
                         product_alcohol.setText(responseProductDetail.get(0).getAlcoholContent());
                         product_details_TV_store.setText("The Beer Guy Store");
 
-                        product_price = "$"+responseProductDetail.get(0).getCommonPrice();
+                        product_price = responseProductDetail.get(0).getCommonPrice();
 
                         product_TV_price.setText("$" + responseProductDetail.get(0).getCommonPrice());
 //                        product_TV_rating2.setText(responseProductDetail.get(0).getRating());
@@ -366,6 +384,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
     private void addToCartApi() {
 
+
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
         if (networkCheck) {
             SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(this);
@@ -400,15 +419,9 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                         Log.e("response : ", String.valueOf(response.body().getTotalAmount()));
 
                         Common.cartNumber = Common.cartNumber + 1;
-                        Log.e("test", "+"+ Common.cartNumber);
-                        tv.setText(""+ Common.cartNumber);
+                        Log.e("test cart number", "+"+ Common.cartNumber);
+//                        tv.setText(""+ Common.cartNumber);
 
-                        int newCartNumber = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
-                        tv.setText(""+ newCartNumber);
-
-                        MyDatabase.getDatabase(ProductDetails.this).patientDAO().setCartNumber(
-                          newCartNumber
-                        );
 
                         Store[] countStore = MyDatabase.getDatabase(ProductDetails.this).patientDAO().productIdFetch(Integer.parseInt(productID));
 
@@ -417,8 +430,21 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                             MyDatabase.getDatabase(ProductDetails.this).patientDAO().updateTable(num + 1, Integer.parseInt(productID));
                         }else{
                             long getBack = MyDatabase.getDatabase(ProductDetails.this).patientDAO()
-                                    .insertIntoTable(Integer.parseInt(productID), 1, product_name, product_image, product_price);
+                                    .insertIntoTable(Integer.parseInt(productID), 1,
+                                            product_name,
+                                            product_image,
+                                            product_price,
+                                            productPackageId);
                         }
+
+                        int newCartNumber = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
+                        tv.setText(""+ newCartNumber);
+
+                        MyDatabase.getDatabase(ProductDetails.this).patientDAO().setCartNumber(
+                                newCartNumber
+                        );
+
+                        newNumber = 1;
 
 
                         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -442,14 +468,17 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                             vibrator.vibrate(vibrationEffect);
                         }
 
-//                        startActivity(new Intent(ProductDetails.this, ReviewCart.class));
+
+
+
+//                        startActivity(new Intent(ProductDetails.this, ProductDetails.class));
                     }
 
                 }
 
                 @Override
                 public void onFailure(Call<ResponseAddToCart> call, Throwable t) {
-                    Toast.makeText(ProductDetails.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProductDetails.this, "Something went wrong" + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -461,8 +490,10 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
 
     @Override
-    public void getId(int id) {
+    public void getId(int id, String name) {
         productPackageId = id;
+        textView43.setText(name);
+        dialog.dismiss();
         productApi();
     }
 
@@ -487,13 +518,6 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                         Common.jwt = responseFav.getResult();
                         Log.e("response : ", String.valueOf(response));
 
-
-//                        Toast.makeText(ProductDetails.this, "Added to fav ", Toast.LENGTH_SHORT).show();
-
-//
-
-//                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ProductDetails.this);
-//                        prefs.edit().putBoolean("products", productID).commit();
                     }
 
                 }

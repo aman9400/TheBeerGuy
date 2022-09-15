@@ -1,13 +1,21 @@
 package com.example.thebeerguy.DashBoard;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +31,13 @@ import com.example.common.CommonMethod;
 import com.example.thebeerguy.DashBoard.Home.CheckOut.Checkout;
 import com.example.thebeerguy.DashBoard.Home.PaymentResponse.ResponsePayment;
 import com.example.thebeerguy.Intro.LandingScreen;
+import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
+import com.example.thebeerguy.Product_Details.ProductDetails;
 import com.example.thebeerguy.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -165,12 +179,9 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
         reviewCartAdapter.setStores(stores1);
 
         reviewCartAdapter.notifyDataSetChanged();
+        addToCartApi(stores[position].getProductID());
 
     }
-//        holder.tv_quantity_res.setText(""+ (quantity + 1));
-////            int carNumber = MyDatabase.getDatabase(context).patientDAO().getCartNumber();
-////            MyDatabase.getDatabase(context).patientDAO().setCartNumber(carNumber + 1);
-//    }
 
     @Override
     public void decrease(int position, TextView amount, TextView quanti) {
@@ -186,6 +197,8 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
             reviewCartAdapter.setStores(stores1);
 
             reviewCartAdapter.notifyDataSetChanged();
+
+            addToCartApi(stores[position].getProductID());  // call api
         }else {
             if( quantity == 1){
                 MyDatabase.getDatabase(this).patientDAO().deleteData(stores[position].getProductID());
@@ -196,9 +209,100 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
                 reviewCartAdapter.setStores(stores1);
 
                 reviewCartAdapter.notifyDataSetChanged();
-//                    int carNumber = MyDatabase.getDatabase(context).patientDAO().getCartNumber();
-//                    MyDatabase.getDatabase(context).patientDAO().setCartNumber(0);
+
+                addToCartApi(stores[position].getProductID());  // call api
             }
         }
+    }
+
+    private void addToCartApi(int productID) {
+
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        Store[] newStore = MyDatabase.getDatabase(this).patientDAO().totalStoreData();
+        JSONArray jsonArray = new JSONArray();
+
+
+        for (int i = 0; i < 1 ; i++) {
+            try {
+                JSONObject jsonObject1 = new JSONObject();
+//                jsonObject1.put("product_id","60519");
+//                jsonObject1.put("product_id",newStore[i].getProductID());
+                jsonObject1.put("package_id","118059");
+//                jsonObject1.put("package_id",newStore[i].getPackageID());
+                Log.e("test packageid list - : " , ""+newStore[i].getPackageID());
+                jsonObject1.put("price","27.95");
+//                jsonObject1.put("price",newStore[i].getProductPrice());
+                jsonObject1.put("quantity", "3");
+//                jsonObject1.put("quantity",newStore[i].getQuantity());
+
+                jsonArray.put(jsonObject1);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        boolean networkCheck = CommonMethod.isNetworkAvailable(this);
+        if (networkCheck) {
+            SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(this);
+            String nameLoggedIn = prefs1.getString("LoginName", "Guest");
+
+            Long shopping_id = System.currentTimeMillis();
+
+            Map<String, String> map = new HashMap<>();
+            map.put(Common.Apikey_text, Common.Apikey_value);
+            map.put("ext_shopping_cart_id", "12345689");
+//            map.put("ext_shopping_cart_id", ""+ shopping_id);
+            Common.shoppingId = shopping_id;
+            map.put("ext_customer_id", ""+Common.Customer_ID);
+            map.put("ext_location_id", ""+Common.locationID);   // must be from store api
+            map.put("address", "123 Test St, Toronto, ON, M8Z4G2");
+//            map.put("address", Address);
+            map.put("name", "Aman");
+//            map.put("name", nameLoggedIn);
+            map.put("phone", "416-555-1234");
+            map.put("products", String.valueOf(jsonArray));
+
+
+            Call<ResponseAddToCart> call1 = apiInterface.addToCart(map);
+
+            call1.enqueue(new Callback<ResponseAddToCart>() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                @Override
+                public void onResponse(Call<ResponseAddToCart> call, Response<ResponseAddToCart> response) {
+                    progressDialog.dismiss();
+                    if (response.isSuccessful()) {
+                        ResponseAddToCart responseAddToCart = response.body();
+
+                        Common.responseAddToCart = responseAddToCart;
+
+//                        Common.jwt = responseSignup.getJwt();
+                        Log.e("test-amount ", String.valueOf(response.body().getTotalAmount()));
+
+//                        startActivity(new Intent(ProductDetails.this, ReviewCart.class));
+
+                        int x =  MyDatabase.getDatabase(ReviewCart.this).patientDAO().getW() ;
+                        subTotal.setText("" + x);
+                        deliveryCharge.setText("$" + responseAddToCart.getDeliveryFee());
+                        taxAndCharges.setText("$" + responseAddToCart.getHstAmount());
+                        GrandTotal.setText("$" + responseAddToCart.getTotalAmount());
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseAddToCart> call, Throwable t) {
+                    progressDialog.dismiss();
+                    Toast.makeText(ReviewCart.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        } else {
+            Toast.makeText(ReviewCart.this, "Please Check your internet.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

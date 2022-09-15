@@ -25,6 +25,10 @@ public class Store {
     @ColumnInfo(name = "productPrice")
     private String productPrice;
 
+
+    @ColumnInfo(name = "packageID")
+    private int packageID;
+
     public int getId() {
         return id;
     }
@@ -71,5 +75,13 @@ public class Store {
 
     public void setProductPrice(String productPrice) {
         this.productPrice = productPrice;
+    }
+
+    public int getPackageID() {
+        return packageID;
+    }
+
+    public void setPackageID(int packageID) {
+        this.packageID = packageID;
     }
 }

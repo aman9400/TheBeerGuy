@@ -45,9 +45,14 @@ public class ProductDetailsDialogAdapter extends RecyclerView.Adapter<ProductDet
                 (aPackage.getQuantity() + "x" + aPackage.getSize() +" "+ aPackage.getContainer() + " for " + aPackage.getPrice());
 
         holder.cl_package_dialog.setOnClickListener(v->{
-            getProductPackageId.getId(aPackage.getPackageId());
+            getProductPackageId.getId(aPackage.getPackageId(), aPackage.getQuantity() + "x" + aPackage.getSize() +" "+ aPackage.getContainer() + " for " + aPackage.getPrice());
             holder.Product_dialog_recycler_radiobtn.setChecked(true);
 
+        });
+
+        holder.Product_dialog_recycler_radiobtn.setOnClickListener(v->{
+            getProductPackageId.getId(aPackage.getPackageId(), aPackage.getQuantity() + "x" + aPackage.getSize() +" "+ aPackage.getContainer() + " for " + aPackage.getPrice());
+            holder.Product_dialog_recycler_radiobtn.setChecked(true);
         });
 
     }
