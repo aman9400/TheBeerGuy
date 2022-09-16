@@ -121,6 +121,7 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 //        );
 
         // button to move to Dashboard
+
         sp4_btn_login.setOnClickListener(v -> {
 
             storeApi();
