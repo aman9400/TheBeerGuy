@@ -15,6 +15,7 @@ import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavOrderAlcohol;
 import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavPartyDrinkCalculator;
 import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavSocialResponsibility;
 import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavTestimonials;
+import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.Product_Details.ProductDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -26,6 +27,7 @@ import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Index;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -208,6 +210,26 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             return true;
         });
 
+
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
+
+
+        if (Islogin){
+
+            Menu navigationMenu = navigationView.getMenu();
+            navigationMenu.findItem(R.id.nav_create_account).setVisible(false);
+            navigationMenu.findItem(R.id.nav_signin).setVisible(false);
+        }else {
+
+            Menu navigationMenu = navigationView.getMenu();
+            navigationMenu.findItem(R.id.nav_SignOut).setVisible(false);
+            navigationMenu.findItem(R.id.nav_profile).setVisible(false);
+            navigationMenu.findItem(R.id.nav_recentOrder).setVisible(false);
+        }
+
+
     }
 
     void setFragment(Fragment fragment) {
@@ -217,6 +239,9 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean Islogin = prefs.getBoolean("Islogin", false);
 
 
         setTitle(menuItem.getTitle());
@@ -267,14 +292,42 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         } else if (id == R.id.nav_create_account) {
 
 
+
             startActivity(new Intent(this, SignUp.class));
 //            Toast.makeText(this, "Create Account", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_signin) {
 
+
+
             startActivity(new Intent(this, Login.class));
 //            Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
+
+
+        }else if (id == R.id.nav_profile) {
+
+//            startActivity(new Intent(this, Account.class));
+//            Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
+            setFragment(new Account());
+
+
+        }else if (id == R.id.nav_recentOrder) {
+
+            setFragment(new Orders());
+
+
+        }else if (id == R.id.nav_SignOut) {
+
+            SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(DashBoard.this);
+            prefs1.edit().putBoolean("Islogin", false).commit();
+            prefs1.edit().putString("LoginName", "Welcome Guest").commit();// islogin is a boolean value of your login status
+            prefs1.edit().putString("email","").commit();//
+            prefs1.edit().putString("name","").commit();//
+
+            startActivity(new Intent(this, LandingScreen.class));
+//            Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
+            finish();
 
 
         } else if (id == R.id.nav_help ) {
@@ -370,5 +423,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
         return true;
     }
+
+
 
 }

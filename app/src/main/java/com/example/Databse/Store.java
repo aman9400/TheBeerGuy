@@ -29,6 +29,9 @@ public class Store {
     @ColumnInfo(name = "packageID")
     private int packageID;
 
+    @ColumnInfo(name = "packageName")
+    private String packageName;
+
     public int getId() {
         return id;
     }
@@ -83,5 +86,13 @@ public class Store {
 
     public void setPackageID(int packageID) {
         this.packageID = packageID;
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
     }
 }

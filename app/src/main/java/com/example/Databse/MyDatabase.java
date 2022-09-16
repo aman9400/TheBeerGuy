@@ -10,7 +10,7 @@ import com.google.android.gms.tasks.Task;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Store.class, CartNumber.class, ProductPrice.class}, version = 7, exportSchema = false)
+@Database(entities = {Store.class, CartNumber.class, ProductPrice.class}, version = 8, exportSchema = false)
 public abstract class MyDatabase extends RoomDatabase {
 
     public abstract StoreDao patientDAO(); // calling dao function

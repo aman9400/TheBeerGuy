@@ -81,7 +81,7 @@ public class SubCategoryAdapter extends BaseAdapter {
 
             Picasso.get().load(responseProductDetail.getImage()).into(recycler2_text_image);
             recycler2_text_name.setText(responseProductDetail.getLabel());
-            recycler2_text_price.setText(responseProductDetail.getMinPrice() + " - " + responseProductDetail.getMaxPrice());
+            recycler2_text_price.setText(responseProductDetail.getCommonPrice());
             recycler2_cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

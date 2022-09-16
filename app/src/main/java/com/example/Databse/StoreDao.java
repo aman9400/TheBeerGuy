@@ -25,8 +25,8 @@ public interface StoreDao {
     int getQuatity(int productID);
 
     //    /*insert data into database*/
-    @Query("INSERT INTO user ( productID, quantity, productName, image, productPrice, packageID) VALUES (:productID, :quantity, :name, :image, :price, :packageID)" )
-    long insertIntoTable( int productID, int quantity, String name, String image, String price, int packageID);
+    @Query("INSERT INTO user ( productID, quantity, productName, image, productPrice, packageID, packageName) VALUES (:productID, :quantity, :name, :image, :price, :packageID, :packageName)" )
+    long insertIntoTable( int productID, int quantity, String name, String image, String price, int packageID, String packageName);
 
     //    /*insert data into database*/
     @Query("UPDATE user SET quantity = (:quantity) WHERE( productID = :productID) " )

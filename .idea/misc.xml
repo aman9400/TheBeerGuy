@@ -53,7 +53,7 @@
         <entry key="app/src/main/res/layout/activity_payment_method.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_review_cart.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_review_cart.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.19076923076923077" />
         <entry key="app/src/main/res/layout/activity_sub_category.xml" value="0.22" />
@@ -65,6 +65,7 @@
         <entry key="app/src/main/res/layout/checkout_dialog_recycler.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/content_nav_party_drink_calculator.xml" value="0.14" />
         <entry key="app/src/main/res/layout/custom_item_nav_menu.xml" value="0.14074074074074075" />
+        <entry key="app/src/main/res/layout/filter_options.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_favourites.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
@@ -78,6 +79,8 @@
         <entry key="app/src/main/res/layout/product_detail_dialog_recycler.xml" value="0.25" />
         <entry key="app/src/main/res/layout/product_dialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/purchase_history_recycler.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/recycler_filter_options.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/recycler_view_cart.xml" value="0.33" />
         <entry key="app/src/main/res/layout/sale_recycler.xml" value="0.4343891402714932" />
         <entry key="app/src/main/res/layout/sample_recycler1.xml" value="0.33" />
         <entry key="app/src/main/res/layout/sample_recycler2.xml" value="0.48344370860927155" />

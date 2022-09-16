@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.Profile.PaymentMethod;
+import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.Product_Details.ProductDetails;
 import com.example.thebeerguy.Product_Details.ProductDetailsDialogAdapter;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.Package;
@@ -37,7 +38,11 @@ public class Checkout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
+        getSupportActionBar().hide();
+
         findIds();
+
+        checkOut_TV_address.setText(LandingScreen.Address);
 
         checkout_ImV_backBtn.setOnClickListener(new View.OnClickListener() {
             @Override

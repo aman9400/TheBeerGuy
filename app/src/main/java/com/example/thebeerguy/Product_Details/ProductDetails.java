@@ -89,6 +89,8 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     int newCartNumber2;
     int newNumber = 0;
 
+    private String packageName;
+
     String product_name, product_price, product_image;
 
     @SuppressLint({"RestrictedApi", "ResourceAsColor"})
@@ -313,7 +315,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
                         product_price = responseProductDetail.get(0).getCommonPrice();
 
-                        product_TV_price.setText("$" + responseProductDetail.get(0).getCommonPrice());
+//                        product_TV_price.setText("$" + responseProductDetail.get(0).getCommonPrice());
 //                        product_TV_rating2.setText(responseProductDetail.get(0).getRating());
                         product_TV_discription.setText(responseProductDetail.get(0).getDescription());
 
@@ -434,7 +436,8 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                                             product_name,
                                             product_image,
                                             product_price,
-                                            productPackageId);
+                                            productPackageId,
+                                            packageName);
                         }
 
                         int newCartNumber = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
@@ -490,9 +493,12 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
 
     @Override
-    public void getId(int id, String name) {
+    public void getId(int id, String name, String price) {
+        packageName = name;
+
         productPackageId = id;
         textView43.setText(name);
+        product_TV_price.setText("$" + price);
         dialog.dismiss();
         productApi();
     }

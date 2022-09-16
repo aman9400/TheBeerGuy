@@ -47,6 +47,9 @@ public class ReviewCartAdapter extends RecyclerView.Adapter<ReviewCartAdapter.My
         Picasso.get().load(stores[position].getImage()).into(holder.iv_cart_res);
         holder.amount_cart_res.setText(""+stores[position].getProductPrice());
         holder.tv_cart_res.setText(stores[position].getProductName());
+        holder.tv_cart_pakageId.setText(""+stores[position].getPackageName());
+
+
 
         holder.pos_cart_res.setOnClickListener(v->{
             reviewCartClick.increase(position, holder.amount_cart_res, holder.tv_quantity_res);
@@ -65,7 +68,7 @@ public class ReviewCartAdapter extends RecyclerView.Adapter<ReviewCartAdapter.My
     }
 
     public class Myholder extends RecyclerView.ViewHolder {
-        TextView tv_quantity_res, tv_cart_res, amount_cart_res;
+        TextView tv_quantity_res, tv_cart_res, amount_cart_res, tv_cart_pakageId;
         ImageView pos_cart_res, neg_cart_res, iv_cart_res;
         public Myholder(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +79,7 @@ public class ReviewCartAdapter extends RecyclerView.Adapter<ReviewCartAdapter.My
             pos_cart_res = itemView.findViewById(R.id.pos_cart_res);
             neg_cart_res = itemView.findViewById(R.id.neg_cart_res);
             iv_cart_res = itemView.findViewById(R.id.iv_cart_res);
+            tv_cart_pakageId = itemView.findViewById(R.id.tv_cart_pakageId);
         }
     }
 }

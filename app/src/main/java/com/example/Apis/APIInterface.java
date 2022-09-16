@@ -93,4 +93,5 @@ public interface APIInterface {
     @POST("store_location/list")
     Call<List<ResponsePurchaseHistory>> purchaseHistory(@FieldMap Map<String, String> purchaseHistory);
 
+
 }

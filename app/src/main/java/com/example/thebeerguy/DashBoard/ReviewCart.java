@@ -29,6 +29,7 @@ import com.example.Profile.PaymentMethod;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.thebeerguy.DashBoard.Home.CheckOut.Checkout;
+import com.example.thebeerguy.DashBoard.Home.CheckOut.GuestCheckout;
 import com.example.thebeerguy.DashBoard.Home.PaymentResponse.ResponsePayment;
 import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
@@ -99,11 +100,13 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
         cart_products_recycler.setLayoutManager(new LinearLayoutManager(this));
         cart_products_recycler.setAdapter(reviewCartAdapter);
 
+
         review_button_checkout.setOnClickListener(v -> paymentApi());
 
         swipeRefreshLayout.setOnRefreshListener(()->{
             reviewCartAdapter.notifyDataSetChanged();
             swipeRefreshLayout.setRefreshing(false);
+
         });
     }
 
@@ -148,7 +151,17 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
                         Log.e("response : ", String.valueOf(response));
 //                        Toast.makeText(ReviewCart.this, "Added", Toast.LENGTH_SHORT).show();
 
-                        startActivity(new Intent(ReviewCart.this, Checkout.class));
+
+                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ReviewCart.this);
+                        boolean Islogin = prefs.getBoolean("Islogin", false);
+
+                        if (Islogin){
+
+                            startActivity(new Intent(ReviewCart.this, Checkout.class));
+                        }else{
+                            startActivity(new Intent(ReviewCart.this, GuestCheckout.class));
+                        }
+
                     }
 
                 }
