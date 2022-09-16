@@ -19,7 +19,7 @@ public class NavFranchiseSponsorship extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
-        nav_FS_ImV_back_Btn = findViewById(R.id.nav_FS_ImV_back_Btn);
+        nav_FS_ImV_back_Btn = findViewById(R.id.TC_back_Btn);
 
         nav_FS_ImV_back_Btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -26,6 +26,7 @@ import com.example.common.CommonMethod;
 import com.example.login.Login;
 import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.R;
+import com.example.thebeerguy.TermsConditions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class GuestCheckout extends AppCompatActivity {
     CheckBox guest_business_radioBtn, guest_hotel_radioBtn;
     ImageView guest_checkout_ImV_backBtn;
 
-    TextView guestCheckOut_TV_days, guestCheckOut_TV_time;
+    TextView guestCheckOut_TV_days, guestCheckOut_TV_time, guestCheckOut_TC_tV;
 
 
     @Override
@@ -53,6 +54,14 @@ public class GuestCheckout extends AppCompatActivity {
         getSupportActionBar().hide();
 
         GuestfindIds();
+
+        guestCheckOut_TC_tV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GuestCheckout.this, TermsConditions.class);
+                startActivity(intent);
+            }
+        });
 
         guest_address.setText(LandingScreen.Address);
 
@@ -87,7 +96,7 @@ public class GuestCheckout extends AppCompatActivity {
     private void GuestDilogTimings() {
 
         Dialog dialog = new Dialog(GuestCheckout.this);
-        dialog.setContentView(R.layout.product_dialog);
+        dialog.setContentView(R.layout.checkout_dialog);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         dialog.getWindow().setWindowAnimations(R.style.AnimationForDialog);
 
@@ -128,6 +137,7 @@ public class GuestCheckout extends AppCompatActivity {
         guest_checkout_ImV_backBtn = findViewById(R.id.guest_checkout_ImV_backBtn);
         guestCheckOut_TV_time = findViewById(R.id.guestCheckOut_TV_time);
         guestCheckOut_TV_days = findViewById(R.id.guestCheckOut_TV_days);
+        guestCheckOut_TC_tV = findViewById(R.id.guestCheckOut_TC_tV);
     }
 
 

@@ -279,7 +279,7 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
                 @Override
                 public void onFailure(Call<List<ResponseStore>> call, Throwable t) {
                     progressDialog.dismiss();
-                    Toast.makeText(LandingScreen.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LandingScreen.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 

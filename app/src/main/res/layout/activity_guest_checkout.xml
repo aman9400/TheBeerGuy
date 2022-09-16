@@ -403,7 +403,7 @@
             app:layout_constraintTop_toTopOf="@+id/checkBoxBtn_TC" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/guestCheckOut_TC_tV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"

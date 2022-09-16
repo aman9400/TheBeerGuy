@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -25,6 +26,7 @@ import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.login.Login;
 import com.example.thebeerguy.R;
+import com.example.thebeerguy.TermsConditions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +38,7 @@ import retrofit2.Response;
 
 public class SignUp extends AppCompatActivity {
 
-     TextView signup_Tv_login;
+     TextView signup_Tv_login, signup_TC_tV;
      Button signup_button_signup;
     private ImageButton signup_btn_back;
     EditText sign_mobile, sign_email, sign_name,sign_password, sign_address,sign_apt,sign_buzzer, sign_extraInfo;
@@ -54,6 +56,15 @@ public class SignUp extends AppCompatActivity {
 
 
         findIds();
+
+        signup_TC_tV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(SignUp.this, TermsConditions.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -165,6 +176,7 @@ public class SignUp extends AppCompatActivity {
             sign_extraInfo = findViewById(R.id.sign_extrainfo);
             sign_email = findViewById(R.id.sign_email);
             sign_name = findViewById(R.id.sign_name);
+            signup_TC_tV = findViewById(R.id.signup_TC_tV);
 
 
         }

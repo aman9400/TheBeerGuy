@@ -203,7 +203,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/signup_TC_tV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
@@ -226,7 +226,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/signup_TC_tV"
             tools:ignore="TouchTargetSizeCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

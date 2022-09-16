@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
@@ -57,6 +58,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN = 100;
     GoogleApiClient mGoogleApiClient;
+    ConstraintLayout sign_in_button;
 
 
     @Override
@@ -80,9 +82,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        SignInButton signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
-        signInButton.setOnClickListener(this);
+//        SignInButton signInButton = findViewById(R.id.sign_in_button);
+//        signInButton.setSize(SignInButton.SIZE_STANDARD);
+//        signInButton.setOnClickListener(this);
+
+        sign_in_button = findViewById(R.id.sign_in_button);
+        sign_in_button.setOnClickListener(this);
 
         apiInterface = APIClient.getClient().create(APIInterface.class); //        APIClient.
 

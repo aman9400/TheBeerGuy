@@ -481,7 +481,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
                 @Override
                 public void onFailure(Call<ResponseAddToCart> call, Throwable t) {
-                    Toast.makeText(ProductDetails.this, "Something went wrong" + t.getMessage(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ProductDetails.this, "Something went wrong" + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 
