@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashBoard.Home.CheckOut.GuestCheckout">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout26"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="CheckOut"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/guest_checkout_ImV_backBtn"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_left_arrow24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#E7E7E7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:paddingStart="20dp"
+        android:paddingEnd="2dp"
+        android:text="Delivery Details"
+        android:textColor="@color/colorPrimary2"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout26"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout26" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:paddingStart="20dp"
+        android:paddingEnd="2dp"
+        android:text="Payment Details"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout26"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout26" />
+
+    <View
+        android:id="@+id/view8"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorPrimary2"
+        app:layout_constraintEnd_toEndOf="@+id/textView25"
+        app:layout_constraintStart_toStartOf="@+id/textView25"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout21"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view8">
+
+        <TextView
+            android:id="@+id/textView41"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary2"
+            android:fontFamily="@font/roboto"
+            android:padding="10dp"
+            android:text="Address Details"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/Guest_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:minHeight="48dp"
+            android:text="Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+        <EditText
+            android:id="@+id/guest_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Phone"
+            app:layout_constraintEnd_toEndOf="@+id/Guest_name"
+            app:layout_constraintStart_toStartOf="@+id/Guest_name"
+            app:layout_constraintTop_toBottomOf="@+id/Guest_name" />
+
+        <EditText
+            android:id="@+id/guest_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Email"
+            app:layout_constraintEnd_toEndOf="@+id/guest_phone"
+            app:layout_constraintStart_toStartOf="@+id/guest_phone"
+            app:layout_constraintTop_toBottomOf="@+id/guest_phone" />
+
+        <EditText
+            android:id="@+id/guest_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Address"
+            app:layout_constraintEnd_toEndOf="@+id/guest_email"
+            app:layout_constraintStart_toStartOf="@+id/guest_email"
+            app:layout_constraintTop_toBottomOf="@+id/guest_email" />
+
+        <EditText
+            android:id="@+id/guest_apt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Apt"
+            app:layout_constraintEnd_toEndOf="@+id/guest_address"
+            app:layout_constraintStart_toStartOf="@+id/guest_address"
+            app:layout_constraintTop_toBottomOf="@+id/guest_address" />
+
+        <EditText
+            android:id="@+id/guest_buzzer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Buzzer"
+            app:layout_constraintEnd_toEndOf="@+id/guest_apt"
+            app:layout_constraintStart_toStartOf="@+id/guest_apt"
+            app:layout_constraintTop_toBottomOf="@+id/guest_apt" />
+
+        <EditText
+            android:id="@+id/guest_extraInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Extra Info"
+            app:layout_constraintEnd_toEndOf="@+id/guest_buzzer"
+            app:layout_constraintStart_toStartOf="@+id/guest_buzzer"
+            app:layout_constraintTop_toBottomOf="@+id/guest_buzzer" />
+
+        <CheckBox
+            android:id="@+id/guest_business_radioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            app:layout_constraintStart_toStartOf="@+id/guest_extraInfo"
+            app:layout_constraintTop_toBottomOf="@+id/guest_extraInfo" />
+
+        <EditText
+            android:id="@+id/editText11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="Business Address"
+            app:layout_constraintBottom_toBottomOf="@+id/guest_business_radioBtn"
+            app:layout_constraintEnd_toEndOf="@+id/guest_extraInfo"
+            app:layout_constraintStart_toEndOf="@+id/guest_business_radioBtn"
+            app:layout_constraintTop_toTopOf="@+id/guest_business_radioBtn" />
+
+        <CheckBox
+            android:id="@+id/guest_hotel_radioBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            app:layout_constraintStart_toStartOf="@+id/guest_business_radioBtn"
+            app:layout_constraintTop_toBottomOf="@+id/guest_business_radioBtn" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Hotel/Motel"
+            app:layout_constraintBottom_toBottomOf="@+id/guest_hotel_radioBtn"
+            app:layout_constraintEnd_toEndOf="@+id/editText11"
+            app:layout_constraintStart_toEndOf="@+id/guest_hotel_radioBtn"
+            app:layout_constraintTop_toTopOf="@+id/guest_hotel_radioBtn"
+            tools:ignore="TouchTargetSizeCheck" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout23"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout21">
+
+        <TextView
+            android:id="@+id/textView115"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary2"
+            android:fontFamily="@font/roboto"
+            android:padding="@dimen/_10sdp"
+            android:text="When would you like this delivery?"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/guestCheckOut_TV_days"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:drawableEnd="@drawable/ic_arrow_down_24"
+            android:fontFamily="@font/roboto"
+            android:padding="5dp"
+            android:paddingStart="10dp"
+            android:text="Today "
+            android:textColor="@color/text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView115"
+            app:layout_constraintTop_toBottomOf="@+id/textView115" />
+
+
+        <TextView
+            android:id="@+id/guestCheckOut_TV_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:drawableEnd="@drawable/ic_arrow_down_24"
+            android:fontFamily="@font/roboto"
+            android:padding="5dp"
+            android:paddingStart="10dp"
+            android:text="Morning (11-1) "
+            android:textColor="@color/text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/guestCheckOut_TV_days"
+            app:layout_constraintStart_toEndOf="@+id/guestCheckOut_TV_days"
+            app:layout_constraintTop_toTopOf="@+id/guestCheckOut_TV_days"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout31"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout23">
+
+        <TextView
+            android:id="@+id/textView118"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary2"
+            android:fontFamily="@font/roboto"
+            android:padding="@dimen/_10sdp"
+            android:text="Extra lnstructions regarding this order?"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/checkOut_TV_extraInfo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/roboto"
+            android:hint="Eg. pickup a pack of cigarettes from the store, I have 2 cases of empties to return, etc."
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView118"
+            app:layout_constraintStart_toStartOf="@+id/textView118"
+            app:layout_constraintTop_toBottomOf="@+id/textView118" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout32"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout31">
+
+        <TextView
+            android:id="@+id/textView119"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary2"
+            android:fontFamily="@font/roboto"
+            android:padding="@dimen/_10sdp"
+            android:text="Create an Account? (optional)"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/guestCheck_editText_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:minHeight="48dp"
+            android:text="Password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView119" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkBoxBtn_TC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/guestCheck_editText_pass"
+            app:layout_constraintTop_toBottomOf="@+id/guestCheck_editText_pass"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/roboto"
+            android:padding="2dp"
+            android:text="I agree to the "
+            android:textColor="@color/text"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/checkBoxBtn_TC"
+            app:layout_constraintStart_toEndOf="@+id/checkBoxBtn_TC"
+            app:layout_constraintTop_toTopOf="@+id/checkBoxBtn_TC" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:padding="2dp"
+            android:text="Terms Conditions"
+            android:textColor="@color/colorPrimary2"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textView17"
+            app:layout_constraintStart_toEndOf="@+id/textView17"
+            app:layout_constraintTop_toTopOf="@+id/textView17" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+           <Button
+               android:id="@+id/guestCheckout_button_"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="16dp"
+               android:layout_marginTop="16dp"
+               android:layout_marginEnd="16dp"
+               android:layout_marginBottom="8dp"
+               android:background="@drawable/button_corner"
+               android:text="Button"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/constraintLayout32" />
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+   </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
