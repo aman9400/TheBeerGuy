@@ -70,9 +70,9 @@
             android:inputType="phone"
             android:paddingStart="20dp"
             android:paddingEnd="2dp"
-            app:layout_constraintEnd_toEndOf="@+id/textView27"
-            app:layout_constraintStart_toStartOf="@+id/textView27"
-            app:layout_constraintTop_toBottomOf="@+id/textView27"
+            app:layout_constraintEnd_toEndOf="@+id/tc_item"
+            app:layout_constraintStart_toStartOf="@+id/tc_item"
+            app:layout_constraintTop_toBottomOf="@+id/tc_item"
             tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
@@ -307,7 +307,7 @@
             app:layout_constraintTop_toBottomOf="@+id/sign_password" />
 
         <TextView
-            android:id="@+id/textView27"
+            android:id="@+id/tc_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"

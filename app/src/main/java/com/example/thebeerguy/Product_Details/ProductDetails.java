@@ -356,6 +356,8 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
                         productDetailsList = response.body();
 
+                        packageName = ""+productDetailsList.get(0).getCommonPackageId();
+
                         WhatsHotAdapter whatsHotAdapter = new WhatsHotAdapter(ProductDetails.this, productDetailsList);
                         productDetail_recycler.setHasFixedSize(true);
                         productDetail_recycler.setLayoutManager(new LinearLayoutManager(ProductDetails.this, LinearLayoutManager.HORIZONTAL, false));
@@ -500,7 +502,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
         textView43.setText(name);
         product_TV_price.setText("$" + price);
         dialog.dismiss();
-        productApi();
+//        productApi();
     }
 
 
