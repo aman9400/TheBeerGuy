@@ -253,7 +253,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="4dp"
-                    android:text="City"
+                    android:text="Cell"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -263,7 +263,7 @@
                     android:layout_height="40dp"
                     android:background="@drawable/profile_border"
                     android:ems="30"
-                    android:hint="Enter your city"
+                    android:hint="Enter your cell"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -326,7 +326,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout17"
                 android:layout_width="0dp"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="2dp"
@@ -342,20 +342,20 @@
                     android:layout_marginTop="4dp"
                     android:paddingStart="3dp"
                     android:paddingEnd="2dp"
-                    android:text="Order Note"
+                    android:text="Intersection"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/addAddress_ET_note"
                     android:layout_width="wrap_content"
-                    android:layout_height="70dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="4dp"
                     android:background="@drawable/profile_border"
                     android:ems="30"
                     android:gravity="fill_horizontal"
-                    android:hint="Enter your note here...."
+                    android:hint="Enter your intersection"
                     android:paddingStart="4dp"
                     android:paddingTop="4dp"
                     android:paddingEnd="4dp"

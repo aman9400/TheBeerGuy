@@ -3,6 +3,7 @@ package com.example.Profile;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -39,6 +40,7 @@ public class AddAddress extends AppCompatActivity {
 
     APIInterface apiInterface;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,10 @@ public class AddAddress extends AppCompatActivity {
         addAddress_Button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addAddressApi();
+
+                addAddressAPI();
+                startActivity(new Intent(AddAddress.this, EditProfile.class));
+
             }
         });
 
@@ -65,42 +70,39 @@ public class AddAddress extends AppCompatActivity {
         addAddress_ET_apt = findViewById(R.id.addAddress_ET_apt);
         addAddress_ET_buzzer = findViewById(R.id.addAddress_ET_buzzer);
         addAddress_ET_city = findViewById(R.id.addAddress_ET_city);
+        addAddress_ET_note = findViewById(R.id.addAddress_ET_note);
         addAddress_CheckBox_work = findViewById(R.id.addAddress_CheckBox_work);
         addAddress_CheckBox_home = findViewById(R.id.addAddress_CheckBox_home);
         addAddress_CheckBox_other = findViewById(R.id.addAddress_CheckBox_other);
         addAddress_Button_save = findViewById(R.id.addAddress_Button_save);
     }
 
-    private void addAddressApi() {
+    private void addAddressAPI() {
 
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
         if(networkCheck){
-            if(addAddress_ET_firstname.getText().toString().isEmpty()){
-                Toast.makeText(this, R.string.empty_email_message, Toast.LENGTH_SHORT).show();
-            }else if(addAddress_ET_phonenumber.getText().toString().isEmpty()){
-                Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show();
+            if(addAddress_ET_deliveryAdd.getText().toString().isEmpty()){
+                Toast.makeText(this,"Enter Address", Toast.LENGTH_SHORT).show();
 
-            }else if (addAddress_ET_deliveryAdd.getText().toString().isEmpty()){
-                Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show();
-
-            }else if (addAddress_ET_city.getText().toString().isEmpty()){
-                Toast.makeText(this, "Please enter correct Address", Toast.LENGTH_SHORT).show();
+            }else if (addAddress_ET_buzzer.getText().toString().isEmpty()){
+                Toast.makeText(this, "Please enter Buzzer code", Toast.LENGTH_SHORT).show();
 
             }
-
 
             else{
                 Map<String, String> map = new HashMap<>();
                 map.put(Common.Apikey_text, Common.Apikey_value);
+                map.put("ext_customer_id", "201503");
+                map.put("ext_location_id", "332398");
+                map.put("email", "");
                 map.put("name", addAddress_ET_firstname.getText().toString().trim());
                 map.put("phone", addAddress_ET_phonenumber.getText().toString().trim());
                 map.put("address", addAddress_ET_deliveryAdd.getText().toString().trim());
-                map.put("addr2", "");
+                map.put("addr2", addAddress_ET_apt.getText().toString().trim());
                 map.put("buzzer", addAddress_ET_buzzer.getText().toString().trim());
-                map.put("email", "");
-                map.put("cell", "");
-                map.put("intersection","");
                 map.put("location_extra", "");
+                map.put("cell", addAddress_ET_city.getText().toString().trim());
+                map.put("intersection", addAddress_ET_note.getText().toString().trim());
 
 
                 Call<ResponseAddAddress> call1 = apiInterface.addAddress(map);
@@ -112,16 +114,17 @@ public class AddAddress extends AppCompatActivity {
                             ResponseAddAddress responseSignup = response.body();
 //                            Common.jwt = responseSignup.getJwt();
                             Log.e("response : " , String.valueOf(response));
-                            Toast.makeText(AddAddress.this, "Address Added Successful", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(SignUp.this, "Signup Successful", Toast.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(AddAddress.this, ManageAddress.class));
+//                            startActivity(new Intent(SignUp.this, Login.class));
+
                         }
 
                     }
 
                     @Override
                     public void onFailure(Call<ResponseAddAddress> call, Throwable t) {
-                        Toast.makeText(AddAddress.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(SignUp.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -131,4 +134,6 @@ public class AddAddress extends AppCompatActivity {
 
 
     }
+
+
 }

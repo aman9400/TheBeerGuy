@@ -166,6 +166,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
             android:text="First Name"
+            android:textColor="@color/text"
             android:textSize="14dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -190,17 +191,17 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout10"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:paddingStart="8dp"
         android:paddingEnd="2dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout9"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout9"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout37"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout37"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout37">
 
         <TextView
             android:id="@+id/signup_TC_tV"
@@ -208,18 +209,18 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
             android:text="Address"
+            android:textColor="@color/text"
             android:textSize="14dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <TextView
             android:id="@+id/address_editProfile"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:background="@drawable/profile_border"
-            android:ems="10"
-            android:hint="India"
+            android:gravity="center_vertical"
             android:inputType="textPersonName"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
@@ -227,9 +228,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/signup_TC_tV"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout11"
@@ -238,10 +238,9 @@
         android:layout_marginTop="12dp"
         android:paddingStart="8dp"
         android:paddingEnd="2dp"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout10"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout10"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout10">
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout9"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout9"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout9">
 
         <TextView
             android:id="@+id/textView19"
@@ -249,17 +248,18 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
             android:text="Phone"
+            android:textColor="@color/text"
             android:textSize="14dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <TextView
             android:id="@+id/phone_editProfile"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/profile_border"
-            android:ems="10"
+            android:gravity="center_vertical"
             android:hint="Phone"
             android:inputType="textPersonName"
             android:paddingStart="4dp"
@@ -289,17 +289,18 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
             android:text="Email Address"
-            android:textSize="14dp"
+            android:textColor="@color/text"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
+        <TextView
             android:id="@+id/email_editProfile"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/profile_border"
-            android:ems="10"
+            android:gravity="center_vertical"
             android:hint="Email Address"
             android:inputType="textPersonName"
             android:paddingStart="4dp"
@@ -309,6 +310,47 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20"
             tools:ignore="TouchTargetSizeCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout37"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout12"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout12"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout12">
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:padding="2dp"
+            android:text="Buzzer"
+            android:textColor="@color/text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/buzzer_editProfile"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/profile_border"
+            android:hint="Buzzer"
+            android:minHeight="48dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/textView18"
+            tools:ignore="TouchTargetSizeCheck" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

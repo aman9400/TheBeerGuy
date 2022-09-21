@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,6 +20,7 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.Profile.PaymentMethod;
 import com.example.Signup.SignUp;
 import com.example.Signup.responseSignup.ResponseSignup;
 import com.example.common.Common;
@@ -45,6 +47,8 @@ public class GuestCheckout extends AppCompatActivity {
 
     TextView guestCheckOut_TV_days, guestCheckOut_TV_time, guestCheckOut_TC_tV;
 
+    Button guestCheckout_button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,14 @@ public class GuestCheckout extends AppCompatActivity {
         getSupportActionBar().hide();
 
         GuestfindIds();
+
+        guestCheckout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GuestCheckout.this, PaymentMethod.class);
+                startActivity(intent);
+            }
+        });
 
         guestCheckOut_TC_tV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +150,7 @@ public class GuestCheckout extends AppCompatActivity {
         guestCheckOut_TV_time = findViewById(R.id.guestCheckOut_TV_time);
         guestCheckOut_TV_days = findViewById(R.id.guestCheckOut_TV_days);
         guestCheckOut_TC_tV = findViewById(R.id.guestCheckOut_TC_tV);
+        guestCheckout_button = findViewById(R.id.guestCheckout_button);
     }
 
 
