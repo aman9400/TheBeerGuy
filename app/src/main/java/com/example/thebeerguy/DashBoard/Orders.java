@@ -1,12 +1,19 @@
 package com.example.thebeerguy.DashBoard;
 
+import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.Apis.APIClient;
@@ -18,6 +25,7 @@ import com.example.thebeerguy.DashBoard.Home.categoryResponse.ResponseCategory;
 import com.example.thebeerguy.DashBoard.PurchaseHistoryResponse.ResponsePurchaseHistory;
 import com.example.thebeerguy.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,12 +38,32 @@ public class Orders extends Fragment {
 
     APIInterface apiInterface;
 
+    RecyclerView orderHistory_recycleView;
+
+    ImageButton orderHistoryImV_backBtn;
+
+    private List<ResponsePurchaseHistory> orderHistoryList = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_orders, container, false);
+
+
+
+        orderHistoryImV_backBtn = view.findViewById(R.id.orderHistoryImV_backBtn);
+        orderHistory_recycleView = view.findViewById(R.id.orderHistory_recycleView);
+
+        orderHistoryImV_backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent  =  new Intent(getContext(), DashBoard.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -71,13 +99,13 @@ public class Orders extends Fragment {
                             List<ResponsePurchaseHistory> loginResponse = response.body();
 //                            Common.jwt = loginResponse.getJwt();
 
-//                            categoryList = response.body();
-//
-//                            CategoryAdapter categoryAdapter = new CategoryAdapter(categoryList, getContext(), typeID);
-//
-//                            beer_recyclerView.setHasFixedSize(true);
-//                            beer_recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-//                            beer_recyclerView.setAdapter(categoryAdapter);
+                            orderHistoryList = response.body();
+
+                            PurchaseHistoryAdapter purchaseHistoryAdapter = new PurchaseHistoryAdapter(getContext(), orderHistoryList);
+
+                            orderHistory_recycleView.setHasFixedSize(true);
+                            orderHistory_recycleView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+                            orderHistory_recycleView.setAdapter(purchaseHistoryAdapter);
 
                         } else {
                             Toast.makeText(getContext(), "No Data found", Toast.LENGTH_SHORT).show();

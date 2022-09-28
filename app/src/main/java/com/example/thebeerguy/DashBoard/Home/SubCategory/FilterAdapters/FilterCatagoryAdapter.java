@@ -12,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thebeerguy.DashBoard.Home.Adapters.BeerAdapter;
+import com.example.thebeerguy.DashBoard.Home.SubCategory.FilterResponse.Option;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.FilterResponse.ResponseFilter;
-import com.example.thebeerguy.DashBoard.Home.SubCategory.FilterResponse.Selected;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
 import com.example.thebeerguy.R;
 
@@ -22,9 +22,9 @@ import java.util.List;
 public class FilterCatagoryAdapter extends RecyclerView.Adapter<FilterCatagoryAdapter.MyViewHolder> {
 
     Context context;
-    List<ResponseFilter> filter_cat;
+    Option filter_cat;
 
-    public FilterCatagoryAdapter(Context context, List<ResponseFilter> filter_cat) {
+    public FilterCatagoryAdapter(Context context, Option filter_cat) {
         this.context = context;
         this.filter_cat = filter_cat;
     }
@@ -34,18 +34,19 @@ public class FilterCatagoryAdapter extends RecyclerView.Adapter<FilterCatagoryAd
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         return new FilterCatagoryAdapter.MyViewHolder(LayoutInflater.from(context).inflate(R.layout.recycler_filter_options,parent,false));
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        ResponseFilter filter = filter_cat.get(position);
+        holder.filter_TV_text.setText( filter_cat.getVals().get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return filter_cat.size();
+        return filter_cat.getVals().size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

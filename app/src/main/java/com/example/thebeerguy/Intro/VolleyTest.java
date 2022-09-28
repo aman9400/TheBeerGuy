@@ -1,5 +1,7 @@
 package com.example.thebeerguy.Intro;
 
+import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +12,10 @@ import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.Databse.MyDatabase;
@@ -24,19 +30,74 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 public class VolleyTest extends AppCompatActivity {
+
+
+    String url = "http://sandbox.tbg.api.tweak.tbg.delivery/shopping_cart/update/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volley_test);
 
-        checkoutPayment();
+//        checkoutPayment();
+        try {
+            payment();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void payment() throws JSONException {
+        Map<String, String> params = new HashMap<>();
+
+        params.put("api_key", "codewraps-app-dev");
+        params.put("ext_shopping_cart_id", "12345689");
+        params.put("ext_customer_id", "12345678");
+        params.put("ext_location_id", "1000");
+        params.put("address", "123 Test St, Toronto, ON, M8Z4G2");
+        params.put("name", "Aman");
+        params.put("phone", "416-555-1234");
+
+
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("product_id", 60519);
+        jsonObject.put("package_id", 118059);
+        jsonObject.put("price", 27.95);
+        jsonObject.put("quantity", 120);
+
+        jsonArray.put(jsonObject);
+
+        params.put("products", ""+ jsonArray);
+
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(params),
+                response -> {
+
+                    try {
+
+                        Toast.makeText(this, ""+response, Toast.LENGTH_SHORT).show();
+                        Log.e("Response", response.toString());
+
+
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }, error -> {
+            Toast.makeText(this, ""+error, Toast.LENGTH_SHORT).show();
+        });
+        queue.add(req);
+
     }
 
     private void checkoutPayment() {
 
-        String url = "http://sandbox.tbg.api.tweak.tbg.delivery/shopping_cart/update/";
+
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,

@@ -10,16 +10,16 @@ public class Output {
 
     @SerializedName("selected")
     @Expose
-    private Selected selected;
+    private List<Object> selected = null;
     @SerializedName("options")
     @Expose
     private List<Option> options = null;
 
-    public Selected getSelected() {
+    public List<Object> getSelected() {
         return selected;
     }
 
-    public void setSelected(Selected selected) {
+    public void setSelected(List<Object> selected) {
         this.selected = selected;
     }
 

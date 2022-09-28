@@ -36,6 +36,15 @@ public class PaymentMethod extends AppCompatActivity {
             }
         });
 
+        payment_ImV_backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                PaymentMethod.super.onBackPressed();
+            }
+        });
+
+
     }
 
     private void findId() {

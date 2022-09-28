@@ -17,10 +17,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,10 +40,11 @@ import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.thebeerguy.DashBoard.DashBoard;
 import com.example.thebeerguy.DashBoard.Home.Adapters.WhatsHotAdapter;
+import com.example.thebeerguy.DashBoard.ResponseJson.ProductReq;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
 import com.example.thebeerguy.DashBoard.ReviewCart;
+import com.example.thebeerguy.DashBoard.ReviewModel;
 import com.example.thebeerguy.Intro.LandingScreen;
-import com.example.thebeerguy.Intro.ResponseStore.ResponseStore;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
 import com.example.thebeerguy.Product_Details.FavResponse.ResponseFav;
 import com.example.thebeerguy.Product_Details.ProductDetailsResponse.Package;
@@ -52,8 +53,6 @@ import com.example.thebeerguy.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +60,7 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Body;
 
 public class ProductDetails<textHoure> extends AppCompatActivity implements GetProductPackageId {
 
@@ -69,7 +69,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     String Address = LandingScreen.Address;
     private final List<ResponseHome> list = new ArrayList<>();
     private TextView product_arrow_down, product_TV_price, product_TV_name,
-            product_TV_ratting, product_TV_time, product_TV_rating2,
+            product_TV_ratting, product_TV_time, product_TV_rating2, product_TV_packageID,
             product_details_TV_store,
             product_TV_discription, product_brewer, product_alcohol;
     private Button productDetail_btn_addToCard;
@@ -89,9 +89,13 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
     int newCartNumber2;
     int newNumber = 0;
 
+    List<ProductReq> list1 = new ArrayList<>();
     private String packageName;
 
+    private  RatingBar ratingBar;
+
     String product_name, product_price, product_image;
+    private Object ReviewModel;
 
     @SuppressLint({"RestrictedApi", "ResourceAsColor"})
     @Override
@@ -103,7 +107,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
         window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
 
         findIds();
-        textView43 = findViewById(R.id.textView43);
+        textView43 = findViewById(R.id.product_TV_packageID);
 //        int newCartNumber = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
 //        tv.setText(""+ newCartNumber);
 
@@ -248,7 +252,6 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
         product_IV_image = findViewById(R.id.product_IV_image);
         product_TV_price = findViewById(R.id.product_TV_price);
         product_TV_name = findViewById(R.id.product_TV_name);
-        product_TV_ratting = findViewById(R.id.product_TV_ratting);
         product_TV_time = findViewById(R.id.product_TV_time);
         product_alcohol = findViewById(R.id.product_alcohol);
         product_brewer = findViewById(R.id.product_brewer);
@@ -257,6 +260,8 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
         product_details_TV_store = findViewById(R.id.product_details_TV_store);
 
         product_ImV_fav = findViewById(R.id.product_ImV_fav);
+        ratingBar = findViewById(R.id.ratingBar);
+        product_TV_packageID = findViewById(R.id.product_TV_packageID);
 
         productDetail_btn_addToCard = findViewById(R.id.productDetail_btn_addToCard);
 
@@ -308,14 +313,19 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                         productPackageId = pakageList.get(0).getPackageId();
 //                        product_
 
-                        product_TV_ratting.setText("Rating : " + responseProductDetail.get(0).getRating());
+//                        ratingBar.setRating(getResources().getColor(R.color.colorPrimary));
+                        ratingBar.setRating(Float.parseFloat(responseProductDetail.get(0).getRating()));
+
                         product_brewer.setText( responseProductDetail.get(0).getBrewer());
                         product_alcohol.setText(responseProductDetail.get(0).getAlcoholContent());
-                        product_details_TV_store.setText("The Beer Guy Store");
+                        product_details_TV_store.setText(responseProductDetail.get(0).getPackages().get(0).getStoreAbbrev());
+
 
                         product_price = responseProductDetail.get(0).getCommonPrice();
 
-//                        product_TV_price.setText("$" + responseProductDetail.get(0).getCommonPrice());
+//                        product_TV_packageID = responseProductDetail.get(0).get;
+
+                        product_TV_price.setText("$"+responseProductDetail.get(0).getCommonPrice());
 //                        product_TV_rating2.setText(responseProductDetail.get(0).getRating());
                         product_TV_discription.setText(responseProductDetail.get(0).getDescription());
 
@@ -394,21 +404,30 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
             SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(this);
             String nameLoggedIn = prefs1.getString("LoginName", "Guest");
 
+
+            ProductReq productReq = new ProductReq();
+            productReq.setProductId(""+productID);
+            productReq.setPrice(product_price);
+            productReq.setPackageId(""+productPackageId);
+            productReq.setQuantity("");
+
+            list1.add(productReq);
+
+
             Long shopping_id = System.currentTimeMillis();
 
-            Map<String, String> map = new HashMap<>();
-            map.put(Common.Apikey_text, Common.Apikey_value);
-            map.put("ext_shopping_cart_id", ""+ shopping_id);
-            Common.shoppingId = shopping_id;
-            map.put("ext_customer_id", ""+Common.Customer_ID);
-            map.put("ext_location_id", "2315");   // must be from store api
-            map.put("address", Address);
-            map.put("name", nameLoggedIn);
-            map.put("phone", "416-555-1234");
-            map.put("products", productID);
+            ReviewModel reviewModel = new ReviewModel();
+            reviewModel.setApiKey("codewraps-app-dev");
+            reviewModel.setExtShoppingCartId(12345689);
+            reviewModel.setExtCustomerId(12345678);
+            reviewModel.setExtLocationId(1000);
+            reviewModel.setAddress("123 Test St, Toronto, ON, M8Z4G2");
+            reviewModel.setName("Aman");
+            reviewModel.setPhone("416-555-1234");
+            reviewModel.setProducts(list1);
 
 
-            Call<ResponseAddToCart> call1 = apiInterface.addToCart(map);
+            Call<ResponseAddToCart> call1 = apiInterface.addToCart(reviewModel);
 
             call1.enqueue(new Callback<ResponseAddToCart>() {
                 @RequiresApi(api = Build.VERSION_CODES.O)
@@ -500,7 +519,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
         productPackageId = id;
         textView43.setText(name);
-        product_TV_price.setText("$" + price);
+        product_TV_price.setText("$"+price);
         dialog.dismiss();
 //        productApi();
     }

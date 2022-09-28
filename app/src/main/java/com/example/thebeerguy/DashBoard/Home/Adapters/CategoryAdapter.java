@@ -71,6 +71,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
             lable_text = itemView.findViewById(R.id.lable_text);
             category_image = itemView.findViewById(R.id.category_image);
             card_home = itemView.findViewById(R.id.card_home);
+
         }
     }
 }

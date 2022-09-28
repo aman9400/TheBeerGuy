@@ -24,6 +24,7 @@
             android:name=".Intro.VolleyTest"
             android:exported="true">
 
+
         </activity>
         <activity
             android:name=".TermsConditions"

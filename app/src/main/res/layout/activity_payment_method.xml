@@ -63,7 +63,6 @@
         android:paddingStart="20dp"
         android:paddingEnd="2dp"
         android:text="Delivery Details"
-
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout29"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout29" />
@@ -75,11 +74,12 @@
         android:fontFamily="@font/roboto"
         android:paddingStart="20dp"
         android:paddingEnd="2dp"
-        android:textColor="@color/colorPrimary2"
         android:text="Payment Details"
+        android:textColor="@color/colorPrimary2"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout29"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout29" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout29"
+        tools:ignore="TextContrastCheck" />
 
     <View
         android:id="@+id/view8"
@@ -108,7 +108,7 @@
             android:padding="10dp"
             android:text="How will you be paying?"
             android:textColor="@color/white"
-            android:textSize="18dp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -124,7 +124,7 @@
             android:padding="5dp"
             android:text="Cash at the door"
             android:textColor="@color/text"
-            android:textSize="16sp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintStart_toStartOf="@+id/textView80"
             app:layout_constraintTop_toBottomOf="@+id/textView80" />
 
@@ -141,16 +141,20 @@
 
         <TextView
             android:id="@+id/textView83"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="Credit Card on-line (5.00%processing fee)"
             android:textColor="@color/colorPrimary2"
-            android:textSize="16sp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/payment_card_radioBtn"
             app:layout_constraintStart_toStartOf="@+id/textView82"
             app:layout_constraintTop_toBottomOf="@+id/textView82" />
 
@@ -184,7 +188,7 @@
             android:padding="10dp"
             android:text="Credit Card Details"
             android:textColor="@color/white"
-            android:textSize="18dp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -198,12 +202,14 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:hint="Card Number"
-            android:minHeight="48dp"
+            android:minHeight="@dimen/_40sdp"
             android:paddingStart="10dp"
             android:paddingEnd="2dp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView119"
-            app:layout_constraintTop_toBottomOf="@+id/textView119" />
+            app:layout_constraintTop_toBottomOf="@+id/textView119"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
             android:id="@+id/editText2"
@@ -211,12 +217,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="Expiry Year"
-            android:minHeight="48dp"
+            android:minHeight="@dimen/_40sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="2dp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="@+id/editText"
             app:layout_constraintStart_toStartOf="@+id/editText"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/editText"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
             android:id="@+id/editText3"
@@ -224,24 +232,28 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="Expiry Month"
-            android:minHeight="48dp"
+            android:minHeight="@dimen/_40sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="2dp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="@+id/editText2"
             app:layout_constraintStart_toStartOf="@+id/editText2"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="CVC"
-            android:minHeight="48dp"
+            android:minHeight="@dimen/_40sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="2dp"
+            android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="@+id/editText3"
             app:layout_constraintStart_toStartOf="@+id/editText3"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintTop_toBottomOf="@+id/editText3"
+            tools:ignore="TouchTargetSizeCheck" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -257,7 +269,7 @@
         android:fontFamily="@font/roboto"
         android:text="COMPLETE ORDER"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="@dimen/_16ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

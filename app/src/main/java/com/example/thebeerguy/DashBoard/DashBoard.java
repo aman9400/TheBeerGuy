@@ -16,6 +16,7 @@ import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavPartyDrinkCalcu
 import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavSocialResponsibility;
 import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavTestimonials;
 import com.example.thebeerguy.Intro.LandingScreen;
+import com.example.thebeerguy.NotLogin;
 import com.example.thebeerguy.Product_Details.ProductDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -29,8 +30,10 @@ import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Index;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Html;
@@ -65,9 +68,16 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
     private TextView nav_header_email;
     private TextView navUsername;
     RelativeLayout badgeLayout;
+   public static Dialog dialog;
     TextView tv;
     private int newCartNumber1;
 
+
+    @Override
+    public void onBackPressed() {
+
+        customExitDialog();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,8 +155,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                         setFragment(new Favourites());
 
                     } else {
-                        Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this, Login.class));
+                        setFragment(new NotLogin());
                     }
 //                    Toast.makeText(this, "Favourites", Toast.LENGTH_SHORT).show();
                     break;
@@ -160,8 +169,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                         setFragment(new Recent());
 
                     } else {
-                        Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this, Login.class));
+
+                        setFragment(new NotLogin());
                     }
 //                    Toast.makeText(this, "Recent", Toast.LENGTH_SHORT).show();
                     break;
@@ -175,8 +184,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
                         setFragment(new Orders());
 
                     } else {
-                        Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this, Login.class));
+
+                        setFragment(new NotLogin());
                     }
 
 //                    Toast.makeText(this, "Order", Toast.LENGTH_SHORT).show();
@@ -195,8 +204,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 //                        Toast.makeText(this, "Account", Toast.LENGTH_SHORT).show();
 
                     } else {
-                        Toast.makeText(this, "Please Login First", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(this, Login.class));
+
+                        setFragment(new NotLogin());
                     }
 
                     break;
@@ -229,6 +238,42 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             navigationMenu.findItem(R.id.nav_recentOrder).setVisible(false);
         }
 
+
+
+
+
+
+
+    }
+
+    private void customExitDialog() {
+
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.exit_dialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        dialog.getWindow().setWindowAnimations(R.style.AnimationForDialog);
+
+        TextView exit_TV_cancle, exit_TV_yes;
+
+        exit_TV_cancle = dialog.findViewById(R.id.exit_TV_cancle);
+        exit_TV_yes = dialog.findViewById(R.id.exit_TV_yes);
+
+        exit_TV_cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        exit_TV_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+
+        dialog.show();
 
     }
 

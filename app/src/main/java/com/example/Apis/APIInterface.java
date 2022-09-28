@@ -11,6 +11,7 @@ import com.example.thebeerguy.DashBoard.Home.SubCategory.subCategoryResponse.Res
 import com.example.thebeerguy.DashBoard.Home.categoryResponse.ResponseCategory;
 import com.example.thebeerguy.DashBoard.PurchaseHistoryResponse.ResponsePurchaseHistory;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
+import com.example.thebeerguy.DashBoard.ReviewModel;
 import com.example.thebeerguy.Intro.ResponseStore.ResponseStore;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
 import com.example.thebeerguy.Product_Details.FavResponse.ResponseFav;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
@@ -57,9 +59,9 @@ public interface APIInterface {
     @POST("product/list")
     Call<List<ResponseProductDetail>> productDetail(@FieldMap Map<String, String> productDetail);
 
-    @FormUrlEncoded
+//    @FormUrlEncoded
     @POST("shopping_cart/update/")
-    Call<ResponseAddToCart> addToCart(@FieldMap Map<String, String> AddToCart);
+    Call<ResponseAddToCart> addToCart(@Body ReviewModel reviewModel);
 
     @FormUrlEncoded
     @POST("customer/fave_product")
@@ -87,11 +89,12 @@ public interface APIInterface {
 
     @FormUrlEncoded
     @POST("search_filter_menu")
-    Call<List<ResponseFilter>> filter(@FieldMap Map<String, String> filter);
+    Call<ResponseFilter> filter(@FieldMap Map<String, String> filter);
 
     @FormUrlEncoded
     @POST("store_location/list")
     Call<List<ResponsePurchaseHistory>> purchaseHistory(@FieldMap Map<String, String> purchaseHistory);
+
 
 
 }
