@@ -73,5 +73,259 @@
         \u2022 Gift Deliveries are $24.95 anywhere in Ontario.
     </string>
 
+    <!--Splash Screen -->
+    <string name="skip">Skip</string>
+    <string name="splash1_H">TELL US YOUR LOCATION</string>
+    <string name="splash1_dis">Once you tell us where you are, we\'ll show you only products that are available to you today. Otherwise, you see stuff you can\'t have, and that\'s just not cool.</string>
+    <string name="splash_h2">EXPLORE PRODUCT STORE</string>
+    <string name="splash2_dis">Browse from thousands of new, local, well-known and not-so-well- known products. Select your favorites, or one\'s you\'d like to try, and press that magical order button.</string>
+    <string name="splash3_h">EXPLORE PRODUCT STORE</string>
+    <string name="splash3_dis">Browse from thousands of new, local, well-known and not-so-well- known products. Select your favorites, or one\'s you\'d like to try, and press that magical order button.</string>
+
+    <!--Landing Screen -->
+    <string name="Landing_btn1">START SHOPPING</string>
+    <string name="landing_btn2">ALREADY HAVE AN ACCOUNT, SIGN IN!</string>
+    <string name="landing_dis1">Same day delivery of Beer,Liquor and Wine</string>
+    <string name="landing_dis2">Beer,Liquor,Wine to your door since 2001</string>
+
+    <!-- Signup -->
+    <string name="signup_text1">Create your account</string>
+    <string name="signup_text2">Name</string>
+    <string name="signup_phone">Phone Number</string>
+    <string name="signup_email">Email</string>
+    <string name="signup_address">Address</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_text3">I agree to the</string>
+    <string name="signup_text4">Terms Conditions</string>
+    <string name="signup_sign_up">SIGN UP</string>
+    <string name="signup_text5">Already have a Account?</string>
+    <string name="signup_log_in">Log In</string>
+    <string name="signup_apt">Apt</string>
+    <string name="signup_buzzer">Buzzer</string>
+    <string name="signup_exta_info">Exta Info</string>
+    <string name="signup_text6">Email (will be your username)</string>
+    <string name="signup_name">Name</string>
+    <string name="signup_text7">Are you sending a gift delivery?</string>
+    <string name="signup_yes">Yes</string>
+    <string name="signup_no">No</string>
+    <string name="signup_business">Is this a business?</string>
+    <string name="signup_motel">Is this a Hotel or Motel?</string>
+
+    <!-- Home -->
+    <string name="home_sale">ON SALE</string>
+    <string name="home_hot">WHAT’S HOT</string>
+    <string name="home_beer">BEER</string>
+    <string name="home_liquor">LIQUOR</string>
+    <string name="home_wine">Wine</string>
+    <string name="home_deliver">Deliver to :</string>
+
+    <!-- Account Fragment -->
+    <string name="account_user">User</string>
+    <string name="account_edit">Edit</string>
+    <string name="account_email_example">user@example.com</string>
+    <string name="account_manage_address">Manage Address</string>
+    <string name="account_payment">Payment Method</string>
+    <string name="account_privacy">Privacy Policy</string>
+    <string name="account_my_account">MY Account</string>
+
+    <!-- Not Login Fragment -->
+    <string name="notLogin_text1">You are not currently logged in</string>
+    <string name="notLogin_login">Login</string>
+    <string name="notLogin_text2">and all of your recents</string>
+    <string name="notLogin_text3">orders will be here for you to</string>
+    <string name="notLogin_text4">review, and easily reorder.</string>
+    <string name="recent_btn">Clear Recently Viewed</string>
+    <string name="orders_order">Orders</string>
+
+    <!-- Add Address -->
+    <string name="addAddress_name">Name</string>
+    <string name="addAddress_first_name">Enter first name</string>
+    <string name="addAddress_phoneNumber">Phone Number</string>
+    <string name="addAddress_deliveryAddress">Delivery Address</string>
+    <string name="addAddress_enter_delivery_address">Enter delivery address</string>
+    <string name="addAddress_apt">Apt</string>
+    <string name="addAddress_enter_apt">Enter your Apt</string>
+    <string name="addAddress_buzzer">Buzzer</string>
+    <string name="addAddress_enter_buzzer">Enter your buzzer code</string>
+    <string name="addAddress_cell">Cell</string>
+    <string name="addAddress_enter_cell">Enter your cell</string>
+    <string name="addAddress_home">Home</string>
+    <string name="addAddress_work">Work</string>
+    <string name="addAddress_other">Other</string>
+    <string name="addAddress_intersection">Intersection</string>
+    <string name="addAddress_enter_intersection">Enter your intersection</string>
+    <string name="addAddress_saveBtn">Save</string>
+    <string name="addAddress_enter_number">Enter phone number</string>
+
+
+    <!-- Checkout -->
+    <string name="checkout_checkout">CheckOut</string>
+    <string name="checkout_delivery_details">Delivery Details</string>
+    <string name="checkout_payment_details">Payment Details</string>
+    <string name="checkout_delivering">Delivering To</string>
+    <string name="checkout_name">Name</string>
+    <string name="checkout_text1">When would you like this delivery?</string>
+    <string name="checkout_text2">Extra lnstructions regarding this order?</string>
+    <string name="checkout_address">Address</string>
+    <string name="checkout_continue">Continue</string>
+    <string name="checkout_today">Today</string>
+    <string name="checkout_morning">Morning (11-1)</string>
+    <string name="checkout_text4">Eg. pickup a pack of cigarettes from the store, \n I have 2 cases of empties to return, etc.</string>
+
+    <!-- EditProfile -->
+    <string name="editProfile">Edit Profile</string>
+    <string name="editProfile_save">Save</string>
+    <string name="editProfile_profile_image">Profile Image</string>
+    <string name="editProfile_add_profile">Add Profile</string>
+    <string name="editProfile_first_name">First Name</string>
+    <string name="editProfile_address">Address</string>
+    <string name="editProfile_phone">Phone</string>
+    <string name="editProfile_email_address">Email Address</string>
+    <string name="editProfile_buzzer">Buzzer</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="forgotPass_send">SEND</string>
+    <string name="forgot_Pass_text1">Enter the email address associated with your account</string>
+    <string name="forgotPass_email">Enter your email</string>
+
+    <!-- Guest CheckOut -->
+    <string name="checkout">CheckOut</string>
+    <string name="guestCheckout_addressDetails">Address Details</string>
+    <string name="guestCheckout_business">Business Address</string>
+    <string name="guestCheckout_motel">Hotel/Motel</string>
+    <string name="guestCheckout_text1">When would you like this delivery?</string>
+    <string name="guestCheckout_text2">Extra lnstructions regarding this order?</string>
+    <string name="guestCheckout_text3">Create an Account? (optional)</string>
+    <string name="guestCheckout_i_agree">I agree to the</string>
+    <string name="guestCheckout_terms_conditions">Terms Conditions</string>
+    <string name="guestCheckout_delivery_details">Delivery Details</string>
+    <string name="guestCheckout_name">Name</string>
+    <string name="guestCheckout_phone">Phone</string>
+    <string name="guestCheckout_email">Email</string>
+    <string name="guestCheckout_address">Address</string>
+    <string name="guestCheckout_apt">Apt</string>
+    <string name="guestCheckout_buzzer">Buzzer</string>
+    <string name="guestCheckout_extra_info">Extra Info</string>
+    <string name="guestCheckout_today">Today</string>
+    <string name="guestCheckout_morning">Morning (11-1)</string>
+    <string name="guestCheckout_text4">Eg. pickup a pack of cigarettes from the store, I have 2 cases of empties to return, etc.</string>
+    <string name="guestCheckout_password">Password</string>
+    <string name="guestCheckout_checkout">Checkout</string>
+    <string name="add_new_addressBtn">Add New Address</string>
+
+    <!-- Contact Us -->
+    <string name="contact_us">Contact Us</string>
+    <string name="contactUs_text">Our agents are standing by to help you. Send us a quick email to</string>
+    <string name="delivery_rate">Delivery Rate</string>
+
+    <!-- Delivery Rate -->
+    <string name="delivery_rate_text1">The minimum delivery charge varies depending on your city - please use the chart on the right as a reference for your area.</string>
+    <string name="delivery_rate_text2">An overage charge of $1.50 can also apply for the each of the following:</string>
+    <string name="delivery_rate_text3">Our website and driver will always try to avoid these overages charges for your convenience, but where they\'re necessary you will be shown an accurate delivery charge on the website or otherwise notified.</string>
+    <string name="delivery_rate_text4">Additionally, our website pricing is based on an average price between varying store locations across Ontario, as well as between The Beer Store and LCBO. While our pricing is very close to accurate, discrepancies DO occur. In those cases where there are discrepancies between our pricing, and the pricing the driver has at the door, the driver is ALWAYS accurate.</string>
+
+    <!-- Franchise -->
+    <string name="franchise">Franchise and Sponsorship</string>
+    <string name="franchise_text1">Franchise</string>
+    <string name="sponsorship">Sponsorship</string>
+
+    <!-- Help  -->
+    <string name="help_gift_deliveries">Gift Deliveries?</string>
+    <string name="help_help_and_faq">Help and FAQ</string>
+    <string name="help_delivery_area_and_fees">Delivery Area and Fees</string>
+    <string name="help_text1">Yes, Gift Deliveries are available! You can pay online with Visa, Mastercard or AMEX, and schedule the delivery date/time through the website. Just follow the on-screen prompts.</string>
+    <string name="help_text2">Gift Deliveries are $24.95 anywhere in Ontario.</string>
+    <string name="help_text3">Gift bags or Gift cards are $5.00 each, and you can request either when checking out. You can also include your own customized message for the gift card.</string>
+    <string name="help_payment_methods">Payment Methods</string>
+    <string name="help_text5">Delivery Area and Fees</string>
+    <string name="help_text6">We accept payment at the door by cash in all cities. You can also pay by Visa, Mastercard or AMEX in most major cities; note: a 5% surcharge is applied to credit card orders. Most major cities require credit card orders be delivered</string>
+
+    <!-- How to Order Alcohol -->
+    <string name="order_alcohol">How to Order Alcohol</string>
+    <string name="order_alcohol_text1">Many house partiers are disappointed when the booze runs out. So what does a person do next?</string>
+    <string name="order_alcohol_text2">You may want to switch to another house, or hit up a local bar or club, but finally there is a better option available for everyone. People can order more beer, liquor, or wine ONLINE. Your order will be there within ONE hour of ordering, so when</string>
+    <string name="order_alcohol_text3">We do not mark up any prices on any alcohol on our site - it\'s the same if you went to the LCBO or Beer Store yourself. A local licensed liquor delivery company will be delivering your order, and their delivery fee will be added to your order. This fee is regulated by the Alcohol and Gaming commission of Ontario (AGCO), and is based on a geographic area. For a complete list of our delivery charges, please see Delivery Rates</string>
+
+    <!-- Party Drink Calculator -->
+    <string name="party">Party Drink Calculator</string>
+    <string name="party_text1">How long will the party last? (Max 8 Hour)</string>
+    <string name="party_hours">Hours</string>
+    <string name="party_wine">wine</string>
+    <string name="party_text2">How many guests will be attending?</string>
+    <string name="party_ligh_drinkers">Ligh Drinkers</string>
+    <string name="party_heavy_drinkers">Heavy Drinkers</string>
+    <string name="party_average_drinkers">Average Drinkers</string>
+    <string name="_0">0</string>
+    <string name="party_beer">beer</string>
+    <string name="party_liquor">liquor</string>
+    <string name="party_text3">What percent of each type?</string>
+    <string name="party_drinks_needed">Drinks Needed</string>
+    <string name="_5">5</string>
+    <string name="party_bottle_s_can_s_of_beer">Bottle(s)/Can(s) of Beer</string>
+    <string name="party_bottle_s_of_wine_750_ml">Bottle(s) of Wine (750 ml)</string>
+    <string name="party_bottle_s_of_liquor_750_ml">Bottle(s) of Liquor (750 ml)</string>
+
+    <!-- SocialResponsibility -->
+    <string name="socialresponsibility">SocialResponsibility</string>
+
+    <!-- Testimonials -->
+    <string name="testimonials">Testimonials</string>
+    <string name="testimonials_text1">We\'ve provided our services to thousands of Ontarian\'s since we opened our doors in 2001. Here are some things people have said about us:</string>
+
+    <!-- No Coverage -->
+    <string name="no_coverage">No Coverage</string>
+    <string name="no_coverage_text1">Delivery of Alcohol in under 2 hours</string>
+    <string name="no_coverage_text2">Beer, Loquor, Wine to your door since 2001</string>
+    <string name="no_coverage_we_re_sorry">We\'re Sorry,</string>
+    <string name="no_coverage_text3">We currently do not cover your area</string>
+    <string name="no_coverage_text4">Enter an email address to be notified when we are in your area</string>
+    <string name="no_coverage_email_address">Email Address</string>
+    <string name="no_coverage_submit">Submit</string>
+
+    <!-- complete_order -->
+    <string name="complete_order_thankyou">Thank you for your order!</string>
+    <string name="complete_order_text1">We’ve received your order and it will be dispatched during your delivery window. You can access your order details at any time on your orders page.</string>
+    <string name="complete_order_continue_shopping">CONTINUE SHOPPING</string>
+    <string name="okay">OKAY</string>
+    <string name="check_your_email">Check your email</string>
+    <string name="pass_recover_text1">We have sent a password recovery instruction to your email.</string>
+
+    <!-- paymentMethod -->
+    <string name="paymentMethod_checkout">CheckOut</string>
+    <string name="paymentMethod_delivery_details">Delivery Details</string>
+    <string name="paymentMethod_payment_details">Payment Details</string>
+    <string name="paymentMethod_how_will_you_be_paying">How will you be paying?</string>
+    <string name="paymentMethod_expiry_year">Expiry Year</string>
+    <string name="paymentMethod_cash_at_the_door">Cash at the door</string>
+    <string name="paymentMethod_text1">Credit Card on-line (5.00%processing fee)</string>
+    <string name="paymentMethod_credit_card_details">Credit Card Details</string>
+    <string name="paymentMethod_card_number">Card Number</string>
+    <string name="paymentMethod_expiry_month">Expiry Month</string>
+    <string name="paymentMethod_cvc">CVC</string>
+    <string name="paymentMethod_complete_order">COMPLETE ORDER</string>
+
+    <!-- Product Details -->
+    <string name="ProductDetails_in_stock">In Stock</string>
+    <string name="ProductDetails_people_also_bought">PEOPLE ALSO BOUGHT</string>
+    <string name="ProductDetails_mrp">MRP</string>
+    <string name="ProductDetails_add_to_cart">Add to Cart</string>
+
+    <!-- Reset Password -->
+    <string name="resetPass_new_password">New password</string>
+    <string name="resetPass_confirm_password">Confirm password</string>
+    <string name="resetPass_create">CREATE</string>
+    <string name="resetPass_text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="resetPass_create_new_password">Create new password</string>
+
+    <!-- Review Cart -->
+    <string name="review_cart">Review Cart</string>
+    <string name="review_cart_gift_delivery">Gift Delivery ($15)</string>
+    <string name="review_cart_learn_more">Learn More</string>
+    <string name="review_cart_total_items">Total (items)</string>
+    <string name="review_cart_delivery_charge">Delivery Charge</string>
+    <string name="review_cart_hst">HST</string>
+    <string name="review_cart_grand_total">Grand Total</string>
+    <string name="review_cart_checkout">CHECKOUT</string>
+    <string name="address_home">Home</string>
+
 
 </resources>

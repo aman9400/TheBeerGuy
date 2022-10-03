@@ -31,13 +31,15 @@
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:background="@color/transparent"
             android:layout_marginBottom="8dp"
+            android:background="@color/transparent"
+            android:contentDescription="@string/aboutus1"
             android:scaleType="fitXY"
             android:src="@drawable/ic_left_arrow24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,ImageContrastCheck,DuplicateSpeakableTextCheck" />
 
         <TextView
             android:id="@+id/textView35"
@@ -45,7 +47,7 @@
             android:layout_height="60dp"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
-            android:text="Franchise and Sponsorship"
+            android:text="@string/franchise"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +94,7 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/poppins"
                         android:padding="3dp"
-                        android:text="Franchise"
+                        android:text="@string/franchise_text1"
                         android:textColor="@color/text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -134,7 +136,7 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/poppins"
                         android:padding="3dp"
-                        android:text="Sponsorship"
+                        android:text="@string/sponsorship"
                         android:textColor="@color/text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

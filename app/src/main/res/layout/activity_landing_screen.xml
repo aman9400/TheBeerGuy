@@ -24,7 +24,7 @@
             android:layout_marginEnd="40dp"
             android:background="@drawable/button_corner"
             android:fontFamily="@font/rubik_medium"
-            android:text="START SHOPPING"
+            android:text="@string/Landing_btn1"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,13 +41,14 @@
             android:layout_marginBottom="32dp"
             android:background="@drawable/button_corner"
             android:fontFamily="@font/rubik_medium"
-            android:text="ALREADY HAVE AN ACCOUNT, SIGN IN!"
+            android:text="@string/landing_btn2"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            tools:ignore="TextContrastCheck" />
 
         <ImageView
             android:id="@+id/imageView2"
@@ -56,6 +57,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="40dp"
+            android:contentDescription="@string/aboutus1"
             android:src="@drawable/sp_img4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/sp4_btn_signup"
@@ -67,10 +69,12 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="24dp"
+            android:contentDescription="@string/aboutus1"
             android:src="@drawable/sp_img5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/textView5"
@@ -79,13 +83,14 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/roboto_bold"
             android:padding="2dp"
-            android:text="Same day delivery of Beer,Liquor and Wine"
+            android:text="@string/landing_dis1"
             android:textColor="#ffffff"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/textView6"
@@ -93,11 +98,12 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/open_sans"
             android:padding="2dp"
-            android:text="Beer,Liquor,Wine to your door since 2001"
+            android:text="@string/landing_dis2"
             android:textColor="#DFFFFFFF"
             app:layout_constraintEnd_toEndOf="@+id/textView5"
             app:layout_constraintStart_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            tools:ignore="TextContrastCheck" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"

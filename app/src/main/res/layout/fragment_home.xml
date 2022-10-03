@@ -6,15 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".DashBoard.Home.Home">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="@dimen/_60sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tv_address_home"
@@ -24,8 +34,7 @@
             android:layout_marginTop="16dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="dfdd"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/downArrow"
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toTopOf="parent" />
@@ -77,23 +86,28 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="1dp"
                 android:layout_marginEnd="1dp"
+                android:contentDescription="@string/aboutus1"
                 android:scaleType="centerCrop"
                 android:src="@drawable/slider" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/aboutus1"
                 android:scaleType="fitXY"
                 android:src="@drawable/slider1" />
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/aboutus1"
                 android:scaleType="fitXY"
                 android:src="@drawable/slider2" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/aboutus1"
                 android:scaleType="fitXY"
                 android:src="@drawable/slider3" />
 
@@ -118,9 +132,9 @@
             android:paddingTop="@dimen/_5sdp"
             android:paddingEnd="@dimen/_5sdp"
             android:paddingBottom="@dimen/_5sdp"
-            android:text="ON SALE"
+            android:text="@string/home_sale"
             android:textColor="@color/white"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -147,9 +161,9 @@
             android:paddingTop="@dimen/_5sdp"
             android:paddingEnd="@dimen/_5sdp"
             android:paddingBottom="@dimen/_5sdp"
-            android:text="WHAT’S HOT"
+            android:text="@string/home_hot"
             android:textColor="@color/white"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -176,13 +190,13 @@
             android:paddingTop="@dimen/_5sdp"
             android:paddingEnd="@dimen/_5sdp"
             android:paddingBottom="@dimen/_5sdp"
-            android:text="BEER"
+            android:text="@string/home_beer"
             android:textColor="@color/white"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/whatsHot_recyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/whatsHot_recyclerView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/beer_recyclerView"
@@ -204,13 +218,13 @@
             android:paddingTop="@dimen/_5sdp"
             android:paddingEnd="@dimen/_5sdp"
             android:paddingBottom="@dimen/_5sdp"
-            android:text="LIQUOR"
+            android:text="@string/home_liquor"
             android:textColor="@color/white"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/beer_recyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/beer_recyclerView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/liquor_recyclerView"
@@ -232,13 +246,13 @@
             android:paddingTop="@dimen/_5sdp"
             android:paddingEnd="@dimen/_5sdp"
             android:paddingBottom="@dimen/_5sdp"
-            android:text="Wine"
+            android:text="@string/home_wine"
             android:textColor="@color/white"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/liquor_recyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/liquor_recyclerView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/wine_recyclerView"
@@ -255,8 +269,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Deliver to : "
-            android:textSize="@dimen/_14ssp"
+            android:text="@string/home_deliver"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -268,6 +282,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/ic_baseline_arrow_drop_down_24"
+            android:contentDescription="@string/aboutus1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -275,4 +290,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

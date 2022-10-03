@@ -32,7 +32,7 @@
                 android:layout_height="60dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
-                android:text="Help and FAQ"
+                android:text="@string/help_help_and_faq"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,11 +49,13 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@color/transparent"
+                android:contentDescription="@string/aboutus1"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_left_arrow24"
                 app:layout_constraintBottom_toTopOf="@+id/view17"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView35" />
+                app:layout_constraintTop_toTopOf="@+id/textView35"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck,DuplicateSpeakableTextCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -95,7 +97,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:padding="3dp"
-                        android:text="Delivery Area and Fees"
+                        android:text="@string/help_delivery_area_and_fees"
                         android:textColor="@color/text"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -136,7 +138,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:padding="3dp"
-                    android:text="Gift Deliveries?"
+                    android:text="@string/help_gift_deliveries"
                     android:textColor="@color/text"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -148,7 +150,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:padding="3dp"
-                    android:text="Yes, Gift Deliveries are available! You can pay online with Visa, Mastercard or AMEX, and schedule the delivery date/time through the website. Just follow the on-screen prompts."
+                    android:text="@string/help_text1"
                     android:textColor="@color/text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/textView68"
@@ -160,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:padding="3dp"
-                    android:text="Gift Deliveries are $24.95 anywhere in Ontario."
+                    android:text="@string/help_text2"
                     android:textColor="@color/text"
                     app:layout_constraintEnd_toEndOf="@+id/textView69"
                     app:layout_constraintStart_toStartOf="@+id/textView69"
@@ -172,7 +174,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:padding="3dp"
-                    android:text="Gift bags or Gift cards are $5.00 each, and you can request either when checking out. You can also include your own customized message for the gift card.  "
+                    android:text="@string/help_text3"
                     android:textColor="@color/text"
                     app:layout_constraintEnd_toEndOf="@+id/textView70"
                     app:layout_constraintStart_toStartOf="@+id/textView70"
@@ -202,7 +204,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:padding="3dp"
-                    android:text="Payment Methods"
+                    android:text="@string/help_payment_methods"
                     android:textColor="@color/text"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -242,7 +244,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:padding="3dp"
-                    android:text="Delivery Area and Fees"
+                    android:text="@string/help_text5"
                     android:textColor="@color/text"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -254,7 +256,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:padding="3dp"
-                    android:text="We accept payment at the door by cash in all cities. You can also pay by Visa, Mastercard or AMEX in most major cities; note: a 5% surcharge is applied to credit card orders. Most major cities require credit card orders be delivered "
+                    android:text="@string/help_text6"
                     android:textColor="@color/text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"

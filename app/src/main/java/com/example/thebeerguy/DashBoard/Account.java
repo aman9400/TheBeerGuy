@@ -25,7 +25,7 @@ import com.example.thebeerguy.R;
 
 public class Account extends Fragment {
 
-    private ImageView backbtn_account, next_manage_account, next_payment_account, next_help_account, pro_account;
+    private ImageView  next_manage_account, next_payment_account, next_help_account, pro_account;
     private TextView name_account, phone_account, email_account, edit_text_account;
 
     ConstraintLayout account_constraintLayout_payment, account_constraintLayout_manageAddress;
@@ -58,10 +58,6 @@ public class Account extends Fragment {
 
         });
 
-        backbtn_account.setOnClickListener(v -> {
-           Intent intent = new Intent(getContext(), DashBoard.class);
-           startActivity(intent);
-        });
 
         account_constraintLayout_manageAddress.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), ManageAddress.class);
@@ -93,7 +89,6 @@ public class Account extends Fragment {
 
     private void initView(View view) {
 
-        backbtn_account = view.findViewById(R.id.backbtn_editprofile);
         next_manage_account = view.findViewById(R.id.next_manage_account);
         next_payment_account = view.findViewById(R.id.next_payment_account);
         next_help_account = view.findViewById(R.id.next_help_account);

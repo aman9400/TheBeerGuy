@@ -17,9 +17,11 @@
             android:layout_height="35dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:contentDescription="@string/aboutus1"
             android:src="@drawable/circle3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
 
         <ImageView
             android:id="@+id/imageView8"
@@ -29,6 +31,7 @@
             android:layout_marginTop="35dp"
             android:layout_marginEnd="35dp"
             android:layout_marginBottom="30dp"
+            android:contentDescription="@string/aboutus1"
             android:src="@drawable/sp_img3"
             app:layout_constraintBottom_toTopOf="@+id/guideline3"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,11 +47,12 @@
             android:layout_marginEnd="14dp"
             android:background="@color/transparent"
             android:fontFamily="@font/open_sans"
-            android:text="Skip"
+            android:text="@string/skip"
             android:textColor="@color/white"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
@@ -61,38 +65,34 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_semibold"
+            android:fontFamily="@font/opensanssemibold"
             android:padding="3dp"
-            android:text="EXPLORE PRODUCT STORE"
+            android:text="@string/splash3_h"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.565"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/open_sans"
             android:padding="3dp"
-            android:text="Browse from thousands of new,
-local, well-known and not-so-well-
-known products. Select your
-favorites, or one's you'd like to try,
-and press that magical order
-button.
-"
+            android:text="@string/splash3_dis"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

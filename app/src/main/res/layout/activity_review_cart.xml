@@ -40,12 +40,13 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@color/transparent"
+                android:contentDescription="@string/aboutus1"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_left_arrow24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/textView35"
@@ -53,13 +54,14 @@
                 android:layout_height="60dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
-                android:text="Review Cart"
+                android:text="@string/review_cart"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -129,7 +131,7 @@
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/roboto"
                     android:padding="2dp"
-                    android:text="Gift Delivery ($15)"
+                    android:text="@string/review_cart_gift_delivery"
                     android:textColor="@color/text"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/review_gift_checkBox"
@@ -142,12 +144,13 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:padding="2dp"
-                    android:text="Learn More"
+                    android:text="@string/review_cart_learn_more"
                     android:textColor="@color/colorPrimary2"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView122"
                     app:layout_constraintStart_toEndOf="@+id/textView122"
-                    app:layout_constraintTop_toTopOf="@+id/textView122" />
+                    app:layout_constraintTop_toTopOf="@+id/textView122"
+                    tools:ignore="TextContrastCheck" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
@@ -228,7 +231,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Total (items)"
+                    android:text="@string/review_cart_total_items"
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="@+id/subTotal"
                     app:layout_constraintEnd_toStartOf="@+id/view11"
@@ -239,7 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Delivery Charge"
+                    android:text="@string/review_cart_delivery_charge"
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="@+id/deliveryCharge"
                     app:layout_constraintEnd_toEndOf="@+id/tc_item"
@@ -250,7 +253,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="HST"
+                    android:text="@string/review_cart_hst"
                     android:textColor="@color/black"
 
                     app:layout_constraintBottom_toBottomOf="@+id/taxAndCharges"
@@ -262,7 +265,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="Grand Total"
+                    android:text="@string/review_cart_grand_total"
                     android:textColor="@color/black"
                     android:textSize="17sp"
                     android:textStyle="bold"
@@ -315,18 +318,19 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/review_button_checkout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button_corner"
-        android:fontFamily="@font/roboto_bold"
-        android:text="CHECKOUT"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/review_button_checkout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_corner"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/review_cart_checkout"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

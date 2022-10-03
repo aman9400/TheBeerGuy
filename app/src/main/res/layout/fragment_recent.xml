@@ -30,11 +30,12 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_corner"
             android:fontFamily="@font/roboto"
-            android:text="Clear Recently Viewed"
+            android:text="@string/recent_btn"
             android:textColor="@color/white"
-            android:textSize="@dimen/_16ssp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/recent_gridView"
             app:layout_constraintEnd_toEndOf="@+id/recent_gridView"
-            app:layout_constraintStart_toStartOf="@+id/recent_gridView" />
+            app:layout_constraintStart_toStartOf="@+id/recent_gridView"
+            tools:ignore="TextContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

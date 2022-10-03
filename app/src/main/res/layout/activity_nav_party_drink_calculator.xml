@@ -32,12 +32,14 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:scaleType="fitXY"
             android:background="@color/transparent"
+            android:contentDescription="@string/aboutus1"
+            android:scaleType="fitXY"
             android:src="@drawable/ic_left_arrow24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck,DuplicateSpeakableTextCheck" />
 
         <TextView
             android:id="@+id/textView35"
@@ -45,13 +47,14 @@
             android:layout_height="60dp"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
-            android:text="Party Drink Calculator"
+            android:text="@string/party"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -93,7 +96,7 @@
                         android:layout_marginEnd="32dp"
                         android:fontFamily="@font/roboto_bold"
                         android:padding="3dp"
-                        android:text="How long will the party last?  (Max 8  Hour)"
+                        android:text="@string/party_text1"
                         android:textColor="@color/text"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -107,7 +110,7 @@
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/roboto"
                         android:padding="3dp"
-                        android:text="Hours"
+                        android:text="@string/party_hours"
                         app:layout_constraintEnd_toEndOf="@+id/textView54"
                         app:layout_constraintStart_toStartOf="@+id/textView54"
                         app:layout_constraintTop_toBottomOf="@+id/textView54" />
@@ -115,13 +118,15 @@
                     <EditText
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint="0"
+                        android:hint="@string/_0"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
                         android:minHeight="48dp"
                         android:padding="3dp"
                         app:layout_constraintEnd_toEndOf="@+id/textView88"
                         app:layout_constraintStart_toStartOf="@+id/textView88"
                         app:layout_constraintTop_toBottomOf="@+id/textView88"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -149,7 +154,7 @@
                         android:layout_marginEnd="32dp"
                         android:fontFamily="@font/roboto_bold"
                         android:padding="3dp"
-                        android:text="How many guests will be attending?"
+                        android:text="@string/party_text2"
                         android:textColor="@color/text"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -163,7 +168,7 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/roboto"
                         android:padding="3dp"
-                        android:text="Ligh Drinkers "
+                        android:text="@string/party_ligh_drinkers"
                         android:textColor="@color/text"
                         app:layout_constraintStart_toStartOf="@+id/textView91"
                         app:layout_constraintTop_toBottomOf="@+id/textView91" />
@@ -175,7 +180,7 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/roboto"
                         android:padding="3dp"
-                        android:text="Heavy  Drinkers "
+                        android:text="@string/party_heavy_drinkers"
                         android:textColor="@color/text"
                         app:layout_constraintEnd_toEndOf="@+id/textView91"
                         app:layout_constraintTop_toBottomOf="@+id/textView91" />
@@ -186,7 +191,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto"
                         android:padding="3dp"
-                        android:text="Average  Drinkers "
+                        android:text="@string/party_average_drinkers"
                         android:textColor="@color/text"
                         app:layout_constraintBottom_toBottomOf="@+id/textView90"
                         app:layout_constraintEnd_toStartOf="@+id/textView92"
@@ -197,31 +202,37 @@
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:hint="0"
+                        android:hint="@string/_0"
+                        android:importantForAutofill="no"
+                        android:inputType="number|text"
                         app:layout_constraintEnd_toEndOf="@id/textView90"
                         app:layout_constraintStart_toStartOf="@id/textView90"
                         app:layout_constraintTop_toBottomOf="@+id/textView90"
-                        tools:ignore="TouchTargetSizeCheck" />
+                        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                     <EditText
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:hint="0"
+                        android:hint="@string/_0"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
                         app:layout_constraintEnd_toEndOf="@id/textView92"
                         app:layout_constraintStart_toStartOf="@id/textView92"
                         app:layout_constraintTop_toBottomOf="@+id/textView92"
-                        tools:ignore="TouchTargetSizeCheck" />
+                        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                     <EditText
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:hint="0"
+                        android:autofillHints=""
+                        android:hint="@string/_0"
+                        android:inputType="number"
                         app:layout_constraintEnd_toEndOf="@id/textView93"
                         app:layout_constraintStart_toStartOf="@id/textView93"
                         app:layout_constraintTop_toBottomOf="@+id/textView93"
-                        tools:ignore="TouchTargetSizeCheck" />
+                        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -248,7 +259,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
                         android:minHeight="48dp"
-                        android:text="beer"
+                        android:text="@string/party_beer"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -258,7 +269,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
-                        android:text="wine"
+                        android:text="@string/party_wine"
                         app:layout_constraintBottom_toBottomOf="@+id/checkBox5"
                         app:layout_constraintEnd_toStartOf="@id/checkBox7"
                         app:layout_constraintStart_toEndOf="@+id/checkBox5"
@@ -270,7 +281,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="24dp"
                         android:minHeight="48dp"
-                        android:text="liquor"
+                        android:text="@string/party_liquor"
                         app:layout_constraintBottom_toBottomOf="@+id/checkBox6"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/checkBox6" />
@@ -333,7 +344,7 @@
                         android:layout_marginEnd="16dp"
                         android:fontFamily="@font/roboto_bold"
                         android:padding="3dp"
-                        android:text="What percent of each type?"
+                        android:text="@string/party_text3"
                         android:textColor="@color/text"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -423,7 +434,7 @@
                         android:layout_marginEnd="16dp"
                         android:fontFamily="@font/roboto_bold"
                         android:padding="3dp"
-                        android:text="Drinks Needed"
+                        android:text="@string/party_drinks_needed"
                         android:textColor="@color/text"
                         android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -436,7 +447,7 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/roboto_bold"
                         android:padding="3dp"
-                        android:text="5"
+                        android:text="@string/_5"
                         android:textColor="@color/black"
                         app:layout_constraintStart_toStartOf="@+id/textView101"
                         app:layout_constraintTop_toBottomOf="@+id/textView101" />
@@ -447,7 +458,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:padding="3dp"
-                        android:text="Bottle(s)/Can(s) of Beer"
+                        android:text="@string/party_bottle_s_can_s_of_beer"
                         android:textColor="@color/text"
                         app:layout_constraintBottom_toBottomOf="@id/textView102"
                         app:layout_constraintStart_toEndOf="@+id/textView102"
@@ -460,7 +471,7 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/roboto_bold"
                         android:padding="3dp"
-                        android:text="5"
+                        android:text="@string/_5"
                         android:textColor="@color/black"
                         app:layout_constraintStart_toStartOf="@+id/textView102"
                         app:layout_constraintTop_toBottomOf="@+id/textView102" />
@@ -472,7 +483,7 @@
                         android:layout_marginStart="8dp"
                         android:fontFamily="@font/roboto"
                         android:padding="3dp"
-                        android:text="Bottle(s) of Wine (750 ml)"
+                        android:text="@string/party_bottle_s_of_wine_750_ml"
                         android:textColor="@color/text"
                         app:layout_constraintBottom_toBottomOf="@id/textView104"
                         app:layout_constraintStart_toEndOf="@+id/textView104"
@@ -485,7 +496,7 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/roboto_bold"
                         android:padding="3dp"
-                        android:text="5"
+                        android:text="@string/_5"
                         android:textColor="@color/black"
                         app:layout_constraintStart_toStartOf="@+id/textView104"
                         app:layout_constraintTop_toBottomOf="@+id/textView104" />
@@ -496,7 +507,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:padding="3dp"
-                        android:text="Bottle(s) of Liquor (750 ml)"
+                        android:text="@string/party_bottle_s_of_liquor_750_ml"
                         android:textColor="@color/text"
                         app:layout_constraintBottom_toBottomOf="@id/textView106"
                         app:layout_constraintStart_toEndOf="@+id/textView106"

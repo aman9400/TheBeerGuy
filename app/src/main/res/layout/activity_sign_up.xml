@@ -12,7 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <ImageButton
@@ -22,11 +22,12 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="14dp"
             android:background="@color/transparent"
+            android:contentDescription="@string/aboutus1"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_left_arrow24"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/textView16"
@@ -35,11 +36,12 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto_bold"
             android:padding="3dp"
-            android:text="Create your account"
+            android:text="@string/signup_text1"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/signup_btn_back"
-            app:layout_constraintTop_toBottomOf="@+id/signup_btn_back" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_btn_back"
+            tools:ignore="TextContrastCheck" />
 
         <EditText
             android:id="@+id/sign_name"
@@ -49,31 +51,32 @@
             android:autofillHints=""
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
-            android:hint="Name"
+            android:hint="@string/signup_text2"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:paddingEnd="2dp"
             app:layout_constraintEnd_toEndOf="@+id/textView26"
             app:layout_constraintStart_toStartOf="@+id/textView26"
             app:layout_constraintTop_toBottomOf="@+id/textView26"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
 
         <EditText
             android:id="@+id/sign_mobile"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginTop="4dp"
+            android:autofillHints=""
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="Phone Number"
+            android:hint="@string/signup_phone"
             android:inputType="phone"
             android:paddingStart="20dp"
             android:paddingEnd="2dp"
             app:layout_constraintEnd_toEndOf="@+id/tc_item"
             app:layout_constraintStart_toStartOf="@+id/tc_item"
             app:layout_constraintTop_toBottomOf="@+id/tc_item"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck" />
 
         <EditText
             android:id="@+id/sign_email"
@@ -83,14 +86,15 @@
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="Email"
+            android:hint="@string/signup_email"
             android:inputType="textEmailAddress"
             android:paddingStart="20dp"
             android:paddingEnd="2dp"
             app:layout_constraintEnd_toEndOf="@+id/textView10"
             app:layout_constraintStart_toStartOf="@+id/textView10"
             app:layout_constraintTop_toBottomOf="@+id/textView10"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/sign_address"
@@ -100,14 +104,15 @@
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="Address"
+            android:hint="@string/signup_address"
             android:inputType="textPostalAddress"
             android:paddingStart="20dp"
             android:paddingEnd="2dp"
             app:layout_constraintEnd_toEndOf="@+id/radioGroup"
             app:layout_constraintStart_toStartOf="@+id/textView22"
             app:layout_constraintTop_toBottomOf="@+id/textView22"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/sign_password"
@@ -117,14 +122,15 @@
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="Password"
+            android:hint="@string/signup_password"
             android:inputType="textPassword"
             android:paddingStart="20dp"
             android:paddingEnd="2dp"
             app:layout_constraintEnd_toEndOf="@+id/textView24"
             app:layout_constraintStart_toStartOf="@+id/textView24"
             app:layout_constraintTop_toBottomOf="@+id/textView24"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck,TextContrastCheck"
+            android:importantForAutofill="no" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkBoxBtn_TC"
@@ -142,7 +148,7 @@
             android:layout_marginStart="4dp"
             android:fontFamily="@font/roboto"
             android:padding="2dp"
-            android:text="I agree to the "
+            android:text="@string/signup_text3"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/checkBoxBtn_TC"
@@ -155,7 +161,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"
             android:padding="2dp"
-            android:text="Terms Conditions"
+            android:text="@string/signup_text4"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -172,7 +178,7 @@
             android:layout_marginEnd="20dp"
             android:background="@drawable/button_corner"
             android:fontFamily="@font/rubik_medium"
-            android:text="SIGN UP"
+            android:text="@string/signup_sign_up"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -189,7 +195,7 @@
             android:layout_marginBottom="32dp"
             android:fontFamily="@font/roboto"
             android:padding="3dp"
-            android:text="Already have a Account?"
+            android:text="@string/signup_text5"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -204,7 +210,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/roboto_bold"
             android:padding="3dp"
-            android:text="Log In"
+            android:text="@string/signup_log_in"
 
             android:textColor="@color/white"
             android:textSize="16sp"
@@ -219,13 +225,14 @@
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="Apt"
+            android:hint="@string/signup_apt"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:paddingEnd="2dp"
             app:layout_constraintStart_toStartOf="@+id/sign_address"
             app:layout_constraintTop_toBottomOf="@+id/textView29"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/sign_buzzer"
@@ -235,7 +242,7 @@
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="Buzzer"
+            android:hint="@string/signup_buzzer"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:paddingEnd="2dp"
@@ -243,7 +250,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/sign_apt"
             app:layout_constraintVertical_bias="0.0"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck,DuplicateSpeakableTextCheck"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/sign_extrainfo"
@@ -253,14 +261,15 @@
             android:background="@drawable/signup_border"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="Exta Info"
+            android:hint="@string/signup_exta_info"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:paddingEnd="2dp"
             app:layout_constraintEnd_toEndOf="@+id/textView31"
             app:layout_constraintStart_toStartOf="@+id/textView31"
             app:layout_constraintTop_toBottomOf="@+id/textView31"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/textView10"
@@ -270,13 +279,14 @@
             android:layout_marginEnd="20dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Email (will be your username)"
+            android:text="@string/signup_text6"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView16"
-            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+            app:layout_constraintTop_toBottomOf="@+id/textView16"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/textView24"
@@ -285,12 +295,13 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Password"
+            android:text="@string/signup_password"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/sign_email"
             app:layout_constraintStart_toStartOf="@+id/sign_email"
-            app:layout_constraintTop_toBottomOf="@+id/sign_email" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_email"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/textView26"
@@ -299,12 +310,13 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Name"
+            android:text="@string/signup_name"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/sign_password"
             app:layout_constraintStart_toStartOf="@+id/sign_password"
-            app:layout_constraintTop_toBottomOf="@+id/sign_password" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_password"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/tc_item"
@@ -313,12 +325,13 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Phone"
+            android:text="@string/signup_phone"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/sign_name"
             app:layout_constraintStart_toStartOf="@+id/sign_name"
-            app:layout_constraintTop_toBottomOf="@+id/sign_name" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_name"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/textView28"
@@ -327,12 +340,13 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Are you sending a gift delivery?"
+            android:text="@string/signup_text7"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/sign_mobile"
             app:layout_constraintStart_toStartOf="@+id/sign_mobile"
-            app:layout_constraintTop_toBottomOf="@+id/sign_mobile" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_mobile"
+            tools:ignore="TextContrastCheck" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -349,16 +363,16 @@
                 android:id="@+id/radioBtn_delivery_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yes"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:text="@string/signup_yes"
+                tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioBtn_delivery_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="No"
-                tools:ignore="TouchTargetSizeCheck" />
+                android:text="@string/signup_no"
+                tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
         </RadioGroup>
 
         <TextView
@@ -368,12 +382,13 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Address"
+            android:text="@string/signup_address"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/radioGroup"
             app:layout_constraintStart_toStartOf="@+id/radioGroup"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/textView29"
@@ -382,11 +397,12 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Apt"
+            android:text="@string/signup_apt"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/sign_address"
-            app:layout_constraintTop_toBottomOf="@+id/sign_address" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_address"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/textView30"
@@ -396,11 +412,12 @@
             android:layout_marginEnd="92dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Buzzer"
+            android:text="@string/signup_buzzer"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/sign_address"
-            app:layout_constraintTop_toBottomOf="@+id/sign_address" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_address"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/textView31"
@@ -409,7 +426,7 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Extra Info"
+            android:text="@string/signup_exta_info"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/sign_buzzer"
@@ -424,7 +441,7 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Is this a business?"
+            android:text="@string/signup_business"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/sign_extrainfo"
@@ -445,7 +462,7 @@
                 android:id="@+id/radioBtn_business_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yes"
+                android:text="@string/signup_yes"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -455,7 +472,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="No"
+                android:text="@string/signup_no"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -468,7 +485,7 @@
             android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Is this a Hotel or Motel? "
+            android:text="@string/signup_motel"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/radioGroup2"
@@ -489,7 +506,7 @@
                 android:id="@+id/radioBtn_motel_yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yes"
+                android:text="@string/signup_yes"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -499,7 +516,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="No"
+                android:text="@string/signup_no"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 tools:ignore="TouchTargetSizeCheck" />

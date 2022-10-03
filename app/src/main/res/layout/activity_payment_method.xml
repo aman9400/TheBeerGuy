@@ -20,14 +20,15 @@
             android:layout_height="60dp"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
-            android:text="CheckOut"
+            android:text="@string/paymentMethod_checkout"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/payment_ImV_backBtn"
@@ -41,7 +42,8 @@
             android:src="@drawable/ic_left_arrow24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
 
         <View
             android:id="@+id/view7"
@@ -62,7 +64,7 @@
         android:fontFamily="@font/roboto"
         android:paddingStart="20dp"
         android:paddingEnd="2dp"
-        android:text="Delivery Details"
+        android:text="@string/paymentMethod_delivery_details"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout29"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout29" />
@@ -74,7 +76,7 @@
         android:fontFamily="@font/roboto"
         android:paddingStart="20dp"
         android:paddingEnd="2dp"
-        android:text="Payment Details"
+        android:text="@string/paymentMethod_payment_details"
         android:textColor="@color/colorPrimary2"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout29"
@@ -106,9 +108,9 @@
             android:background="@color/colorPrimary2"
             android:fontFamily="@font/roboto"
             android:padding="10dp"
-            android:text="How will you be paying?"
+            android:text="@string/paymentMethod_how_will_you_be_paying"
             android:textColor="@color/white"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -122,9 +124,9 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto"
             android:padding="5dp"
-            android:text="Cash at the door"
+            android:text="@string/paymentMethod_cash_at_the_door"
             android:textColor="@color/text"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/textView80"
             app:layout_constraintTop_toBottomOf="@+id/textView80" />
 
@@ -137,7 +139,8 @@
             android:minHeight="48dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView82"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView82" />
+            app:layout_constraintTop_toTopOf="@+id/textView82"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <TextView
             android:id="@+id/textView83"
@@ -146,17 +149,18 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/roboto"
-            android:padding="5dp"
             android:ellipsize="end"
+            android:fontFamily="@font/roboto"
             android:maxLines="1"
-            android:text="Credit Card on-line (5.00%processing fee)"
+            android:padding="5dp"
+            android:text="@string/paymentMethod_text1"
             android:textColor="@color/colorPrimary2"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/payment_card_radioBtn"
             app:layout_constraintStart_toStartOf="@+id/textView82"
-            app:layout_constraintTop_toBottomOf="@+id/textView82" />
+            app:layout_constraintTop_toBottomOf="@+id/textView82"
+            tools:ignore="TextContrastCheck" />
 
         <RadioButton
             android:id="@+id/payment_card_radioBtn"
@@ -186,9 +190,9 @@
             android:background="@color/colorPrimary2"
             android:fontFamily="@font/roboto"
             android:padding="10dp"
-            android:text="Credit Card Details"
+            android:text="@string/paymentMethod_credit_card_details"
             android:textColor="@color/white"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -201,26 +205,30 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:hint="Card Number"
+            android:hint="@string/paymentMethod_card_number"
+            android:inputType="number"
             android:minHeight="@dimen/_40sdp"
             android:paddingStart="10dp"
             android:paddingEnd="2dp"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView119"
             app:layout_constraintTop_toBottomOf="@+id/textView119"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/editText2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Expiry Year"
+            android:hint="@string/paymentMethod_expiry_year"
+            android:importantForAutofill="no"
+            android:inputType="date|number"
             android:minHeight="@dimen/_40sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="2dp"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/editText"
             app:layout_constraintStart_toStartOf="@+id/editText"
             app:layout_constraintTop_toBottomOf="@+id/editText"
@@ -231,29 +239,33 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="Expiry Month"
+            android:hint="@string/paymentMethod_expiry_month"
+            android:inputType="date"
             android:minHeight="@dimen/_40sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="2dp"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/editText2"
             app:layout_constraintStart_toStartOf="@+id/editText2"
             app:layout_constraintTop_toBottomOf="@+id/editText2"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:hint="CVC"
+            android:hint="@string/paymentMethod_cvc"
+            android:inputType="number"
             android:minHeight="@dimen/_40sdp"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="2dp"
-            android:textSize="@dimen/_14ssp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/editText3"
             app:layout_constraintStart_toStartOf="@+id/editText3"
             app:layout_constraintTop_toBottomOf="@+id/editText3"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:importantForAutofill="no" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -267,12 +279,13 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_corner"
         android:fontFamily="@font/roboto"
-        android:text="COMPLETE ORDER"
+        android:text="@string/paymentMethod_complete_order"
         android:textColor="@color/white"
-        android:textSize="@dimen/_16ssp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

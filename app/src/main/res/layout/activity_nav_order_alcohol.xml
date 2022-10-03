@@ -32,13 +32,15 @@
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:background="@color/transparent"
             android:layout_marginBottom="8dp"
+            android:background="@color/transparent"
+            android:contentDescription="@string/aboutus1"
             android:scaleType="fitXY"
             android:src="@drawable/ic_left_arrow24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/textView35"
@@ -46,13 +48,14 @@
             android:layout_height="60dp"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
-            android:text="How to Order Alcohol"
+            android:text="@string/order_alcohol"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -92,7 +95,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:padding="3dp"
-                        android:text="Many house partiers are disappointed when the booze runs out. So what does a person do next?"
+                        android:text="@string/order_alcohol_text1"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -103,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:padding="3dp"
-                        android:text=" You may want to switch to another house, or hit up a local bar or club, but finally there is a better option available for everyone. People can order more beer, liquor, or wine ONLINE. Your order will be there within ONE hour of ordering, so when"
+                        android:text="@string/order_alcohol_text2"
                         app:layout_constraintEnd_toEndOf="@+id/textView87"
                         app:layout_constraintStart_toStartOf="@+id/textView87"
                         app:layout_constraintTop_toBottomOf="@+id/textView87" />
@@ -132,7 +135,7 @@
                         android:layout_marginStart="@dimen/_16sdp"
                         android:layout_marginEnd="@dimen/_16sdp"
                         android:layout_marginTop="@dimen/_16sdp"
-                        android:text="We do not mark up any prices on any alcohol on our site - it's the same if you went to the LCBO or Beer Store yourself. A local licensed liquor delivery company will be delivering your order, and their delivery fee will be added to your order. This fee is regulated by the Alcohol and Gaming commission of Ontario (AGCO), and is based on a geographic area. For a complete list of our delivery charges, please see Delivery Rates"
+                        android:text="@string/order_alcohol_text3"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

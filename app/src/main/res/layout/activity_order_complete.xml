@@ -12,10 +12,12 @@
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginTop="60dp"
+        android:contentDescription="@string/aboutus1"
         android:src="@drawable/logo2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ImageContrastCheck" />
 
     <TextView
         android:id="@+id/textView116"
@@ -24,12 +26,13 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_bold"
         android:padding="10dp"
-        android:text="Thank you for your order!"
+        android:text="@string/complete_order_thankyou"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView29" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView29"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:layout_width="0dp"
@@ -39,11 +42,12 @@
         android:layout_marginEnd="24dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="We’ve received your order and it will be dispatched during your delivery window. You can access your order details at any time on your orders page."
+        android:text="@string/complete_order_text1"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView116" />
+        app:layout_constraintTop_toBottomOf="@+id/textView116"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/oderComplete_button"
@@ -52,7 +56,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/button_corner"
-        android:text="CONTINUE SHOPPING"
+        android:text="@string/complete_order_continue_shopping"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline10" />

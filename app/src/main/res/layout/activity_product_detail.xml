@@ -20,13 +20,13 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="220dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -45,7 +45,7 @@
 
                 <TextView
                     android:id="@+id/product_TV_name"
-                    android:layout_width="178dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
@@ -53,7 +53,6 @@
                     android:fontFamily="@font/open_sans"
                     android:text="@string/budweiser"
                     android:textColor="@color/black"
-                    android:textFontWeight="700"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/product_IV_image"
@@ -93,9 +92,11 @@
                 <TextView
                     android:id="@+id/product_brewer"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="0dp"
                     android:layout_marginStart="8dp"
+                    android:ellipsize="end"
                     android:fontFamily="@font/roboto"
+                    android:maxLines="1"
                     android:paddingStart="5dp"
                     android:paddingEnd="2dp"
                     android:text="@string/Brewer"
@@ -111,7 +112,7 @@
                     android:id="@+id/textView40"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
                     android:text="@string/availability"
                     android:textColor="@color/black"
                     android:textSize="12sp"
@@ -120,19 +121,21 @@
 
                 <ImageView
                     android:id="@+id/product_ImV_fav"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="28dp"
-                    android:layout_marginBottom="24dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/aboutus1"
                     android:src="@drawable/ic_unfavorite_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintBottom_toBottomOf="@+id/product_IV_image"
+                    app:layout_constraintEnd_toEndOf="@+id/product_IV_image"
+                    app:layout_constraintHorizontal_bias="0.06"
+                    app:layout_constraintStart_toStartOf="@+id/product_IV_image"
+                    app:layout_constraintTop_toBottomOf="@+id/product_IV_image" />
 
                 <TextView
                     android:id="@+id/textView89"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/Brewer"
                     android:textColor="@color/black"
@@ -144,7 +147,7 @@
                     android:id="@+id/textView117"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/store"
                     android:textColor="@color/black"
@@ -156,7 +159,7 @@
                     android:id="@+id/textView120"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/alcohol"
                     android:textColor="@color/black"
@@ -172,7 +175,7 @@
                     android:fontFamily="@font/roboto"
                     android:paddingStart="5dp"
                     android:paddingEnd="2dp"
-                    android:text="In Stock"
+                    android:text="@string/ProductDetails_in_stock"
                     android:textColor="@color/text"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView40"
@@ -183,13 +186,14 @@
                 <RatingBar
                     android:id="@+id/ratingBar"
                     style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:maxHeight="@dimen/_28sdp"
                     android:numStars="5"
-                    android:theme="@style/RatingBar"
                     android:saveEnabled="true"
+                    android:theme="@style/RatingBar"
+                    app:layout_constraintEnd_toEndOf="@+id/product_TV_name"
                     app:layout_constraintStart_toStartOf="@+id/product_TV_name"
                     app:layout_constraintTop_toBottomOf="@+id/product_TV_name"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -296,9 +300,9 @@
                 android:paddingTop="@dimen/_5sdp"
                 android:paddingEnd="5dp"
                 android:paddingBottom="@dimen/_5sdp"
-                android:text="PEOPLE ALSO BOUGHT"
+                android:text="@string/ProductDetails_people_also_bought"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -359,7 +363,7 @@
                         android:fontFamily="@font/roboto"
                         android:paddingStart="2dp"
                         android:paddingEnd="1dp"
-                        android:text="MRP"
+                        android:text="@string/ProductDetails_mrp"
                         android:textColor="@color/text"
                         android:textSize="12sp"
                         app:layout_constraintBottom_toTopOf="@+id/product_TV_price"
@@ -393,12 +397,12 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/button_corner"
         android:fontFamily="@font/roboto_bold"
-        android:text="Add to Cart"
+        android:text="@string/ProductDetails_add_to_cart"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
