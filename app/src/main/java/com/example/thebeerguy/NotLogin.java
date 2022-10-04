@@ -31,27 +31,9 @@ public class NotLogin extends Fragment {
         notLogin_TV_login = view.findViewById(R.id.notLogin_TV_login);
         notLogin_back_Btn = view.findViewById(R.id.notLogin_back_Btn);
 
-        notLogin_back_Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        notLogin_back_Btn.setOnClickListener(v -> startActivity(new Intent(getContext(), DashBoard.class)));
 
-               startActivity(new Intent(getContext(), DashBoard.class));
-            }
-        });
-
-        notLogin_TV_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(getContext(), Login.class));
-            }
-        });
-
-
-
-
-
-
+        notLogin_TV_login.setOnClickListener(v -> startActivity(new Intent(getContext(), Login.class)));
 
     return view;
     }

@@ -9,8 +9,9 @@
     <!-- Menu Item Image -->
     <ImageView
         android:id="@+id/clickCartIconMenu"
-        android:layout_width="48dp"
-        android:layout_height="fill_parent"
+        android:layout_width="36dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="10dp"
         android:clickable="true"
         android:src="@drawable/cart"
         tools:ignore="SpeakableTextPresentCheck" />

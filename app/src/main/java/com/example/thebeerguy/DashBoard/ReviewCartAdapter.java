@@ -43,22 +43,25 @@ public class ReviewCartAdapter extends RecyclerView.Adapter<ReviewCartAdapter.My
     @Override
     public void onBindViewHolder(@NonNull Myholder holder, int position) {
 
-        holder.tv_quantity_res.setText(""+stores[position].getQuantity());
-        Picasso.get().load(stores[position].getImage()).into(holder.iv_cart_res);
-        holder.amount_cart_res.setText(""+stores[position].getProductPrice());
-        holder.tv_cart_res.setText(stores[position].getProductName());
-        holder.tv_cart_pakageId.setText(""+stores[position].getPackageName());
+        try {
+            holder.tv_quantity_res.setText("" + stores[position].getQuantity());
+            holder.tv_cart_res.setText(stores[position].getProductName());
+            holder.tv_cart_pakageId.setText("" + stores[position].getPackageName());
+            Picasso.get().load(stores[position].getImage()).into(holder.iv_cart_res);
+            String package_updated = stores[position].getPackageName().split(" ")[5];
+            double updatedAmount = stores[position].getQuantity() * Double.parseDouble(package_updated);
+            holder.amount_cart_res.setText("$" + updatedAmount);
 
-
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         holder.pos_cart_res.setOnClickListener(v->{
             reviewCartClick.increase(position, holder.amount_cart_res, holder.tv_quantity_res);
-
         });
 
         holder.neg_cart_res.setOnClickListener(v->{
            reviewCartClick.decrease(position, holder.amount_cart_res, holder.tv_quantity_res);
-
         });
     }
 

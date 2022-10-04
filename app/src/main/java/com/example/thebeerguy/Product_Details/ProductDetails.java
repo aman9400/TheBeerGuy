@@ -62,7 +62,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.Body;
 
-public class ProductDetails<textHoure> extends AppCompatActivity implements GetProductPackageId {
+public class ProductDetails extends AppCompatActivity implements GetProductPackageId {
 
     RecyclerView productDetail_recycler;
     APIInterface apiInterface;
@@ -119,9 +119,6 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
             product_TV_time.setTextColor(R.color.red);
         }
 
-
-
-
         product_ImV_fav.setOnClickListener(v -> {
 
             if (!isClicked) {
@@ -136,9 +133,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
             }
         });
 
-
         apiInterface = APIClient.getClient().create(APIInterface.class);
-
 
         productID = getIntent().getStringExtra("productID");
         String name = getIntent().getStringExtra("name");
@@ -147,25 +142,17 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
         Log.e("test", productID + ", " + name + ", " + type_id + ", " + cat_id);
 
-
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#ffffff\">" + name + "</font>"));
 
-
-
-//        getSupportActionBar().show();
-//        getSupportActionBar().setTitle(name);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
 
-
-
         productApi();
-
 
         product_arrow_down.setOnClickListener(v -> {
 
-             dialog = new Dialog(ProductDetails.this);
+            dialog = new Dialog(ProductDetails.this);
             dialog.setContentView(R.layout.product_dialog);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
             dialog.getWindow().setWindowAnimations(R.style.AnimationForDialog);
@@ -196,12 +183,8 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
         productDetail_btn_addToCard.setOnClickListener(v -> {
             addToCartApi();
-//            int newCartNumber1 = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
-//            tv.setText(""+ newCartNumber1);
-        });
 
-//        int newCar = MyDatabase.getDatabase(ProductDetails.this).patientDAO().getW() ;
-//        tv.setText(""+ newCar);
+        });
 
     }
 
@@ -300,10 +283,18 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
                         pakageList = responseProductDetail.get(0).getPackages();
 
+                        textView43.setText(responseProductDetail.get(0).getPackages().get(0).getQuantity() +
+                                "x" + responseProductDetail.get(0).getPackages().get(0).getSize() +" "+
+                                responseProductDetail.get(0).getPackages().get(0).getContainer() + " for $ " +
+                                responseProductDetail.get(0).getPackages().get(0).getPrice());
 
                         Log.e("test  size ", "" + pakageList.size());
                         Log.e("test price common ", "" + responseProductDetail.get(0).getCommonPrice());
 
+                        packageName = responseProductDetail.get(0).getPackages().get(0).getQuantity() +
+                                "x" + responseProductDetail.get(0).getPackages().get(0).getSize() +" "+
+                                responseProductDetail.get(0).getPackages().get(0).getContainer() + " for $ " +
+                                responseProductDetail.get(0).getPackages().get(0).getPrice();
 
                         Picasso.get().load(responseProductDetail.get(0).getImage()).into(product_IV_image);
                         product_TV_name.setText(responseProductDetail.get(0).getLabel());
@@ -321,11 +312,12 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                         product_details_TV_store.setText(responseProductDetail.get(0).getPackages().get(0).getStoreAbbrev());
 
 
-                        product_price = responseProductDetail.get(0).getCommonPrice();
+//                        product_price = responseProductDetail.get(0).getCommonPrice();
+                        product_price =   responseProductDetail.get(0).getPackages().get(0).getPrice();
 
 //                        product_TV_packageID = responseProductDetail.get(0).get;
 
-                        product_TV_price.setText("$"+responseProductDetail.get(0).getCommonPrice());
+                        product_TV_price.setText("$"+responseProductDetail.get(0).getPackages().get(0).getPrice());
 //                        product_TV_rating2.setText(responseProductDetail.get(0).getRating());
                         product_TV_discription.setText(responseProductDetail.get(0).getDescription());
 
@@ -366,7 +358,8 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
                         productDetailsList = response.body();
 
-                        packageName = ""+productDetailsList.get(0).getCommonPackageId();
+//                        packageName = ""+productDetailsList.get(0).getCommonPackageId();
+
 
                         WhatsHotAdapter whatsHotAdapter = new WhatsHotAdapter(ProductDetails.this, productDetailsList);
                         productDetail_recycler.setHasFixedSize(true);
@@ -407,9 +400,9 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 
             ProductReq productReq = new ProductReq();
             productReq.setProductId(""+productID);
-            productReq.setPrice(product_price);
+            productReq.setPrice(""+product_price);
             productReq.setPackageId(""+productPackageId);
-            productReq.setQuantity("");
+            productReq.setQuantity(""+1);
 
             list1.add(productReq);
 
@@ -446,6 +439,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
 //                        tv.setText(""+ Common.cartNumber);
 
 
+
                         Store[] countStore = MyDatabase.getDatabase(ProductDetails.this).patientDAO().productIdFetch(Integer.parseInt(productID));
 
                         if(countStore.length >= 1){
@@ -474,6 +468,7 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                         final VibrationEffect vibrationEffect5;
                         Toast.makeText(ProductDetails.this, "Product added to Cart", Toast.LENGTH_SHORT).show();
+
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
 
                             // create vibrator effect with the constant EFFECT_HEAVY_CLICK
@@ -491,9 +486,6 @@ public class ProductDetails<textHoure> extends AppCompatActivity implements GetP
                             vibrationEffect = VibrationEffect.createWaveform(wave_time, wave_ampl, -1);
                             vibrator.vibrate(vibrationEffect);
                         }
-
-
-
 
 //                        startActivity(new Intent(ProductDetails.this, ProductDetails.class));
                     }

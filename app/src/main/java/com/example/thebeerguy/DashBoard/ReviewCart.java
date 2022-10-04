@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -31,11 +32,14 @@ import com.example.thebeerguy.DashBoard.Home.CheckOut.Checkout;
 import com.example.thebeerguy.DashBoard.Home.CheckOut.GuestCheckout;
 import com.example.thebeerguy.DashBoard.Home.PaymentResponse.ResponsePayment;
 import com.example.thebeerguy.DashBoard.ResponseJson.ProductReq;
+import com.example.thebeerguy.NotLogin;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
 import com.example.thebeerguy.R;
 
 import org.json.JSONArray;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -83,21 +87,26 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
         stores = MyDatabase.getDatabase(ReviewCart.this).patientDAO().totalStoreData();
 
 
-        if (Common.responseAddToCart != null) {
-            int x = MyDatabase.getDatabase(ReviewCart.this).patientDAO().getW();
-            tc_item.setText("Total(" + x + ")");
-            subTotal.setText("" + Common.responseAddToCart.getProductAmount());
-            if (Common.responseAddToCart.getTotalAmount() != null) {
-                deliveryCharge.setText("$" + Common.responseAddToCart.getDeliveryFee());
-                taxAndCharges.setText("$" + Common.responseAddToCart.getHstAmount());
-                GrandTotal.setText("$" + Common.responseAddToCart.getTotalAmount());
-            } else {
-                deliveryCharge.setText("$" + "0");
-                taxAndCharges.setText("$" + "0");
-                GrandTotal.setText("$" + "0");
-            }
+//        if (Common.responseAddToCart != null) {
+//            int x = MyDatabase.getDatabase(ReviewCart.this).patientDAO().getW();
+//            tc_item.setText("Total(" + x + ")");
+//            subTotal.setText("$" + Common.responseAddToCart.getProductAmount());
+//            if (Common.responseAddToCart.getTotalAmount() != null) {
+//                Double truncatedDouble =   BigDecimal.valueOf(Common.responseAddToCart.getDeliveryFee())
+//                        .setScale(2, RoundingMode.HALF_UP)
+//                        .doubleValue();
+//                deliveryCharge.setText("$" + truncatedDouble);
+//                taxAndCharges.setText("$" + Common.responseAddToCart.getHstAmount());
+//                GrandTotal.setText("$" + Common.responseAddToCart.getTotalAmount());
+//            } else {
+//                deliveryCharge.setText("$" + "0");
+//                taxAndCharges.setText("$" + "0");
+//                GrandTotal.setText("$" + "0");
+//            }
+//
+//        }
 
-        }
+        addToCartApi(1);
 
         reviewCartAdapter = new ReviewCartAdapter(this, stores, this);
         cart_products_recycler.setHasFixedSize(true);
@@ -194,7 +203,7 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
     @Override
     public void increase(int position, TextView amount, TextView quant) {
 
-        addToCartApi(stores[position].getProductID());
+
 
 
         int quantity = MyDatabase.getDatabase(this).patientDAO().getQuatity(stores[position].getProductID());
@@ -203,6 +212,8 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
         quant.setText("" + quantity + 1);
         int carNumber = MyDatabase.getDatabase(this).patientDAO().getCartNumber();
         MyDatabase.getDatabase(this).patientDAO().setCartNumber(carNumber + 1);
+
+        addToCartApi(stores[position].getProductID());
 
         Store[] stores1 = MyDatabase.getDatabase(ReviewCart.this).patientDAO().totalStoreData();
         reviewCartAdapter.setStores(stores1);
@@ -216,12 +227,12 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
         int quantity = MyDatabase.getDatabase(this).patientDAO().getQuatity(stores[position].getProductID());
         if (quantity >= 2) {
 
-            addToCartApi(stores[position].getProductID());  // call api
+
             MyDatabase.getDatabase(this).patientDAO().updateTable(quantity - 1, stores[position].getProductID());
             quanti.setText("" + (quantity - 1));
             int carNumber = MyDatabase.getDatabase(this).patientDAO().getCartNumber();
             MyDatabase.getDatabase(this).patientDAO().setCartNumber(carNumber - 1);
-
+            addToCartApi(stores[position].getProductID());  // call api
 
             Store[] stores1 = MyDatabase.getDatabase(ReviewCart.this).patientDAO().totalStoreData();
             reviewCartAdapter.setStores(stores1);
@@ -242,10 +253,15 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
 
                 reviewCartAdapter.notifyDataSetChanged();
 
+                if(stores1.length < 1){
+                    startActivity(new Intent(this, NoproductScreen.class));
+                }
+
                 // call api
             }
         }
     }
+
 
     private void addToCartApi(int productID) {
 
@@ -257,7 +273,7 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
         Store[] newStore = MyDatabase.getDatabase(this).patientDAO().totalStoreData();
         JSONArray jsonArray = new JSONArray();
 
-
+        list.clear();
         for (int i = 0; i < newStore.length; i++) {
             try {
                 ProductReq productReq = new ProductReq();
@@ -290,20 +306,6 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
             reviewModel.setPhone("416-555-1234");
             reviewModel.setProducts(list);
 
-//            Map<String, String> map = new HashMap<>();
-//            map.put(Common.Apikey_text, Common.Apikey_value);
-//            map.put("ext_shopping_cart_id", "12345689");
-////            map.put("ext_shopping_cart_id", ""+ shopping_id);
-//            Common.shoppingId = shopping_id;
-//            map.put("ext_customer_id", "12345678");
-//            map.put("ext_location_id", "1000");   // must be from store api
-//            map.put("address", "123 Test St, Toronto, ON, M8Z4G2");
-////            map.put("address", Address);
-//            map.put("name", "Aman");
-////            map.put("name", nameLoggedIn);
-//            map.put("phone", "416-555-1234");
-//            map.put("products", String.valueOf(jsonArray));
-
 
             Call<ResponseAddToCart> call1 = apiInterface.addToCart(reviewModel);
 
@@ -328,8 +330,15 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
 
                                 int x = MyDatabase.getDatabase(ReviewCart.this).patientDAO().getW();
                                 tc_item.setText("Total(" + x + ") items");
-                                subTotal.setText("" + responseAddToCart.getProductAmount());
-                                deliveryCharge.setText("$" + responseAddToCart.getDeliveryFee());
+                                Double truncatedDouble =   BigDecimal.valueOf(responseAddToCart.getProductAmount())
+                                        .setScale(2, RoundingMode.HALF_UP)
+                                        .doubleValue();
+                                subTotal.setText("$" + truncatedDouble);
+
+                                Double truncatedDouble1 =   BigDecimal.valueOf(responseAddToCart.getDeliveryFee())
+                                        .setScale(2, RoundingMode.HALF_UP)
+                                        .doubleValue();
+                                deliveryCharge.setText("$" + truncatedDouble1);
                                 taxAndCharges.setText("$" + responseAddToCart.getHstAmount());
                                 GrandTotal.setText("$" + responseAddToCart.getTotalAmount());
                             }

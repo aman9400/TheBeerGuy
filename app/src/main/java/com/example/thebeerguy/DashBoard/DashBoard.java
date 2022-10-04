@@ -96,29 +96,20 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         toolbar = findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
-
-
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(DashBoard.this);
 
         menu1 = navigationView.getMenu();
-
-//        disableNavigationViewScrollbars(navigationView);
-//
         navigationView.setVerticalScrollBarEnabled(false);
 
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
 
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_hammenu);
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#ffffff\">" + "name" + "</font>"));
-
         getSupportActionBar().setElevation(10f);
 
         View headerView = navigationView.getHeaderView(0);
@@ -132,9 +123,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
         navUsername.setText(nameLoggedIn);
         nav_header_email.setText(email);
-
-//        mapGridData();
-
 
         setFragment(new Home());
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -219,8 +207,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             return true;
         });
 
-
-
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         boolean Islogin = prefs.getBoolean("Islogin", false); // get value of last login status
 
@@ -238,12 +224,6 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             navigationMenu.findItem(R.id.nav_recentOrder).setVisible(false);
         }
 
-
-
-
-
-
-
     }
 
     private void customExitDialog() {
@@ -258,19 +238,13 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         exit_TV_cancle = dialog.findViewById(R.id.exit_TV_cancle);
         exit_TV_yes = dialog.findViewById(R.id.exit_TV_yes);
 
-        exit_TV_cancle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        exit_TV_cancle.setOnClickListener(v -> dialog.dismiss());
 
-        exit_TV_yes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                finish();
-            }
+        exit_TV_yes.setOnClickListener(v -> {
+            dialog.dismiss();
+            finish();
+            finishAffinity();
+            System.exit(0);
         });
 
         dialog.show();
@@ -468,7 +442,5 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
         return true;
     }
-
-
 
 }

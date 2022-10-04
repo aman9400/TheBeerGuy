@@ -163,7 +163,7 @@ class PlacesAutoCompleteAdapter extends RecyclerView.Adapter<PlacesAutoCompleteA
 
     @Override
     public void onBindViewHolder(@NonNull PredictionHolder mPredictionHolder, final int i) {
-        mPredictionHolder.address.setText(mResultList.get(i).area + ", " + mResultList.get(i).address);
+        mPredictionHolder.address.setText(/*mResultList.get(i).area +*/ /*", " +*/ mResultList.get(i).address);
         mPredictionHolder.area.setText(mResultList.get(i).area);
 
     }

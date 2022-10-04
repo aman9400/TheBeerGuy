@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +28,7 @@ import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
+import com.example.thebeerguy.DashBoard.DashBoard;
 import com.example.thebeerguy.DashBoard.Home.ResponseSearch.ResponseSearch;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.FilterAdapters.FilterCatagoryAdapter;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.FilterAdapters.FilterPriceRangeAdapter;
@@ -66,6 +69,8 @@ public class SubCategory extends AppCompatActivity {
     private String typeID;
     private String name;
     Option optionOrigin, optionPriceRange;
+    ImageView SubCategoryBack;
+    TextView tv_subCat;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -75,8 +80,18 @@ public class SubCategory extends AppCompatActivity {
 
 
         Window window = getWindow();
-
         window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+
+        sub_category_gridView = findViewById(R.id.sub_category_gridView);
+        SubCategoryToolbar_filter = findViewById(R.id.SubCategoryToolbar_filter);
+
+        sub_category_toolbaar = findViewById(R.id.Sub_category_toolbaar);
+        setSupportActionBar(sub_category_toolbaar);
+
+       getSupportActionBar().setTitle("");
+//        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
@@ -87,15 +102,17 @@ public class SubCategory extends AppCompatActivity {
             typeID = getIntent().getStringExtra("typeID");
             name = getIntent().getStringExtra("name");
 
+            tv_subCat = findViewById(R.id.tv_subCat);
+            tv_subCat.setText(name);
+//            getSupportActionBar().setTitle(name);
+
             subCategoryAPi("type_id", typeID, subCatID);
         }
 
-        sub_category_gridView = findViewById(R.id.sub_category_gridView);
-        SubCategoryToolbar_filter = findViewById(R.id.SubCategoryToolbar_filter);
-
-        sub_category_toolbaar = findViewById(R.id.Sub_category_toolbaar);
-        setSupportActionBar(sub_category_toolbaar);
-
+        SubCategoryBack = findViewById(R.id.SubCategoryBack);
+        SubCategoryBack.setOnClickListener(v->{
+            startActivity(new Intent(this, DashBoard.class));
+        });
 
         filterApi("");  // calling api
 

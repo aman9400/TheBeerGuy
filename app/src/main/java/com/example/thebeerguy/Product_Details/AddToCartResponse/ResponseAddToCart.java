@@ -16,7 +16,7 @@ public class ResponseAddToCart {
     private Integer shoppingCartId;
     @SerializedName("product_amount")
     @Expose
-    private Integer productAmount;
+    private Float productAmount;
     @SerializedName("drv_tip_amount")
     @Expose
     private String drvTipAmount;
@@ -28,7 +28,7 @@ public class ResponseAddToCart {
     private Double hstAmount;
     @SerializedName("total_amount")
     @Expose
-    private Integer totalAmount;
+    private Float totalAmount;
     @SerializedName("delivery_eta")
     @Expose
     private String deliveryEta;
@@ -49,11 +49,11 @@ public class ResponseAddToCart {
         this.shoppingCartId = shoppingCartId;
     }
 
-    public Integer getProductAmount() {
+    public Float getProductAmount() {
         return productAmount;
     }
 
-    public void setProductAmount(Integer productAmount) {
+    public void setProductAmount(Float productAmount) {
         this.productAmount = productAmount;
     }
 
@@ -81,11 +81,11 @@ public class ResponseAddToCart {
         this.hstAmount = hstAmount;
     }
 
-    public Integer getTotalAmount() {
+    public Float getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(Integer totalAmount) {
+    public void setTotalAmount(Float totalAmount) {
         this.totalAmount = totalAmount;
     }
 

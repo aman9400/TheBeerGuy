@@ -9,9 +9,9 @@
 
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
         app:layout_constraintBottom_toTopOf="@+id/productDetail_btn_addToCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,13 +20,13 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="210dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -185,15 +185,14 @@
 
                 <RatingBar
                     android:id="@+id/ratingBar"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="0dp"
+                    style="@style/customRatingBar"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:maxHeight="@dimen/_28sdp"
                     android:numStars="5"
                     android:saveEnabled="true"
-                    android:theme="@style/RatingBar"
-                    app:layout_constraintEnd_toEndOf="@+id/product_TV_name"
+                    android:stepSize="0.1"
                     app:layout_constraintStart_toStartOf="@+id/product_TV_name"
                     app:layout_constraintTop_toBottomOf="@+id/product_TV_name"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -317,6 +316,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="5dp"
                 android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView52">
