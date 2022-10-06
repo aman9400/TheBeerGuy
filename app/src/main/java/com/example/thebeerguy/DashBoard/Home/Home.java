@@ -1,7 +1,11 @@
 package com.example.thebeerguy.DashBoard.Home;
 
+import static com.example.thebeerguy.DashBoard.DashBoard.dialog;
+
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -77,8 +81,8 @@ public class Home extends Fragment {
         progressDialog.show();
 
         downArrow.setOnClickListener(v->{
-            Intent intent = new Intent(getContext(), LandingScreen.class);
-            startActivity(intent);
+
+            changeLocation();
         });
 
         search_view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -90,7 +94,7 @@ public class Home extends Fragment {
 //                intent.putExtra("name", "search");
 //                startActivity(intent);
 
-                Intent intent = new Intent(getContext(), SubCategory.class);
+                Intent intent = new Intent(getContext(), SearchProduct.class);
                 intent.putExtra("subCatId", "3968");
                 intent.putExtra("typeID", "1");
                 intent.putExtra("name", "search");
@@ -131,6 +135,29 @@ public class Home extends Fragment {
 //        }
 
         return view;
+    }
+
+    private void changeLocation() {
+
+        dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.location_change_dialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        dialog.getWindow().setWindowAnimations(R.style.AnimationForDialog);
+
+        TextView changeLocation_TV_cancle, changeLocation_TV_yes;
+
+        changeLocation_TV_cancle = dialog.findViewById(R.id.changeLocation_TV_cancle);
+        changeLocation_TV_yes = dialog.findViewById(R.id.changeLocation_TV_yes);
+
+        changeLocation_TV_cancle.setOnClickListener(v -> dialog.dismiss());
+
+        changeLocation_TV_yes.setOnClickListener(v -> {
+            dialog.dismiss();
+            startActivity(new Intent(getContext(), LandingScreen.class));
+        });
+
+        dialog.show();
+
     }
 
 

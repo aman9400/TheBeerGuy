@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/transparent"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -92,6 +93,8 @@
                         android:layout_marginBottom="16dp"
                         android:fontFamily="@font/roboto_bold"
                         android:text="Yes"
+                        android:padding="2dp"
+                        android:textSize="14sp"
                         android:textColor="@color/colorPrimary2"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
@@ -103,6 +106,7 @@
                         android:layout_marginEnd="24dp"
                         android:fontFamily="@font/roboto_bold"
                         android:text="CANCEL"
+                        android:textSize="14sp"
                         android:textColor="@color/colorPrimary2"
                         app:layout_constraintBottom_toBottomOf="@+id/exit_TV_yes"
                         app:layout_constraintEnd_toStartOf="@+id/exit_TV_yes"

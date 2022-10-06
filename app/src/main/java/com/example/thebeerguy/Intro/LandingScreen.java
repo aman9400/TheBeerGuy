@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -121,14 +122,43 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 //        );
 
         // button to move to Dashboard
+//
+//        splas4_searchView_location.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//
+//
+//                if (s!= null )
+//                {
+//                    if (s.isEmpty()){
+//                        sp4_btn_login.setEnabled(false);
+//                        sp4_btn_login.setBackground(getDrawable(R.drawable.button_fade));
+//                    }
+//                    else{
+//                        sp4_btn_login.setEnabled(true);
+//                        sp4_btn_login.setBackground(getDrawable(R.drawable.button_corner));
+//
+//
+//                    }
+//                }
+//                return true;
+//            }
+//        });
+
 
         sp4_btn_login.setOnClickListener(v -> {
+
+
 
             storeApi();
 
 
         });
-
         // button to move to Login
         sp4_btn_signup.setOnClickListener(v -> {
             Intent sp4_signupIntent = new Intent(this, Login.class);

@@ -96,7 +96,7 @@ public class SubCategory extends AppCompatActivity {
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
         if(getIntent().getStringExtra("name").equalsIgnoreCase("search")){
-            searchApi(getIntent().getStringExtra("keyword"));
+//            searchApi(getIntent().getStringExtra("keyword"));
         }else {
             subCatID = getIntent().getStringExtra("subCatId");
             typeID = getIntent().getStringExtra("typeID");
@@ -552,7 +552,7 @@ public class SubCategory extends AppCompatActivity {
 
     }
 
-    private void searchApi(String value) {
+    /* private void searchApi(String value) {
 
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
         if (networkCheck) {
@@ -593,7 +593,7 @@ public class SubCategory extends AppCompatActivity {
             Toast.makeText(SubCategory.this, "Please Check your internet.", Toast.LENGTH_SHORT).show();
         }
 
-    }
+    } */
 
     private void filterApi(String value) {
 

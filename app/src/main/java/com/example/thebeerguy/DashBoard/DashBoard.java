@@ -1,9 +1,7 @@
 package com.example.thebeerguy.DashBoard;
 
 import com.example.Databse.MyDatabase;
-import com.example.Profile.EditProfile;
 import com.example.Signup.SignUp;
-import com.example.common.Common;
 import com.example.login.Login;
 import com.example.thebeerguy.DashBoard.Home.Home;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.SubCategory;
@@ -17,7 +15,6 @@ import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavSocialResponsib
 import com.example.thebeerguy.DashBoard.NavigationDrawerItems.NavTestimonials;
 import com.example.thebeerguy.Intro.LandingScreen;
 import com.example.thebeerguy.NotLogin;
-import com.example.thebeerguy.Product_Details.ProductDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -28,7 +25,6 @@ import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Index;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -37,14 +33,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Html;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -71,6 +64,8 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
    public static Dialog dialog;
     TextView tv;
     private int newCartNumber1;
+
+    public static int ID ;
 
 
     @Override
@@ -266,13 +261,13 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
         setTitle(menuItem.getTitle());
 
 
-        int id = menuItem.getItemId();
+        ID = menuItem.getItemId();
 
-        if (id == R.id.nav_item_home) {
+        if (ID == R.id.nav_item_home) {
             startActivity(new Intent(getApplicationContext(), DashBoard.class));
 //            Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.nav_item_beer) {
+        } else if (ID == R.id.nav_item_beer) {
 
             Intent intent = new Intent(this, SubCategory.class);
             intent.putExtra("subCatId", "3968");
@@ -282,7 +277,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 
 //            Toast.makeText(this, "Beer", Toast.LENGTH_SHORT).show();
 
-        } else if (id == R.id.nav_item_liquor) {
+        } else if (ID == R.id.nav_item_liquor) {
 
             Intent intent = new Intent(this, SubCategory.class);
             intent.putExtra("subCatId", "1432");
@@ -292,7 +287,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 //            Toast.makeText(this, "Liquor", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.nav_item_wine) {
+        } else if (ID == R.id.nav_item_wine) {
 
             Intent intent = new Intent(this, SubCategory.class);
             intent.putExtra("subCatId", "24235");
@@ -302,13 +297,13 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 //            Toast.makeText(this, "Wine", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.nav_item_recent) {
+        } else if (ID == R.id.nav_item_recent) {
 
             setFragment(new Recent());
 //            Toast.makeText(getApplicationContext(), "Recent Viewed", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.nav_create_account) {
+        } else if (ID == R.id.nav_create_account) {
 
 
 
@@ -316,7 +311,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 //            Toast.makeText(this, "Create Account", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.nav_signin) {
+        } else if (ID == R.id.nav_signin) {
 
 
 
@@ -324,19 +319,19 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 //            Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
 
 
-        }else if (id == R.id.nav_profile) {
+        }else if (ID == R.id.nav_profile) {
 
 //            startActivity(new Intent(this, Account.class));
 //            Toast.makeText(this, "Sign In", Toast.LENGTH_SHORT).show();
             setFragment(new Account());
 
 
-        }else if (id == R.id.nav_recentOrder) {
+        }else if (ID == R.id.nav_recentOrder) {
 
             setFragment(new Orders());
 
 
-        }else if (id == R.id.nav_SignOut) {
+        }else if (ID == R.id.nav_SignOut) {
 
             SharedPreferences prefs1 = PreferenceManager.getDefaultSharedPreferences(DashBoard.this);
             prefs1.edit().putBoolean("Islogin", false).commit();
@@ -349,7 +344,7 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
             finish();
 
 
-        } else if (id == R.id.nav_help ) {
+        } else if (ID == R.id.nav_help ) {
 
 
 
@@ -357,43 +352,43 @@ public class DashBoard extends AppCompatActivity implements NavigationView.OnNav
 //            Toast.makeText(getApplicationContext(), "Help and FAQ", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.nav_contactus) {
+        } else if (ID == R.id.nav_contactus) {
 
             startActivity(new Intent(getApplicationContext(), NavContactUs.class));
 //            Toast.makeText(getApplicationContext(), "Contact Us", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.nav_delivery_rate) {
+        } else if (ID == R.id.nav_delivery_rate) {
 
             startActivity(new Intent(getApplicationContext(), NavDeliveryRate.class));
 //            Toast.makeText(getApplicationContext(), "Delivery Rate", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.nav_social_resposibility) {
+        } else if (ID == R.id.nav_social_resposibility) {
 
             startActivity(new Intent(getApplicationContext(), NavSocialResponsibility.class));
 //            Toast.makeText(getApplicationContext(), "Social Responsibility", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.nav_testimonials) {
+        } else if (ID == R.id.nav_testimonials) {
 
             startActivity(new Intent(getApplicationContext(), NavTestimonials.class));
 //            Toast.makeText(getApplicationContext(), "Testimonials", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.nav_party_drink_calculator) {
+        } else if (ID == R.id.nav_party_drink_calculator) {
 
             startActivity(new Intent(getApplicationContext(), NavPartyDrinkCalculator.class));
 //            Toast.makeText(getApplicationContext(), "Party Drink Calculator", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.order_alcohol) {
+        } else if (ID == R.id.order_alcohol) {
 
             startActivity(new Intent(getApplicationContext(), NavOrderAlcohol.class));
 //            Toast.makeText(getApplicationContext(), "How to Order Alcohol", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.franchise_sponsorship) {
+        } else if (ID == R.id.franchise_sponsorship) {
 
             startActivity(new Intent(getApplicationContext(), NavFranchiseSponsorship.class));
 //            Toast.makeText(getApplicationContext(), "Franchise and Sponsorship", Toast.LENGTH_SHORT).show();
