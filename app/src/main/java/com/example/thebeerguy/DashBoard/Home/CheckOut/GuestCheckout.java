@@ -59,46 +59,48 @@ public class GuestCheckout extends AppCompatActivity {
 
         GuestfindIds();
 
-        guestCheckout_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GuestCheckout.this, PaymentMethod.class);
-                startActivity(intent);
-            }
-        });
 
-        guestCheckOut_TC_tV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GuestCheckout.this, TermsConditions.class);
-                startActivity(intent);
-            }
+
+        guestCheckOut_TC_tV.setOnClickListener(v -> {
+            Intent intent = new Intent(GuestCheckout.this, TermsConditions.class);
+            startActivity(intent);
         });
 
         guest_address.setText(LandingScreen.Address);
 
-        guest_checkout_ImV_backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        guest_checkout_ImV_backBtn.setOnClickListener(v -> GuestCheckout.super.onBackPressed());
 
-                GuestCheckout.super.onBackPressed();
-            }
-        });
+        guestCheckOut_TV_days.setOnClickListener(v -> GuestDilogTimings());
+        guestCheckOut_TV_time.setOnClickListener(v -> GuestDilogTimings());
 
-        guestCheckOut_TV_days.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                GuestDilogTimings();
-            }
-        });
-        guestCheckOut_TV_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if(guest_email.getText().toString().isEmpty()){
+            Toast.makeText(this, R.string.empty_email_message, Toast.LENGTH_SHORT).show();
+        }else if(guestCheck_editText_pass.getText().toString().isEmpty()){
+            Toast.makeText(this, "Please enter your password", Toast.LENGTH_SHORT).show();
 
-                GuestDilogTimings();
+        }else if(!Patterns.EMAIL_ADDRESS.matcher(guest_email.getText().toString().trim()).matches()){
+            Toast.makeText(this, "Please enter correct email format", Toast.LENGTH_SHORT).show();
 
-            }
+        }else if (Guest_name.getText().toString().isEmpty()){
+            Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show();
+
+        }else if (guest_phone.getText().toString().isEmpty()){
+            Toast.makeText(this, "Please enter phone number", Toast.LENGTH_SHORT).show();
+
+        }else if (guest_apt.getText().toString().isEmpty()){
+            Toast.makeText(this, "enter correct APT ", Toast.LENGTH_SHORT).show();
+        }else if (guest_buzzer.getText().toString().isEmpty()){
+
+            Toast.makeText(this, "enter correct Buzzer", Toast.LENGTH_SHORT).show();
+        }else{
+            guestCheckout_button.setEnabled(false);
+            guestCheckout_button.setBackground(getDrawable(R.drawable.button_fade));
+        }
+
+        guestCheckout_button.setOnClickListener(v -> {
+            Intent intent = new Intent(GuestCheckout.this, PaymentMethod.class);
+            startActivity(intent);
         });
 
 
