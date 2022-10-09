@@ -20,27 +20,37 @@ import java.util.List;
 public class CheckoutDialogAdapter extends RecyclerView.Adapter<CheckoutDialogAdapter.myViewHolder>{
 
     Context context;
-    List<CheckOutModel> checkOutModelList;
+    List<String> checkOutModelList;
+    SelectedDates selectedDates;
+    String time;
 
-    public CheckoutDialogAdapter(Context context, List<CheckOutModel> checkOutModelList) {
+    public CheckoutDialogAdapter(Context context, List<String> checkOutModelList, SelectedDates selectedDates, String time) {
         this.context = context;
         this.checkOutModelList = checkOutModelList;
+        this.selectedDates = selectedDates;
+        this.time = time;
     }
 
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new CheckoutDialogAdapter.myViewHolder(LayoutInflater.from(context).inflate(R.layout.checkout_dialog_recycler,parent,false));
+        return new CheckoutDialogAdapter.myViewHolder(LayoutInflater.from(context)
+                .inflate(R.layout.checkout_dialog_recycler,parent,false));
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
 
-        CheckOutModel checkOutModel = checkOutModelList.get(position);
+//        CheckOutModel checkOutModel = checkOutModelList.get(position);
 
-        holder.checkout_dialog_recycler_textView.setText(checkOutModel.getTiming());
+        holder.checkout_dialog_recycler_textView.setText(""+checkOutModelList.get(position));
+//        holder.checkout_dialog_recycler_radiobtn.setChecked(true);
+        holder.checkout_package_dialog.setOnClickListener(v->{
+            selectedDates.getSelectedDate(checkOutModelList.get(position), time);
+            holder.checkout_dialog_recycler_radiobtn.setChecked(true);
+        });
 
     }
 
@@ -58,9 +68,9 @@ public class CheckoutDialogAdapter extends RecyclerView.Adapter<CheckoutDialogAd
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            checkout_dialog_recycler_radiobtn = itemView.findViewById(R.id.checkout_dialog_recycler_radiobtn);
-            checkout_dialog_recycler_textView = itemView.findViewById(R.id.checkout_dialog_recycler_textView);
-            checkout_package_dialog = itemView.findViewById(R.id.checkout_package_dialog);
+            checkout_dialog_recycler_radiobtn = itemView.findViewById(R.id.checkout_dialog_recycler_radiobtn1);
+            checkout_dialog_recycler_textView = (TextView) itemView.findViewById(R.id.checkout_dialog_recycler_textView1);
+            checkout_package_dialog = itemView.findViewById(R.id.checkout_package_dialog1);
 
         }
     }

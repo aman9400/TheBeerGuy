@@ -353,24 +353,14 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
                 @Override
                 public void onResponse(Call<List<ResponseHome>> call, Response<List<ResponseHome>> response) {
                     if (response.isSuccessful()) {
-                        List<ResponseHome> loginResponse = response.body();
-
 
                         productDetailsList = response.body();
-
-//                        packageName = ""+productDetailsList.get(0).getCommonPackageId();
-
 
                         WhatsHotAdapter whatsHotAdapter = new WhatsHotAdapter(ProductDetails.this, productDetailsList);
                         productDetail_recycler.setHasFixedSize(true);
                         productDetail_recycler.setLayoutManager(new LinearLayoutManager(ProductDetails.this, LinearLayoutManager.HORIZONTAL, false));
                         productDetail_recycler.setAdapter(whatsHotAdapter);
-//                            whatsHotApi("is_popular", "1");
 
-
-//                            Toast.makeText(getContext(), "Beer list", Toast.LENGTH_SHORT).show();
-
-//                            startActivity(new Intent(getContext(), DashBoard.class));
                     } else {
                         Toast.makeText(ProductDetails.this, "No Data found", Toast.LENGTH_SHORT).show();
                     }
@@ -415,7 +405,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
             reviewModel.setExtCustomerId(12345678);
             reviewModel.setExtLocationId(1000);
             reviewModel.setAddress("123 Test St, Toronto, ON, M8Z4G2");
-            reviewModel.setName("Aman");
+            reviewModel.setName(nameLoggedIn);
             reviewModel.setPhone("416-555-1234");
             reviewModel.setProducts(list1);
 
@@ -431,14 +421,10 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
                         Common.responseAddToCart = responseAddToCart;
 
-//                        Common.jwt = responseSignup.getJwt();
                         Log.e("response : ", String.valueOf(response.body().getTotalAmount()));
 
                         Common.cartNumber = Common.cartNumber + 1;
                         Log.e("test cart number", "+"+ Common.cartNumber);
-//                        tv.setText(""+ Common.cartNumber);
-
-
 
                         Store[] countStore = MyDatabase.getDatabase(ProductDetails.this).patientDAO().productIdFetch(Integer.parseInt(productID));
 

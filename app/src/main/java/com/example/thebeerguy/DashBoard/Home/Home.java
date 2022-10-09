@@ -120,20 +120,6 @@ public class Home extends Fragment {
         liquorApi("type_id", "3");
         wineApi("type_id", "2");
 
-//        if(country.equalsIgnoreCase("Canada")){
-//            whatsHotApi("is_popular", "1");
-//            onSaleApi("is_onsale", "1");
-//            beerApi("type_id", "1");
-//            liquorApi("type_id", "3");
-//            wineApi("type_id", "2");
-//        }else {
-//            Toast.makeText(getContext(), "No Data Found for this location....", Toast.LENGTH_SHORT).show();
-//            ProgressDialog progressDialog = new ProgressDialog(getContext());
-//            progressDialog.setMessage("Loading No data found");
-//            progressDialog.show();
-//            progressDialog.dismiss();
-//        }
-
         return view;
     }
 
@@ -190,13 +176,9 @@ public class Home extends Fragment {
                 @Override
                 public void onResponse(Call<List<ResponseCategory>> call, Response<List<ResponseCategory>> response) {
                     if (response.isSuccessful()) {
-                        List<ResponseCategory> loginResponse = response.body();
-//                            Common.jwt = loginResponse.getJwt();
 
                         categoryList = response.body();
-
                         CategoryAdapter categoryAdapter = new CategoryAdapter(categoryList, getContext(), typeID);
-
                             beer_recyclerView.setHasFixedSize(true);
                             beer_recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
                             beer_recyclerView.setAdapter(categoryAdapter);
@@ -227,8 +209,6 @@ public class Home extends Fragment {
             Map<String, String> map = new HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
             map.put(typeKey, typeID);
-//            map.put("is_topten", "1");
-//                map.put(typeID"skin_id", "2");
 
             Call<List<ResponseCategory>> call1 = apiInterface.categoryList(map);
 
@@ -236,8 +216,6 @@ public class Home extends Fragment {
                 @Override
                 public void onResponse(Call<List<ResponseCategory>> call, Response<List<ResponseCategory>> response) {
                     if (response.isSuccessful()) {
-                        List<ResponseCategory> loginResponse = response.body();
-//                            Common.jwt = loginResponse.getJwt();
 
                         categoryList = response.body();
 
@@ -282,8 +260,6 @@ public class Home extends Fragment {
                 @Override
                 public void onResponse(Call<List<ResponseCategory>> call, Response<List<ResponseCategory>> response) {
                     if (response.isSuccessful()) {
-                        List<ResponseCategory> loginResponse = response.body();
-//                            Common.jwt = loginResponse.getJwt();
 
                         categoryList = response.body();
 
@@ -319,7 +295,6 @@ public class Home extends Fragment {
             map.put(Common.Apikey_text, Common.Apikey_value);
             map.put(typeKey, typeID);
             map.put("is_topten", "1");
-//                map.put(typeID"skin_id", "2");
 
             Call<List<ResponseHome>> call1 = apiInterface.home(map);
 
@@ -387,12 +362,7 @@ public class Home extends Fragment {
                             whatsHot_recyclerView.setHasFixedSize(true);
                             whatsHot_recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
                             whatsHot_recyclerView.setAdapter(whatsHotAdapter);
-//                            whatsHotApi("is_popular", "1");
 
-
-//                            Toast.makeText(getContext(), "Beer list", Toast.LENGTH_SHORT).show();
-
-//                            startActivity(new Intent(getContext(), DashBoard.class));
                     } else {
                         Toast.makeText(getContext(), "No Data found", Toast.LENGTH_SHORT).show();
                     }
@@ -410,6 +380,5 @@ public class Home extends Fragment {
         }
 
     }
-
 
 }

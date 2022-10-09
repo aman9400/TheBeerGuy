@@ -21,12 +21,9 @@ public class OrderComplete extends AppCompatActivity {
 
         oderComplete_button = findViewById(R.id.oderComplete_button);
 
-        oderComplete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(OrderComplete.this, DashBoard.class);
-                startActivity(intent);
-            }
+        oderComplete_button.setOnClickListener(v -> {
+            Intent intent = new Intent(OrderComplete.this, DashBoard.class);
+            startActivity(intent);
         });
     }
 }

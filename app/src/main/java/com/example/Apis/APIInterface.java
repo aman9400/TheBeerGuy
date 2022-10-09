@@ -4,13 +4,17 @@ import com.example.Forget.forgetPasswordResponse.Responseforget;
 import com.example.Profile.AddAddressResponse.ResponseAddAddress;
 import com.example.Signup.responseSignup.ResponseSignup;
 import com.example.login.responseLogin.LoginResponse;
+import com.example.thebeerguy.DashBoard.Home.CheckOut.PaymentReq;
+import com.example.thebeerguy.DashBoard.Home.CheckOut.ReviewCartModel;
 import com.example.thebeerguy.DashBoard.Home.PaymentResponse.ResponsePayment;
 import com.example.thebeerguy.DashBoard.Home.ResponseSearch.ResponseSearch;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.FilterResponse.ResponseFilter;
 import com.example.thebeerguy.DashBoard.Home.SubCategory.subCategoryResponse.ResponseSubCategory;
 import com.example.thebeerguy.DashBoard.Home.categoryResponse.ResponseCategory;
 import com.example.thebeerguy.DashBoard.PurchaseHistoryResponse.ResponsePurchaseHistory;
+import com.example.thebeerguy.DashBoard.ResponseJson.ProductReq;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
+import com.example.thebeerguy.DashBoard.ReviewCart;
 import com.example.thebeerguy.DashBoard.ReviewModel;
 import com.example.thebeerguy.Intro.ResponseStore.ResponseStore;
 import com.example.thebeerguy.Product_Details.AddToCartResponse.ResponseAddToCart;
@@ -63,13 +67,20 @@ public interface APIInterface {
     @POST("shopping_cart/update/")
     Call<ResponseAddToCart> addToCart(@Body ReviewModel reviewModel);
 
+    @POST("shopping_cart/update/")
+    Call<ResponseAddToCart> checkout(@Body ReviewCartModel reviewModel);
+
+
+    @POST("shopping_cart/update/")
+    Call<ResponseAddToCart> payment_done(@Body PaymentReq reviewModel);
+
     @FormUrlEncoded
     @POST("customer/fave_product")
     Call<ResponseFav> fav (@FieldMap Map<String, String> fav,  @Header("Authorization") String authHeader);
 
-    @FormUrlEncoded
+//    @FormUrlEncoded
     @POST("purchase/create/")
-    Call<ResponsePayment> payment (@FieldMap Map<String, String> payment);
+    Call<ResponsePayment> payment (@Body ReviewModel reviewMod);
 
     @FormUrlEncoded
     @POST("customer_location/create/")

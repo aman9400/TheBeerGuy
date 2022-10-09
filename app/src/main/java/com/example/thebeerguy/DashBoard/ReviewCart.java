@@ -146,23 +146,37 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
     }
 
     private void paymentApi() {
+        Store[] newStore = MyDatabase.getDatabase(this).patientDAO().totalStoreData();
+        JSONArray jsonArray = new JSONArray();
 
+        list.clear();
+        for (int i = 0; i < newStore.length; i++) {
+            try {
+                ProductReq productReq = new ProductReq();
+                productReq.setProductId("" + newStore[i].getProductID());
+                productReq.setPrice(newStore[i].getProductPrice());
+                productReq.setPackageId("" + newStore[i].getPackageID());
+                productReq.setQuantity("" + newStore[i].getQuantity());
+
+                list.add(productReq);
+//                jsonArray.put(jsonObject1);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
         if (networkCheck) {
+            ReviewModel reviewModel = new ReviewModel();
+            reviewModel.setApiKey("codewraps-app-dev");
+            reviewModel.setExtShoppingCartId(12345689);
+            reviewModel.setExtCustomerId(12345678);
+            reviewModel.setExtLocationId(1000);
+            reviewModel.setAddress("123 Test St, Toronto, ON, M8Z4G2");
+            reviewModel.setName("Aman");
+            reviewModel.setPhone("416-555-1234");
+            reviewModel.setProducts(list);
 
-            Map<String, String> map = new HashMap<>();
-            map.put(Common.Apikey_text, Common.Apikey_value);
-            map.put("ext_purchase_id", "");
-            map.put("ext_shopping_cart_id", "" + Common.shoppingId);
-            map.put("ext_customer_id", "" + Common.Customer_ID);
-            map.put("ext_location_id", "2315");
-            map.put("address", Address);
-            map.put("name", "");
-            map.put("phone", "416-555-1234");
-            map.put("products", "productID");
-
-
-            Call<ResponsePayment> call1 = apiInterface.payment(map);
+            Call<ResponsePayment> call1 = apiInterface.payment(reviewModel);
 
             call1.enqueue(new Callback<ResponsePayment>() {
                 @Override
@@ -302,7 +316,7 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
             reviewModel.setExtCustomerId(12345678);
             reviewModel.setExtLocationId(1000);
             reviewModel.setAddress("123 Test St, Toronto, ON, M8Z4G2");
-            reviewModel.setName("Aman");
+            reviewModel.setName(nameLoggedIn);
             reviewModel.setPhone("416-555-1234");
             reviewModel.setProducts(list);
 
