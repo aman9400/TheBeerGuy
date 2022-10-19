@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import android.preference.PreferenceManager;
 import android.sax.StartElementListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import com.example.Apis.APIClient;
 import com.example.Apis.APIInterface;
+import com.example.Databse.MyDatabase;
+import com.example.Databse.RecentProduct;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.login.Login;
@@ -24,8 +27,13 @@ import com.example.login.responseLogin.LoginResponse;
 import com.example.thebeerguy.DashBoard.Home.Adapters.BeerAdapter;
 import com.example.thebeerguy.DashBoard.Home.Adapters.GridAdapter;
 
+import com.example.thebeerguy.DashBoard.RecentResponse.ResponseRecent;
+import com.example.thebeerguy.DashBoard.ResponseJson.ProductReq;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
+import com.example.thebeerguy.Product_Details.ProductDetails;
 import com.example.thebeerguy.R;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,9 +47,10 @@ import retrofit2.Response;
 public class Recent extends Fragment {
 
     private GridView recent_gridView;
-    private List<ResponseHome> recentList = new ArrayList<>();
+    private List<ResponseRecent> recentList = new ArrayList<>();
 
     APIInterface apiInterface;
+     String recentId = ProductDetails.productID;
 
 
     @Override
@@ -59,12 +68,16 @@ public class Recent extends Fragment {
 //
 //        if (Islogin){
 //
-        recentApi("is_recent", "1");
+//        recentApi("is_recent", "1");
 //        }else {
 //            Toast.makeText(getContext(), "Please Login First", Toast.LENGTH_SHORT).show();
 //            startActivity(new Intent (getContext(),Login.class));
 //        }
 
+       RecentProduct[] recentProducts = MyDatabase.getDatabase(getContext()).patientDAO().showRecent();
+
+
+            recentApi("is_recent", "1", recentProducts);
 
 
 
@@ -87,24 +100,36 @@ public class Recent extends Fragment {
 //
 //    }
 
-    private void recentApi(String typeKey, String typeID) {
+    private void recentApi(String typeKey, String typeID, RecentProduct[] recentProducts) {
 
         boolean networkCheck = CommonMethod.isNetworkAvailable(getContext());
         if (networkCheck) {
 
-            Map<String, String> map = new HashMap<>();
-            map.put(Common.Apikey_text, Common.Apikey_value);
-            map.put(typeKey, typeID);
-//            map.put("is_topten", "1");
-//                map.put("skin_id", "2");
+            List<ProductReq> list = new ArrayList<>();
 
-            Call<List<ResponseHome>> call1 = apiInterface.home(map);
+            for (int i = 0; i < recentProducts.length; i++) {
+                ProductReq productReq = new ProductReq();
+                productReq.setProductId(recentProducts[i].getProduct_id());
+                productReq.setPackageId(recentProducts[i].getPackage_id());
+                productReq.setPrice(recentProducts[i].getPrice());
+                productReq.setQuantity(recentProducts[i].getQuantity());
+                list.add(productReq);
+            }
 
-            call1.enqueue(new Callback<List<ResponseHome>>() {
+            RecentProductRequest recentProductRequest = new RecentProductRequest();
+            recentProductRequest.setApiKey(Common.Apikey_value);
+            recentProductRequest.setIs_recent(1);
+            recentProductRequest.setProducts(list);
+
+
+
+            Call<List<ResponseRecent>> call1 = apiInterface.recent(recentProductRequest);
+
+            call1.enqueue(new Callback<List<ResponseRecent>>() {
                 @Override
-                public void onResponse(Call<List<ResponseHome>> call, Response<List<ResponseHome>> response) {
+                public void onResponse(Call<List<ResponseRecent>> call, Response<List<ResponseRecent>> response) {
                     if (response.isSuccessful()) {
-                        List<ResponseHome> responseHomes = response.body();
+                        List<ResponseRecent> responseHomes = response.body();
 //                            Common.jwt = loginResponse.getJwt();
 
                         recentList = response.body();
@@ -113,6 +138,8 @@ public class Recent extends Fragment {
 //                        if (typeID.equalsIgnoreCase("is_recent")) {
                             GridAdapter gridAdapter = new GridAdapter(getContext(), recentList);
                             recent_gridView.setAdapter(gridAdapter);
+
+                        Log.e("response", response.toString());
 
 
 
@@ -126,7 +153,7 @@ public class Recent extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<List<ResponseHome>> call, Throwable t) {
+                public void onFailure(Call<List<ResponseRecent>> call, Throwable t) {
                     Toast.makeText(getContext(), "Not logged in yet", Toast.LENGTH_SHORT).show();
                 }
             });

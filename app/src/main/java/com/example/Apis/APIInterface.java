@@ -12,6 +12,8 @@ import com.example.thebeerguy.DashBoard.Home.SubCategory.FilterResponse.Response
 import com.example.thebeerguy.DashBoard.Home.SubCategory.subCategoryResponse.ResponseSubCategory;
 import com.example.thebeerguy.DashBoard.Home.categoryResponse.ResponseCategory;
 import com.example.thebeerguy.DashBoard.PurchaseHistoryResponse.ResponsePurchaseHistory;
+import com.example.thebeerguy.DashBoard.RecentProductRequest;
+import com.example.thebeerguy.DashBoard.RecentResponse.ResponseRecent;
 import com.example.thebeerguy.DashBoard.ResponseJson.ProductReq;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
 import com.example.thebeerguy.DashBoard.ReviewCart;
@@ -81,6 +83,10 @@ public interface APIInterface {
 //    @FormUrlEncoded
     @POST("purchase/create/")
     Call<ResponsePayment> payment (@Body ReviewModel reviewMod);
+
+    //    @FormUrlEncoded
+    @POST("product/list")
+    Call<List<ResponseRecent>> recent (@Body RecentProductRequest reviewMod);
 
     @FormUrlEncoded
     @POST("customer_location/create/")

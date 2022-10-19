@@ -82,28 +82,29 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
         recyclerView.setAdapter(mAutoCompleteAdapter);
         mAutoCompleteAdapter.notifyDataSetChanged();
 
-        splas4_searchView_location.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                if (!s.equals("")) {
-                    mAutoCompleteAdapter.getFilter().filter(s);
-                    if (recyclerView.getVisibility() == View.GONE) {
-                        recyclerView.setVisibility(View.VISIBLE);
-                    }
-                } else {
-                    if (recyclerView.getVisibility() == View.VISIBLE) {
-                        recyclerView.setVisibility(View.GONE);
-                    }
-                }
-                return false;
-            }
-        });
+//        splas4_searchView_location.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String s) {
+//
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                if (!s.equals("")) {
+//                    mAutoCompleteAdapter.getFilter().filter(s);
+//
+//                    if (recyclerView.getVisibility() == View.GONE) {
+//                        recyclerView.setVisibility(View.VISIBLE);
+//                    }
+//                } else {
+//                    if (recyclerView.getVisibility() == View.VISIBLE) {
+//                        recyclerView.setVisibility(View.GONE);
+//                    }
+//                }
+//                return false;
+//            }
+//        });
 
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(LandingScreen.this);
@@ -122,43 +123,49 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 //        );
 
         // button to move to Dashboard
-//
-//        splas4_searchView_location.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//
-//
-//                if (s!= null )
-//                {
-//                    if (s.isEmpty()){
-//                        sp4_btn_login.setEnabled(false);
-//                        sp4_btn_login.setBackground(getDrawable(R.drawable.button_fade));
-//                    }
-//                    else{
-//                        sp4_btn_login.setEnabled(true);
-//                        sp4_btn_login.setBackground(getDrawable(R.drawable.button_corner));
-//
-//
-//                    }
-//                }
-//                return true;
-//            }
-//        });
+
+        splas4_searchView_location.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
 
 
-        sp4_btn_login.setOnClickListener(v -> {
+                if (s!= null ) {
+                    mAutoCompleteAdapter.getFilter().filter(s);
+
+                    if (s.isEmpty()){
+                        sp4_btn_login.setEnabled(false);
+                        sp4_btn_login.setBackground(getDrawable(R.drawable.button_fade));
+                        recyclerView.setVisibility(View.GONE);
+
+                    }
+                    else{
+                        sp4_btn_login.setEnabled(true);
+                        sp4_btn_login.setBackground(getDrawable(R.drawable.button_corner));
+                        recyclerView.setVisibility(View.VISIBLE);
+
+                        sp4_btn_login.setOnClickListener(v -> {
 
 
 
-            storeApi();
+                            storeApi();
 
 
+                        });
+
+
+                    }
+                }
+                return true;
+            }
         });
+
+
+
         // button to move to Login
         sp4_btn_signup.setOnClickListener(v -> {
             Intent sp4_signupIntent = new Intent(this, Login.class);

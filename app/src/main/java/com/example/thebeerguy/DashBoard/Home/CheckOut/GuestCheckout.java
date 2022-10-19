@@ -89,18 +89,32 @@ public class GuestCheckout extends AppCompatActivity implements SelectedDates {
 
         guestCheckout_button.setOnClickListener(v -> {
             if(!checkBoxBtn_TC.isChecked()){
-                Toast.makeText(this, "Please check our Terms and Conditions.", Toast.LENGTH_SHORT).show();
-            }
-            else if(guest_address.getText().toString().isEmpty()) {
-                Toast.makeText(this, "Please fill your address", Toast.LENGTH_SHORT).show();
-            }else if(guest_phone.getText().toString().isEmpty()){
-                Toast.makeText(this, "Please fill your phone number", Toast.LENGTH_SHORT).show();
+
+                guestCheckout_button.setEnabled(false);
+                guestCheckout_button.setBackground(getDrawable(R.drawable.button_fade));
+
+                Toast.makeText(this, "Please fill above field", Toast.LENGTH_SHORT).show();
+
             }else if(Guest_name.getText().toString().isEmpty()){
                 Toast.makeText(this, "Please fill your Name", Toast.LENGTH_SHORT).show();
-            }
-                else
-            {
-               apiCheckout();
+
+            }else if(guest_phone.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Please fill your phone number", Toast.LENGTH_SHORT).show();
+
+            }else if(guest_email.getText().toString().isEmpty()){
+                Toast.makeText(this, "Please fill your email", Toast.LENGTH_SHORT).show();
+
+
+            }else if(guest_address.getText().toString().isEmpty()) {
+                Toast.makeText(this, "Please fill your address", Toast.LENGTH_SHORT).show();
+
+            }else if(guestCheck_editText_pass.getText().toString().isEmpty()){
+                Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+
+            }else {
+                guestCheckout_button.setEnabled(true);
+                guestCheckout_button.setBackground(getDrawable(R.drawable.button_corner));
+                apiCheckout();
             }
 
         });

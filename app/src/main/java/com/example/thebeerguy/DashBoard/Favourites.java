@@ -20,6 +20,7 @@ import com.example.login.Login;
 import com.example.thebeerguy.DashBoard.Home.Adapters.BeerAdapter;
 import com.example.thebeerguy.DashBoard.Home.Adapters.GridAdapter;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
+import com.example.thebeerguy.Product_Details.ProductDetails;
 import com.example.thebeerguy.R;
 
 import java.util.ArrayList;
@@ -38,6 +39,10 @@ public class Favourites extends Fragment {
     private List<ResponseHome> BeerList = new ArrayList<>();
     APIInterface apiInterface;
 
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,13 +53,18 @@ public class Favourites extends Fragment {
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
-            homeApi("is_fave", "1");
+        favApi("is_fave", "1");
 //            Toast.makeText(getContext(), "Favourites", Toast.LENGTH_SHORT).show();
 
         return view;
     }
 
-    private void homeApi(String typeKey, String typeID) {
+    private void favApi(String typeKey, String typeID) {
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        boolean IsFav = prefs.getBoolean("IsFav", false);
+        String product_id = prefs.getString("product_id","");
+
 
         boolean networkCheck = CommonMethod.isNetworkAvailable(getContext());
         if (networkCheck) {
@@ -62,6 +72,7 @@ public class Favourites extends Fragment {
             Map<String, String> map = new HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
             map.put(typeKey, typeID);
+            map.put("product_id" , product_id);
             map.put("is_topten", "1");
 //                map.put("skin_id", "2");
 
@@ -78,8 +89,8 @@ public class Favourites extends Fragment {
 
 //                        BeerAdapter fav_adapter = new BeerAdapter(getContext(), BeerList);
                         if (typeID.equalsIgnoreCase("is_fave")) {
-                            GridAdapter gridAdapter = new GridAdapter(getContext(), BeerList);
-                            fav_gridView.setAdapter(gridAdapter);
+//                            GridAdapter gridAdapter = new GridAdapter(getContext(), BeerList);
+//                            fav_gridView.setAdapter(gridAdapter);
 
                         }
 

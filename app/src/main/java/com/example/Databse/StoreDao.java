@@ -70,7 +70,12 @@ public interface StoreDao {
 //
 //
 
+    //    /*insert recent data into database*/
+    @Query("INSERT INTO recentProduct ( product_id, package_id, price, quantity) VALUES (:productID, :packageID, :price, :quantity)" )
+    long insertTecent( String productID,  String packageID, String price , String quantity);
 
-
+    //    /*get recent data from database*/
+    @Query("SELECT * FROM recentProduct ")
+    RecentProduct[] showRecent( );
 
 }

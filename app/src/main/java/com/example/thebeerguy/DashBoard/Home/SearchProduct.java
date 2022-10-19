@@ -40,6 +40,7 @@ public class SearchProduct extends AppCompatActivity {
     private String subCatID;
     private String typeID;
     private String name;
+    private String s;
 
     private List<ResponseProductList> searchList = new ArrayList<>();
 
@@ -67,12 +68,13 @@ public class SearchProduct extends AppCompatActivity {
         subCatID = getIntent().getStringExtra("subCatId");
         typeID = getIntent().getStringExtra("typeID");
         name = getIntent().getStringExtra("name");
+        s = getIntent().getStringExtra("keyword");
 
 
         search_gridView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searchApi("keywords");
+                searchApi(s);
             }
         });
 
@@ -86,7 +88,7 @@ public class SearchProduct extends AppCompatActivity {
 
             Map<String, String> map1 = new HashMap<>();
             map1.put(Common.Apikey_text, Common.Apikey_value);
-            map1.put("keywords", value);
+            map1.put(s , value);
             map1.put("limit", "10");
 
             Call<ResponseSearch> call12 = APIClient.getClient().create(APIInterface.class).searchApiList(map1);

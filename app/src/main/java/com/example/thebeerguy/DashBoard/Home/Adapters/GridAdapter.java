@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.thebeerguy.DashBoard.RecentResponse.ResponseRecent;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
 import com.example.thebeerguy.R;
 import com.squareup.picasso.Picasso;
@@ -17,9 +18,9 @@ import java.util.List;
 public class GridAdapter extends BaseAdapter {
 
     private Context context;
-    private List<ResponseHome> list;
+    private List<ResponseRecent> list;
 
-    public GridAdapter(Context context, List<ResponseHome> list) {
+    public GridAdapter(Context context, List<ResponseRecent> list) {
         this.context = context;
         this.list = list;
     }
@@ -53,7 +54,7 @@ public class GridAdapter extends BaseAdapter {
         TextView recycler_text1 = convertView.findViewById(R.id.sale_recycler_text1);
         TextView recycler_text2 = convertView.findViewById(R.id.recycler_text2);
 
-        ResponseHome responseHome = list.get(position);
+        ResponseRecent responseHome = list.get(position);
 
 
         Picasso.get().load(responseHome.getImage()).into(recycler_text_image);

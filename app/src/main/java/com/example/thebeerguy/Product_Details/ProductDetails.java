@@ -38,6 +38,7 @@ import com.example.Databse.MyDatabase;
 import com.example.Databse.Store;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
+import com.example.login.Login;
 import com.example.thebeerguy.DashBoard.DashBoard;
 import com.example.thebeerguy.DashBoard.Home.Adapters.WhatsHotAdapter;
 import com.example.thebeerguy.DashBoard.ResponseJson.ProductReq;
@@ -77,7 +78,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
     private List<ResponseHome> productDetailsList = new ArrayList<>();
     private List<Package> pakageList = new ArrayList<>();
     private ImageView product_IV_image;
-    private String productID;
+    public static String productID;
     private String type_id;
     private String cat_id;
     private ProgressDialog progressDialog;
@@ -88,6 +89,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
     private TextView textView43;
     int newCartNumber2;
     int newNumber = 0;
+    private Boolean IsFav = false;
 
     List<ProductReq> list1 = new ArrayList<>();
     private String packageName;
@@ -178,7 +180,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
         });
 
 
-        ProductDetailsRecyclerdAPI("is_popular", "1");
+        ProductDetailsRecyclerdAPI("type_id", "1");
 
 
         productDetail_btn_addToCard.setOnClickListener(v -> {
@@ -283,6 +285,10 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
                         pakageList = responseProductDetail.get(0).getPackages();
 
+                        MyDatabase.getDatabase(ProductDetails.this).patientDAO().insertTecent(
+                                productID, ""+productPackageId, product_price, "1"
+                        );
+
                         textView43.setText(responseProductDetail.get(0).getPackages().get(0).getQuantity() +
                                 "x" + responseProductDetail.get(0).getPackages().get(0).getSize() +" "+
                                 responseProductDetail.get(0).getPackages().get(0).getContainer() + " for $ " +
@@ -321,6 +327,8 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 //                        product_TV_rating2.setText(responseProductDetail.get(0).getRating());
                         product_TV_discription.setText(responseProductDetail.get(0).getDescription());
 
+
+
                     } else {
                         Toast.makeText(ProductDetails.this, "Data not found", Toast.LENGTH_SHORT).show();
                     }
@@ -344,7 +352,9 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
             Map<String, String> map = new HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
             map.put(typeKey, typeID);
-            map.put("is_topten", "1");
+//            map.put("is_topten", "1");
+            map.put("category_id", cat_id);
+            map.put("type_id", type_id);
 //                map.put(typeID"skin_id", "2");
 
             Call<List<ResponseHome>> call1 = apiInterface.home(map);
@@ -510,6 +520,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
             Map<String, String> map = new HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
+            map.put("ext_customer_id", "729");
             map.put("products", productID);
 
 
@@ -524,6 +535,11 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
                         Log.e("response : ", String.valueOf(response));
 
                     }
+                    IsFav = true;
+                    SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ProductDetails.this);
+                    prefs.edit().putBoolean("IsFav", true).commit();
+                    prefs.edit().putString("product_id",productID ).commit();
+
 
                 }
 
