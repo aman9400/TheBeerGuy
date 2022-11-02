@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.Databse.RecentProduct;
 import com.example.thebeerguy.DashBoard.RecentResponse.ResponseRecent;
 import com.example.thebeerguy.DashBoard.ResponseJson.homeResponse.ResponseHome;
 import com.example.thebeerguy.R;
@@ -18,9 +19,9 @@ import java.util.List;
 public class GridAdapter extends BaseAdapter {
 
     private Context context;
-    private List<ResponseRecent> list;
+    private List<RecentProduct> list;
 
-    public GridAdapter(Context context, List<ResponseRecent> list) {
+    public GridAdapter(Context context, List<RecentProduct> list) {
         this.context = context;
         this.list = list;
     }
@@ -54,12 +55,12 @@ public class GridAdapter extends BaseAdapter {
         TextView recycler_text1 = convertView.findViewById(R.id.sale_recycler_text1);
         TextView recycler_text2 = convertView.findViewById(R.id.recycler_text2);
 
-        ResponseRecent responseHome = list.get(position);
+        RecentProduct responseHome = list.get(position);
 
 
-        Picasso.get().load(responseHome.getImage()).into(recycler_text_image);
-        recycler_text_name.setText(responseHome.getLabel());
-        recycler_text_price.setText("$" + responseHome.getMinPrice() + " - " + "$" + responseHome.getMaxPrice());
+//        Picasso.get().load(responseHome.getImage()).into(recycler_text_image);
+        recycler_text_name.setText(""+responseHome.getId());
+        recycler_text_price.setText("$" + responseHome.getPrice()/* + " - " + "$" + responseHome.getMaxPrice()*/);
 
 
 

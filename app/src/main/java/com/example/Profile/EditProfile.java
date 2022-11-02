@@ -43,8 +43,8 @@ public class EditProfile extends AppCompatActivity {
 
     APIInterface apiInterface;
     SharedPreferences prefs1;
-    String emailname = prefs1.getString("email", "");
-    String name = prefs1.getString("name", "");
+    String emailname ;
+    String name ;
 
 
     @Override
@@ -61,6 +61,9 @@ public class EditProfile extends AppCompatActivity {
 
         prefs1 = PreferenceManager.getDefaultSharedPreferences(this);
 
+        emailname = prefs1.getString("email", "");
+        name = prefs1.getString("name", "");
+
         email_editProfile.setText(emailname);
         phone_editProfile.setText(SignUp.phone);
         firstname_editProfile.setText(name);
@@ -68,14 +71,11 @@ public class EditProfile extends AppCompatActivity {
         addprofile_editprofile.setText(LandingScreen.Address);
 
 
-        savebtn_editProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        savebtn_editProfile.setOnClickListener(v -> {
 
-                Intent intent = new Intent(EditProfile.this, ManageAddress.class);
-                startActivity(intent);
+            Intent intent = new Intent(EditProfile.this, ManageAddress.class);
+            startActivity(intent);
 
-            }
         });
 
 

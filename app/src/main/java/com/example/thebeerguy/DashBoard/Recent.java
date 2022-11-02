@@ -1,6 +1,6 @@
 package com.example.thebeerguy.DashBoard;
 
-import static com.example.common.Common.jwt;
+
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -87,6 +87,20 @@ public class Recent extends Fragment {
 
     }
 
+    public static <T> List<T> ArrayToListConversion(T array[])
+    {
+//creating the constructor of the List class
+        List<T> list = new ArrayList<>();
+//using for-each loop to iterate over the array
+        for (T t : array)
+        {
+//adding each element to the List
+            list.add(t);
+        }
+//returns the list converted into Array
+        return list;
+    }
+
 //    private void modelListRecent() {
 //
 //        list.add(new SampleModel(R.drawable.beer, "Budweiser", "$2.90 - $104.95", "1"));
@@ -106,6 +120,7 @@ public class Recent extends Fragment {
         if (networkCheck) {
 
             List<ProductReq> list = new ArrayList<>();
+            List<RecentProduct> listProd = ArrayToListConversion(recentProducts);
 
             for (int i = 0; i < recentProducts.length; i++) {
                 ProductReq productReq = new ProductReq();
@@ -114,6 +129,7 @@ public class Recent extends Fragment {
                 productReq.setPrice(recentProducts[i].getPrice());
                 productReq.setQuantity(recentProducts[i].getQuantity());
                 list.add(productReq);
+
             }
 
             RecentProductRequest recentProductRequest = new RecentProductRequest();
@@ -121,9 +137,10 @@ public class Recent extends Fragment {
             recentProductRequest.setIs_recent(1);
             recentProductRequest.setProducts(list);
 
+            GridAdapter gridAdapter = new GridAdapter(getContext(), listProd);
+            recent_gridView.setAdapter(gridAdapter);
 
-
-            Call<List<ResponseRecent>> call1 = apiInterface.recent(recentProductRequest);
+            Call<List<ResponseRecent>> call1 = apiInterface.recent(recentProductRequest, Common.jwt);
 
             call1.enqueue(new Callback<List<ResponseRecent>>() {
                 @Override
@@ -136,8 +153,8 @@ public class Recent extends Fragment {
 
 //                        GridAdapter gridAdapter = new GridAdapter(getContext(), list);
 //                        if (typeID.equalsIgnoreCase("is_recent")) {
-                            GridAdapter gridAdapter = new GridAdapter(getContext(), recentList);
-                            recent_gridView.setAdapter(gridAdapter);
+//                            GridAdapter gridAdapter = new GridAdapter(getContext(), recentList);
+//                            recent_gridView.setAdapter(gridAdapter);
 
                         Log.e("response", response.toString());
 

@@ -209,6 +209,7 @@ public class LandingScreen extends AppCompatActivity implements PlacesAutoComple
 //                                Log.e("test", ""+addresses.get(0).getLatitude() + ","+ addresses.get(0).getLongitude());
 
                                 splas4_searchView_location.setQuery(addresses.get(0).getAddressLine(0), false);
+                                Common.address_default = addresses.get(0).getAddressLine(0);
 //                                    country.setText("Country: " + addresses.get(0).getCountryName());
                             } catch (IOException e) {
                                 e.printStackTrace();

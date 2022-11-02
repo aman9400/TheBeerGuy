@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -56,7 +57,7 @@ public class AddAddress extends AppCompatActivity {
             public void onClick(View v) {
 
                 addAddressAPI();
-                startActivity(new Intent(AddAddress.this, EditProfile.class));
+//                startActivity(new Intent(AddAddress.this, EditProfile.class));
 
             }
         });
@@ -90,11 +91,14 @@ public class AddAddress extends AppCompatActivity {
             }
 
             else{
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(AddAddress.this);
+                String email = prefs.getString("email","");
+
                 Map<String, String> map = new HashMap<>();
                 map.put(Common.Apikey_text, Common.Apikey_value);
-                map.put("ext_customer_id", "201503");
-                map.put("ext_location_id", "332398");
-                map.put("email", "");
+                map.put("ext_customer_id", ""+Common.Customer_ID);
+                map.put("ext_location_id", ""+Common.locationID);
+                map.put("email", email);
                 map.put("name", addAddress_ET_firstname.getText().toString().trim());
                 map.put("phone", addAddress_ET_phonenumber.getText().toString().trim());
                 map.put("address", addAddress_ET_deliveryAdd.getText().toString().trim());
@@ -105,7 +109,7 @@ public class AddAddress extends AppCompatActivity {
                 map.put("intersection", addAddress_ET_note.getText().toString().trim());
 
 
-                Call<ResponseAddAddress> call1 = apiInterface.addAddress(map);
+                Call<ResponseAddAddress> call1 = apiInterface.addAddress(map, Common.jwt );
 
                 call1.enqueue(new Callback<ResponseAddAddress>() {
                     @Override
@@ -113,18 +117,21 @@ public class AddAddress extends AppCompatActivity {
                         if(response.isSuccessful()){
                             ResponseAddAddress responseSignup = response.body();
 //                            Common.jwt = responseSignup.getJwt();
+                            startActivity(new Intent(AddAddress.this, EditProfile.class));
                             Log.e("response : " , String.valueOf(response));
 //                            Toast.makeText(SignUp.this, "Signup Successful", Toast.LENGTH_SHORT).show();
 
 //                            startActivity(new Intent(SignUp.this, Login.class));
 
+                        }else{
+                            Toast.makeText(AddAddress.this, "Unauthorized, tolen expire, please login again", Toast.LENGTH_SHORT).show();
                         }
 
                     }
 
                     @Override
                     public void onFailure(Call<ResponseAddAddress> call, Throwable t) {
-//                        Toast.makeText(SignUp.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddAddress.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

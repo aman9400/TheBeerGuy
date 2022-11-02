@@ -7,8 +7,6 @@ import com.google.android.gms.tasks.Task;
 @Dao
 public interface StoreDao {
 
-
-
    /*get all data from database*/
 
     @Query("SELECT * FROM user" )

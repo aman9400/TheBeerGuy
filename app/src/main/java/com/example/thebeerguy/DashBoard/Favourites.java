@@ -88,11 +88,11 @@ public class Favourites extends Fragment {
                         BeerList = response.body();
 
 //                        BeerAdapter fav_adapter = new BeerAdapter(getContext(), BeerList);
-                        if (typeID.equalsIgnoreCase("is_fave")) {
-//                            GridAdapter gridAdapter = new GridAdapter(getContext(), BeerList);
-//                            fav_gridView.setAdapter(gridAdapter);
 
-                        }
+                            FavAdapter gridAdapter = new FavAdapter(getContext(), BeerList);
+                            fav_gridView.setAdapter(gridAdapter);
+
+
 
 //                            Toast.makeText(getContext(), "Beer list", Toast.LENGTH_SHORT).show();
 

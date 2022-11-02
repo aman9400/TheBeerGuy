@@ -285,9 +285,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
                         pakageList = responseProductDetail.get(0).getPackages();
 
-                        MyDatabase.getDatabase(ProductDetails.this).patientDAO().insertTecent(
-                                productID, ""+productPackageId, product_price, "1"
-                        );
+
 
                         textView43.setText(responseProductDetail.get(0).getPackages().get(0).getQuantity() +
                                 "x" + responseProductDetail.get(0).getPackages().get(0).getSize() +" "+
@@ -320,6 +318,10 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
 //                        product_price = responseProductDetail.get(0).getCommonPrice();
                         product_price =   responseProductDetail.get(0).getPackages().get(0).getPrice();
+
+                        MyDatabase.getDatabase(ProductDetails.this).patientDAO().insertTecent(
+                                productID, ""+productPackageId, product_price, "1"
+                        );
 
 //                        product_TV_packageID = responseProductDetail.get(0).get;
 
@@ -520,7 +522,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
 
             Map<String, String> map = new HashMap<>();
             map.put(Common.Apikey_text, Common.Apikey_value);
-            map.put("ext_customer_id", "729");
+            map.put("ext_customer_id", ""+Common.Customer_ID);
             map.put("products", productID);
 
 
@@ -531,7 +533,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
                 public void onResponse(Call<ResponseFav> call, Response<ResponseFav> response) {
                     if (response.isSuccessful()) {
                         ResponseFav responseFav = response.body();
-                        Common.jwt = responseFav.getResult();
+//                        Common.jwt = responseFav.getResult();
                         Log.e("response : ", String.valueOf(response));
 
                     }

@@ -10,7 +10,9 @@ public class Common {
 
     public static String Apikey_value = "codewraps-app-dev";
 
-    public static String jwt = "codewraps-app-dev";
+    public static String jwt = "";
+
+    public static String email_user = "";
 
     public static String Google_Client_ID = "698599814407-9qijovc6ct2a18polbdddiaig1adh9t7.apps.googleusercontent.com";
 
@@ -33,5 +35,9 @@ public class Common {
     public static long shoppingId ;
 
     public static ResponseAddToCart responseAddToCart = null;
+
+    public static Integer store_id;
+
+    public static String address_default;
 
 }

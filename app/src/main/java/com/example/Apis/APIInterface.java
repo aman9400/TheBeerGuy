@@ -86,11 +86,11 @@ public interface APIInterface {
 
     //    @FormUrlEncoded
     @POST("product/list")
-    Call<List<ResponseRecent>> recent (@Body RecentProductRequest reviewMod);
+    Call<List<ResponseRecent>> recent (@Body RecentProductRequest reviewMod,  @Header("Authorization") String authHeader);
 
     @FormUrlEncoded
     @POST("customer_location/create/")
-    Call<ResponseAddAddress> addAddress (@FieldMap Map<String, String> addAddress);
+    Call<ResponseAddAddress> addAddress (@FieldMap Map<String, String> addAddress,  @Header("Authorization") String authHeader);
 
     @FormUrlEncoded
     @POST("product/category_list")

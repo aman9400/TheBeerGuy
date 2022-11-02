@@ -3,9 +3,11 @@ package com.example.thebeerguy.DashBoard.Home;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ import com.example.Apis.APIInterface;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
 import com.example.thebeerguy.DashBoard.Home.ResponseSearch.ResponseSearch;
+import com.example.thebeerguy.Product_Details.ProductDetails;
 import com.example.thebeerguy.Product_Details.productListResponse.ResponseProductList;
 import com.example.thebeerguy.R;
 
@@ -50,33 +53,54 @@ public class SearchProduct extends AppCompatActivity {
         setContentView(R.layout.activity_search_product);
         getSupportActionBar().hide();
 
-
-
         search_gridView = findViewById(R.id.search_gridView);
         search_searchView = findViewById(R.id.search_searchView);
         searchProduct_ImV_backbtn = findViewById(R.id.searchProduct_ImV_backbtn);
-
-        searchProduct_ImV_backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                SearchProduct.super.onBackPressed();
-            }
-        });
-
 
         subCatID = getIntent().getStringExtra("subCatId");
         typeID = getIntent().getStringExtra("typeID");
         name = getIntent().getStringExtra("name");
         s = getIntent().getStringExtra("keyword");
 
+        if(!s.equalsIgnoreCase("")){
+            searchApi(s);
+        }
 
-        search_gridView.setOnClickListener(new View.OnClickListener() {
+        search_gridView.setOnItemClickListener((parent, view, position, id) -> {
+            Intent intent = new Intent(SearchProduct.this, ProductDetails.class);
+            intent.putExtra("productID", "");
+            intent.putExtra("name", name);
+            intent.putExtra("type", typeID);
+            intent.putExtra("cat", subCatID);
+
+        });
+
+
+
+        searchProduct_ImV_backbtn.setOnClickListener(v -> SearchProduct.super.onBackPressed());
+
+        search_searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onClick(View v) {
-                searchApi(s);
+            public boolean onQueryTextSubmit(String query) {
+                searchApi(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
             }
         });
+
+
+
+
+//        search_gridView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                searchApi(s);
+//            }
+//        });
 
 
     }

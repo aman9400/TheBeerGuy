@@ -28,6 +28,7 @@ import com.example.Databse.MyDatabase;
 import com.example.Databse.Store;
 import com.example.common.Common;
 import com.example.common.CommonMethod;
+import com.example.login.Login;
 import com.example.thebeerguy.DashBoard.Home.CheckOut.Checkout;
 import com.example.thebeerguy.DashBoard.Home.CheckOut.GuestCheckout;
 import com.example.thebeerguy.DashBoard.Home.PaymentResponse.ResponsePayment;
@@ -164,15 +165,19 @@ public class ReviewCart extends AppCompatActivity implements ReviewCartClick {
                 e.printStackTrace();
             }
         }
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ReviewCart.this);
+        String newName = prefs.getString("name","Test");
+
         boolean networkCheck = CommonMethod.isNetworkAvailable(this);
         if (networkCheck) {
             ReviewModel reviewModel = new ReviewModel();
             reviewModel.setApiKey("codewraps-app-dev");
-            reviewModel.setExtShoppingCartId(12345689);
-            reviewModel.setExtCustomerId(12345678);
-            reviewModel.setExtLocationId(1000);
-            reviewModel.setAddress("123 Test St, Toronto, ON, M8Z4G2");
-            reviewModel.setName("Aman");
+            reviewModel.setExtShoppingCartId(Integer.parseInt(String.valueOf(Common.shoppingId)));
+            reviewModel.setExtCustomerId(Common.Customer_ID);
+            reviewModel.setExtLocationId(Common.locationID);
+            reviewModel.setAddress(Common.address_default);
+            reviewModel.setName(newName);
             reviewModel.setPhone("416-555-1234");
             reviewModel.setProducts(list);
 
