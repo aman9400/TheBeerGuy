@@ -11,16 +11,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thebeerguy.DashBoard.Home.SubCategory.FilterResponse.Option;
+import com.example.thebeerguy.DashBoard.Home.SubCategory.PriceInterface;
 import com.example.thebeerguy.R;
 
 public class FilterPriceRangeAdapter extends RecyclerView.Adapter<FilterPriceRangeAdapter.MyviewHolder>{
 
     Context context;
     Option filter_priceRange;
+    PriceInterface priceInterface;
 
-    public FilterPriceRangeAdapter(Context context, Option filter_priceRange) {
+    public FilterPriceRangeAdapter(Context context, Option filter_priceRange, PriceInterface priceInterface) {
         this.context = context;
         this.filter_priceRange = filter_priceRange;
+        this.priceInterface = priceInterface;
     }
 
     @NonNull
@@ -35,6 +38,9 @@ public class FilterPriceRangeAdapter extends RecyclerView.Adapter<FilterPriceRan
     public void onBindViewHolder(@NonNull MyviewHolder holder, int position) {
 
         holder.filter_TV_text.setText( filter_priceRange.getVals().get(position));
+        holder.filter_radiobtn.setOnClickListener(v -> {
+            priceInterface.price_range(filter_priceRange.getVals().get(position));
+        });
 
     }
 

@@ -11,16 +11,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.thebeerguy.DashBoard.Home.SubCategory.FilterResponse.Option;
+import com.example.thebeerguy.DashBoard.Home.SubCategory.OriginInterface;
 import com.example.thebeerguy.R;
 
 public class FitlerOrginAdapter extends RecyclerView.Adapter<FitlerOrginAdapter.MyviewHolder>{
 
     Context context;
     Option filter_origin;
+    OriginInterface originInterface;
 
-    public FitlerOrginAdapter(Context context, Option filter_origin) {
+    public FitlerOrginAdapter(Context context, Option filter_origin, OriginInterface originInterface) {
         this.context = context;
         this.filter_origin = filter_origin;
+        this.originInterface = originInterface;
     }
 
     @NonNull
@@ -35,6 +38,9 @@ public class FitlerOrginAdapter extends RecyclerView.Adapter<FitlerOrginAdapter.
     public void onBindViewHolder(@NonNull MyviewHolder holder, int position) {
 
         holder.filter_TV_text.setText( filter_origin.getVals().get(position));
+        holder.filter_radiobtn.setOnClickListener(v -> {
+            originInterface.origin_range( filter_origin.getVals().get(position));
+        });
 
     }
 

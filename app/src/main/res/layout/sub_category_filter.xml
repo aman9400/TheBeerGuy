@@ -156,6 +156,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <RadioButton
+                                android:id="@+id/radio_beer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="16dp"
@@ -187,6 +188,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <RadioButton
+                                android:id="@+id/radio_wine"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="16dp"
@@ -209,6 +211,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/subCat_filter_CL_wine">
 
                             <RadioButton
+                                android:id="@+id/radio_liquor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="16dp"
@@ -604,6 +607,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <RadioButton
+                            android:id="@+id/radio_vaq"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="16dp"
@@ -687,6 +691,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <RadioButton
+                            android:id="@+id/radio_kosher"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_16sdp"
@@ -771,6 +776,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <RadioButton
+                            android:id="@+id/radio_vintage"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_16sdp"
@@ -857,6 +863,7 @@
 
 
                         <RadioButton
+                            android:id="@+id/radio_hasphotos"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_16sdp"
@@ -941,6 +948,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <RadioButton
+                            android:id="@+id/radio_has_bonus"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_16sdp"

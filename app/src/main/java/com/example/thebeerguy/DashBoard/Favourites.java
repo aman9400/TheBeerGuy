@@ -40,9 +40,6 @@ public class Favourites extends Fragment {
     APIInterface apiInterface;
 
 
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

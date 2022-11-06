@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Store.class, CartNumber.class, ProductPrice.class, RecentProduct.class},
-        version = 9, exportSchema = false)
+        version = 10, exportSchema = false)
 public abstract class MyDatabase extends RoomDatabase {
 
     public abstract StoreDao patientDAO(); // calling dao function

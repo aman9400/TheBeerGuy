@@ -320,7 +320,7 @@ public class ProductDetails extends AppCompatActivity implements GetProductPacka
                         product_price =   responseProductDetail.get(0).getPackages().get(0).getPrice();
 
                         MyDatabase.getDatabase(ProductDetails.this).patientDAO().insertTecent(
-                                productID, ""+productPackageId, product_price, "1"
+                                productID, ""+productPackageId, product_price, "1", product_name
                         );
 
 //                        product_TV_packageID = responseProductDetail.get(0).get;

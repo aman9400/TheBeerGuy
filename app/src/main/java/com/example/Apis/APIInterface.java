@@ -106,7 +106,11 @@ public interface APIInterface {
 
     @FormUrlEncoded
     @POST("search_filter_menu")
-    Call<ResponseFilter> filter(@FieldMap Map<String, String> filter);
+    Call<com.example.thebeerguy.DashBoard.Home.SubCategory.filter_menu.ResponseStore> filter(@FieldMap Map<String, String> filter);
+
+    @FormUrlEncoded
+    @POST("search_filter_menu")
+    Call<ResponseFilter> filter1(@FieldMap Map<String, String> filter);
 
     @FormUrlEncoded
     @POST("store_location/list")
